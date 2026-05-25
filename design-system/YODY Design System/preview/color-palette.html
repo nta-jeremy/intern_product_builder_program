@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="vi"><head><meta charset="UTF-8"/><link rel="stylesheet" href="../colors_and_type.css"/>
+<style>
+  body { background: var(--bg); padding: 32px; margin: 0; font-family: var(--font-body); }
+  .frame { max-width: 1080px; }
+  .head {
+    font: 700 13px/1 var(--font-mono); text-transform: uppercase;
+    letter-spacing: 0.32em; color: var(--brand);
+    display: inline-flex; align-items: center; gap: 14px; margin-bottom: 18px;
+  }
+  .head::before { content: ''; width: 32px; height: 1px; background: var(--brand); opacity: 0.5; }
+  .lede { font: 400 18px/1.6 var(--font-body); color: var(--fg-2); max-width: 760px; margin-bottom: 28px; }
+  .lede strong { color: var(--fg-1); font-weight: 600; }
+
+  /* Palette swatches — full token map at a glance */
+  .palette { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; }
+  .ramp { display: contents; }
+  .ramp .label {
+    grid-column: 1 / -1;
+    font: 700 11px/1 var(--font-mono); text-transform: uppercase;
+    letter-spacing: 0.22em; color: var(--fg-3);
+    padding: 18px 0 6px; border-top: 1px solid var(--border-light);
+    margin-top: 6px;
+  }
+  .ramp .label:first-child { border-top: none; margin-top: 0; padding-top: 4px; }
+  .chip {
+    border-radius: 10px; padding: 12px 14px;
+    aspect-ratio: 1.3; display: flex; flex-direction: column; justify-content: space-between;
+    position: relative; overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .chip .name {
+    font: 700 12px/1.1 var(--font-impact); letter-spacing: -0.005em;
+  }
+  .chip .hex {
+    font: 600 11px/1 var(--font-mono); letter-spacing: 0.06em;
+  }
+  .chip.dark { color: #fff; border-color: transparent; }
+  .chip.dark .hex { color: rgba(255,255,255,0.7); }
+  .chip.lt .hex { color: var(--fg-3); }
+  .chip.lt .name { color: var(--fg-1); }
+</style></head><body>
+
+<div class="frame">
+
+  <span class="head">Color palette · full token map</span>
+  <p class="lede">
+    Bộ màu hoàn chỉnh — <strong>2 brand anchors</strong> (Navy + Gold) từ logo,
+    <strong>3 Light Hightech accents</strong> (Iris · Mint · Rose) mỗi cái có ramp 3 bước
+    (base + light + deep + tint), <strong>status</strong> (LIVE/BUILD/GAP/PLAN),
+    và scale neutrals đầy đủ. Mỗi swatch = một CSS token.
+  </p>
+
+  <div class="palette">
+
+    <span class="label">Brand · 2 anchors (logo)</span>
+    <div class="chip dark" style="background: var(--brand);"><span class="name">Brand</span><span class="hex">#2A2B86</span></div>
+    <div class="chip dark" style="background: var(--brand-light);"><span class="name">Brand light</span><span class="hex">#4A4BC8</span></div>
+    <div class="chip dark" style="background: var(--brand-deep);"><span class="name">Brand deep</span><span class="hex">#16175A</span></div>
+    <div class="chip lt"   style="background: var(--brand-tint);"><span class="name">Brand tint</span><span class="hex">#EEEEFB</span></div>
+    <div class="chip lt"   style="background: var(--gold);"><span class="name">Gold</span><span class="hex">#FCAF16</span></div>
+    <div class="chip dark" style="background: var(--gold-deep);"><span class="name">Gold deep</span><span class="hex">#B07A00</span></div>
+
+    <span class="label">Iris · AI / tech (default accent)</span>
+    <div class="chip dark" style="background: var(--iris);"><span class="name">Iris</span><span class="hex">#7C6CF5</span></div>
+    <div class="chip dark" style="background: var(--iris-deep);"><span class="name">Iris deep</span><span class="hex">#4A4BC8</span></div>
+    <div class="chip lt"   style="background: var(--iris-tint);"><span class="name">Iris tint</span><span class="hex">#EEEEFB</span></div>
+
+    <span class="label">Mint · growth / LIVE</span>
+    <div class="chip dark" style="background: var(--mint);"><span class="name">Mint</span><span class="hex">#10B981</span></div>
+    <div class="chip dark" style="background: var(--mint-deep);"><span class="name">Mint deep</span><span class="hex">#047857</span></div>
+    <div class="chip lt"   style="background: var(--mint-tint);"><span class="name">Mint tint</span><span class="hex">#D1FAE5</span></div>
+
+    <span class="label">Rose · human / ESG</span>
+    <div class="chip dark" style="background: var(--rose);"><span class="name">Rose</span><span class="hex">#F472B6</span></div>
+    <div class="chip dark" style="background: var(--rose-deep);"><span class="name">Rose deep</span><span class="hex">#BE185D</span></div>
+    <div class="chip lt"   style="background: var(--rose-tint);"><span class="name">Rose tint</span><span class="hex">#FDE7F1</span></div>
+
+    <span class="label">Status</span>
+    <div class="chip dark" style="background: var(--live);"><span class="name">Live</span><span class="hex">#10B981</span></div>
+    <div class="chip dark" style="background: var(--build);"><span class="name">Build</span><span class="hex">#7C6CF5</span></div>
+    <div class="chip dark" style="background: var(--gap);"><span class="name">Gap · ALERT</span><span class="hex">#EF4444</span></div>
+    <div class="chip dark" style="background: var(--plan);"><span class="name">Plan</span><span class="hex">#F59E0B</span></div>
+    <div class="chip dark" style="background: var(--plan-deep);"><span class="name">Plan deep</span><span class="hex">#7A5400</span></div>
+
+    <span class="label">Surfaces &amp; ink</span>
+    <div class="chip lt"   style="background: var(--bg);"><span class="name">Paper</span><span class="hex">#FCFCFF</span></div>
+    <div class="chip lt"   style="background: var(--bg-2);"><span class="name">Mist</span><span class="hex">#F4F5FB</span></div>
+    <div class="chip lt"   style="background: var(--bg-muted);"><span class="name">Lavender</span><span class="hex">#ECEDF8</span></div>
+    <div class="chip dark" style="background: var(--bg-ink);"><span class="name">Ink</span><span class="hex">#0E0F24</span></div>
+    <div class="chip dark" style="background: var(--fg-1);"><span class="name">Text-1</span><span class="hex">#1A1B3A</span></div>
+    <div class="chip dark" style="background: var(--fg-2);"><span class="name">Text-2</span><span class="hex">#5A5C7E</span></div>
+    <div class="chip dark" style="background: var(--fg-3);"><span class="name">Text-3</span><span class="hex">#6B6D8C</span></div>
+    <div class="chip lt"   style="background: var(--border); border-color: var(--border-hover);"><span class="name">Border</span><span class="hex">#E6E7F2</span></div>
+
+  </div>
+</div>
+
+</body></html>

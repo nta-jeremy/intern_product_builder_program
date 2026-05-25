@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="vi"><head><meta charset="UTF-8"/><link rel="stylesheet" href="../colors_and_type.css"/>
+<style>
+  body { background: var(--bg); padding: 32px; margin: 0; display: flex; flex-direction: column; gap: 22px; }
+  .row { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+  .meta { font: 700 11px/1 var(--font-mono); color: var(--fg-3); text-transform: uppercase; letter-spacing: 0.22em; min-width: 130px; }
+  .pill {
+    font: 700 11px/1 var(--font-mono); letter-spacing: 0.18em; text-transform: uppercase;
+    padding: 8px 16px; border-radius: 9999px; cursor: pointer;
+    border: 1px solid var(--border); background: var(--bg); color: var(--fg-2);
+  }
+  .pill.active {
+    background: linear-gradient(135deg, var(--brand-light), var(--iris));
+    color: #fff; border-color: transparent;
+    box-shadow: 0 4px 12px rgba(124,108,245,0.28);
+  }
+</style></head><body>
+  <div class="row">
+    <span class="meta">CTA · canonical</span>
+    <a class="cta cta-primary">Khám phá lộ trình →</a>
+    <a class="cta cta-secondary">Xem chi tiết</a>
+    <a class="cta cta-gold">★ IPO 2030 →</a>
+  </div>
+  <div class="row">
+    <span class="meta">Filter pills</span>
+    <button class="pill active">All</button>
+    <button class="pill">Live</button>
+    <button class="pill">Build</button>
+    <button class="pill">Gap</button>
+    <button class="pill">Plan</button>
+  </div>
+  <p style="font: var(--type-caption); color: var(--fg-3); margin: 0; max-width: 640px;">
+    CTA system canonical · `.cta-primary` (brand) · `.cta-secondary` (border) · `.cta-gold` (climax 1/page).
+    Filter pills use iris gradient when active.
+  </p>
+</body></html>

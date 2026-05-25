@@ -1,0 +1,207 @@
+/* ─────────────────────────────────────────────────────────
+   YODY Design System — Motion tokens, keyframes, utilities
+   Companion to colors_and_type.css. Import after it:
+     <link rel="stylesheet" href="colors_and_type.css" />
+     <link rel="stylesheet" href="motion.css" />
+   ───────────────────────────────────────────────────────── */
+
+:root {
+  /* ═══ MOTION CHOREOGRAPHY (semantic) ═══ */
+  --motion-enter:   250ms cubic-bezier(0.34, 1.56, 0.64, 1); /* side-panel, modal */
+  --motion-exit:    180ms cubic-bezier(0.4, 0, 0.2, 1);
+  --motion-hover:   150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --motion-press:   80ms  ease-out;
+  --motion-page:    300ms cubic-bezier(0.4, 0, 0.2, 1);     /* route change */
+  --motion-count:   600ms cubic-bezier(0.2, 0.6, 0.2, 1);   /* KPI count-up */
+  --motion-brush:   1000ms cubic-bezier(0.6, 0.05, 0.3, 1); /* hero brush stroke */
+
+  /* ═══ FOCUS & TAP TARGETS ═══ */
+  --focus-ring:        0 0 0 3px rgba(124, 108, 245, 0.40);
+  --focus-ring-gold:   0 0 0 3px rgba(252, 175, 22, 0.45);
+  --focus-ring-gap:    0 0 0 3px rgba(239, 68, 68, 0.40);
+  --focus-offset:      2px;
+  --tap-min:           44px;
+
+  /* ═══ SKELETON ═══ */
+  --skeleton-base:   #ecedf8;
+  --skeleton-shine:  #f7f8fd;
+}
+
+/* ───────── KEYFRAMES ───────── */
+
+@keyframes yd-fade-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes yd-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes yd-scale-in {
+  from { opacity: 0; transform: scale(0.96); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes yd-slide-in-right {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0); }
+}
+
+@keyframes yd-shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes yd-pulse {
+  0%, 100% { opacity: 0.6; }
+  50%      { opacity: 1; }
+}
+
+@keyframes yd-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes yd-brush {
+  from { stroke-dashoffset: var(--brush-len, 200); opacity: 0; }
+  20%  { opacity: 1; }
+  to   { stroke-dashoffset: 0; opacity: 1; }
+}
+
+@keyframes yd-count {
+  /* used as a marker — JS reads --motion-count to drive a tween. */
+  from { opacity: 0.7; }
+  to   { opacity: 1; }
+}
+
+@keyframes yd-bar-grow {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+@keyframes yd-dot-bounce {
+  0%, 80%, 100% { transform: translateY(0);    opacity: 0.4; }
+  40%           { transform: translateY(-6px); opacity: 1; }
+}
+
+/* ───────── UTILITIES ───────── */
+
+.yd-enter      { animation: yd-fade-up var(--motion-enter) both; }
+.yd-fade       { animation: yd-fade-in var(--motion-enter) both; }
+.yd-scale-in   { animation: yd-scale-in var(--motion-enter) both; }
+.yd-pulse      { animation: yd-pulse 2.4s ease-in-out infinite; }
+
+/* Stagger helper — apply data-stagger="0..n" on siblings,
+   or use .yd-stagger > * + * with nth-child  */
+.yd-stagger > * { animation-fill-mode: both; }
+.yd-stagger > *:nth-child(1) { animation-delay:  0ms; }
+.yd-stagger > *:nth-child(2) { animation-delay: 60ms; }
+.yd-stagger > *:nth-child(3) { animation-delay: 120ms; }
+.yd-stagger > *:nth-child(4) { animation-delay: 180ms; }
+.yd-stagger > *:nth-child(5) { animation-delay: 240ms; }
+.yd-stagger > *:nth-child(6) { animation-delay: 300ms; }
+
+/* Hover lift — apply to interactive cards */
+.yd-lift { transition: transform var(--motion-hover), box-shadow var(--motion-hover); }
+.yd-lift:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.yd-lift:active { transform: translateY(0); transition-duration: var(--motion-press); }
+
+/* Pressable — buttons / pills */
+.yd-press { transition: transform var(--motion-press), opacity var(--motion-press); }
+.yd-press:active { transform: translateY(1px); opacity: 0.88; }
+
+/* Focus ring — applied to any focusable */
+.yd-focusable:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-radius: var(--radius-sm);
+}
+.yd-focusable.gold:focus-visible { box-shadow: var(--focus-ring-gold); }
+.yd-focusable.gap:focus-visible  { box-shadow: var(--focus-ring-gap); }
+
+/* ───────── SKELETON ───────── */
+
+.yd-skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--skeleton-base) 0%,
+    var(--skeleton-shine) 50%,
+    var(--skeleton-base) 100%
+  );
+  background-size: 200% 100%;
+  animation: yd-shimmer 1.6s linear infinite;
+  border-radius: var(--radius-sm);
+  display: block;
+}
+
+.yd-skeleton.line      { height: 12px; border-radius: 4px; }
+.yd-skeleton.line-lg   { height: 18px; border-radius: 4px; }
+.yd-skeleton.line-xl   { height: 28px; border-radius: 4px; }
+.yd-skeleton.circle    { border-radius: 9999px; }
+.yd-skeleton.tile      { border-radius: var(--radius); }
+
+/* ───────── SPINNER (only for waits > 600ms) ───────── */
+
+.yd-spinner {
+  width: 24px; height: 24px;
+  border: 2px solid var(--bg-muted);
+  border-top-color: var(--iris);
+  border-radius: 9999px;
+  animation: yd-spin 600ms linear infinite;
+}
+.yd-spinner.sm { width: 16px; height: 16px; border-width: 1.5px; }
+.yd-spinner.lg { width: 36px; height: 36px; border-width: 3px; }
+.yd-spinner.gold  { border-top-color: var(--gold); }
+.yd-spinner.mint  { border-top-color: var(--mint); }
+.yd-spinner.brand { border-top-color: var(--brand); }
+
+/* ───────── DOT LOADER (subtle, inline) ───────── */
+
+.yd-dots { display: inline-flex; gap: 5px; align-items: flex-end; height: 12px; }
+.yd-dots i {
+  display: block; width: 6px; height: 6px; border-radius: 9999px;
+  background: var(--iris); animation: yd-dot-bounce 1.2s ease-in-out infinite;
+}
+.yd-dots i:nth-child(2) { animation-delay: 0.16s; }
+.yd-dots i:nth-child(3) { animation-delay: 0.32s; }
+
+/* ───────── PROGRESS BAR ───────── */
+
+.yd-progress {
+  position: relative; height: 6px; border-radius: 4px;
+  background: var(--bg-muted); overflow: hidden;
+}
+.yd-progress > i {
+  display: block; height: 100%; border-radius: 4px;
+  background: var(--iris);
+  transform-origin: left center;
+  animation: yd-bar-grow var(--motion-count) var(--ease-out) both;
+}
+.yd-progress.live  > i { background: var(--mint); }
+.yd-progress.build > i { background: var(--iris); }
+.yd-progress.gap   > i { background: var(--gap); }
+.yd-progress.plan  > i { background: var(--plan); }
+.yd-progress.gold  > i { background: var(--gold); }
+
+/* Indeterminate variant — for unknown-duration waits */
+.yd-progress.indet > i {
+  width: 35%; animation: yd-indet 1.3s ease-in-out infinite;
+  transform-origin: left center;
+}
+@keyframes yd-indet {
+  0%   { transform: translateX(-100%) scaleX(0.6); }
+  50%  { transform: translateX(60%)   scaleX(1.0); }
+  100% { transform: translateX(220%)  scaleX(0.4); }
+}
+
+/* ───────── REDUCED MOTION — kill loops, keep transforms ───────── */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

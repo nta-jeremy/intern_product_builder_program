@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="../colors_and_type.css" />
+<link rel="stylesheet" href="../motion.css" />
+<script src="https://unpkg.com/lucide@0.474.0/dist/umd/lucide.min.js"></script>
+<style>
+  body { background: var(--bg); padding: 40px 48px; margin: 0; font-family: var(--font-body); color: var(--fg-1); }
+  .frame { max-width: 1080px; }
+
+  .head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 14px; }
+  .h-title {
+    font: 700 13px/1 var(--font-mono); text-transform: uppercase;
+    letter-spacing: 0.32em; color: var(--brand);
+    display: inline-flex; align-items: center; gap: 14px;
+  }
+  .h-title::before { content: ''; width: 32px; height: 1px; background: var(--brand); opacity: 0.5; }
+  .h-title.iris { color: var(--iris-deep); } .h-title.iris::before { background: var(--iris); }
+  .h-title.mint { color: var(--mint-deep); } .h-title.mint::before { background: var(--mint); }
+  .h-title.gold { color: var(--gold-deep); } .h-title.gold::before { background: var(--gold); }
+  .h-title.rose { color: var(--rose-deep); } .h-title.rose::before { background: var(--rose); }
+  .h-sub { font: 500 13px/1 var(--font-mono); color: var(--fg-3); letter-spacing: 0.06em; }
+
+  .block + .block { margin-top: 56px; }
+  .lede { font: 400 17px/1.55 var(--font-body); color: var(--fg-2); max-width: 760px; margin-bottom: 24px; }
+  .lede strong { color: var(--fg-1); font-weight: 600; }
+  .lede code { font: 500 0.85em var(--font-mono); background: var(--bg-muted); padding: 2px 7px; border-radius: 4px; color: var(--brand); }
+  .lede em { font: italic 700 1em var(--font-serif); color: var(--iris); }
+
+  .case-label {
+    font: 700 11px/1 var(--font-mono); letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--fg-3); margin-bottom: 14px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .case-label .mono-val {
+    font: 600 10px/1 var(--font-mono); letter-spacing: 0.10em; color: var(--iris-deep);
+    padding: 4px 9px; border-radius: 9999px; background: var(--iris-tint); border: 1px solid rgba(124,108,245,.22);
+    text-transform: none;
+  }
+
+  /* Token table */
+  .token-table {
+    border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--bg);
+    box-shadow: var(--shadow-sm); overflow: hidden;
+  }
+  .tr { display: grid; grid-template-columns: 200px 1fr 220px; gap: 0; padding: 14px 22px; border-bottom: 1px solid var(--border-light); align-items: center; }
+  .tr:last-child { border-bottom: none; }
+  .tr.head { background: var(--bg-2); }
+  .tr.head .c { font: 700 10px/1 var(--font-mono); color: var(--fg-3); letter-spacing: 0.22em; text-transform: uppercase; }
+  .tr .key { font: 600 13px/1 var(--font-mono); color: var(--brand); }
+  .tr .val { font: 500 12px/1.4 var(--font-mono); color: var(--fg-2); letter-spacing: 0.02em; }
+  .tr .use { font: 400 13px/1.4 var(--font-body); color: var(--fg-1); }
+
+  /* Hover demo */
+  .hover-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .demo-card {
+    border: 1px solid var(--border); border-radius: var(--radius-lg);
+    background: var(--bg); padding: 22px; box-shadow: var(--shadow-sm);
+    cursor: pointer; transition: all var(--motion-hover);
+    display: flex; flex-direction: column; gap: 8px; min-height: 140px;
+  }
+  .demo-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+  .demo-card:active { transform: translateY(0); transition-duration: var(--motion-press); }
+  .demo-card .l { font: 700 11px/1 var(--font-mono); color: var(--fg-3); letter-spacing: 0.22em; text-transform: uppercase; }
+  .demo-card .v { font: 800 36px/1 var(--font-impact); color: var(--fg-1); letter-spacing: -0.025em; }
+  .demo-card .s { font: 400 13px/1.4 var(--font-body); color: var(--fg-2); margin-top: auto; }
+
+  /* Press demo button */
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 0 24px; height: 44px; border-radius: 9999px;
+    font: 600 14px/1 var(--font-body); border: none; cursor: pointer;
+    transition: all var(--motion-press);
+  }
+  .btn.primary { background: var(--brand); color: #fff; }
+  .btn.primary:hover { background: var(--brand-light); transform: translateY(-1px); box-shadow: var(--shadow-brand); }
+  .btn.primary:active { transform: translateY(1px); opacity: 0.88; box-shadow: none; }
+
+  /* Enter demo */
+  .enter-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; padding: 24px; background: var(--bg-2); border: 1px solid var(--border-light); border-radius: var(--radius-lg); }
+  .enter-card {
+    background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px;
+    display: flex; flex-direction: column; gap: 6px; min-height: 92px;
+  }
+  .enter-card .l { font: 700 10px/1 var(--font-mono); color: var(--iris-deep); letter-spacing: 0.18em; text-transform: uppercase; }
+  .enter-card .t { font: 700 16px/1.2 var(--font-brand); color: var(--fg-1); letter-spacing: -0.005em; }
+  .enter-card .s { font: 400 12px/1.4 var(--font-body); color: var(--fg-2); }
+  .replay {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 8px 16px; border-radius: 9999px;
+    background: var(--bg); border: 1px solid var(--border);
+    font: 700 11px/1 var(--font-mono); color: var(--fg-1);
+    letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer;
+    transition: all var(--motion-hover);
+  }
+  .replay:hover { background: var(--bg-muted); border-color: var(--border-hover); }
+
+  /* Side panel demo */
+  .panel-demo {
+    position: relative; height: 360px;
+    border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden;
+    background: var(--bg-2);
+  }
+  .panel-demo .bg-content {
+    padding: 28px; display: flex; flex-direction: column; gap: 12px;
+  }
+  .panel-demo .bg-card {
+    background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 14px 18px; display: flex; align-items: center; gap: 12px;
+    cursor: pointer; transition: all var(--motion-hover);
+  }
+  .panel-demo .bg-card:hover { box-shadow: var(--shadow-sm); border-color: var(--border-hover); }
+  .panel-demo .bg-card .d {
+    width: 28px; height: 28px; border-radius: 8px;
+    background: var(--brand); color: #fff; display: flex; align-items: center; justify-content: center;
+    font: 800 13px/1 var(--font-impact); flex-shrink: 0;
+  }
+  .panel-demo .bg-card .d.b { background: var(--iris); }
+  .panel-demo .bg-card .d.c { background: var(--mint); color: #06484a; }
+  .panel-demo .bg-card .nm { font: 700 14px/1.3 var(--font-brand); color: var(--fg-1); flex: 1; }
+  .panel-demo .bg-card .ar { color: var(--fg-3); }
+  .panel-demo .backdrop {
+    position: absolute; inset: 0; background: rgba(14,15,36,0);
+    pointer-events: none; transition: background var(--motion-exit); z-index: 5;
+  }
+  .panel-demo.open .backdrop { background: rgba(14,15,36,0.36); pointer-events: auto; }
+  .panel-demo .panel {
+    position: absolute; top: 0; right: 0; bottom: 0; width: 280px;
+    background: var(--bg); box-shadow: -8px 0 28px rgba(74,75,200,0.18);
+    transform: translateX(100%); transition: transform var(--motion-enter);
+    z-index: 10; padding: 22px 24px;
+  }
+  .panel-demo.open .panel { transform: translateX(0); }
+  .panel-demo .panel .eb { font: 700 10px/1 var(--font-mono); color: var(--iris-deep); letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 10px; }
+  .panel-demo .panel .h { font: 800 20px/1.2 var(--font-impact); color: var(--fg-1); letter-spacing: -0.02em; margin: 0 0 14px; }
+  .panel-demo .panel .l { font: 400 13.5px/1.55 var(--font-body); color: var(--fg-2); }
+  .panel-demo .close-btn {
+    position: absolute; top: 18px; right: 18px; width: 28px; height: 28px; border-radius: 6px;
+    background: transparent; border: none; cursor: pointer; color: var(--fg-3);
+    display: flex; align-items: center; justify-content: center;
+    transition: all var(--motion-hover);
+  }
+  .panel-demo .close-btn:hover { background: var(--bg-2); color: var(--fg-1); }
+
+  /* Count-up demo */
+  .counts {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+    padding: 24px; background: var(--bg-2); border: 1px solid var(--border-light); border-radius: var(--radius-lg);
+  }
+  .ct-cell {
+    background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 18px 20px;
+    background-image: radial-gradient(circle at 100% 0%, var(--ct-tint, rgba(124,108,245,0.14)) 0%, transparent 65%);
+    background-color: var(--bg); position: relative; overflow: hidden;
+  }
+  .ct-cell::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--ct-accent, var(--iris)); }
+  .ct-cell .l { font: 700 10.5px/1 var(--font-mono); color: var(--fg-3); letter-spacing: 0.20em; text-transform: uppercase; margin-bottom: 12px; }
+  .ct-cell .v { font: 800 36px/1 var(--font-impact); letter-spacing: -0.025em; color: var(--fg-1); font-variant-numeric: tabular-nums; }
+  .ct-cell .v .s { font-size: 16px; color: var(--fg-3); margin-left: 3px; font-weight: 500; }
+
+  /* Brush stroke demo */
+  .brush-stage {
+    position: relative; padding: 56px 48px;
+    background: var(--bg-warm); border: 1px solid var(--border); border-radius: var(--radius-lg);
+    min-height: 200px; display: flex; flex-direction: column; justify-content: center;
+  }
+  .brush-stage h2 {
+    margin: 0; font: 800 clamp(36px, 4.4vw, 56px)/1.05 var(--font-impact);
+    letter-spacing: -0.025em; color: var(--fg-1);
+    position: relative; display: inline-block;
+  }
+  .brush-stage h2 em {
+    font: italic 400 1em var(--font-serif); color: var(--brand);
+    letter-spacing: -0.005em;
+  }
+  .brush-stage svg.brush {
+    position: absolute; left: 48px; bottom: 30px;
+    width: 280px; height: 28px;
+  }
+  .brush-stage svg.brush path {
+    fill: none;
+    stroke: url(#brushGrad);
+    stroke-width: 8;
+    stroke-linecap: round;
+    stroke-dasharray: 600;
+    --brush-len: 600;
+    animation: yd-brush var(--motion-brush) both;
+  }
+  .brush-stage p { margin: 16px 0 0; font: 400 16px/1.55 var(--font-body); color: var(--fg-2); max-width: 540px; }
+
+  /* Insight callout */
+  .insight {
+    margin-top: 32px; padding: 22px 28px;
+    background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm); position: relative;
+  }
+  .insight::before {
+    content: ''; position: absolute; left: 0; top: 22px; bottom: 22px;
+    width: 3px; background: linear-gradient(180deg, var(--gold), var(--gold-deep));
+    border-radius: 0 3px 3px 0;
+  }
+  .insight-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--fg-3); font-weight: 700; display: inline-flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-left: 16px; }
+  .insight-label::before { content: ''; width: 16px; height: 1px; background: currentColor; opacity: 0.5; }
+  .insight-body { font: 400 16px/1.6 var(--font-body); color: var(--fg-1); padding-left: 16px; }
+  .insight-body em { font: italic 700 1em var(--font-serif); color: var(--iris); }
+  .insight-body strong { font-weight: 600; }
+</style>
+</head>
+<body>
+
+<div class="frame">
+
+  <!-- 1 · Motion tokens table -->
+  <div class="block">
+    <div class="head">
+      <span class="h-title">Motion tokens</span>
+      <span class="h-sub">7 semantic durations · 2 easings</span>
+    </div>
+    <p class="lede">
+      System motion choreography: <strong>1 ambient motion / page</strong> + per-interaction primitives.
+      Mỗi token có tên semantic (<code>--motion-enter</code>, không phải <code>--dur-300</code>) để intent
+      stay readable trong code.
+    </p>
+    <div class="token-table">
+      <div class="tr head">
+        <div class="c">Token</div>
+        <div class="c">Use</div>
+        <div class="c">Value</div>
+      </div>
+      <div class="tr">
+        <div class="key">--motion-enter</div>
+        <div class="use">Side-panel, modal, page reveal · with overshoot bezier</div>
+        <div class="val">250ms · overshoot</div>
+      </div>
+      <div class="tr">
+        <div class="key">--motion-exit</div>
+        <div class="use">Dismiss, panel close, fade-out · linear-ish</div>
+        <div class="val">180ms · ease-out</div>
+      </div>
+      <div class="tr">
+        <div class="key">--motion-hover</div>
+        <div class="use">Card lift, color shift, shadow expand</div>
+        <div class="val">150ms · ease-out</div>
+      </div>
+      <div class="tr">
+        <div class="key">--motion-press</div>
+        <div class="use">Active state, button tap-down · snappy</div>
+        <div class="val">80ms · ease-out</div>
+      </div>
+      <div class="tr">
+        <div class="key">--motion-page</div>
+        <div class="use">Route change, view switch · slower for context shift</div>
+        <div class="val">300ms · ease-out</div>
+      </div>
+      <div class="tr">
+        <div class="key">--motion-count</div>
+        <div class="use">KPI numeral count-up, progress bar fill</div>
+        <div class="val">600ms · cubic ease</div>
+      </div>
+      <div class="tr">
+        <div class="key">--motion-brush</div>
+        <div class="use">Hero brush-line draw · 1 ambient moment per page</div>
+        <div class="val">1000ms · cubic</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2 · Hover lift -->
+  <div class="block">
+    <div class="head">
+      <span class="h-title iris">Hover lift · --motion-hover</span>
+      <span class="h-sub">translateY(-2px) · shadow sm → md · 150ms</span>
+    </div>
+    <p class="lede">
+      Card interactive lift bằng <code>translateY(-2px)</code> + shadow step. <em>Never scale &gt; 1.02</em>.
+      Hover toàn bộ system phải feel cùng một cách.
+    </p>
+    <div class="case-label">Hover bất kỳ card <span class="mono-val">--motion-hover</span></div>
+    <div class="hover-row">
+      <div class="demo-card">
+        <div class="l">Maturity Score</div>
+        <div class="v">3.2<span style="font-size: 18px; color: var(--fg-3); margin-left: 3px;">/5</span></div>
+        <div class="s">+0.4 YoY · vượt mục tiêu Q1</div>
+      </div>
+      <div class="demo-card">
+        <div class="l">Systems Modernised</div>
+        <div class="v">65<span style="font-size: 18px; color: var(--fg-3); margin-left: 3px;">%</span></div>
+        <div class="s">+5% YoY · CloudOps GA</div>
+      </div>
+      <div class="demo-card">
+        <div class="l">Critical Gaps</div>
+        <div class="v">4</div>
+        <div class="s">-2 QoQ · concentrated in App layer</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3 · Press state -->
+  <div class="block">
+    <div class="head">
+      <span class="h-title mint">Press · --motion-press</span>
+      <span class="h-sub">translateY(+1px) · opacity 0.88 · 80ms</span>
+    </div>
+    <p class="lede">
+      Press state phải <em>snappy</em>. 80ms cho tactile feedback tức thời. Không bao giờ
+      shrink (<code>scale(0.96)</code>) — đó là iOS, không phải brand.
+    </p>
+    <div class="case-label">Tap-and-hold để cảm nhận press <span class="mono-val">--motion-press</span></div>
+    <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+      <button class="btn primary"><i data-lucide="arrow-right" style="width:18px;height:18px"></i> Khám phá EA Portal</button>
+      <button class="btn primary"><i data-lucide="download" style="width:18px;height:18px"></i> Export báo cáo</button>
+      <button class="btn primary"><i data-lucide="zap" style="width:18px;height:18px"></i> Trigger sync</button>
+    </div>
+  </div>
+
+  <!-- 4 · Entry animation -->
+  <div class="block">
+    <div class="head">
+      <span class="h-title gold">Entry · yd-enter + stagger</span>
+      <span class="h-sub">fade-up 8px · 250ms · 60ms stagger</span>
+    </div>
+    <p class="lede">
+      Khi card vào view (page load, filter change), fade-up 8px với 60ms stagger.
+      <strong>Không apply lên mọi element</strong> — chỉ những thứ user vừa request.
+    </p>
+    <div class="case-label">
+      <span>Replay animation</span>
+      <button class="replay" onclick="replayEnter()"><i data-lucide="rotate-cw" style="width:14px;height:14px"></i> Replay</button>
+      <span class="mono-val" style="margin-left: auto;">--motion-enter + stagger 60ms</span>
+    </div>
+    <div class="enter-grid yd-stagger" id="enterGrid">
+      <div class="enter-card yd-enter">
+        <span class="l">A · LIVE</span>
+        <span class="t">Strategy &amp; Governance</span>
+        <span class="s">4.1 maturity · CTO Office</span>
+      </div>
+      <div class="enter-card yd-enter">
+        <span class="l">B · BUILD</span>
+        <span class="t">Business Architecture</span>
+        <span class="s">3.0 maturity · Squad Trinity</span>
+      </div>
+      <div class="enter-card yd-enter">
+        <span class="l">C · BUILD</span>
+        <span class="t">Data Architecture</span>
+        <span class="s">2.8 maturity · Data Platform</span>
+      </div>
+      <div class="enter-card yd-enter">
+        <span class="l" style="color: var(--gap);">D · GAP</span>
+        <span class="t">Application Architecture</span>
+        <span class="s">2.2 maturity · Platform Eng</span>
+      </div>
+      <div class="enter-card yd-enter">
+        <span class="l" style="color: var(--mint-deep);">E · LIVE</span>
+        <span class="t">Technology Architecture</span>
+        <span class="s">3.8 maturity · SRE Squad</span>
+      </div>
+      <div class="enter-card yd-enter">
+        <span class="l" style="color: var(--gold-deep);">F · PLAN</span>
+        <span class="t">Migration Planning</span>
+        <span class="s">1.6 maturity · Program Office</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5 · Side panel drill-down -->
+  <div class="block">
+    <div class="head">
+      <span class="h-title rose">Side panel · --motion-enter (overshoot)</span>
+      <span class="h-sub">slide-in 250ms · backdrop 180ms · Esc to close</span>
+    </div>
+    <p class="lede">
+      <strong>The only drill-down pattern.</strong> Panel trượt từ phải với cubic
+      <code>(0.34, 1.56, 0.64, 1)</code> — overshoot nhẹ tạo cảm giác physical. Backdrop fade song song
+      với <code>--motion-exit</code>.
+    </p>
+    <div class="case-label">
+      Click một row để mở panel · Esc đóng <span class="mono-val" style="margin-left: auto;">--motion-enter overshoot</span>
+    </div>
+    <div class="panel-demo" id="panelDemo">
+      <div class="bg-content">
+        <div class="bg-card" onclick="openPanel('A')"><div class="d">A</div><div class="nm">Strategy &amp; Governance</div><i data-lucide="chevron-right" style="width:18px;height:18px" class="ar"></i></div>
+        <div class="bg-card" onclick="openPanel('B')"><div class="d b">B</div><div class="nm">Business Architecture</div><i data-lucide="chevron-right" style="width:18px;height:18px" class="ar"></i></div>
+        <div class="bg-card" onclick="openPanel('C')"><div class="d c">C</div><div class="nm">Data Architecture</div><i data-lucide="chevron-right" style="width:18px;height:18px" class="ar"></i></div>
+      </div>
+      <div class="backdrop" onclick="closePanel()"></div>
+      <aside class="panel">
+        <button class="close-btn" onclick="closePanel()" aria-label="Close"><i data-lucide="x" style="width:18px;height:18px"></i></button>
+        <div class="eb" id="panelEb">DOMAIN A</div>
+        <h3 class="h" id="panelTitle">Strategy &amp; Governance</h3>
+        <p class="l">Khung quản trị kiến trúc + decision rights cho 274 stores. PMO đã onboard 100% squads, ArchiOps Studio làm decision log canonical.</p>
+        <div style="margin-top: 18px;">
+          <span style="font: 700 10px/1 var(--font-mono); color: var(--fg-3); letter-spacing: 0.22em; text-transform: uppercase;">Owner</span>
+          <p class="l" style="margin-top: 6px;">CTO Office · TOGAF Council</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- 6 · KPI count-up -->
+  <div class="block">
+    <div class="head">
+      <span class="h-title iris">Count-up · --motion-count</span>
+      <span class="h-sub">600ms · tabular-nums · easeOutCubic</span>
+    </div>
+    <p class="lede">
+      KPI numerals đếm lên khi vào view. <em>Không phải gimmick</em> — nó signal "đây là real-time data,
+      vừa load xong". 600ms vừa đủ để eye track mà không slow.
+    </p>
+    <div class="case-label">
+      Replay <button class="replay" onclick="replayCount()" style="margin-left: 10px;"><i data-lucide="rotate-cw" style="width:14px;height:14px"></i> Replay count</button>
+    </div>
+    <div class="counts">
+      <div class="ct-cell" style="--ct-accent: var(--iris); --ct-tint: rgba(124,108,245,0.14);">
+        <div class="l">Maturity</div>
+        <div class="v" data-target="3.2" data-suffix="/5" data-decimals="1">0.0<span class="s">/5</span></div>
+      </div>
+      <div class="ct-cell" style="--ct-accent: var(--mint); --ct-tint: rgba(16,185,129,0.14);">
+        <div class="l">Modernised</div>
+        <div class="v" data-target="65" data-suffix="%" data-decimals="0">0<span class="s">%</span></div>
+      </div>
+      <div class="ct-cell" style="--ct-accent: var(--rose); --ct-tint: rgba(244,114,182,0.14);">
+        <div class="l">Critical gaps</div>
+        <div class="v" data-target="4" data-suffix="" data-decimals="0">0</div>
+      </div>
+      <div class="ct-cell" style="--ct-accent: var(--gold); --ct-tint: rgba(252,175,22,0.14);">
+        <div class="l">Investment 26</div>
+        <div class="v" data-target="127" data-suffix="B" data-decimals="0">0<span class="s">B</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7 · Brush stroke (1 ambient / page) -->
+  <div class="block">
+    <div class="head">
+      <span class="h-title gold">Brush stroke · 1 ambient / page</span>
+      <span class="h-sub">--motion-brush · 1000ms · once on load</span>
+    </div>
+    <p class="lede">
+      Hero brush-line là ambient moment <em>duy nhất</em>. Vẽ đúng 1 lần khi page load. Không loop,
+      không hover. Gold gradient stroke = climax reservation. Replay để xem.
+    </p>
+    <div class="case-label">
+      <button class="replay" onclick="replayBrush()"><i data-lucide="rotate-cw" style="width:14px;height:14px"></i> Replay brush</button>
+      <span class="mono-val" style="margin-left: auto;">--motion-brush 1000ms</span>
+    </div>
+    <div class="brush-stage" id="brushStage">
+      <svg viewBox="0 0 280 28" class="brush" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="brushGrad" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="var(--gold)"/>
+            <stop offset="100%" stop-color="var(--gold-deep)"/>
+          </linearGradient>
+        </defs>
+        <path d="M 4 16 Q 70 6 140 14 T 276 12" />
+      </svg>
+      <h2>Hành trình đến <em>IPO 2030</em></h2>
+      <p>Mỗi năm một chủ đề, một mức trưởng thành. Brush-stroke draw chỉ chạy 1 lần khi page load — đó là 1 ambient motion / page rule.</p>
+    </div>
+  </div>
+
+  <!-- 8 · Insight -->
+  <div class="block">
+    <div class="insight">
+      <div class="insight-label">Motion budget rule</div>
+      <div class="insight-body">
+        <strong>One ambient motion per page</strong> — hero brush <em>or</em> chart pulse <em>or</em> count-up,
+        không phải tất cả. Hover/press/focus là <strong>local interactions</strong>, không tính vào ambient budget.
+        <code>prefers-reduced-motion</code> kill mọi loop, giữ transforms ngay lập tức.
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  lucide.createIcons();
+
+  // ── Replay enter animation
+  function replayEnter() {
+    const grid = document.getElementById('enterGrid');
+    const cards = grid.querySelectorAll('.yd-enter');
+    cards.forEach(c => { c.style.animation = 'none'; c.offsetHeight; c.style.animation = ''; });
+  }
+
+  // ── Side panel
+  const DETAIL = {
+    A: { eb: 'DOMAIN A · STRATEGY', t: 'Strategy &amp; Governance' },
+    B: { eb: 'DOMAIN B · BUSINESS', t: 'Business Architecture' },
+    C: { eb: 'DOMAIN C · DATA',     t: 'Data Architecture' },
+  };
+  function openPanel(letter) {
+    const d = DETAIL[letter];
+    document.getElementById('panelEb').textContent = d.eb;
+    document.getElementById('panelTitle').innerHTML = d.t;
+    document.getElementById('panelDemo').classList.add('open');
+  }
+  function closePanel() { document.getElementById('panelDemo').classList.remove('open'); }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closePanel(); });
+
+  // ── Count-up
+  function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+  function runCount(el) {
+    const target   = parseFloat(el.dataset.target);
+    const suffix   = el.dataset.suffix || '';
+    const decimals = parseInt(el.dataset.decimals || '0', 10);
+    const dur      = 600;
+    const start = performance.now();
+    function frame(now) {
+      const t = Math.min(1, (now - start) / dur);
+      const v = (target * easeOutCubic(t)).toFixed(decimals);
+      el.innerHTML = v + (suffix ? '<span class="s">' + suffix + '</span>' : '');
+      if (t < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+  function replayCount() {
+    document.querySelectorAll('.ct-cell .v').forEach(runCount);
+  }
+  // Run once on load
+  setTimeout(replayCount, 250);
+
+  // ── Brush replay
+  function replayBrush() {
+    const p = document.querySelector('#brushStage svg.brush path');
+    p.style.animation = 'none'; p.offsetHeight; p.style.animation = '';
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="vi"><head><meta charset="UTF-8"/><link rel="stylesheet" href="../colors_and_type.css"/>
+<style>
+  body { background: var(--bg); padding: 40px 48px; margin: 0; }
+  .head {
+    font: 700 13px/1 var(--font-mono); text-transform: uppercase;
+    letter-spacing: 0.32em; color: var(--brand); margin-bottom: 8px;
+    display: inline-flex; align-items: center; gap: 14px;
+  }
+  .head::before { content: ''; width: 32px; height: 1px; background: var(--brand); opacity: 0.5; }
+  .lede { font: 400 18px/1.6 var(--font-body); color: var(--fg-2); max-width: 720px; margin-bottom: 28px; }
+
+  .stack { display: flex; flex-direction: column; gap: 14px; }
+  .row { display: flex; align-items: center; gap: 20px; }
+  .label {
+    font: 700 12px/1 var(--font-mono); color: var(--fg-3);
+    text-transform: uppercase; letter-spacing: 0.18em; min-width: 70px;
+  }
+  .step { background: var(--iris); border-radius: 4px; height: 20px; }
+  .meta { font: 500 14px/1.4 var(--font-body); color: var(--fg-2); }
+  .meta strong { color: var(--fg-1); font-weight: 600; }
+</style></head><body>
+  <span class="head">Spacing scale</span>
+  <p class="lede">4px base unit · iris-tinted bars · scale 4 → 80px. Container padding 56px / 32px desktop.</p>
+
+  <div class="stack">
+    <div class="row"><span class="label">--s-1</span><div class="step" style="width: 4px;"></div><span class="meta"><strong>4px</strong> · micro gap, focus ring offset</span></div>
+    <div class="row"><span class="label">--s-2</span><div class="step" style="width: 8px;"></div><span class="meta"><strong>8px</strong> · inline gap, pill padding</span></div>
+    <div class="row"><span class="label">--s-3</span><div class="step" style="width: 12px;"></div><span class="meta"><strong>12px</strong> · card inner gap</span></div>
+    <div class="row"><span class="label">--s-4</span><div class="step" style="width: 16px;"></div><span class="meta"><strong>16px</strong> · default grid gap</span></div>
+    <div class="row"><span class="label">--s-6</span><div class="step" style="width: 24px;"></div><span class="meta"><strong>24px</strong> · card padding</span></div>
+    <div class="row"><span class="label">--s-8</span><div class="step" style="width: 32px;"></div><span class="meta"><strong>32px</strong> · container horizontal pad</span></div>
+    <div class="row"><span class="label">--s-14</span><div class="step" style="width: 56px;"></div><span class="meta"><strong>56px</strong> · section padding</span></div>
+    <div class="row"><span class="label">--s-16</span><div class="step" style="width: 64px;"></div><span class="meta"><strong>64px</strong> · section rhythm</span></div>
+    <div class="row"><span class="label">--s-20</span><div class="step" style="width: 80px;"></div><span class="meta"><strong>80px</strong> · chapter break</span></div>
+    <div class="row"><span class="label">--s-24</span><div class="step" style="width: 96px;"></div><span class="meta"><strong>96px</strong> · vertical chapter padding</span></div>
+  </div>
+</body></html>

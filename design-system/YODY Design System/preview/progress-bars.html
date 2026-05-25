@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="vi"><head><meta charset="UTF-8"/><link rel="stylesheet" href="../colors_and_type.css"/>
+<style>
+  body { background: var(--bg-2); padding: 28px; margin: 0; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; max-width: 1080px; }
+  .panel { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 20px 22px; box-shadow: var(--shadow-sm); }
+  .panel-label {
+    font: 700 11px/1 var(--font-mono); text-transform: uppercase;
+    letter-spacing: 0.22em; color: var(--fg-3); margin-bottom: 18px;
+    display: inline-flex; align-items: center; gap: 12px;
+  }
+  .panel-label::before { content: ''; width: 24px; height: 1px; background: currentColor; opacity: 0.5; }
+  .stack { display: flex; flex-direction: column; gap: 12px; }
+  .row { display: flex; align-items: center; gap: 12px; }
+  .label { width: 130px; font: 600 12px/1 var(--font-mono); color: var(--fg-3); text-transform: uppercase; letter-spacing: 0.18em; }
+  .bar { flex: 1; height: 6px; border-radius: 3px; background: var(--bg-muted); overflow: hidden; position: relative; }
+  .bar > i { display: block; height: 100%; transition: width 0.6s var(--ease-out); }
+  .pct { font: 700 13px/1 var(--font-mono); color: var(--fg-1); width: 48px; text-align: right; font-variant-numeric: tabular-nums; }
+  .stacked { flex: 1; height: 10px; border-radius: 5px; display: flex; overflow: hidden; box-shadow: inset 0 0 0 1px var(--border-light); }
+  .stacked > i { height: 100%; }
+
+  /* Gradient fills — Light Hightech (canonical mint = #10b981) */
+  .fill-iris   { background: linear-gradient(90deg, #4a4bc8, #7c6cf5); }
+  .fill-mint   { background: linear-gradient(90deg, #10b981, #34d399); }
+  .fill-rose   { background: linear-gradient(90deg, #be185d, #f472b6); }
+  .fill-gold   { background: linear-gradient(90deg, #b07a00, #fcaf16); }
+  .fill-live   { background: linear-gradient(90deg, #10b981, #34d399); }
+  .fill-build  { background: linear-gradient(90deg, #4a4bc8, #7c6cf5); }
+  .fill-gap    { background: linear-gradient(90deg, #ef4444, #f87171); }
+  .fill-plan   { background: linear-gradient(90deg, #b07a00, #f59e0b); }
+
+  /* Solid (token-driven) variant */
+  .solid-iris  { background: var(--iris); }
+  .solid-mint  { background: var(--mint);  }
+  .solid-rose  { background: var(--rose);  }
+  .solid-gold  { background: var(--gold); }
+
+  /* Threshold marker */
+  .threshold {
+    position: absolute; top: -4px; bottom: -4px; width: 1.5px;
+    background: rgba(26,27,58,0.32);
+  }
+  .threshold::after {
+    content: 'TGT'; position: absolute; top: -14px; left: -10px;
+    font: 600 8px/1 var(--font-mono); color: var(--fg-3); letter-spacing: 0.08em;
+  }
+
+  /* Glow chip variant */
+  .glow-row { display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: var(--bg-2); border-radius: var(--radius); border: 1px solid var(--border-light); }
+  .glow-bar { flex: 1; height: 8px; border-radius: 9999px; background: var(--bg-muted); overflow: hidden; position: relative; }
+  .glow-bar > i { display: block; height: 100%; border-radius: 9999px; box-shadow: 0 0 14px var(--glow, rgba(124,108,245,0.5)); }
+  .glow-num { font-family: var(--font-impact); font-weight: 800; font-size: 22px; color: var(--fg-1); letter-spacing: -0.02em; min-width: 64px; text-align: right; font-variant-numeric: tabular-nums; }
+  .glow-num small { font-weight: 500; color: var(--fg-3); font-size: 12px; }
+
+  /* Stacked legend */
+  .stacked-legend { display: flex; gap: 18px; flex-wrap: wrap; margin-top: 14px; font: 600 11px/1 var(--font-mono); color: var(--fg-2); letter-spacing: 0.08em; }
+  .stacked-legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
+</style></head><body>
+
+<div class="grid">
+
+  <!-- A · Token-driven palette accents -->
+  <div class="panel">
+    <div class="panel-label">A · Solid · palette accents (token-driven)</div>
+    <div class="stack">
+      <div class="row"><span class="label">Modernization</span><div class="bar"><i class="solid-iris" style="width: 78%;"></i></div><span class="pct">78%</span></div>
+      <div class="row"><span class="label">API Coverage</span><div class="bar"><i class="solid-mint" style="width: 64%;"></i></div><span class="pct">64%</span></div>
+      <div class="row"><span class="label">Adoption</span><div class="bar"><i class="solid-rose" style="width: 42%;"></i></div><span class="pct">42%</span></div>
+      <div class="row"><span class="label">Roadmap FY26</span><div class="bar"><i class="solid-gold" style="width: 82%;"></i></div><span class="pct">82%</span></div>
+    </div>
+  </div>
+
+  <!-- B · Gradient + threshold -->
+  <div class="panel">
+    <div class="panel-label">B · Gradient · with target threshold (Light Hightech)</div>
+    <div class="stack">
+      <div class="row"><span class="label">Apps</span><div class="bar"><i class="fill-iris" style="width: 78%;"></i><span class="threshold" style="left: 80%;"></span></div><span class="pct">78%</span></div>
+      <div class="row"><span class="label">Data</span><div class="bar"><i class="fill-mint" style="width: 64%;"></i><span class="threshold" style="left: 75%;"></span></div><span class="pct">64%</span></div>
+      <div class="row"><span class="label">Innovation</span><div class="bar"><i class="fill-rose" style="width: 42%;"></i><span class="threshold" style="left: 60%;"></span></div><span class="pct">42%</span></div>
+      <div class="row"><span class="label">Roadmap</span><div class="bar"><i class="fill-gold" style="width: 82%;"></i><span class="threshold" style="left: 90%;"></span></div><span class="pct">82%</span></div>
+    </div>
+  </div>
+
+  <!-- C · Status-coded (live/build/gap/plan) -->
+  <div class="panel">
+    <div class="panel-label">C · Status-coded · gradient fills</div>
+    <div class="stack">
+      <div class="row"><span class="label">Apps</span><div class="bar"><i class="fill-live" style="width: 78%;"></i></div><span class="pct">78%</span></div>
+      <div class="row"><span class="label">Data</span><div class="bar"><i class="fill-build" style="width: 64%;"></i></div><span class="pct">64%</span></div>
+      <div class="row"><span class="label">Security</span><div class="bar"><i class="fill-gap" style="width: 32%;"></i></div><span class="pct">32%</span></div>
+      <div class="row"><span class="label">Innovation</span><div class="bar"><i class="fill-plan" style="width: 50%;"></i></div><span class="pct">50%</span></div>
+    </div>
+  </div>
+
+  <!-- D · Hero glow rows -->
+  <div class="panel">
+    <div class="panel-label">D · Hero glow · for KPI emphasis</div>
+    <div class="stack">
+      <div class="glow-row">
+        <span class="label" style="width: 88px;">Health</span>
+        <div class="glow-bar" style="--glow: rgba(124,108,245,0.55);"><i class="fill-iris" style="width: 72%;"></i></div>
+        <div class="glow-num">72<small>/100</small></div>
+      </div>
+      <div class="glow-row">
+        <span class="label" style="width: 88px;">CMMI</span>
+        <div class="glow-bar" style="--glow: rgba(79,209,197,0.55);"><i class="fill-mint" style="width: 64%;"></i></div>
+        <div class="glow-num">3.2<small>/5</small></div>
+      </div>
+      <div class="glow-row">
+        <span class="label" style="width: 88px;">Investment</span>
+        <div class="glow-bar" style="--glow: rgba(252,175,22,0.55);"><i class="fill-gold" style="width: 84%;"></i></div>
+        <div class="glow-num">84<small>%</small></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- E · Stacked composition -->
+  <div class="panel" style="grid-column: 1 / -1;">
+    <div class="panel-label">E · Stacked composition · 82 systems by status</div>
+    <div class="row" style="margin-top: 4px;">
+      <span class="label">Distribution</span>
+      <div class="stacked">
+        <i class="fill-live"  style="width: 46%;"></i>
+        <i class="fill-build" style="width: 22%;"></i>
+        <i class="fill-gap"   style="width: 14%;"></i>
+        <i class="fill-plan"  style="width: 18%;"></i>
+      </div>
+    </div>
+    <div class="stacked-legend">
+      <span><i style="background:#10b981"></i>38 LIVE · 46%</span>
+      <span><i style="background:#7c6cf5"></i>18 BUILD · 22%</span>
+      <span><i style="background:#ef4444"></i>11 GAP · 14%</span>
+      <span><i style="background:#f59e0b"></i>15 PLAN · 18%</span>
+    </div>
+  </div>
+
+</div>
+</body></html>
