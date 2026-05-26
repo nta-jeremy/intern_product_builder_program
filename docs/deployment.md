@@ -6,9 +6,9 @@
 - **Team:** tunganh252s-projects
 
 ## URLs
-- **Production:** https://yody-itdx-intern-product-builder-8ls98hai9-tunganh252s-projects.vercel.app
+- **Production:** https://yody-itdx-intern-product-builder-lphab6ksb-tunganh252s-projects.vercel.app
 - **Full:** https://landing-page-lovat-two-16.vercel.app
-- **Inspector:** https://vercel.com/tunganh252s-projects/yody-itdx-intern-product-builder/7JxyqfN5sgjPQNqcmH1jrS1tS5yS
+- **Inspector:** https://vercel.com/tunganh252s-projects/yody-itdx-intern-product-builder/8YTNPLgdLCoeDWQFtXEUjKSZz4aR
 
 ## Deploy Command
 ```bash
