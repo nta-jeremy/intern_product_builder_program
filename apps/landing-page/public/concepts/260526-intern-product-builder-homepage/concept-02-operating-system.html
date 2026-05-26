@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Concept 02 — Operating System</title>
+  <link rel="stylesheet" href="intern-product-builder-concepts.css" />
+  <style>
+    .system-map,
+    .governance-stack { display: grid; gap: 18px; }
+    .system-map { grid-template-columns: repeat(4, 1fr); }
+    .governance-stack { margin-top: 18px; }
+    .system-node { position: relative; }
+    .system-node .roman { display: block; margin: 12px 0; font-size: 46px; }
+    .governance-item { padding: 18px; border-radius: 18px; background: var(--bg-2); }
+    @media (max-width: 920px) { .system-map { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">yody · intern product builder</div>
+      <nav class="topnav">
+        <a href="#why">Vì sao</a>
+        <a href="#system">System map</a>
+        <a href="#products">4 sản phẩm</a>
+        <a href="#governance">Governance</a>
+      </nav>
+      <a class="btn btn-primary" href="#system">Mở system map</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">operating system</div>
+        <h1>Thiết kế chương trình như một hệ điều hành để output và con người đều bị kiểm chứng.</h1>
+        <p class="lead">Concept này đưa machine room lên trước: phase logic, checkpoint, sign-off, template flow và hội đồng đánh giá.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#system">Xem 4 node vận hành</a>
+          <a class="btn btn-secondary" href="#products">Xem 4 sản phẩm</a>
+        </div>
+      </div>
+      <aside class="panel">
+        <div class="mono">runtime snapshot</div>
+        <div class="stat-grid" style="margin-top:16px">
+          <div class="stat"><span class="num">4</span><span>Giai đoạn</span></div>
+          <div class="stat"><span class="num">5</span><span>Template lõi</span></div>
+          <div class="stat"><span class="num">100</span><span>Điểm tối đa</span></div>
+          <div class="stat"><span class="num">4</span><span>Vai trò hội đồng</span></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section id="why">
+    <div class="container">
+      <div class="section-head">
+        <div class="roman">I</div>
+        <div>
+          <div class="mono">why this angle</div>
+          <h2>Đây là hướng phù hợp nhất khi stakeholder muốn thấy chương trình chạy bằng cơ chế gì.</h2>
+          <p class="sub">Trang ưu tiên trả lời một câu hỏi: intern được đưa qua những checkpoint nào để biến một bản demo thành product lifecycle thật.</p>
+        </div>
+      </div>
+      <div class="metric-grid">
+        <article class="metric"><div class="mono">logic</div><strong class="num">Flow</strong><span>Mỗi phase nối sang phase kế tiếp bằng output rõ.</span></article>
+        <article class="metric"><div class="mono">control</div><strong class="num">Check</strong><span>Mọi bước đều có sign-off hoặc evidence.</span></article>
+        <article class="metric"><div class="mono">council</div><strong class="num">Review</strong><span>Không ai đi tới cuối chương trình mà không bị phản biện.</span></article>
+        <article class="metric"><div class="mono">result</div><strong class="num">Fit</strong><span>Output và hành vi cùng tạo ra quyết định cuối.</span></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="system">
+    <div class="container">
+      <div class="section-head">
+        <div class="roman">II</div>
+        <div>
+          <div class="mono">system map</div>
+          <h2>Bốn node nối nhau tạo thành control plane của cả chương trình.</h2>
+          <p class="sub">Điểm nhấn ở đây không phải kể chuyện dài, mà là nhìn một lượt đã hiểu chương trình chạy theo nhịp nào.</p>
+        </div>
+      </div>
+      <div class="system-map">
+        <article class="card system-node"><div class="tag">discover</div><span class="roman">I</span><strong>Problem clarity</strong><ul class="list"><li>Interview stakeholder</li><li>Problem brief</li><li>Flow và wireframe</li></ul></article>
+        <article class="card system-node"><div class="tag">build</div><span class="roman">II</span><strong>Delivery rhythm</strong><ul class="list"><li>MVP thật</li><li>Demo định kỳ</li><li>Retrospective</li></ul></article>
+        <article class="card system-node"><div class="tag">validate</div><span class="roman">III</span><strong>Reality test</strong><ul class="list"><li>UAT với user thật</li><li>P0/P1 triage</li><li>Sign-off</li></ul></article>
+        <article class="card system-node"><div class="tag gold">ship</div><span class="roman">IV</span><strong>Operational handover</strong><ul class="list"><li>Deploy</li><li>Training</li><li>Final review</li></ul></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="products">
+    <div class="container dual-panel">
+      <article class="card">
+        <div class="mono">4 products</div>
+        <h2 style="font-size:42px">Bốn sản phẩm đóng vai trò stress test của năng lực Product Builder.</h2>
+        <ul class="list">
+          <li><strong>ATS:</strong> business flow, CRUD, analytics.</li>
+          <li><strong>Agent QC Website:</strong> automation, alerting, false positive control.</li>
+          <li><strong>Thẩm định quy trình:</strong> rules logic, compliance, audit trail.</li>
+          <li><strong>Báo cáo cá nhân:</strong> data pull, scheduling, report experience.</li>
+        </ul>
+      </article>
+      <article class="card" id="governance">
+        <div class="mono">governance layer</div>
+        <p class="sub">Mọi phase đều có người kiểm chứng và output có thể audit. Đó là phần khiến concept này mạnh trong các buổi review nội bộ.</p>
+        <div class="governance-stack">
+          <div class="governance-item"><strong>PO</strong><br><span class="sub" style="font-size:16px">Coach problem framing và business fit.</span></div>
+          <div class="governance-item"><strong>Tech Lead</strong><br><span class="sub" style="font-size:16px">Coach architecture, AI usage và delivery quality.</span></div>
+          <div class="governance-item"><strong>HR Director</strong><br><span class="sub" style="font-size:16px">Quan sát growth, ownership và convert readiness.</span></div>
+          <div class="governance-item"><strong>HOD / Stakeholder</strong><br><span class="sub" style="font-size:16px">Xác nhận usefulness qua UAT và final review.</span></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section style="padding-top:0;padding-bottom:96px">
+    <div class="container footer-box">
+      <div class="mono">when to use this</div>
+      <h2>Nếu cần thuyết phục bằng độ chặt của hệ trước khi nói về cảm hứng hay attraction, đây là concept mạnh nhất.</h2>
+      <div class="footer-links">
+        <a class="btn btn-secondary" href="index.html">Về index</a>
+        <a class="btn btn-secondary" href="concept-01-executive-briefing.html">Mở concept 01</a>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

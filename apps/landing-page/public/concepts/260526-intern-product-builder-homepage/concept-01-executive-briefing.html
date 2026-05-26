@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Concept 01 — Executive Briefing</title>
+  <link rel="stylesheet" href="intern-product-builder-concepts.css" />
+  <style>
+    .snapshot .stat { background: var(--bg-2); }
+    .score-band { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .score-band .card strong { display: block; font-size: 30px; letter-spacing: -0.03em; }
+    @media (max-width: 920px) { .score-band { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">yody · intern product builder</div>
+      <nav class="topnav">
+        <a href="#why">Vì sao</a>
+        <a href="#model">Vận hành</a>
+        <a href="#products">Output</a>
+        <a href="#score">Đánh giá</a>
+      </nav>
+      <a class="btn btn-primary" href="#score">Xem scorecard</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">executive briefing</div>
+        <h1>Chương trình 3 tháng để <span class="serif">đào tạo</span> và chọn đúng Product Builder AI-first.</h1>
+        <p class="lead">Trang này ưu tiên đọc nhanh: vì sao có chương trình, nó chạy thế nào, intern phải build gì, và ai quyết định có thể convert Full-Time.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#why">Mở tổng quan</a>
+          <a class="btn btn-secondary" href="#products">Xem 4 sản phẩm</a>
+        </div>
+      </div>
+      <aside class="panel snapshot">
+        <div class="mono">executive snapshot</div>
+        <div class="stat-grid" style="margin-top:16px">
+          <div class="stat"><span class="num">4</span><span>Giai đoạn</span></div>
+          <div class="stat"><span class="num">4</span><span>Sản phẩm thật</span></div>
+          <div class="stat"><span class="num">100</span><span>Điểm tối đa</span></div>
+          <div class="stat"><span class="num">70+</span><span>Ngưỡng mở FT path</span></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section id="why">
+    <div class="container">
+      <div class="section-head">
+        <div class="roman">I</div>
+        <div>
+          <div class="mono">why this exists</div>
+          <h2>YODY cần cách đánh giá builder mindset bằng bằng chứng, không bằng cảm giác.</h2>
+          <p class="sub">Chương trình này biến tiềm năng thành output thật, rồi biến output đó thành quyết định tuyển dụng có cơ sở.</p>
+        </div>
+      </div>
+      <div class="metric-grid">
+        <article class="metric"><div class="mono">ai-first</div><strong class="num">Build</strong><span>Dùng AI như leverage để ship nhanh hơn.</span></article>
+        <article class="metric"><div class="mono">delivery</div><strong class="num">Ship</strong><span>Sản phẩm phải demo được và qua UAT.</span></article>
+        <article class="metric"><div class="mono">evidence</div><strong class="num">Score</strong><span>Quyết định dựa trên scorecard và sign-off.</span></article>
+        <article class="metric"><div class="mono">outcome</div><strong class="num">Fit</strong><span>Convert path mở ra cho người làm được việc.</span></article>
+      </div>
+      <div class="insight" style="margin-top:24px">
+        <div class="mono">key takeaway</div>
+        <p class="sub" style="font-size:18px">Điểm mạnh của concept này là ai nhìn vào cũng hiểu chương trình nghiêm túc ở cả hai mặt: phát triển talent và giao hàng sản phẩm.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="model">
+    <div class="container">
+      <div class="section-head">
+        <div class="roman">II</div>
+        <div>
+          <div class="mono">operating model</div>
+          <h2>Discover → Build → Validate → Ship là nhịp cố định của toàn bộ trải nghiệm.</h2>
+          <p class="sub">Mỗi phase có output rõ, người kiểm chứng rõ, và một câu hỏi rất cụ thể phải trả lời.</p>
+        </div>
+      </div>
+      <div class="phase-grid">
+        <article class="phase-card"><div class="tag">discover</div><h2 style="font-size:30px;margin-top:14px">Hiểu đúng bài</h2><ul class="list"><li>Problem brief</li><li>Stakeholder notes</li><li>User flow, wireframe</li></ul></article>
+        <article class="phase-card"><div class="tag">build</div><h2 style="font-size:30px;margin-top:14px">Ship MVP</h2><ul class="list"><li>MVP chạy được</li><li>Demo định kỳ</li><li>AI assist ratio</li></ul></article>
+        <article class="phase-card"><div class="tag">validate</div><h2 style="font-size:30px;margin-top:14px">Đem ra dùng</h2><ul class="list"><li>UAT thật</li><li>P0/P1 triage</li><li>Go / no-go</li></ul></article>
+        <article class="phase-card"><div class="tag gold">ship</div><h2 style="font-size:30px;margin-top:14px">Live & handover</h2><ul class="list"><li>Deploy</li><li>Training</li><li>Final review</li></ul></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="products">
+    <div class="container">
+      <div class="section-head">
+        <div class="roman">III</div>
+        <div>
+          <div class="mono">what gets built</div>
+          <h2>Bốn sản phẩm đủ rộng để ép lộ năng lực thật của một Product Builder.</h2>
+          <p class="sub">Mỗi sản phẩm là một problem shape khác nhau, nên intern không thể chỉ thắng nhờ hợp một kiểu bài.</p>
+        </div>
+      </div>
+      <div class="product-grid">
+        <article class="product-card"><div class="tag">ATS</div><p class="sub" style="font-size:17px;margin-top:14px">CRUD, search, analytics, deploy readiness.</p></article>
+        <article class="product-card"><div class="tag">Agent QC Website</div><p class="sub" style="font-size:17px;margin-top:14px">Automation, browser test, alerting, false positive control.</p></article>
+        <article class="product-card"><div class="tag">Thẩm định quy trình</div><p class="sub" style="font-size:17px;margin-top:14px">Template parsing, rules logic, auditability.</p></article>
+        <article class="product-card"><div class="tag">Báo cáo cá nhân</div><p class="sub" style="font-size:17px;margin-top:14px">Data pull, scheduling, report design, on-demand use.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="score">
+    <div class="container">
+      <div class="section-head">
+        <div class="roman">IV</div>
+        <div>
+          <div class="mono">scorecard & council</div>
+          <h2>Đánh giá cuối đủ rõ để công bằng, và đủ chặt để tạo áp lực đúng hướng.</h2>
+          <p class="sub">Hội đồng chấm trên một khung điểm đã công bố trước, không chấm theo cảm xúc.</p>
+        </div>
+      </div>
+      <div class="score-band">
+        <article class="card"><div class="mono">delivery</div><strong>40</strong><span>Chất lượng và mức hoàn thành sản phẩm</span></article>
+        <article class="card"><div class="mono">growth</div><strong>40</strong><span>AI-first, ownership, business thinking</span></article>
+        <article class="card"><div class="mono">process</div><strong>20</strong><span>Template completion, communication, learning agility</span></article>
+        <article class="card"><div class="mono">threshold</div><strong>70+</strong><span>Ngưỡng mở ra cơ hội Full-Time</span></article>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0;padding-bottom:96px">
+    <div class="container footer-box brand">
+      <div class="mono" style="color:rgba(255,255,255,.72)">closing note</div>
+      <h2 style="color:#fff;max-width:820px">Đây là hướng phù hợp nhất nếu mục tiêu là thuyết phục stakeholder nội bộ thật nhanh, nhưng vẫn giữ cảm giác một tài liệu được biên tập kỹ.</h2>
+      <div class="footer-links">
+        <a class="btn btn-secondary" href="index.html">Về index</a>
+        <a class="btn btn-gold" href="concept-03-chapter-narrative.html">Mở concept 03</a>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
