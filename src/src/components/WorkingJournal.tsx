@@ -172,18 +172,18 @@ export default function WorkingJournal() {
   };
 
   return (
-    <div className="space-y-10 py-6 font-sans text-neutral-300" id="working-journal-layout">
+    <div className="space-y-10 py-6 font-sans text-fg-2" id="working-journal-layout">
       {/* Page Header */}
-      <div className="space-y-2 border-b border-white/[0.08] pb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <div className="space-y-1.5">
-          <div className="inline-flex items-center space-x-2 rounded-full border border-yellow-500/30 bg-yellow-500/10 px-3.5 py-1 text-xs font-medium text-yellow-500 tracking-wider font-mono">
-            <FileEdit className="h-3.5 w-3.5" />
-            <span>INTERN WORKING JOURNAL</span>
+      <div className="space-y-4 border-b border-border pb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div className="space-y-2">
+          <div className="s-eyebrow">
+            <FileEdit className="h-4 w-4 mr-1" strokeWidth={1.75} />
+            INTERN WORKING JOURNAL
           </div>
-          <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
+          <h2 className="text-2xl sm:text-4xl font-impact font-extrabold text-fg-1 tracking-tight">
             Sổ Tay Thực Tập — Journal Tự Học
           </h2>
-          <p className="text-sm text-neutral-400 max-w-2xl leading-relaxed">
+          <p className="text-sm text-fg-2 max-w-2xl leading-relaxed">
             Mỗi Intern là chủ thể tự quản lý và ghi chép hành trình thực chiến. 
             Điền hoàn chỉnh các biểu mẫu quy trình là điều kiện tiên quyết để tham gia bảo vệ cuối kỳ. 
             Bạn có thể phối hợp gõ ý tưởng thô và dùng gõ phím AI đồng hành để chuẩn hóa.
@@ -194,30 +194,30 @@ export default function WorkingJournal() {
         <div className="flex flex-wrap items-center gap-2 self-start sm:self-center">
           <button
             onClick={handleLoadSample}
-            className="flex items-center space-x-1.5 rounded-lg border border-white/10 bg-neutral-900 px-3 py-1.5 text-xs font-medium text-neutral-200 transition-colors hover:bg-neutral-800 hover:border-white/20"
+            className="flex items-center space-x-1.5 rounded-lg border border-border bg-bg-muted px-3 py-1.5 text-xs font-medium text-fg-2 transition-colors hover:bg-border hover:border-border-hover cursor-pointer"
           >
-            <RefreshCw className="h-3.5 w-3.5 text-yellow-500" />
+            <RefreshCw className="h-3.5 w-3.5 text-brand" strokeWidth={1.75} />
             <span>Nạp Mẫu</span>
           </button>
           <button
             onClick={clearForm}
-            className="flex items-center space-x-1.5 rounded-lg border border-red-500/10 bg-red-950/20 px-3 py-1.5 text-xs font-medium text-red-400 transition-colors hover:bg-red-950/40 hover:border-red-500/25"
+            className="flex items-center space-x-1.5 rounded-lg border border-gap/20 bg-gap/10 px-3 py-1.5 text-xs font-medium text-gap transition-colors hover:bg-gap/20 hover:border-gap/30 cursor-pointer"
           >
-            <Trash2 className="h-3.5 w-3.5" />
+            <Trash2 className="h-3.5 w-3.5" strokeWidth={1.75} />
             <span>Xóa Biểu Mẫu</span>
           </button>
           <button
             onClick={handleCopyToClipboard}
-            className="flex items-center space-x-1.5 rounded-lg border border-white/10 bg-neutral-900 px-3 py-1.5 text-xs font-medium text-neutral-200 transition-colors hover:bg-neutral-800 hover:border-white/20"
+            className="flex items-center space-x-1.5 rounded-lg border border-border bg-bg-muted px-3 py-1.5 text-xs font-medium text-fg-2 transition-colors hover:bg-border hover:border-border-hover cursor-pointer"
           >
-            <Copy className="h-3.5 w-3.5" />
+            <Copy className="h-3.5 w-3.5" strokeWidth={1.75} />
             <span>Sao Chép</span>
           </button>
           <button
             onClick={handleDownloadMarkdown}
-            className="flex items-center space-x-1.5 rounded-lg bg-yellow-500 px-3 py-1.5 text-xs font-semibold text-neutral-950 transition-colors hover:bg-yellow-400"
+            className="flex items-center space-x-1.5 rounded-lg bg-brand px-3 py-1.5 text-xs font-bold text-white transition-colors hover:opacity-90 cursor-pointer shadow-sm"
           >
-            <Download className="h-3.5 w-3.5" />
+            <Download className="h-3.5 w-3.5" strokeWidth={2} />
             <span>Tải Xuống .MD</span>
           </button>
         </div>
@@ -225,17 +225,17 @@ export default function WorkingJournal() {
 
       {/* Temp Notification Toast */}
       {notification && (
-        <div className={`fixed bottom-6 right-6 z-50 rounded-xl border p-4 shadow-2xl flex items-center space-x-3 text-xs max-w-sm transition-all duration-300 animate-slide-in ${
+        <div className={`fixed bottom-6 right-6 z-50 rounded-xl border p-4 shadow-md flex items-center space-x-3 text-xs max-w-sm transition-all duration-300 animate-slide-in ${
           notification.type === 'success'
-            ? 'bg-emerald-950/90 text-emerald-300 border-emerald-500/30'
+            ? 'bg-mint/10 text-mint-deep border-mint/30'
             : notification.type === 'error'
-            ? 'bg-red-950/90 text-red-300 border-red-500/30'
-            : 'bg-neutral-900/95 text-white border-white/10'
+            ? 'bg-gap/10 text-gap border-gap/30'
+            : 'bg-bg-muted text-fg-1 border-border'
         }`}>
           {notification.type === 'success' ? (
-            <CheckCircle2 className="h-5 w-5 text-emerald-400 shrink-0" />
+            <CheckCircle2 className="h-5 w-5 text-mint shrink-0" strokeWidth={1.75} />
           ) : (
-            <AlertCircle className="h-5 w-5 text-red-400 shrink-0" />
+            <AlertCircle className="h-5 w-5 text-gap shrink-0" strokeWidth={1.75} />
           )}
           <span className="leading-relaxed font-sans font-medium">{notification.message}</span>
         </div>
@@ -245,8 +245,8 @@ export default function WorkingJournal() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Left Aspect: Selector card list */}
         <div className="lg:col-span-4 space-y-4">
-          <div className="rounded-xl border border-white/[0.08] bg-neutral-950 p-5 space-y-4">
-            <span className="font-mono text-xs uppercase text-neutral-400 tracking-wider block font-semibold border-b border-white/[0.06] pb-2">
+          <div className="rounded-xl border border-border bg-bg-warm p-5 space-y-4 shadow-sm">
+            <span className="font-mono text-xs uppercase text-fg-3 tracking-wider block font-semibold border-b border-border pb-2">
               DANH MỤC 5 BIỂU MẪU ĐẦU RA
             </span>
             <div className="flex flex-col space-y-2">
@@ -257,16 +257,16 @@ export default function WorkingJournal() {
                     key={t.id}
                     id={`journal-tab-trigger-${t.id}`}
                     onClick={() => setActiveTemplateId(t.id)}
-                    className={`flex items-start text-left rounded-lg p-3 transition-all duration-200 border ${
+                    className={`flex items-start text-left rounded-lg p-3 transition-all duration-200 border cursor-pointer ${
                       isSelected
-                        ? 'bg-gradient-to-r from-yellow-500/10 to-yellow-500/0 border-yellow-500/30 text-white'
-                        : 'border-transparent text-neutral-400 hover:bg-white/[0.02] hover:text-neutral-200'
+                        ? 'bg-brand/5 border-brand/30 text-fg-1 shadow-sm'
+                        : 'border-transparent text-fg-3 hover:bg-bg-muted hover:text-fg-2'
                     }`}
                   >
-                    <FileText className={`h-4.5 w-4.5 mr-3 mt-0.5 shrink-0 ${isSelected ? 'text-yellow-500' : 'text-neutral-500'}`} />
+                    <FileText strokeWidth={1.75} className={`h-4.5 w-4.5 mr-3 mt-0.5 shrink-0 ${isSelected ? 'text-brand' : 'text-fg-3'}`} />
                     <div>
                       <div className="font-sans text-xs font-bold tracking-wide">{t.title}</div>
-                      <p className="font-sans text-[10px] text-neutral-500 line-clamp-2 mt-1 leading-snug">
+                      <p className="font-sans text-[10px] text-fg-3 line-clamp-2 mt-1 leading-snug">
                         {t.description}
                       </p>
                     </div>
@@ -277,12 +277,12 @@ export default function WorkingJournal() {
           </div>
 
           {/* AI Helper banner */}
-          <div className="rounded-xl border border-yellow-500/10 bg-yellow-500/[0.02] p-5 space-y-3.5">
-            <div className="flex items-center space-x-2 text-yellow-500">
-              <Sparkles className="h-4 w-4" />
-              <span className="font-sans text-xs font-bold uppercase tracking-wider">HỖ TRỢ VIẾT BẰNG AI</span>
+          <div className="insight mt-0! shadow-sm!">
+            <div className="insight-label text-[10px]! mb-2! flex items-center space-x-2">
+              <Sparkles className="h-3.5 w-3.5 text-brand" strokeWidth={1.75} />
+              <span>HỖ TRỢ VIẾT BẰNG AI</span>
             </div>
-            <p className="font-sans text-xs text-neutral-400 leading-relaxed">
+            <p className="insight-body font-sans text-xs! text-fg-2! leading-relaxed">
               Hãy viết vài dòng ý kiến thô, gạch đầu dòng ngắn hoặc từ khóa chính vào ô bên phải, sau đó bấm nút **"Gấp đôi năng lực viết bằng AI"** ở góc trên mỗi ô. 
               Mô hình **Gemini-3.5-flash** được huấn luyện theo chuẩn Product Builder YODY sẽ mở rộng, soạn thảo cấu trúc mượt mà cho bạn!
             </p>
@@ -291,10 +291,10 @@ export default function WorkingJournal() {
 
         {/* Right Aspect: Interactive Form Editor */}
         <div className="lg:col-span-8 space-y-6">
-          <div className="rounded-xl border border-white/[0.08] bg-neutral-950 p-6 sm:p-8 space-y-6">
-            <div className="border-b border-white/[0.06] pb-4 space-y-2">
-              <h3 className="font-sans text-lg font-bold text-white tracking-tight">{activeTemplate.title}</h3>
-              <p className="font-sans text-xs text-neutral-400 leading-relaxed">
+          <div className="rounded-xl border border-border bg-bg-warm p-6 sm:p-8 space-y-6 shadow-sm">
+            <div className="border-b border-border pb-4 space-y-2">
+              <h3 className="font-impact text-lg font-bold text-fg-1 tracking-tight">{activeTemplate.title}</h3>
+              <p className="font-sans text-xs text-fg-3 leading-relaxed font-medium">
                 {activeTemplate.description}
               </p>
             </div>
@@ -308,24 +308,24 @@ export default function WorkingJournal() {
                 return (
                   <div key={f.key} className="space-y-2" id={`form-field-wrapper-${f.key}`}>
                     <div className="flex items-center justify-between text-xs gap-4">
-                      <label className="font-sans font-semibold text-neutral-200" htmlFor={`input-${activeTemplateId}-${f.key}`}>
+                      <label className="font-sans font-bold text-fg-1" htmlFor={`input-${activeTemplateId}-${f.key}`}>
                         {f.label}
                       </label>
                       {f.type === 'textarea' && (
                         <button
                           onClick={() => handleAiAssist(f.key, f.label)}
                           disabled={isLoading || !currentVal.trim()}
-                          className={`flex items-center space-x-1.5 rounded-md px-2.5 py-1 text-[10px] font-mono font-medium border transition-all ${
+                          className={`flex items-center space-x-1.5 rounded-md px-2.5 py-1 text-[10px] font-mono font-bold border transition-all ${
                             currentVal.trim()
-                              ? 'bg-yellow-500/10 text-yellow-500 border-yellow-500/20 hover:bg-yellow-500/20 cursor-pointer'
-                              : 'bg-neutral-900 text-neutral-600 border-transparent cursor-not-allowed'
+                              ? 'bg-brand/10 text-brand border-brand/20 hover:bg-brand/20 cursor-pointer'
+                              : 'bg-bg-muted text-fg-3 border-border cursor-not-allowed'
                           }`}
                           title="Gõ từ khóa/ý tưởng nháp trước rồi bấm nút này để AI viết hộ bài bản nhất"
                         >
                           {isLoading ? (
-                            <RefreshCw className="h-3 w-3 animate-spin text-yellow-500" />
+                            <RefreshCw className="h-3 w-3 animate-spin text-brand" strokeWidth={2} />
                           ) : (
-                            <Sparkles className="h-3 w-3 text-yellow-500" />
+                            <Sparkles className="h-3 w-3 text-brand" strokeWidth={2} />
                           )}
                           <span>AI Hỗ Trợ Viết</span>
                         </button>
@@ -340,7 +340,7 @@ export default function WorkingJournal() {
                         value={currentVal}
                         onChange={(e) => handleFieldChange(f.key, e.target.value)}
                         placeholder={f.placeholder}
-                        className="w-full bg-neutral-900 border border-white/[0.06] rounded-lg px-3.5 py-2.5 text-xs text-white placeholder-neutral-600 focus:outline-none focus:border-yellow-500/50 focus:ring-1 focus:ring-yellow-500/20 transition-all font-sans"
+                        className="w-full bg-bg border border-border rounded-lg px-3.5 py-2.5 text-xs text-fg-1 placeholder:text-fg-3 focus:outline-none focus:border-brand/50 focus:ring-1 focus:ring-brand/20 transition-all font-sans font-medium"
                       />
                     ) : (
                       <textarea
@@ -349,8 +349,8 @@ export default function WorkingJournal() {
                         onChange={(e) => handleFieldChange(f.key, e.target.value)}
                         placeholder={f.placeholder}
                         rows={5}
-                        className={`w-full bg-neutral-900 border rounded-lg px-3.5 py-2.5 text-xs text-white placeholder-neutral-600 focus:outline-none focus:border-yellow-500/50 focus:ring-1 focus:ring-yellow-500/20 transition-all font-sans leading-relaxed ${
-                          isLoading ? 'border-yellow-500/40 opacity-70 animate-pulse' : 'border-white/[0.06]'
+                        className={`w-full bg-bg border rounded-lg px-3.5 py-2.5 text-xs text-fg-1 placeholder:text-fg-3 focus:outline-none focus:border-brand/50 focus:ring-1 focus:ring-brand/20 transition-all font-sans leading-relaxed font-medium ${
+                          isLoading ? 'border-brand/40 opacity-70 animate-pulse' : 'border-border'
                         }`}
                       />
                     )}
