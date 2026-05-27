@@ -1,0 +1,28 @@
+{
+  "name": "intern_product_builder_program",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nta-jeremy/intern_product_builder_program.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/nta-jeremy/intern_product_builder_program/issues"
+  },
+  "homepage": "https://github.com/nta-jeremy/intern_product_builder_program#readme",
+  "dependencies": {
+    "@google/genai": "^2.6.0",
+    "@vercel/node": "^5.8.5"
+  }
+}
