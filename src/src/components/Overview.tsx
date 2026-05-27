@@ -33,7 +33,7 @@ export default function Overview() {
           <p className="text-sm sm:text-base text-fg-2 max-w-3xl leading-relaxed">
             Tại YODY, chúng tôi nuôi dưỡng thế hệ lãnh đạo công nghệ trẻ khao khát thực chiến.
             Trách nhiệm chính của bạn là làm chủ và biến các ý tưởng đột phá thành sản phẩm live phục vụ thực tế.
-            Ship nhanh, phối ứng cùng đòn bẩy AI thông thạo, và không ngừng cải tiến chính mình.
+            Ship nhanh, kết hợp cùng đòn bẩy AI một cách thông thạo, và không ngừng cải tiến chính mình.
           </p>
 
           {/* Focus metrics row */}
@@ -97,7 +97,7 @@ export default function Overview() {
           <div className="insight-label">Kết luận Tầm nhìn</div>
           <div className="insight-body">
             Mục tiêu cuối cùng là <em>biến bạn thành Builder</em> có khả năng tự chủ toàn trình. 
-            Không chỉ làm chủ công cụ AI, bạn còn thấu hiểu Product Thinking và sở hữu 4 hệ thống hoạt động thực 
+            Không chỉ làm chủ công cụ AI, bạn còn thấu hiểu Product Thinking và sở hữu sản phẩm hoạt động thực 
             mang lại giá trị trực tiếp cho YODY.
           </div>
           
@@ -107,7 +107,7 @@ export default function Overview() {
               <ul className="space-y-1.5 text-[11px] text-fg-3">
                 <li className="flex items-start">
                   <span className="text-gold mr-1 mt-0.5 shrink-0">▪</span>
-                  <span className="leading-relaxed font-medium">Sở hữu 4 hệ thống thật.</span>
+                  <span className="leading-relaxed font-medium">Sở hữu sản phẩm thật.</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-gold mr-1 mt-0.5 shrink-0">▪</span>
