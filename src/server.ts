@@ -106,7 +106,8 @@ Yêu cầu cụ thể khi phản hồi:
   } else {
     const distPath = path.join(process.cwd(), "dist");
     app.use(express.static(distPath));
-    app.get("*", (req, res) => {
+    app.get("*", (req, res, next) => {
+      if (req.path.startsWith("/intro")) return next();
       res.sendFile(path.join(distPath, "index.html"));
     });
   }
