@@ -1,5 +1,21 @@
 .DS_Store
 
-# plans
+# Build outputs
+src/dist/
+
+# Dependencies
+node_modules/
+
+# Plans (local only)
 plans/
+
+# Vercel
 .vercel
+
+# Reference materials (not needed for deployment)
+page_intro/
+design-system/
+
+# Environment
+.env*
+!.env.example

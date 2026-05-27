@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/nta-jeremy/intern_product_builder_program#readme",
   "dependencies": {
-    "@google/genai": "^2.6.0",
+    "@google/genai": "^2.4.0",
     "@vercel/node": "^5.8.5"
   }
 }
