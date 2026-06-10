@@ -6,7 +6,7 @@
 - **Team:** tunganh252s-projects
 
 ## URLs
-- **Production:** https://internproductbuilderprogram.vercel.app
+- **Production:** https://yody-itdx-intern-product-builder.vercel.app
 - **Inspector:** https://vercel.com/tunganh252s-projects/intern_product_builder_program
 
 ## Deploy Command
