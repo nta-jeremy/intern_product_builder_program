@@ -51,7 +51,8 @@ vercel rollback [deployment-url]
 ## Notes
 - Migrated from Next.js (apps/landing-page) to Vite + React (src/)
 - Express server.ts used only for local development
+- Local dev mounts `src/public/intro/` directly at `/intro` so `/intro` redirects to `/intro/` and serves the static intro page consistently
 - Production API runs as Vercel serverless function (api/gemini/assist.ts)
 - API simulates responses when GEMINI_API_KEY is not configured
 - React Router (react-router-dom v7) for URL-based navigation with scroll restoration
-- `/intro/` serves static HTML page outside the React SPA
+- Vercel keeps `/intro -> /intro/` as a redirect and serves `/intro/` from the built static output outside the React SPA

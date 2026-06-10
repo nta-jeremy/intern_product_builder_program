@@ -10,9 +10,13 @@ dotenv.config();
 async function startServer() {
   const app = express();
   const PORT = 3000;
+  const introStaticPath = path.join(process.cwd(), "public", "intro");
 
   // Support JSON request bodies
   app.use(express.json());
+
+  // Serve the standalone intro page outside the React SPA.
+  app.use("/intro", express.static(introStaticPath));
 
   // Initialize Gemini AI Client
   let ai: GoogleGenAI | null = null;
