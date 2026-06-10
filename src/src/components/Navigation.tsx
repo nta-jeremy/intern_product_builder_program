@@ -67,12 +67,12 @@ export default function Navigation() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border bg-bg/80 backdrop-blur-md transition-all duration-300">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+    <header className="sticky top-0 z-50 w-full border-b border-border backdrop-blur-md transition-all" style={{ backgroundColor: 'color-mix(in srgb, var(--bg) 80%, transparent)', transitionDuration: 'var(--dur-slow)' }}>
+      <div className="mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8" style={{ maxWidth: 'var(--container-max)' }}>
         
         {/* Logo Section */}
         <NavLink to="/" className="flex items-center space-x-3 group">
-          <img src="/yody-logo.webp" alt="YODY" className="h-8 w-auto rounded-md transition-transform duration-300 group-hover:scale-105" />
+          <img src="/yody-logo.webp" alt="YODY" className="h-8 w-auto transition-transform group-hover:scale-105" style={{ borderRadius: 'var(--radius-sm)', transitionDuration: 'var(--dur-slow)' }} />
           <div className="flex flex-col">
             <span className="font-sans text-sm font-extrabold tracking-wider text-fg-1">YODY ITDX</span>
             <span className="font-mono text-[9px] uppercase tracking-widest text-brand">Intern Product Builder</span>
@@ -86,12 +86,13 @@ export default function Navigation() {
             to="/"
             end
             className={({ isActive }) =>
-              `flex items-center space-x-2 rounded-xl px-4 py-2 text-xs font-semibold tracking-wide transition-all duration-200 border ${
+              `flex items-center space-x-2 px-4 py-2 text-xs font-semibold tracking-wide transition-all border ${
                 isActive
                   ? 'bg-brand/10 text-brand border-brand/20'
                   : 'text-fg-3 hover:bg-bg-muted hover:text-fg-1 border-transparent'
               }`
             }
+            style={{ borderRadius: 'var(--radius)' }}
           >
             <LayoutDashboard className="h-4 w-4" strokeWidth={1.75} />
             <span>Tổng quan</span>
@@ -110,14 +111,15 @@ export default function Navigation() {
                 onMouseLeave={handleMouseLeave}
               >
                 <button
-                  className={`flex items-center space-x-1.5 rounded-xl px-4 py-2 text-xs font-semibold tracking-wide transition-all duration-200 border ${
+                  className={`flex items-center space-x-1.5 px-4 py-2 text-xs font-semibold tracking-wide transition-all border ${
                     isGroupActive
                       ? 'bg-bg-muted text-fg-1 border-border'
                       : 'text-fg-3 hover:bg-bg-muted hover:text-fg-1 border-transparent'
                   } ${isOpen ? 'bg-bg-muted' : ''}`}
+                  style={{ borderRadius: 'var(--radius)', transitionDuration: 'var(--dur)' }}
                 >
                   <span>{group.title}</span>
-                  <ChevronDown strokeWidth={1.75} className={`h-3 w-3 text-fg-3 transition-transform duration-300 ${isOpen ? 'rotate-180 text-fg-1' : ''}`} />
+                  <ChevronDown strokeWidth={1.75} className={`h-3 w-3 text-fg-3 transition-transform ${isOpen ? 'rotate-180 text-fg-1' : ''}`} style={{ transitionDuration: 'var(--dur-slow)' }} />
                 </button>
 
                 {/* Mega Dropdown Menu */}
@@ -128,7 +130,8 @@ export default function Navigation() {
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 10, scale: 0.98 }}
                       transition={{ duration: 0.15, ease: [0.16, 1, 0.3, 1] }}
-                      className="absolute left-0 mt-2.5 w-80 rounded-2xl border border-border bg-bg p-3.5 shadow-md backdrop-blur-xl"
+                      className="absolute left-0 mt-2.5 w-80 border border-border bg-bg p-3.5 backdrop-blur-xl"
+                      style={{ borderRadius: 'var(--radius-lg)', boxShadow: 'var(--shadow-md)' }}
                     >
                       <div className="mb-2 px-2 text-[10px] font-bold uppercase tracking-wider text-brand">
                         {group.title}
@@ -143,13 +146,14 @@ export default function Navigation() {
                               key={subItem.path}
                               to={subItem.path}
                               onClick={() => setActiveDropdown(null)}
-                              className={`flex items-start space-x-3 rounded-xl p-2.5 transition-all duration-200 border ${
+                              className={`flex items-start space-x-3 p-2.5 transition-all border ${
                                 isSubActive
                                   ? 'bg-brand/5 border-brand/20'
                                   : 'border-transparent hover:bg-bg-muted'
                               }`}
+                              style={{ borderRadius: 'var(--radius)', transitionDuration: 'var(--dur)' }}
                             >
-                              <div className={`rounded-lg p-2 transition-transform duration-300 ${subItem.color} ${isSubActive ? 'scale-105' : ''}`}>
+                              <div className={`p-2 transition-transform ${subItem.color} ${isSubActive ? 'scale-105' : ''}`} style={{ borderRadius: 'var(--radius-sm)', transitionDuration: 'var(--dur-slow)' }}>
                                 <SubIcon strokeWidth={1.75} className="h-4 w-4" />
                               </div>
                               <div className="flex flex-col">
@@ -176,7 +180,8 @@ export default function Navigation() {
         <div className="hidden lg:flex items-center space-x-3">
           <button
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            className="flex items-center justify-center rounded-xl border border-border bg-bg-muted px-3.5 py-2 text-fg-3 transition-all hover:bg-border-hover hover:text-fg-1"
+            className="flex items-center justify-center border border-border bg-bg-muted px-3.5 py-2 text-fg-3 transition-all hover:bg-border-hover hover:text-fg-1"
+            style={{ borderRadius: 'var(--radius)', transitionDuration: 'var(--dur)' }}
             title="Toggle theme"
           >
             {theme === 'dark' ? (
@@ -187,19 +192,19 @@ export default function Navigation() {
           </button>
 
           <a
-            href="https://yody-intern-builder.vercel.app/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group flex items-center space-x-1.5 rounded-xl border border-border bg-bg-muted px-3.5 py-2 text-xs font-medium text-fg-3 transition-all hover:bg-border-hover hover:text-fg-1"
+            href="/intro"
+            className="cta cta-secondary cta-sm group"
+            style={{ height: '36px', padding: '0 14px', fontSize: '12px', borderRadius: 'var(--radius)' }}
           >
-            <BookOpen className="h-3.5 w-3.5 transition-transform group-hover:rotate-6" strokeWidth={1.75} />
+            <BookOpen className="h-3.5 w-3.5 transition-transform group-hover:rotate-6" strokeWidth={1.75} style={{ transitionDuration: 'var(--dur-slow)' }} />
             <span>Giới thiệu</span>
           </a>
           <a
             href="https://yody-itdx-ea.vercel.app/"
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center space-x-1.5 rounded-xl bg-brand border border-brand px-4 py-2 text-xs font-semibold text-white transition-all hover:bg-brand-deep"
+            className="cta cta-primary cta-sm group"
+            style={{ height: '36px', padding: '0 16px', fontSize: '12px', borderRadius: 'var(--radius)' }}
           >
             <span className="font-bold">Portal</span>
             <ArrowUpRight strokeWidth={1.75} className="h-3 w-3 text-white/80 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -210,13 +215,15 @@ export default function Navigation() {
         <div className="flex lg:hidden items-center space-x-2">
           <button
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            className="inline-flex items-center justify-center rounded-xl p-2 text-fg-3 hover:bg-bg-muted hover:text-fg-1 focus:outline-none"
+            className="inline-flex items-center justify-center p-2 text-fg-3 hover:bg-bg-muted hover:text-fg-1 focus:outline-none"
+            style={{ borderRadius: 'var(--radius)' }}
           >
             {theme === 'dark' ? <Sun className="h-5 w-5" strokeWidth={1.75} /> : <Moon className="h-5 w-5" strokeWidth={1.75} />}
           </button>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="inline-flex items-center justify-center rounded-xl p-2 text-fg-3 hover:bg-bg-muted hover:text-fg-1 focus:outline-none"
+            className="inline-flex items-center justify-center p-2 text-fg-3 hover:bg-bg-muted hover:text-fg-1 focus:outline-none"
+            style={{ borderRadius: 'var(--radius)' }}
           >
             {mobileMenuOpen ? <X className="h-5 w-5" strokeWidth={1.75} /> : <Menu className="h-5 w-5" strokeWidth={1.75} />}
           </button>
@@ -226,7 +233,7 @@ export default function Navigation() {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden fixed inset-x-0 top-16 z-50 border-b border-border bg-bg px-4 py-4 space-y-1.5 shadow-md max-h-[calc(100vh-4rem)] overflow-y-auto">
+        <div className="lg:hidden fixed inset-x-0 top-16 z-50 border-b border-border bg-bg px-4 py-4 space-y-1.5 max-h-[calc(100vh-4rem)] overflow-y-auto" style={{ boxShadow: 'var(--shadow-md)' }}>
           <div className="px-2 pb-2 text-[10px] font-bold uppercase tracking-wider text-brand">
             Điều hướng chương trình
           </div>
@@ -239,12 +246,13 @@ export default function Navigation() {
                 end={item.end}
                 onClick={() => setMobileMenuOpen(false)}
                 className={({ isActive }) =>
-                  `flex w-full items-center space-x-3 rounded-xl px-3.5 py-2.5 text-sm font-semibold transition-all ${
+                  `flex w-full items-center space-x-3 px-3.5 py-2.5 text-sm font-semibold transition-all ${
                     isActive
                       ? 'bg-brand/10 text-brand border border-brand/20'
                       : 'text-fg-2 hover:bg-bg-muted hover:text-fg-1 border border-transparent'
                   }`
                 }
+                style={{ borderRadius: 'var(--radius)' }}
               >
                 <Icon className="h-4.5 w-4.5" strokeWidth={1.75} />
                 <span>{item.label}</span>
@@ -254,11 +262,10 @@ export default function Navigation() {
           
           <div className="border-t border-border pt-3.5 mt-3.5 space-y-2">
             <a
-              href="https://yody-intern-builder.vercel.app/"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/intro"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex w-full items-center space-x-3 rounded-xl bg-bg-muted px-3.5 py-2.5 text-sm font-medium text-fg-2 hover:bg-border-hover hover:text-fg-1"
+              className="flex w-full items-center space-x-3 bg-bg-muted px-3.5 py-2.5 text-sm font-medium text-fg-2 hover:bg-border-hover hover:text-fg-1"
+              style={{ borderRadius: 'var(--radius)' }}
             >
               <BookOpen className="h-4 w-4 text-fg-3" strokeWidth={1.75} />
               <span>Giới thiệu chương trình</span>
@@ -267,7 +274,8 @@ export default function Navigation() {
               href="https://yody-itdx-ea.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex w-full items-center justify-between rounded-xl bg-brand px-3.5 py-2.5 text-sm font-medium text-white hover:bg-brand-deep"
+              className="flex w-full items-center justify-between bg-brand px-3.5 py-2.5 text-sm font-medium text-white hover:bg-brand-deep"
+              style={{ borderRadius: 'var(--radius)' }}
             >
               <span className="font-bold">Yody ITDX EA Portal</span>
               <ArrowUpRight className="h-4 w-4 text-white/80" strokeWidth={1.75} />

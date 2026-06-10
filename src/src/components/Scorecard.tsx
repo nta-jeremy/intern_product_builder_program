@@ -85,17 +85,17 @@ export default function Scorecard() {
   const badge = getResultBadge(roundedTotal);
 
   return (
-    <div className="space-y-10 py-6 font-sans" id="scorecard-app-container">
+    <div className="py-6 font-sans" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--s-10)' }} id="scorecard-app-container">
       {/* Intro Header */}
-      <div className="space-y-4 border-b border-border pb-6">
+      <div className="border-b border-border pb-6" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--s-4)' }}>
         <div className="s-eyebrow">
           <Calculator className="h-4 w-4 mr-1" strokeWidth={1.75} />
           SCORECARD TRÌNH THẨM ĐỊNH
         </div>
-        <h2 className="text-2xl sm:text-4xl font-impact font-extrabold text-fg-1 tracking-tight">
+        <h2 className="text-fg-1" style={{ font: 'var(--type-h2)', letterSpacing: '-0.018em' }}>
           ScoreCard Tổng Sắp — Đánh Giá Sau 3 Tháng
         </h2>
-        <p className="text-sm text-fg-2 max-w-4xl leading-relaxed">
+        <p className="max-w-4xl" style={{ font: 'var(--type-body-sm)', color: 'var(--fg-2)', lineHeight: '1.7' }}>
           Hội đồng Thẩm định độc lập (mô tả tại Phần V) sử dụng ScoreCard tiêu chuẩn 100 điểm dưới đây để chấm điểm thực tế. 
           Điểm số được tổng hợp từ: Năng lực Bàn giao (40%), Độ Phát triển (40%) và Chất lượng Quy trình (20%). 
           Sử dụng bảng mô phỏng dưới đây để chấm điểm nháp cho bản thân!
@@ -109,14 +109,15 @@ export default function Scorecard() {
           {SCORECARD_DATA.map((cat, catIdx) => {
             const isExpanded = expandedCats[catIdx];
             return (
-              <div key={catIdx} className="rounded-xl border border-border bg-bg-warm overflow-hidden shadow-sm">
+              <div key={catIdx} className="border border-border bg-bg-warm overflow-hidden" style={{ borderRadius: 'var(--radius)', boxShadow: 'var(--shadow-rest)' }}>
                 {/* Category Header Bar */}
                 <button
                   onClick={() => toggleCat(catIdx)}
                   className="w-full flex items-center justify-between px-6 py-4 bg-bg border-b border-border text-left hover:bg-bg-muted transition-all font-semibold"
+                  style={{ transitionDuration: 'var(--dur)' }}
                 >
                   <div className="flex items-center space-x-3">
-                    <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-brand/10 text-brand font-mono text-xs font-bold border border-brand/20">
+                    <span className="flex h-7 w-7 items-center justify-center bg-brand/10 text-brand font-mono text-xs font-bold border border-brand/20" style={{ borderRadius: 'var(--radius-sm)' }}>
                       0{catIdx + 1}
                     </span>
                     <div>
@@ -127,7 +128,7 @@ export default function Scorecard() {
                     </div>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <div className="rounded-full bg-bg-muted border border-border-hover px-3 py-1 font-mono text-xs font-bold text-brand">
+                    <div className="bg-bg-muted border border-border-hover px-3 py-1 font-mono text-xs font-bold text-brand" style={{ borderRadius: 'var(--radius-pill)' }}>
                       Đạt: {categoryScores[catIdx]}/{cat.maxScore}đ
                     </div>
                     {isExpanded ? <ChevronUp className="h-4 w-4 text-fg-3" strokeWidth={1.75} /> : <ChevronDown className="h-4 w-4 text-fg-3" strokeWidth={1.75} />}
@@ -136,18 +137,18 @@ export default function Scorecard() {
 
                 {/* Sub items */}
                 {isExpanded && (
-                  <div className="divide-y divide-border p-6 space-y-8">
+                  <div className="divide-y divide-border p-6" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--s-8)' }}>
                     {cat.items.map((item, itemIdx) => {
                       const currentLevel = selectedLevels[`${catIdx}-${itemIdx}`] || 3;
                       const activeItemPoints = ((currentLevel / 4) * item.points).toFixed(1);
                       return (
-                        <div key={itemIdx} className="space-y-4 pt-4 first:pt-0 pb-2" id={`calc-item-${catIdx}-${itemIdx}`}>
+                        <div key={itemIdx} className="pt-4 first:pt-0 pb-2" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--s-4)' }} id={`calc-item-${catIdx}-${itemIdx}`}>
                           {/* Item header */}
                           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                             <h4 className="font-sans text-xs font-bold text-fg-1">
                               {item.name}
                             </h4>
-                            <div className="rounded bg-bg-muted border border-border-hover px-2.5 py-1 font-mono text-xs text-fg-2 flex items-center space-x-1.5 self-start">
+                            <div className="bg-bg-muted border border-border-hover px-2.5 py-1 font-mono text-xs text-fg-2 flex items-center space-x-1.5 self-start" style={{ borderRadius: 'var(--radius-xs)' }}>
                               <span className="text-brand font-bold">{activeItemPoints}</span>
                               <span className="text-[10px] text-fg-3">/ {item.points}đ</span>
                             </div>
@@ -166,11 +167,12 @@ export default function Scorecard() {
                                 <button
                                   key={levelItem.lvl}
                                   onClick={() => handleLevelChange(catIdx, itemIdx, levelItem.lvl)}
-                                  className={`group flex flex-col items-start text-left p-3 rounded-lg border text-xs transition-all duration-200 min-h-[140px] relative ${
+                                  className={`group flex flex-col items-start text-left p-3 border text-xs transition-all min-h-[140px] relative ${
                                     isActive
                                       ? levelItem.actColor
                                       : 'bg-bg border-border text-fg-3 hover:bg-bg-muted hover:border-border-hover'
                                   }`}
+                                  style={{ borderRadius: 'var(--radius-sm)', transitionDuration: 'var(--dur)' }}
                                 >
                                   {/* Radio indicator */}
                                   <div className="flex w-full items-center justify-between mb-2">
@@ -200,13 +202,13 @@ export default function Scorecard() {
 
         {/* Right Aspect: Sticky Final Result Dashboard */}
         <div className="lg:col-span-4 lg:sticky lg:top-24 space-y-6">
-          <div className="rounded-xl border border-border bg-bg-warm p-6 shadow-md space-y-6 text-center">
+          <div className="yds-card-warm p-6 text-center" style={{ boxShadow: 'var(--shadow-md)', display: 'flex', flexDirection: 'column', gap: 'var(--s-6)' }}>
             <span className="font-mono text-[10px] uppercase font-bold text-fg-3 tracking-wider block">
               MÔ PHỎNG KẾT QUẢ ĐẦU RA
             </span>
 
             {/* Dynamic circular-like score progress */}
-            <div className="relative inline-flex items-center justify-center">
+            <div className="relative inline-flex items-center justify-center mx-auto">
               <svg className="h-32 w-32 transform -rotate-90">
                 <circle
                   cx="64"
@@ -220,11 +222,12 @@ export default function Scorecard() {
                   cx="64"
                   cy="64"
                   r="56"
-                  className="stroke-brand transition-all duration-500 ease-out"
+                  className="stroke-brand transition-all ease-out"
                   strokeWidth="8"
                   fill="transparent"
                   strokeDasharray={351.8}
                   strokeDashoffset={351.8 - (351.8 * roundedTotal) / 100}
+                  style={{ transitionDuration: '500ms' }}
                 />
               </svg>
               <div className="absolute flex flex-col items-center">
@@ -250,7 +253,7 @@ export default function Scorecard() {
             {/* Performance Level */}
             <div className="space-y-2">
               <span className="font-mono text-[9px] text-fg-3 uppercase tracking-wider block font-bold">Xếp hạng năng lực</span>
-              <div className={`rounded-lg border px-3 py-2 text-xs font-bold tracking-wide ${badge.classes}`}>
+              <div className={`border px-3 py-2 text-xs font-bold tracking-wide ${badge.classes}`} style={{ borderRadius: 'var(--radius-sm)' }}>
                 {badge.rating}
               </div>
               <p className="font-sans text-[11px] text-fg-2 leading-relaxed px-1">
@@ -259,7 +262,7 @@ export default function Scorecard() {
             </div>
 
             {/* Conversion status indicator */}
-            <div className="space-y-1.5 p-4 rounded-xl bg-bg-muted border border-border text-xs">
+            <div className="p-4 bg-bg-muted border border-border text-xs" style={{ borderRadius: 'var(--radius)', display: 'flex', flexDirection: 'column', gap: 'var(--s-1)' }}>
               <span className="font-mono text-[9px] text-fg-3 uppercase tracking-wider block font-bold">CƠ HỘI ĐỖ FULL-TIME</span>
               <span className={`font-sans font-extrabold block text-sm ${badge.textColor}`}>
                 {badge.action}
@@ -268,13 +271,13 @@ export default function Scorecard() {
           </div>
 
           {/* Vibe Rule Indicator Card using standard insight callout */}
-          <div className="insight mt-0! px-6! py-6! shadow-sm">
+          <div className="insight mt-0! px-6! py-6!">
             <div className="insight-label text-[10px]! mb-4!">QUY ĐỊNH BẢO VỆ PHẢN BIỆN</div>
-            <div className="space-y-3 font-sans text-xs text-fg-2 leading-relaxed">
+            <div className="font-sans text-xs text-fg-2 leading-relaxed" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--s-3)' }}>
               <p>
                 Để được phép tham dự ngày thẩm định cuối trước Hội đồng BoD YODY (Tuần 12):
               </p>
-              <ul className="space-y-2.5">
+              <ul style={{ display: 'flex', flexDirection: 'column', gap: 'var(--s-2)' }}>
                 <li className="flex items-start">
                   <CheckCircle className="h-4 w-4 text-gold mr-2 shrink-0 mt-0.5" strokeWidth={1.75} />
                   <span className="font-medium">Hoàn chỉnh 100% tài liệu nhật ký báo cáo **Working Journal**.</span>

@@ -81,17 +81,17 @@ export default function Roadmap() {
   const activeTheme = getPhaseTheme(activePhase.phase);
 
   return (
-    <div className="space-y-10 py-6 font-sans" id="lifecycle-roadmap-container">
+    <div className="py-6 font-sans" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--s-10)' }} id="lifecycle-roadmap-container">
       {/* Page header */}
-      <div className="space-y-4 border-b border-border pb-6">
+      <div className="border-b border-border pb-6" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--s-4)' }}>
         <div className="s-eyebrow">
           <Milestone className="h-4 w-4 mr-1" strokeWidth={1.75} />
           COACHING LIFECYCLE
         </div>
-        <h2 className="text-2xl sm:text-4xl font-impact font-extrabold text-fg-1 tracking-tight">
+        <h2 className="text-fg-1" style={{ font: 'var(--type-h2)', letterSpacing: '-0.018em' }}>
           Lộ Trình Đồng Hành — 4 Giai Đoạn Phát Triển
         </h2>
-        <p className="text-sm text-fg-2 max-w-4xl leading-relaxed">
+        <p className="max-w-4xl" style={{ font: 'var(--type-body-sm)', color: 'var(--fg-2)', lineHeight: '1.7' }}>
           Chúng tôi không quản lý bạn bằng cách giao những đầu việc chi li không suy nghĩ. 
           Phương pháp **Coaching Lifecycle** huấn luyện bạn cách tự bơi, tự giải quyết vấn đề từ Khám phá cho đến Ship code thật. 
           Bốn giai đoạn phát triển dưới đây là khung hoạt động độc lập giúp bạn bứt phá.
@@ -99,12 +99,12 @@ export default function Roadmap() {
       </div>
 
       {/* Visual Timeline Progressive Bar */}
-      <div className="relative rounded-2xl border border-border bg-bg-warm p-6 sm:p-8 space-y-8 shadow-sm">
+      <div className="relative border border-border bg-bg-warm p-6 sm:p-8" style={{ borderRadius: 'var(--radius-lg)', boxShadow: 'var(--shadow-rest)', display: 'flex', flexDirection: 'column', gap: 'var(--s-8)' }}>
         {/* Horizontal Line for Desktop progress */}
         <div className="hidden md:block absolute top-[4.2rem] left-16 right-16 h-0.5 bg-border-hover -z-10">
           <div
-            className="h-full bg-brand transition-all duration-500 ease-out"
-            style={{ width: `${getPhaseProgressPercent() - 12}%` }}
+            className="h-full bg-brand transition-all ease-out"
+            style={{ width: `${getPhaseProgressPercent() - 12}%`, transitionDuration: '500ms' }}
           />
         </div>
 
@@ -121,23 +121,25 @@ export default function Roadmap() {
                 key={item.phase}
                 id={`roadmap-node-${idx}`}
                 onClick={() => setActivePhaseIndex(idx)}
-                className={`flex flex-col items-center text-center p-4 rounded-xl border transition-all duration-300 relative ${
+                className={`flex flex-col items-center text-center p-4 border transition-all relative ${
                   isSelected
-                    ? `${itemTheme.bgLight} ${itemTheme.borderActive} shadow-md ring-1 ${itemTheme.glowActive}`
+                    ? `${itemTheme.bgLight} ${itemTheme.borderActive} ring-1 ${itemTheme.glowActive}`
                     : isCompleted
                     ? 'bg-mint/5 border-mint/30 text-mint-deep dark:text-mint'
                     : 'bg-bg border-border text-fg-3 hover:bg-bg-muted hover:border-brand/30'
                 }`}
+                style={{ borderRadius: 'var(--radius)', transitionDuration: 'var(--dur-slow)', boxShadow: isSelected ? 'var(--shadow-md)' : 'none' }}
               >
                 {/* Phase state icon */}
                 <div
-                  className={`flex h-10 w-10 items-center justify-center rounded-full border mb-3 transition-transform duration-300 ${
+                  className={`flex h-10 w-10 items-center justify-center rounded-full border mb-3 transition-transform ${
                     isSelected
-                      ? `${itemTheme.iconGradient} scale-110 shadow-lg`
+                      ? `${itemTheme.iconGradient} scale-110`
                       : isCompleted
                       ? 'bg-mint/10 text-mint-deep dark:text-mint border-mint/30'
                       : 'bg-bg-muted text-fg-3 border-border-hover'
                   }`}
+                  style={{ transitionDuration: 'var(--dur-slow)', boxShadow: isSelected ? 'var(--shadow-lg)' : 'none' }}
                 >
                   {isCompleted ? <Check className="h-4.5 w-4.5" strokeWidth={2} /> : <PhaseIcon className="h-4.5 w-4.5" strokeWidth={1.75} />}
                 </div>
@@ -168,28 +170,28 @@ export default function Roadmap() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8" id="selected-phase-detail-sheet">
         {/* Left Aspect: Objectives list */}
         <div className="lg:col-span-7 space-y-6">
-          <div className="rounded-xl border border-border bg-bg-warm p-6 sm:p-8 space-y-5 shadow-sm">
+          <div className="yds-card-warm p-6 sm:p-8" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--s-5)' }}>
             <div className="flex items-center space-x-3 border-b border-border pb-4">
-              <div className={`flex h-11 w-11 items-center justify-center rounded-lg ${activeTheme.bgMedium} ${activeTheme.accentColor} border ${activeTheme.border}`}>
+              <div className={`flex h-11 w-11 items-center justify-center ${activeTheme.bgMedium} ${activeTheme.accentColor} border ${activeTheme.border}`} style={{ borderRadius: 'var(--radius-sm)' }}>
                 <ActiveIconComponent className="h-5.5 w-5.5" strokeWidth={1.75} />
               </div>
               <div>
                 <span className={`font-mono text-[10px] uppercase font-bold ${activeTheme.accentColor} tracking-wider block mb-1`}>
                   MỤC TIÊU CHI TIẾT — {activePhase.phase}
                 </span>
-                <h3 className="font-impact text-xl font-bold text-fg-1">{activePhase.title}</h3>
+                <h3 className="text-fg-1" style={{ font: 'var(--type-h3)' }}>{activePhase.title}</h3>
               </div>
             </div>
 
             {/* Time label block */}
-            <div className="rounded-lg bg-bg-muted border border-border px-4 py-2.5 inline-flex items-center space-x-2">
+            <div className="bg-bg-muted border border-border px-4 py-2.5 inline-flex items-center space-x-2" style={{ borderRadius: 'var(--radius-sm)' }}>
               <span className={`h-2 w-2 rounded-full ${activeTheme.dot} animate-pulse`} />
               <span className="font-mono text-xs text-fg-1 font-bold">{activePhase.time}</span>
             </div>
 
             {/* Objectives bullets */}
-            <div className="space-y-3 pt-2">
-              <ul className="space-y-4">
+            <div className="pt-2">
+              <ul style={{ display: 'flex', flexDirection: 'column', gap: 'var(--s-4)' }}>
                 {activePhase.objectives.map((obj, idx) => (
                   <li key={idx} className="flex items-start text-xs text-fg-2 leading-relaxed font-medium">
                     <span className={`mr-3 mt-1.5 flex h-2 w-2 shrink-0 rounded-full ${activeTheme.dot}`} />
@@ -204,15 +206,15 @@ export default function Roadmap() {
         {/* Right Aspect: Coaching Focus & Checkpoints */}
         <div className="lg:col-span-5 space-y-6">
           {/* Coaching Focus Block */}
-          <div className="rounded-xl border border-border bg-bg-warm p-6 space-y-4 shadow-sm">
+          <div className="yds-card-warm p-6" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--s-4)' }}>
             <span className="font-mono text-[10px] uppercase tracking-wider text-fg-3 font-bold block border-b border-border pb-2">
               COACHING FOCUS (TẦM NHÌN HUẤN LUYỆN)
             </span>
-            <div className="space-y-3.5 pt-1">
+            <div className="pt-1" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--s-3)' }}>
               {activePhase.coachingFocus.map((focus, idx) => {
                 const isPO = focus.startsWith('Product') || focus.startsWith('PO');
                 return (
-                  <div key={idx} className="rounded-lg bg-bg-muted border border-border p-3 space-y-1">
+                  <div key={idx} className="bg-bg-muted border border-border p-3 space-y-1" style={{ borderRadius: 'var(--radius-sm)' }}>
                     <span className={`font-mono text-[9px] uppercase font-bold ${isPO ? 'text-iris-deep dark:text-iris' : 'text-brand'}`}>
                       {isPO ? 'PO COACH FOCUS' : 'TECH LEAD COACH FOCUS'}
                     </span>
@@ -228,19 +230,19 @@ export default function Roadmap() {
           </div>
 
           {/* Checkpoints Checklist */}
-          <div className="rounded-xl border border-mint/20 bg-mint/5 p-6 space-y-4">
+          <div className="border border-mint/20 bg-mint/5 p-6" style={{ borderRadius: 'var(--radius)', display: 'flex', flexDirection: 'column', gap: 'var(--s-4)' }}>
             <div className="flex items-center space-x-2 text-mint-deep dark:text-mint border-b border-mint/20 pb-2">
               <Flag className="h-4.5 w-4.5" strokeWidth={1.75} />
               <span className="font-mono text-[10px] uppercase tracking-wider font-bold">
                 CHECKPOINT NGHIỆM THU GIAI ĐOẠN
               </span>
             </div>
-            <div className="space-y-3 text-[11px] text-fg-2 font-medium">
+            <div className="text-[11px] text-fg-2 font-medium">
               Đạt những mốc cứng dưới đây để tiến tục mở khóa giai đoạn phát triển kế tiếp:
             </div>
-            <ul className="space-y-3">
+            <ul style={{ display: 'flex', flexDirection: 'column', gap: 'var(--s-3)' }}>
               {activePhase.checkpoints.map((checkpoint, idx) => (
-                <li key={idx} className="flex items-start text-xs text-fg-2 bg-bg border border-mint/10 rounded-lg p-2.5 space-x-2.5 shadow-sm">
+                <li key={idx} className="flex items-start text-xs text-fg-2 bg-bg border border-mint/10 p-2.5 space-x-2.5" style={{ borderRadius: 'var(--radius-sm)', boxShadow: 'var(--shadow-rest)' }}>
                   <Check className="h-4 w-4 text-mint-deep dark:text-mint bg-mint/10 rounded-full border border-mint/20 p-0.5 mt-0.5 shrink-0" strokeWidth={2} />
                   <span className="leading-relaxed font-medium">{checkpoint}</span>
                 </li>

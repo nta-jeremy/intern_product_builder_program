@@ -172,50 +172,54 @@ export default function WorkingJournal() {
   };
 
   return (
-    <div className="space-y-10 py-6 font-sans text-fg-2" id="working-journal-layout">
+    <div className="py-6 font-sans text-fg-2" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--s-10)' }} id="working-journal-layout">
       {/* Page Header */}
-      <div className="space-y-4 border-b border-border pb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <div className="space-y-2">
+      <div className="border-b border-border pb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4" style={{ display: 'flex' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--s-2)' }}>
           <div className="s-eyebrow">
             <FileEdit className="h-4 w-4 mr-1" strokeWidth={1.75} />
             INTERN WORKING JOURNAL
           </div>
-          <h2 className="text-2xl sm:text-4xl font-impact font-extrabold text-fg-1 tracking-tight">
+          <h2 className="text-fg-1" style={{ font: 'var(--type-h2)', letterSpacing: '-0.018em' }}>
             Sổ Tay Thực Tập — Journal Tự Học
           </h2>
-          <p className="text-sm text-fg-2 max-w-2xl leading-relaxed">
+          <p className="max-w-2xl" style={{ font: 'var(--type-body-sm)', color: 'var(--fg-2)', lineHeight: '1.7' }}>
             Mỗi Intern là chủ thể tự quản lý và ghi chép hành trình thực chiến. 
             Điền hoàn chỉnh các biểu mẫu quy trình là điều kiện tiên quyết để tham gia bảo vệ cuối kỳ. 
             Bạn có thể phối hợp gõ ý tưởng thô và dùng gõ phím AI đồng hành để chuẩn hóa.
           </p>
         </div>
 
-        {/* Global Action controls */}
+        {/* Global Action controls — CTA pattern */}
         <div className="flex flex-wrap items-center gap-2 self-start sm:self-center">
           <button
             onClick={handleLoadSample}
-            className="flex items-center space-x-1.5 rounded-lg border border-border bg-bg-muted px-3 py-1.5 text-xs font-medium text-fg-2 transition-colors hover:bg-border hover:border-border-hover cursor-pointer"
+            className="cta cta-secondary cta-sm"
+            style={{ height: '32px', padding: '0 12px', fontSize: '12px', borderRadius: 'var(--radius-sm)' }}
           >
             <RefreshCw className="h-3.5 w-3.5 text-brand" strokeWidth={1.75} />
             <span>Nạp Mẫu</span>
           </button>
           <button
             onClick={clearForm}
-            className="flex items-center space-x-1.5 rounded-lg border border-gap/20 bg-gap/10 px-3 py-1.5 text-xs font-medium text-gap transition-colors hover:bg-gap/20 hover:border-gap/30 cursor-pointer"
+            className="flex items-center space-x-1.5 border border-gap/20 bg-gap/10 px-3 py-1.5 text-xs font-medium text-gap transition-colors hover:bg-gap/20 hover:border-gap/30 cursor-pointer"
+            style={{ borderRadius: 'var(--radius-sm)', transitionDuration: 'var(--dur)' }}
           >
             <Trash2 className="h-3.5 w-3.5" strokeWidth={1.75} />
             <span>Xóa Biểu Mẫu</span>
           </button>
           <button
             onClick={handleCopyToClipboard}
-            className="flex items-center space-x-1.5 rounded-lg border border-border bg-bg-muted px-3 py-1.5 text-xs font-medium text-fg-2 transition-colors hover:bg-border hover:border-border-hover cursor-pointer"
+            className="cta cta-secondary cta-sm"
+            style={{ height: '32px', padding: '0 12px', fontSize: '12px', borderRadius: 'var(--radius-sm)' }}
           >
             <Copy className="h-3.5 w-3.5" strokeWidth={1.75} />
             <span>Sao Chép</span>
           </button>
           <button
             onClick={handleDownloadMarkdown}
-            className="flex items-center space-x-1.5 rounded-lg bg-brand px-3 py-1.5 text-xs font-bold text-white transition-colors hover:opacity-90 cursor-pointer shadow-sm"
+            className="cta cta-primary cta-sm"
+            style={{ height: '32px', padding: '0 12px', fontSize: '12px', borderRadius: 'var(--radius-sm)', boxShadow: 'var(--shadow-rest)' }}
           >
             <Download className="h-3.5 w-3.5" strokeWidth={2} />
             <span>Tải Xuống .MD</span>
@@ -225,13 +229,13 @@ export default function WorkingJournal() {
 
       {/* Temp Notification Toast */}
       {notification && (
-        <div className={`fixed bottom-6 right-6 z-50 rounded-xl border p-4 shadow-md flex items-center space-x-3 text-xs max-w-sm transition-all duration-300 animate-slide-in ${
+        <div className={`fixed bottom-6 right-6 z-50 border p-4 flex items-center space-x-3 text-xs max-w-sm animate-slide-in ${
           notification.type === 'success'
             ? 'bg-mint/10 text-mint-deep border-mint/30'
             : notification.type === 'error'
             ? 'bg-gap/10 text-gap border-gap/30'
             : 'bg-bg-muted text-fg-1 border-border'
-        }`}>
+        }`} style={{ borderRadius: 'var(--radius)', boxShadow: 'var(--shadow-md)' }}>
           {notification.type === 'success' ? (
             <CheckCircle2 className="h-5 w-5 text-mint shrink-0" strokeWidth={1.75} />
           ) : (
@@ -245,7 +249,7 @@ export default function WorkingJournal() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Left Aspect: Selector card list */}
         <div className="lg:col-span-4 space-y-4">
-          <div className="rounded-xl border border-border bg-bg-warm p-5 space-y-4 shadow-sm">
+          <div className="yds-card-warm p-5" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--s-4)' }}>
             <span className="font-mono text-xs uppercase text-fg-3 tracking-wider block font-semibold border-b border-border pb-2">
               DANH MỤC 5 BIỂU MẪU ĐẦU RA
             </span>
@@ -257,11 +261,12 @@ export default function WorkingJournal() {
                     key={t.id}
                     id={`journal-tab-trigger-${t.id}`}
                     onClick={() => setActiveTemplateId(t.id)}
-                    className={`flex items-start text-left rounded-lg p-3 transition-all duration-200 border cursor-pointer ${
+                    className={`flex items-start text-left p-3 transition-all border cursor-pointer ${
                       isSelected
-                        ? 'bg-brand/5 border-brand/30 text-fg-1 shadow-sm'
+                        ? 'bg-brand/5 border-brand/30 text-fg-1'
                         : 'border-transparent text-fg-3 hover:bg-bg-muted hover:text-fg-2'
                     }`}
+                    style={{ borderRadius: 'var(--radius-sm)', transitionDuration: 'var(--dur)', boxShadow: isSelected ? 'var(--shadow-rest)' : 'none' }}
                   >
                     <FileText strokeWidth={1.75} className={`h-4.5 w-4.5 mr-3 mt-0.5 shrink-0 ${isSelected ? 'text-brand' : 'text-fg-3'}`} />
                     <div>
@@ -277,7 +282,7 @@ export default function WorkingJournal() {
           </div>
 
           {/* AI Helper banner */}
-          <div className="insight mt-0! shadow-sm!">
+          <div className="insight mt-0!">
             <div className="insight-label text-[10px]! mb-2! flex items-center space-x-2">
               <Sparkles className="h-3.5 w-3.5 text-brand" strokeWidth={1.75} />
               <span>HỖ TRỢ VIẾT BẰNG AI</span>
@@ -291,16 +296,16 @@ export default function WorkingJournal() {
 
         {/* Right Aspect: Interactive Form Editor */}
         <div className="lg:col-span-8 space-y-6">
-          <div className="rounded-xl border border-border bg-bg-warm p-6 sm:p-8 space-y-6 shadow-sm">
+          <div className="yds-card-warm p-6 sm:p-8" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--s-6)' }}>
             <div className="border-b border-border pb-4 space-y-2">
-              <h3 className="font-impact text-lg font-bold text-fg-1 tracking-tight">{activeTemplate.title}</h3>
+              <h3 className="text-fg-1 tracking-tight" style={{ font: 'var(--type-h3)' }}>{activeTemplate.title}</h3>
               <p className="font-sans text-xs text-fg-3 leading-relaxed font-medium">
                 {activeTemplate.description}
               </p>
             </div>
 
             {/* Render Form Inputs */}
-            <div className="space-y-6">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--s-6)' }}>
               {activeTemplate.fields.map((f) => {
                 const currentVal = formData[activeTemplateId]?.[f.key] || '';
                 const isLoading = aiLoadingField === f.key;
@@ -315,11 +320,12 @@ export default function WorkingJournal() {
                         <button
                           onClick={() => handleAiAssist(f.key, f.label)}
                           disabled={isLoading || !currentVal.trim()}
-                          className={`flex items-center space-x-1.5 rounded-md px-2.5 py-1 text-[10px] font-mono font-bold border transition-all ${
+                          className={`flex items-center space-x-1.5 px-2.5 py-1 text-[10px] font-mono font-bold border transition-all ${
                             currentVal.trim()
                               ? 'bg-brand/10 text-brand border-brand/20 hover:bg-brand/20 cursor-pointer'
                               : 'bg-bg-muted text-fg-3 border-border cursor-not-allowed'
                           }`}
+                          style={{ borderRadius: 'var(--radius-xs)', transitionDuration: 'var(--dur)' }}
                           title="Gõ từ khóa/ý tưởng nháp trước rồi bấm nút này để AI viết hộ bài bản nhất"
                         >
                           {isLoading ? (
@@ -332,7 +338,7 @@ export default function WorkingJournal() {
                       )}
                     </div>
 
-                    {/* Simple text input vs textarea */}
+                    {/* Simple text input vs textarea — using YDS form tokens */}
                     {f.type === 'text' ? (
                       <input
                         id={`input-${activeTemplateId}-${f.key}`}
@@ -340,7 +346,8 @@ export default function WorkingJournal() {
                         value={currentVal}
                         onChange={(e) => handleFieldChange(f.key, e.target.value)}
                         placeholder={f.placeholder}
-                        className="w-full bg-bg border border-border rounded-lg px-3.5 py-2.5 text-xs text-fg-1 placeholder:text-fg-3 focus:outline-none focus:border-brand/50 focus:ring-1 focus:ring-brand/20 transition-all font-sans font-medium"
+                        className="yds-input"
+                        style={{ fontSize: '13px', height: 'var(--input-h)' }}
                       />
                     ) : (
                       <textarea
@@ -349,9 +356,8 @@ export default function WorkingJournal() {
                         onChange={(e) => handleFieldChange(f.key, e.target.value)}
                         placeholder={f.placeholder}
                         rows={5}
-                        className={`w-full bg-bg border rounded-lg px-3.5 py-2.5 text-xs text-fg-1 placeholder:text-fg-3 focus:outline-none focus:border-brand/50 focus:ring-1 focus:ring-brand/20 transition-all font-sans leading-relaxed font-medium ${
-                          isLoading ? 'border-brand/40 opacity-70 animate-pulse' : 'border-border'
-                        }`}
+                        className={`yds-textarea ${isLoading ? 'opacity-70 animate-pulse' : ''}`}
+                        style={{ fontSize: '13px', borderColor: isLoading ? 'color-mix(in srgb, var(--brand) 40%, transparent)' : undefined }}
                       />
                     )}
                   </div>

@@ -40,19 +40,19 @@ export default function SuccessProfile() {
   const avgScore = scoreKeys.reduce((sum, k) => sum + selfScore[k], 0) / scoreKeys.length;
 
   return (
-    <div className="space-y-10 py-6" id="success-profile-container">
+    <div className="py-6" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--s-10)' }} id="success-profile-container">
       {/* Introduction Header Banner */}
-      <div className="relative overflow-hidden rounded-2xl border border-border bg-bg-warm p-6 sm:p-8 shadow-sm">
+      <div className="relative overflow-hidden border border-border bg-bg-warm p-6 sm:p-8" style={{ borderRadius: 'var(--radius-lg)', boxShadow: 'var(--shadow-rest)' }}>
         <div className="absolute top-0 right-0 -mr-16 -mt-16 h-64 w-64 rounded-full bg-brand/5 blur-3xl"></div>
-        <div className="relative z-10 max-w-3xl space-y-4">
+        <div className="relative z-10 max-w-3xl" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--s-4)' }}>
           <div className="s-eyebrow">
             <Star className="h-4 w-4 mr-1" strokeWidth={1.75} />
             INTERN SUCCESS PROFILE
           </div>
-          <h2 className="font-impact text-xl sm:text-3xl font-bold tracking-tight text-fg-1 leading-tight">
+          <h2 className="text-fg-1 leading-tight" style={{ font: 'var(--type-h2)', letterSpacing: '-0.018em' }}>
             Chúng tôi không chỉ đánh giá sản phẩm ban đầu — Chúng tôi rèn giũa cách bạn tư duy.
           </h2>
-          <p className="font-sans text-sm text-fg-2 leading-relaxed">
+          <p style={{ font: 'var(--type-body-sm)', color: 'var(--fg-2)', lineHeight: '1.7' }}>
             Đây là hệ 5 tiêu chí năng lực hành vi cốt lõi để đánh giá độ chín chắn của một **YODY Product Builder**. 
             Nó đo lường cách bạn tự học, thấu cảm bài toán kinh tế, chủ động tìm lời giải và cộng tác song hành cùng AI trong kỷ nguyên mới. 
             Đạt chuẩn bộ tiêu chí này là chìa khóa vàng để bạn được chuyển đổi trực tiếp sang nhân sự chính thức (Full-Time conversion) sau 3 tháng thực tập.
@@ -61,9 +61,9 @@ export default function SuccessProfile() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-        {/* Left Side: Interactive Selector & Self Assessment Radar Checklist */}
+        {/* Left Side: Interactive Selector & Self Assessment */}
         <div className="lg:col-span-4 space-y-6">
-          <div className="rounded-xl border border-border bg-bg-warm p-5 space-y-4 shadow-sm">
+          <div className="yds-card-warm p-5" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--s-4)' }}>
             <span className="font-mono text-xs uppercase text-fg-3 tracking-wider block font-semibold border-b border-border pb-2">
               BỘ 5 TIÊU CHÍ CỐT LÕI
             </span>
@@ -75,11 +75,12 @@ export default function SuccessProfile() {
                     key={item.key}
                     id={`profile-selector-${item.key}`}
                     onClick={() => setSelectedProfile(item.key)}
-                    className={`flex items-start text-left rounded-lg p-3 transition-all duration-200 border cursor-pointer ${
+                    className={`flex items-start text-left p-3 transition-all border cursor-pointer ${
                       isSelected
-                        ? 'bg-brand/5 border-brand/30 text-fg-1 shadow-sm'
+                        ? 'bg-brand/5 border-brand/30 text-fg-1'
                         : 'border-transparent text-fg-3 hover:bg-bg-muted hover:text-fg-2'
                     }`}
+                    style={{ borderRadius: 'var(--radius-sm)', transitionDuration: 'var(--dur)', boxShadow: isSelected ? 'var(--shadow-rest)' : 'none' }}
                   >
                     <div className={`mr-3 mt-1.5 flex h-2 w-2 rounded-full shrink-0 ${isSelected ? 'bg-brand shadow-glow' : 'bg-border-hover'}`} />
                     <div>
@@ -93,12 +94,12 @@ export default function SuccessProfile() {
           </div>
 
           {/* Interactive Self-Assessment Simulator */}
-          <div className="rounded-xl border border-border bg-bg-warm p-5 space-y-5 shadow-sm">
+          <div className="yds-card-warm p-5" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--s-5)' }}>
             <div className="flex items-center justify-between border-b border-border pb-3">
               <span className="font-mono text-xs uppercase text-fg-3 tracking-wider block font-semibold">
                 TỰ ĐÁNH GIÁ NHANH
               </span>
-              <div className="rounded-full bg-brand/10 px-2 py-0.5 font-mono text-[10px] text-brand border border-brand/20 font-bold">
+              <div className="font-mono text-[10px] text-brand border border-brand/20 font-bold" style={{ borderRadius: 'var(--radius-pill)', background: 'color-mix(in srgb, var(--brand) 10%, transparent)', padding: '2px 8px' }}>
                 Avg: {avgScore.toFixed(1)}/5
               </div>
             </div>
@@ -107,7 +108,7 @@ export default function SuccessProfile() {
               Kéo thanh trượt để tự chấm điểm năng lực hành vi của bạn cho từng khía cạnh thực tập sinh.
             </p>
 
-            <div className="space-y-4">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--s-4)' }}>
               {SUCCESS_PROFILE_DATA.map((item) => {
                 const score = selfScore[item.key] || 3;
                 const activeLabel = getScoreLabel(score);
@@ -115,7 +116,7 @@ export default function SuccessProfile() {
                   <div key={item.key} className="space-y-1.5" id={`self-assess-${item.key}`}>
                     <div className="flex items-center justify-between text-[11px]">
                       <span className="font-sans font-medium text-fg-2">{item.dimension}</span>
-                      <span className={`px-1.5 py-0.5 rounded text-[9px] border font-mono font-bold ${activeLabel.color}`}>
+                      <span className={`px-1.5 py-0.5 text-[9px] border font-mono font-bold ${activeLabel.color}`} style={{ borderRadius: 'var(--radius-xs)' }}>
                         {activeLabel.text}
                       </span>
                     </div>
@@ -126,14 +127,14 @@ export default function SuccessProfile() {
                       step="1"
                       value={score}
                       onChange={(e) => handleScoreChange(item.key, parseInt(e.target.value))}
-                      className="w-full h-1 bg-border rounded-lg appearance-none cursor-pointer" style={{ accentColor: 'var(--brand)' }}
+                      className="w-full"
                     />
                   </div>
                 );
               })}
             </div>
 
-            <div className="rounded-lg bg-bg-muted border border-border p-3 text-[11px] text-fg-3 space-y-1.5">
+            <div className="bg-bg-muted border border-border p-3 text-[11px] text-fg-3 space-y-1.5" style={{ borderRadius: 'var(--radius-sm)' }}>
               <span className="font-sans font-bold text-fg-1 block">Kết quả mô phỏng:</span>
               {avgScore >= 4.0 ? (
                 <p className="text-mint font-medium text-xs">
@@ -154,15 +155,15 @@ export default function SuccessProfile() {
 
         {/* Right Side: Showcase Selection Tab Content with Details */}
         <div className="lg:col-span-8 flex flex-col justify-between">
-          <div className="rounded-xl border border-border bg-bg-warm p-6 sm:p-8 space-y-6 flex-1 min-h-[450px] shadow-sm">
+          <div className="yds-card-warm p-6 sm:p-8 flex-1 min-h-[450px]" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--s-6)' }}>
             {/* Aspect Title & Subheader */}
-            <div className="space-y-3 border-b border-border pb-5">
+            <div className="border-b border-border pb-5" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--s-3)' }}>
               <div className="flex items-center space-x-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-brand/10 text-brand border border-brand/20">
+                <div className="flex h-10 w-10 items-center justify-center bg-brand/10 text-brand border border-brand/20" style={{ borderRadius: 'var(--radius-sm)' }}>
                   <Award className="h-5 w-5" strokeWidth={1.75} />
                 </div>
                 <div>
-                  <h3 className="font-impact text-xl font-bold text-fg-1 tracking-tight">{currentItem.dimension}</h3>
+                  <h3 className="text-fg-1 tracking-tight" style={{ font: 'var(--type-h3)' }}>{currentItem.dimension}</h3>
                   <p className="font-mono text-[10px] uppercase tracking-widest text-fg-3 font-bold">Khía cạnh đánh giá cốt lõi</p>
                 </div>
               </div>
@@ -174,7 +175,7 @@ export default function SuccessProfile() {
             {/* Grid for Good Behaviors vs Bad Behaviors */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
               {/* GOOD SECTION */}
-              <div className="space-y-4 rounded-xl border border-mint/20 bg-mint/5 p-4 sm:p-5">
+              <div className="border border-mint/20 bg-mint/5 p-4 sm:p-5" style={{ borderRadius: 'var(--radius)', display: 'flex', flexDirection: 'column', gap: 'var(--s-4)' }}>
                 <div className="flex items-center space-x-2 text-mint font-sans text-xs font-bold uppercase tracking-wider">
                   <CheckCircle2 className="h-4 w-4" strokeWidth={1.75} />
                   <span>BIỂU HIỆN ĐƯỢC ĐÁNH GIÁ CAO ★</span>
@@ -193,7 +194,7 @@ export default function SuccessProfile() {
               </div>
 
               {/* BAD SECTION */}
-              <div className="space-y-4 rounded-xl border border-gap/20 bg-gap/5 p-4 sm:p-5">
+              <div className="border border-gap/20 bg-gap/5 p-4 sm:p-5" style={{ borderRadius: 'var(--radius)', display: 'flex', flexDirection: 'column', gap: 'var(--s-4)' }}>
                 <div className="flex items-center space-x-2 text-gap font-sans text-xs font-bold uppercase tracking-wider">
                   <XCircle className="h-4 w-4" strokeWidth={1.75} />
                   <span>BIỂU HIỆN CẢNH BÁO / CHƯA ĐẠT</span>
