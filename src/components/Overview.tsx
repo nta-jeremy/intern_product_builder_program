@@ -40,9 +40,9 @@ export default function Overview() {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 pt-6 border-t border-border mt-8" id="hero-kpi-bar">
             {[
               { val: '4 Sản phẩm', desc: 'Thực tế từ số 0 tới MVP' },
-              { val: '3 Tháng', desc: 'Đồng hành huấn luyện 1:1' },
-              { val: 'AI-First', desc: 'Gấp 3 hiệu suất bằng công cụ' },
-              { val: 'Ship Fast', desc: 'Liên lặp & bám sát nhu cầu' },
+              { val: '3 Tháng', desc: 'Đồng hành huấn luyện' },
+              { val: 'AI-First', desc: 'X2 hiệu suất bằng công cụ' },
+              { val: 'Ship Fast', desc: 'Tốc độ & bám sát nhu cầu' },
             ].map((metric, idx) => (
               <div key={idx} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--s-1)' }}>
                 <span className="text-fg-1 block" style={{ font: 'var(--type-num)', letterSpacing: '-0.02em' }}>{metric.val}</span>
@@ -68,7 +68,7 @@ export default function Overview() {
           </div>
 
           <p className="text-fg-2 leading-relaxed border-t border-border pt-4" style={{ font: 'var(--type-body-sm)', fontSize: '13px' }}>
-            Phát triển trọn vẹn 4 sản phẩm theo quy chuẩn kỹ thuật và tư duy kinh doanh từ ý tưởng ban đầu đến phát hành MVP trong vòng 3 tháng.
+            Phát triển trọn vẹn sản phẩm theo quy chuẩn kỹ thuật và tư duy kinh doanh từ ý tưởng ban đầu đến phát hành MVP trong vòng 3 tháng.
             Mỗi dự án trải qua 4 giai đoạn huấn luyện (Discover → Build → Validate → Ship) được hướng dẫn chi tiết bởi Product Owner và Tech Lead.
             Chúng tôi chú trọng vào việc nâng tầm năng lực tự quyết định, tự học sâu và ứng dụng hiệu quả các nền tảng trí tuệ nhân tạo (Claude, Cursor, n8n) của bạn.
           </p>
@@ -81,7 +81,7 @@ export default function Overview() {
                 'Tư duy bài toán (Problem Thinking)',
                 'Kỹ nghệ gõ phím cùng AI (Vibe Coding)',
                 'Phản hồi nhanh (Feedback loops)',
-                'Làm chủ mã nguồn (Product Ownership)',
+                'Làm chủ sản phẩm (Product Ownership)',
               ].map((item, idx) => (
                 <div key={idx} className="flex items-center space-x-2 bg-bg-muted border border-border p-2" style={{ borderRadius: 'var(--radius-sm)' }}>
                   <CheckCircle strokeWidth={1.75} className="h-4 w-4 text-brand shrink-0" />
@@ -96,7 +96,7 @@ export default function Overview() {
         <div className="insight mt-0!">
           <div className="insight-label">Kết luận Tầm nhìn</div>
           <div className="insight-body">
-            Mục tiêu cuối cùng là <em>biến bạn thành Builder</em> có khả năng tự chủ toàn trình. 
+            Mục tiêu cuối cùng là <em>giúp bạn trở thành Product Builder</em> có khả năng tự chủ toàn trình. 
             Không chỉ làm chủ công cụ AI, bạn còn thấu hiểu Product Thinking và sở hữu sản phẩm hoạt động thực 
             mang lại giá trị trực tiếp cho YODY.
           </div>
@@ -111,7 +111,7 @@ export default function Overview() {
                 </li>
                 <li className="flex items-start">
                   <span className="text-gold mr-1 mt-0.5 shrink-0">▪</span>
-                  <span className="leading-relaxed font-medium">Lộ trình convert fulltime.</span>
+                  <span className="leading-relaxed font-medium">Lộ trình phát triển rõ ràng.</span>
                 </li>
               </ul>
             </div>
@@ -120,11 +120,11 @@ export default function Overview() {
               <ul className="space-y-1.5 text-[11px] text-fg-3">
                 <li className="flex items-start">
                   <span className="text-gold mr-1 mt-0.5 shrink-0">▪</span>
-                  <span className="leading-relaxed font-medium">HR: Tối ưu bộ ATS.</span>
+                  <span className="leading-relaxed font-medium">HR: Hệ thống ATS.</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-gold mr-1 mt-0.5 shrink-0">▪</span>
-                  <span className="leading-relaxed font-medium">QA: Tự động rà lỗi.</span>
+                  <span className="leading-relaxed font-medium">QA: Hệ thống QC AI Agent tự động.</span>
                 </li>
               </ul>
             </div>

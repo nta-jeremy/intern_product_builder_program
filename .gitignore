@@ -1,7 +1,11 @@
+coverage/
+*.log
 .DS_Store
 
 # Build outputs
+dist/
 src/dist/
+build/
 
 # Dependencies
 node_modules/

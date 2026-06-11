@@ -1,13 +1,23 @@
 {
-  "installCommand": "cd src && npm install",
-  "buildCommand": "cd src && npm run build:vite",
+  "installCommand": "npm install",
+  "buildCommand": "npm run build:vite",
   "outputDirectory": "src/dist",
   "framework": null,
   "redirects": [
-    { "source": "/intro", "destination": "/intro/", "permanent": false }
+    {
+      "source": "/intro",
+      "destination": "/intro/",
+      "permanent": false
+    }
   ],
   "rewrites": [
-    { "source": "/api/:path*", "destination": "/api/:path*" },
-    { "source": "/(.*)", "destination": "/index.html" }
+    {
+      "source": "/api/:path*",
+      "destination": "/api/:path*"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
   ]
 }

@@ -46,7 +46,7 @@
 |  |  |  |  |
 |:--:|:--:|:--:|:--:|
 | **Khía Cạnh** | **Mô Tả** | **Biểu Hiện Tốt** | **Biểu Hiện Chưa Đạt** |
-| **Builder Mindset** | Ship 4 sản phẩm thực từ ý tưởng đến tay người dùng. Không sợ lặp lại. Embrace iteration. | Ship đều, có feedback loop, biết pivot khi cần | Chờ 'hoàn hảo' mới ship. Over-engineer. Sợ sai. |
+| **Builder Mindset** | Ship sản phẩm thực từ ý tưởng đến tay người dùng. Không sợ lặp lại. Embrace iteration. | Ship đều, có feedback loop, biết pivot khi cần | Chờ 'hoàn hảo' mới ship. Over-engineer. Sợ sai. |
 | **AI-First Thinking** | Sử dụng AI tools thành thạo: Claude, Cursor, n8n… làm đòn bẩy, không phải làm thay. | \>70% feature được build có AI assist, viết prompt tốt | Dùng AI như Google search. Copy-paste mù quáng. |
 | **Business Thinking** | Trả lời được WHY (tại sao làm?), WHO (ai dùng?), HOW MUCH (đo được gì?) cho mỗi sản phẩm. | Mọi feature đều có lý do rõ ràng. Biết từ chối scope creep. | Build vì 'thấy hay'. Không biết ai cần cái này. |
 | **Learning Agility** | Tự học công cụ mới trong 1-2 tuần. Không cần spoon-feed từng bước. Doc-driven learning. | Gặp tool mới → tự research, thử, fail fast, hỏi thông minh | Chờ tutorial cụ thể. Hỏi trước khi thử. |

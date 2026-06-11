@@ -7,11 +7,11 @@ import { ClientScripts } from "./client-scripts";
 export const metadata: Metadata = {
   title: "YODY Intern Product Builder — Chương Trình 3 Tháng Thực Chiến",
   description:
-    "YODY Intern Product Builder — chương trình thực tập 3 tháng xây dựng 4 sản phẩm thực tế với AI-First, Vibe Coding và Ship Fast. Tuyển dụng, QC, Thẩm định, Báo cáo.",
+    "YODY Intern Product Builder — chương trình thực tập 3 tháng xây dựng sản phẩm thực tế với AI-First, Vibe Coding và Ship Fast. Tuyển dụng, QC, Thẩm định, Báo cáo.",
   openGraph: {
     title: "YODY Intern Product Builder — Chương Trình 3 Tháng Thực Chiến",
     description:
-      "Chương trình thực tập 3 tháng xây dựng 4 sản phẩm thực tế với AI-First, Vibe Coding và Ship Fast.",
+      "Chương trình thực tập 3 tháng xây dựng sản phẩm thực tế với AI-First, Vibe Coding và Ship Fast.",
     type: "website",
   },
 };
