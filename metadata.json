@@ -1,0 +1,6 @@
+{
+  "name": "YODY Intern Product Builder Portal",
+  "description": "Cổng thông tin và công cụ hỗ trợ cho Chương trình Thực tập Intern Product Builder tại YODY - Phiên bản Coaching Lifecycle",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
