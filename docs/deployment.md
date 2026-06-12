@@ -1,58 +1,39 @@
 # Deployment
 
-## Platform
-- **Name:** Vercel
-- **Project:** intern_product_builder_program
-- **Team:** tunganh252s-projects
+## Platform: Vercel
 
 ## URLs
-- **Production:** https://yody-itdx-intern-product-builder.vercel.app
-- **Inspector:** https://vercel.com/tunganh252s-projects/intern_product_builder_program
+- **Production**: https://yody-itdx-intern-product-builder.vercel.app
+- **Vercel Dashboard**: https://vercel.com/tunganh252s-projects/intern_product_builder_program
 
 ## Deploy Command
 ```bash
 vercel --prod --yes
 ```
 
-## Architecture
-- **Frontend:** Vite + React 19 SPA with react-router-dom (URL-based routing)
-- **Intro Page:** Static HTML at `/intro/` (separate from React SPA)
-- **API:** Vercel Serverless Function at `/api/gemini/assist`
-- **Local Dev:** `cd src && npm run dev` (Express server on port 3000)
-
-## Routes
-| Path | Type | Description |
-|------|------|-------------|
-| `/` | React SPA | Overview dashboard |
-| `/profile` | React SPA | Success profile criteria |
-| `/products` | React SPA | 4 product descriptions |
-| `/lifecycle` | React SPA | Coaching lifecycle roadmap |
-| `/scorecard` | React SPA | Evaluation scorecard |
-| `/journal` | React SPA | Working journal with AI assist |
-| `/intro/` | Static HTML | Program introduction page |
-| `/intro` | Redirect → `/intro/` | |
-| `/api/gemini/assist` | Serverless | Gemini AI endpoint |
-
 ## Environment Variables
 | Variable | Required | Description |
 |----------|----------|-------------|
-| `GEMINI_API_KEY` | Yes | Google Gemini AI API key for journal assistance |
+| `GEMINI_API_KEY` | Yes | Gemini AI API key for AI assistant features |
+| `APP_URL` | Recommended | Self-referential URL for OAuth callbacks & API endpoints |
 
-Configure in Vercel Dashboard → Settings → Environment Variables.
+## Project Config (`vercel.json`)
+- **Build Command**: `npm run build:vite`
+- **Output Directory**: `dist/`
+- **Framework**: None (SPA + API routes)
+- **API Routes**: `/api/gemini/assist` (serverless function)
+
+## Custom Domain
+Currently using Vercel auto-assigned domain (`yody-itdx-intern-product-builder.vercel.app`). To add custom domain:
+1. Go to Vercel Dashboard → Project → Domains
+2. Add your domain and configure DNS
 
 ## Rollback
-Vercel Dashboard → Select project → Deployments → Choose older deployment → Click "Promote to Production".
+1. Go to [Vercel Dashboard → Deployments](https://vercel.com/tunganh252s-projects/intern_product_builder_program/deployments)
+2. Find the working deployment
+3. Click "•••" → "Promote to Production"
 
-Or via CLI:
-```bash
-vercel rollback [deployment-url]
-```
-
-## Notes
-- Migrated from Next.js (apps/landing-page) to Vite + React (src/)
-- Express server.ts used only for local development
-- Local dev mounts `src/public/intro/` directly at `/intro` so `/intro` redirects to `/intro/` and serves the static intro page consistently
-- Production API runs as Vercel serverless function (api/gemini/assist.ts)
-- API simulates responses when GEMINI_API_KEY is not configured
-- React Router (react-router-dom v7) for URL-based navigation with scroll restoration
-- Vercel keeps `/intro -> /intro/` as a redirect and serves `/intro/` from the built static output outside the React SPA
+## Troubleshooting
+- **Build fails**: Check `vercel.json#outputDirectory` matches actual build output
+- **API 404**: Ensure `api/*.ts` files exist and `@vercel/node` is installed
+- **Missing env vars**: Configure in Vercel Dashboard → Project → Environment Variables
