@@ -51,19 +51,21 @@ async function startServer() {
     // Build context prompt
     const contextPrompt = contextData ? `\nNgữ cảnh hiện tại của các trường khác trong biểu mẫu là:\n${JSON.stringify(contextData, null, 2)}` : "";
 
-    const promptMessage = `Bạn là Trợ lý AI đồng hành của Chương trình Thực tập Intern Product Builder tại công ty thời trang YODY.
-Nhiệm vụ của bạn là giúp lập trình viên thực tập (Intern Product Builder) hoàn thiện tài liệu nhật ký báo cáo (Working Journal) của họ theo phong cách chuyên nghiệp, thực tế, bám sút sâu sắc hoạt động doanh nghiệp và có "AI-First Mindset".
+    const promptMessage = `Bạn là trợ lý AI của Chương trình Thực tập Intern Product Builder tại YODY.
+Nhiệm vụ của bạn là giúp thực tập sinh viết rõ nội dung trong sổ tay thực tập dựa trên ghi chú và dữ kiện họ cung cấp.
 
 Bạn được yêu cầu viết nội dung cho trường dữ liệu: "${fieldLabel}" (mã trường: "${fieldKey}") thuộc biểu mẫu "${templateId.toUpperCase()}".
 
-Ý tưởng thô (rough notes) của Intern:
+Ghi chú thô của thực tập sinh:
 "${roughNotes}"
 ${contextPrompt}
 
-Yêu cầu cụ thể khi phản hồi:
-1. Viết bằng tiếng Việt có dấu, lập luận logic, ngôn từ phổ thông chuyên nghiệp của một Product Builder (sản phẩm, kịch bản, kpi, testing, feedback loop, pivot, speed).
-2. Tối ưu ý tưởng thô thành một đoạn tài liệu chi tiết, chỉnh chu, sắc bén, hoàn thiện hơn nhưng vẫn giữ đúng bản chất ý tưởng của Intern. Tránh sáo rỗng hoặc từ ngữ quá hoa mỹ. Tập trung vào "Hành động thực tế" và "Đo lường rõ ràng".
-3. Chỉ trả về nội dung đã tối ưu hoàn chỉnh, không kèm theo lời chào, không giải thích dài dòng "Đây là kết quả của bạn...", không dùng markdown bọc ngoài nếu không cần thiết. Trả về văn bản thuần của đoạn tài liệu đã được nâng cấp.`;
+Nguyên tắc phản hồi:
+1. Viết bằng tiếng Việt phổ thông, câu ngắn, rõ ý và phù hợp với nội dung sổ tay thực tập.
+2. Giữ đúng dữ kiện gốc. Không tự bịa số liệu, kết quả, liên kết, phản hồi, bằng chứng hoặc xác nhận chưa được cung cấp.
+3. Nếu ghi chú thiếu dữ kiện quan trọng, nêu rõ phần cần bổ sung thay vì tự suy đoán.
+4. Tập trung vào hành động, kết quả đã có, vướng mắc và bước tiếp theo. Tránh sáo rỗng và từ ngữ khoa trương.
+5. Chỉ trả về nội dung đã biên tập, không kèm lời chào, lời dẫn hoặc Markdown bọc ngoài.`;
 
     if (ai) {
       try {
@@ -86,14 +88,11 @@ Yêu cầu cụ thể khi phản hồi:
       setTimeout(() => {
         let simulatedReply = "";
         if (fieldKey === "problem") {
-          simulatedReply = `[BẢO LƯU GIẢ LẬP] - Hiện tại quy trình kiểm soát biểu mẫu đang thực hiện hoàn toàn thủ công. Nhân viên phải tự tải file và đối chiếu chéo giữa Excel và Slack. Điều này gây tốn dữ liệu thời gian lên tới 4 giờ mỗi ngày cho mỗi bộ phận thẩm định, đồng thời xác suất bỏ sót các sai lệch là 15%, dễ dẫn tới rủi ro thất thoát doanh số. Hệ thống tự động rà soát AI-First sẽ là giải pháp tối ưu hóa dứt điểm bài toán này.`;
+          simulatedReply = `[PHẢN HỒI MÔ PHỎNG] Vấn đề được ghi nhận: ${roughNotes}\n\nCần bổ sung người dùng bị ảnh hưởng, bằng chứng đã thu thập và tác động thực tế nếu các dữ kiện này chưa có trong ghi chú.`;
         } else if (fieldKey === "successMetrics") {
-          simulatedReply = `[BẢO LƯU GIẢ LẬP] - KPI chính cần đạt: 
-1. Cắt giảm 80% thời gian xử lý thủ công (từ 4 giờ xuống còn dưới 30 phút một ngày).
-2. Tỷ lệ phát hiện sai sót dữ liệu biểu mẫu (Accuracy) đạt trên 95% sau giai đoạn huấn luyện lặp lại.
-3. Điểm hài lòng (CSAT) của nhân viên Compliance đạt tối thiểu 4.5/5 điểm sau 2 tuần go-live.`;
+          simulatedReply = `[PHẢN HỒI MÔ PHỎNG] Chỉ số thành công dự kiến: ${roughNotes}\n\nCần bổ sung giá trị ban đầu, mục tiêu, cách đo và thời điểm kiểm tra nếu ghi chú chưa nêu rõ.`;
         } else {
-          simulatedReply = `[BẢO LƯU GIẢ LẬP - API Key chưa cấu hình] Tối ưu hóa cho trường ${fieldLabel}: "${roughNotes}". Đối với Product Builder tại YODY, chúng tôi ưu tiên dữ liệu thực tế, đo lường rõ ràng, kiểm thử nhanh chóng và tích hợp AI đòn bẩy một cách triệt để nhất.`;
+          simulatedReply = `[PHẢN HỒI MÔ PHỎNG - CHƯA CẤU HÌNH API KEY] ${fieldLabel}: ${roughNotes}\n\nHãy bổ sung dữ kiện hoặc bằng chứng còn thiếu trước khi dùng nội dung này trong sổ tay thực tập.`;
         }
         return res.json({ result: simulatedReply, simulated: true });
       }, 1000);

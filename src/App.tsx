@@ -51,10 +51,10 @@ export default function App() {
           <div className="flex flex-col sm:flex-row sm:items-center gap-1.5 sm:gap-4 justify-center sm:justify-start">
             <span style={{ letterSpacing: '0.08em' }}>Công ty Cổ phần Thời Trang YODY</span>
             <span className="hidden sm:inline opacity-50">|</span>
-            <span className="text-brand font-semibold" style={{ letterSpacing: '0.12em' }}>CONFIDENTIAL — Internal Only</span>
+            <span className="text-brand font-semibold" style={{ letterSpacing: '0.12em' }}>BẢO MẬT — CHỈ DÙNG NỘI BỘ</span>
           </div>
           <div>
-            <span style={{ letterSpacing: '0.08em' }}>Bản Quyền © 2026 YODY IT Digital Transformation (ITDX)</span>
+            <span style={{ letterSpacing: '0.08em' }}>Bản quyền © 2026 YODY ITDX</span>
           </div>
         </footer>
       </div>

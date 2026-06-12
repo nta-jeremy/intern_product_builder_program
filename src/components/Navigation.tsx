@@ -21,9 +21,9 @@ import { useTheme } from './ThemeProvider';
 const navItems = [
   { path: '/', label: 'Tổng quan', icon: LayoutDashboard, end: true },
   { path: '/profile', label: 'Tiêu chí cá nhân', icon: Award },
-  { path: '/products', label: 'Chân dung 4 sản phẩm', icon: Boxes },
-  { path: '/lifecycle', label: 'Coaching Lifecycle', icon: Milestone },
-  { path: '/scorecard', label: 'Scorecard đánh giá', icon: CheckSquare },
+  { path: '/products', label: 'Danh mục sản phẩm', icon: Boxes },
+  { path: '/lifecycle', label: 'Vòng lặp phát triển', icon: Milestone },
+  { path: '/scorecard', label: 'Bảng đánh giá', icon: CheckSquare },
   { path: '/journal', label: 'Sổ tay thực tập', icon: FileEdit },
 ];
 
@@ -66,17 +66,17 @@ export default function Navigation() {
       id: 'personal',
       title: 'Định hướng & Sổ tay',
       items: [
-        { path: '/profile', label: 'Tiêu chí cá nhân', desc: 'Định nghĩa chân dung, khung năng lực và mục tiêu.', icon: Award, color: 'text-gold bg-gold/10' },
-        { path: '/journal', label: 'Sổ tay thực tập', desc: 'Nhật ký công việc, học tập và ghi nhận hàng ngày.', icon: FileEdit, color: 'text-brand-light bg-brand/10' },
+        { path: '/profile', label: 'Tiêu chí cá nhân', desc: 'Khung năng lực, kỳ vọng và mục tiêu phát triển.', icon: Award, color: 'text-gold bg-gold/10' },
+        { path: '/journal', label: 'Sổ tay thực tập', desc: 'Ghi lại công việc, bài học và bằng chứng.', icon: FileEdit, color: 'text-brand-light bg-brand/10' },
       ],
     },
     {
       id: 'product-coaching',
       title: 'Sản phẩm & Đánh giá',
       items: [
-        { path: '/products', label: 'Chân dung 4 sản phẩm', desc: 'Chi tiết về 4 dòng sản phẩm cốt lõi đang xây dựng.', icon: Boxes, color: 'text-mint bg-mint/10' },
-        { path: '/lifecycle', label: 'Coaching Lifecycle', desc: 'Progressive Spiral, bản chi tiết và lộ trình ba vòng phát triển.', icon: Milestone, color: 'text-iris bg-iris/10' },
-        { path: '/scorecard', label: 'Scorecard đánh giá', desc: 'Bảng điểm hiệu suất và ghi nhận năng lực định kỳ.', icon: CheckSquare, color: 'text-rose bg-rose/10' },
+        { path: '/products', label: 'Danh mục sản phẩm', desc: 'Bốn lựa chọn sản phẩm để chương trình phân công.', icon: Boxes, color: 'text-mint bg-mint/10' },
+        { path: '/lifecycle', label: 'Vòng lặp phát triển', desc: 'Lộ trình ba tháng với mức tự chủ tăng dần.', icon: Milestone, color: 'text-iris bg-iris/10' },
+        { path: '/scorecard', label: 'Bảng đánh giá', desc: 'Đối chiếu bằng chứng và ghi nhận năng lực.', icon: CheckSquare, color: 'text-rose bg-rose/10' },
       ],
     },
   ];
@@ -190,7 +190,7 @@ export default function Navigation() {
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
             className="flex items-center justify-center border border-border bg-bg-muted px-3.5 py-2 text-fg-3 transition-all hover:bg-border-hover hover:text-fg-1"
             style={{ borderRadius: 'var(--radius)', transitionDuration: 'var(--dur)' }}
-            title="Toggle theme"
+            title="Đổi giao diện sáng hoặc tối"
           >
             {theme === 'dark' ? (
               <Sun className="h-3.5 w-3.5" strokeWidth={1.75} />
@@ -214,7 +214,7 @@ export default function Navigation() {
             className="cta cta-primary cta-sm group"
             style={{ height: '36px', padding: '0 16px', fontSize: '12px', borderRadius: 'var(--radius)' }}
           >
-            <span className="font-bold">Portal</span>
+            <span className="font-bold">Cổng thông tin</span>
             <ArrowUpRight strokeWidth={1.75} className="h-3 w-3 text-white/80 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </a>
         </div>
@@ -282,7 +282,7 @@ export default function Navigation() {
               className="flex w-full items-center justify-between bg-brand px-3.5 py-2.5 text-sm font-medium text-white hover:bg-brand-deep"
               style={{ borderRadius: 'var(--radius)' }}
             >
-              <span className="font-bold">Yody ITDX EA Portal</span>
+              <span className="font-bold">Cổng thông tin YODY ITDX EA</span>
               <ArrowUpRight className="h-4 w-4 text-white/80" strokeWidth={1.75} />
             </a>
           </div>

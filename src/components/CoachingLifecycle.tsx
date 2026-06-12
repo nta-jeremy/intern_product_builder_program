@@ -87,15 +87,15 @@ export default function CoachingLifecycle() {
           <div className="max-w-4xl space-y-5">
             <div className="s-eyebrow">
               <Milestone className="mr-1 h-4 w-4" strokeWidth={1.75} />
-              COACHING LIFECYCLE
+              VÒNG LẶP PHÁT LẶP TRIỂN
             </div>
             <div className="space-y-3">
               <h2 className="text-fg-1" style={{ font: 'var(--type-h2)', letterSpacing: '-0.018em' }}>
-                Progressive Spiral cho ba vòng coaching tăng dần độ tự chủ
+                Ba vòng lặp phát triển với mức tự chủ tăng dần
               </h2>
               <p className="text-sm leading-relaxed text-fg-2">
-                Mỗi tháng vẫn đi qua Discover → Build → Validate → Ship → Learn, nhưng chỉ tháng đang chọn mở đủ năm node để bạn tập trung vào vòng hiện tại.
-                Hai tháng còn lại chỉ giữ dấu mốc để kể câu chuyện trưởng thành từ tâm ra ngoài.
+                Mỗi tháng đi qua năm bước Tìm hiểu → Xây dựng → Kiểm chứng → Đưa vào sử dụng → Rút kinh nghiệm.
+                Chọn một tháng để xem đầy đủ năm bước và theo dõi quá trình phát triển từ vòng trong ra vòng ngoài.
               </p>
             </div>
           </div>
@@ -112,7 +112,7 @@ export default function CoachingLifecycle() {
       </header>
 
       <div className="sr-only">
-        <h3>Tóm tắt ba vòng phát triển</h3>
+        <h3>Tóm tắt ba vòng lặp phát triển</h3>
         <ul>
           {accessibleSummary.map((month) => (
             <li key={month.title}>
@@ -167,8 +167,8 @@ export default function CoachingLifecycle() {
                   role="img"
                   aria-labelledby="spiral-title spiral-desc"
                 >
-                  <title id="spiral-title">Growth spiral của ba tháng coaching lifecycle</title>
-                  <desc id="spiral-desc">Ba vòng tháng 1, tháng 2, tháng 3 mở rộng dần. Mỗi vòng có năm bước Discover, Build, Validate, Ship và Learn.</desc>
+                  <title id="spiral-title">Ba vòng lặp phát triển trong ba tháng</title>
+                  <desc id="spiral-desc">Ba vòng tháng 1, tháng 2, tháng 3 mở rộng dần. Mỗi vòng có năm bước Tìm hiểu, Xây dựng, Kiểm chứng, Đưa vào sử dụng và Rút kinh nghiệm.</desc>
                   <ellipse cx="430" cy="390" rx="118" ry="92" fill="none" stroke="rgba(42,43,134,0.14)" strokeWidth="2" aria-hidden="true" />
                   <ellipse cx="430" cy="390" rx="230" ry="182" fill="none" stroke="rgba(42,43,134,0.12)" strokeWidth="2" aria-hidden="true" />
                   <ellipse cx="430" cy="390" rx="340" ry="286" fill="none" stroke="rgba(42,43,134,0.1)" strokeWidth="2" aria-hidden="true" />
@@ -265,7 +265,7 @@ export default function CoachingLifecycle() {
               <div className="flex items-start gap-3">
                 <span className="mt-1 h-2.5 w-2.5 shrink-0 rounded-full bg-gold" />
                 <p className="max-w-3xl text-xs leading-relaxed text-fg-3">
-                  Chọn tháng để xem quỹ đạo phát triển. Nhấn vào node trên spiral hoặc chọn bước bên phải để xem chi tiết.
+                  Chọn tháng để xem quỹ đạo phát triển. Nhấn vào một điểm trên vòng hoặc chọn bước bên phải để xem chi tiết.
                 </p>
               </div>
             </div>
@@ -275,7 +275,7 @@ export default function CoachingLifecycle() {
         <div className="space-y-6 xl:col-span-4 xl:sticky xl:top-6 self-start">
           <article className="yds-card-warm p-6 sm:p-7">
             <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-brand">
-              Node detail · Tháng {activeMonth.month}
+              Chi tiết bước · Tháng {activeMonth.month}
             </span>
             <h3 className="mt-2 text-fg-1" style={{ font: 'var(--type-h3)' }}>
               {activeMonth.title} · {activeStep.title}
@@ -293,7 +293,7 @@ export default function CoachingLifecycle() {
 
                 <div className="mt-6 min-h-[420px] space-y-5">
                   <section>
-                    <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-fg-3">Actions</span>
+                    <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-fg-3">Hành động</span>
                     <ul className="mt-3 space-y-2.5">
                       {activeStep.actions.map((action) => (
                         <li key={action} className="flex items-start text-xs leading-relaxed text-fg-2">
@@ -305,7 +305,7 @@ export default function CoachingLifecycle() {
                   </section>
 
                   <section>
-                    <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-fg-3">Competencies</span>
+                    <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-fg-3">Năng lực liên quan</span>
                     <div className="mt-3 flex flex-wrap gap-2">
                       {activeStep.competencyIds.map((competencyId) => (
                         <span key={competencyId} className="rounded-full border border-brand/15 bg-brand/5 px-2.5 py-1 text-[10px] font-medium text-brand">
@@ -318,7 +318,7 @@ export default function CoachingLifecycle() {
                   <section>
                     <div className="flex items-center gap-2">
                       <BookOpenCheck className="h-4 w-4 text-brand" strokeWidth={1.75} />
-                      <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-fg-3">Evidence & coaching support</span>
+                      <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-fg-3">Bằng chứng và hỗ trợ</span>
                     </div>
                     <div className="mt-3 flex flex-wrap gap-2">
                       {activeStep.evidenceTemplateIds.map((evidenceId) => (
@@ -347,9 +347,9 @@ export default function CoachingLifecycle() {
                 <Orbit className="h-4.5 w-4.5" strokeWidth={1.75} />
               </span>
               <div>
-                <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-fg-3">Cần xem full matrix?</span>
+                <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-fg-3">Cần xem bảng đầy đủ?</span>
                 <p className="mt-2 text-xs leading-relaxed text-fg-2">
-                  Bản detail giúp so sánh cả ba tháng, competency target, monthly gate và evidence theo chiều dọc mà không phải đổi node liên tục.
+                  Bản chi tiết giúp so sánh cả ba tháng, năng lực mục tiêu, điều kiện hoàn thành tháng và bằng chứng mà không phải đổi bước liên tục.
                 </p>
                 <Link to="/lifecycle-detail" className="mt-4 inline-flex items-center gap-2 text-xs font-semibold text-brand hover:text-brand-light">
                   Mở bản chi tiết
@@ -365,9 +365,9 @@ export default function CoachingLifecycle() {
         <div className="yds-card-warm p-5 sm:p-6">
           <div className="flex flex-wrap items-start justify-between gap-3">
             <div>
-              <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-brand">Mobile adaptation</span>
+              <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-brand">Giao diện trên điện thoại</span>
               <p className="mt-2 text-xs leading-relaxed text-fg-3">
-                Mobile chuyển thành stacked loop cards để giữ nhãn rõ, touch target tối thiểu 44px và không có horizontal scroll.
+                Các bước được xếp thành từng thẻ để nhãn dễ đọc, vùng nhấn đủ lớn và không phải cuộn ngang.
               </p>
             </div>
             <Link
@@ -375,7 +375,7 @@ export default function CoachingLifecycle() {
               className="cta cta-secondary cta-sm"
               style={{ minHeight: '44px', padding: '0 14px', borderRadius: 'var(--radius)' }}
             >
-              Xem detail
+              Xem chi tiết
             </Link>
           </div>
         </div>
@@ -440,7 +440,7 @@ export default function CoachingLifecycle() {
 
         <article className="yds-card-warm p-5 sm:p-6">
           <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-brand">
-            Detail đang xem · Tháng {activeMonth.month}
+            Chi tiết đang xem · Tháng {activeMonth.month}
           </span>
           <h3 className="mt-2 text-fg-1" style={{ font: 'var(--type-h3)' }}>
             {activeStep.title}
@@ -474,7 +474,7 @@ export default function CoachingLifecycle() {
       <section className="insight mt-0!">
         <div className="insight-label">Kết luận</div>
         <div className="insight-body">
-          Progressive Spiral giúp người xem thấy ba tháng không phải ba phase rời rạc mà là cùng một vòng học được thực hiện ở mức tốt hơn qua từng tháng.
+          Ba vòng lặp phát triển cho thấy mỗi tháng không phải một giai đoạn rời rạc, mà là cùng một vòng học được thực hiện tốt hơn qua từng tháng.
         </div>
       </section>
     </div>

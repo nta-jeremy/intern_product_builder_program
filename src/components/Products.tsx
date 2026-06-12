@@ -36,15 +36,14 @@ export default function Products() {
       <div className="border-b border-border pb-6" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--s-4)' }}>
         <div className="s-eyebrow">
           <ListChecks className="h-4 w-4 mr-1" strokeWidth={1.75} />
-          DANH MỤC 4 SẢN PHẨM PHÁT TRIỂN
+          BỐN LỰA CHỌN SẢN PHẨM
         </div>
         <h2 className="text-fg-1" style={{ font: 'var(--type-h2)', letterSpacing: '-0.018em' }}>
-          Thực Chiến 4 Sản Phẩm • Trải Nghiệm AI-First
+          Mỗi thực tập sinh đảm nhận một sản phẩm
         </h2>
         <p className="max-w-4xl" style={{ font: 'var(--type-body-sm)', color: 'var(--fg-2)', lineHeight: '1.7' }}>
-          Trong vòng 3 tháng, Intern Product Builder cần phối hợp linh hoạt cùng AI để nghiên cứu, thiết kế, phát triển và go-live 
-          thành công 4 sản phẩm giải quyết bài toán cốt lõi dưới đây của YODY. 
-          Các dự án được xếp hạng ưu tiên rõ nét để bạn phân bổ nguồn lực.
+          Chương trình có bốn sản phẩm để phân công. Mỗi thực tập sinh chỉ đảm nhận một trong bốn sản phẩm trong vòng ba tháng.
+          Hãy chọn từng mục để xem bài toán, kết quả cần bàn giao, tiêu chí nghiệm thu và người phê duyệt.
         </p>
       </div>
 
@@ -116,7 +115,7 @@ export default function Products() {
             {/* Target Stakeholders */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--s-3)', paddingTop: 'var(--s-2)' }}>
               <span className="font-mono text-[10px] uppercase tracking-wider text-fg-3 font-semibold block">
-                Người Dùng Chính (Target Stakeholders)
+                Người dùng chính
               </span>
               <div className="space-y-2">
                 {selectedProduct.primaryUsers.map((user, idx) => (
@@ -132,7 +131,7 @@ export default function Products() {
             {selectedProduct.approaches && (
               <div className="border-t border-border mt-4 pt-4" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--s-3)' }}>
                 <span className="font-mono text-[10px] uppercase tracking-wider text-fg-3 font-semibold block">
-                  Phác Thảo Hướng Tiếp Cận (Strategy Approach)
+                  Hướng tiếp cận
                 </span>
                 <div className="space-y-2">
                   {selectedProduct.approaches.map((strategy, idx) => (
@@ -153,7 +152,7 @@ export default function Products() {
             <div className="flex items-center space-x-2 mb-6">
               <Target strokeWidth={1.75} className="h-5 w-5 text-brand" />
               <span className="font-impact text-sm uppercase tracking-wider text-fg-1">
-                CÁC TÍNH NĂNG MVP CẦN DELIVER & TIÊU CHÍ NGHIỆM THU
+                KẾT QUẢ CẦN BÀN GIAO VÀ TIÊU CHÍ NGHIỆM THU
               </span>
             </div>
 
@@ -162,10 +161,10 @@ export default function Products() {
               <table className="w-full text-left text-xs border-collapse">
                 <thead>
                   <tr className="border-b border-border font-mono text-fg-3 uppercase text-[10px] font-bold">
-                    <th className="py-3 px-4 w-1/4">Feature / Deliverable</th>
-                    <th className="py-3 px-4 w-1/3">Output cụ thể</th>
-                    <th className="py-3 px-4 w-1/3">KPI / Acceptance Criteria</th>
-                    <th className="py-3 px-4 text-center">Sign-off</th>
+                    <th className="py-3 px-4 w-1/4">Hạng mục bàn giao</th>
+                    <th className="py-3 px-4 w-1/3">Kết quả cụ thể</th>
+                    <th className="py-3 px-4 w-1/3">KPI / Tiêu chí nghiệm thu</th>
+                    <th className="py-3 px-4 text-center">Người phê duyệt</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-border text-fg-2">
@@ -203,7 +202,7 @@ export default function Products() {
                     </span>
                   </div>
                   <div className="text-[11px] space-y-1">
-                    <span className="text-fg-3 block font-bold">Output:</span>
+                    <span className="text-fg-3 block font-bold">Kết quả:</span>
                     <p className="text-fg-2 leading-snug">{item.output}</p>
                   </div>
                   <div className="text-[11px] space-y-1 bg-brand/5 p-2 border border-brand/10" style={{ borderRadius: 'var(--radius-xs)' }}>

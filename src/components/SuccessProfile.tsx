@@ -33,14 +33,14 @@ export default function SuccessProfile() {
         <div className="relative z-10 max-w-3xl space-y-4">
           <div className="s-eyebrow">
             <Star className="mr-1 h-4 w-4" strokeWidth={1.75} />
-            INTERN SUCCESS PROFILE
+            TIÊU CHÍ THÀNH CÔNG CỦA THỰC TẬP SINH
           </div>
           <h2 className="text-fg-1 leading-tight" style={{ font: 'var(--type-h2)', letterSpacing: '-0.018em' }}>
-            Năm năng lực để giải quyết một vấn đề và tạo ra prototype
+            Năm năng lực để giải quyết vấn đề và tạo sản phẩm mẫu
           </h2>
           <p style={{ font: 'var(--type-body-sm)', color: 'var(--fg-2)', lineHeight: '1.7' }}>
-            Khung này giúp Intern hiểu kỳ vọng, tự soi chiếu và chọn bằng chứng cần ghi lại.
-            Chuẩn đầu ra là một prototype demo được, có phản hồi người dùng, đáp ứng acceptance criteria
+            Khung này giúp thực tập sinh hiểu kỳ vọng, tự đánh giá và chọn bằng chứng cần ghi lại.
+            Chuẩn đầu ra là một sản phẩm mẫu có thể trình diễn, có phản hồi người dùng, đáp ứng tiêu chí nghiệm thu
             và được Hội đồng thẩm định xác nhận.
           </p>
         </div>
@@ -137,7 +137,7 @@ export default function SuccessProfile() {
                   <p className="font-semibold text-fg-1">Trung bình các mục đã đánh giá: {average.toFixed(1)}/4</p>
                   <p>
                     Năng lực nên tập trung trước: <strong className="text-fg-2">{focusCompetency?.dimension}</strong>.
-                    Hãy ghi một bằng chứng gần nhất vào Journal và trao đổi với mentor nếu cần hỗ trợ.
+                    Hãy ghi một bằng chứng gần nhất vào sổ tay thực tập và trao đổi với người hướng dẫn nếu cần hỗ trợ.
                   </p>
                 </div>
               )}
@@ -180,7 +180,7 @@ export default function SuccessProfile() {
               <section className="border border-gold/20 bg-gold/5 p-5 space-y-4" style={{ borderRadius: 'var(--radius)' }}>
                 <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-gold-deep">
                   <CircleHelp className="h-4 w-4" strokeWidth={1.75} />
-                  Dấu hiệu cần mentor hỗ trợ
+                  Dấu hiệu cần người hướng dẫn hỗ trợ
                 </div>
                 <ul className="space-y-3">
                   {currentItem.supportSignals.map((signal) => (
@@ -196,7 +196,7 @@ export default function SuccessProfile() {
             <section className="insight mt-0!">
               <div className="insight-label mb-3! flex items-center gap-2 text-[10px]!">
                 <BookOpenCheck className="h-3.5 w-3.5 text-brand" strokeWidth={1.75} />
-                Bằng chứng nên ghi trong Journal
+                Bằng chứng nên ghi trong sổ tay thực tập
               </div>
               <div className="flex flex-wrap gap-2">
                 {currentItem.evidenceTemplateIds.map((id) => (

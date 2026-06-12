@@ -50,15 +50,15 @@ export default function CoachingLifecycleDetail() {
           <div className="max-w-4xl space-y-5">
             <div className="s-eyebrow">
               <Milestone className="mr-1 h-4 w-4" strokeWidth={1.75} />
-              COACHING LIFECYCLE DETAIL
+              CHI TIẾT VÒNG LẶP PHÁT TRIỂN
             </div>
             <div className="space-y-3">
               <h2 className="text-fg-1" style={{ font: 'var(--type-h2)', letterSpacing: '-0.018em' }}>
-                Bản tra cứu đầy đủ cho cả ba vòng coaching
+                Bản tra cứu đầy đủ cho cả ba vòng lặp phát triển
               </h2>
               <p className="text-sm leading-relaxed text-fg-2">
-                Đây là view chi tiết để so sánh competency, evidence, monthly gate và coaching cadence của từng tháng.
-                Nếu cần nhìn nhanh mô hình ba vòng và chọn node đang học, bạn có thể quay lại Progressive Spiral.
+                Bản chi tiết giúp so sánh năng lực, bằng chứng, điều kiện hoàn thành và nhịp hỗ trợ của từng tháng.
+                Nếu cần nhìn nhanh mô hình ba vòng và chọn bước đang học, bạn có thể quay lại vòng lặp phát triển.
               </p>
             </div>
           </div>
@@ -69,7 +69,7 @@ export default function CoachingLifecycleDetail() {
             style={{ minHeight: '44px', padding: '0 16px', borderRadius: 'var(--radius)' }}
           >
             <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-0.5" strokeWidth={1.75} />
-            <span>Quay lại Progressive Spiral</span>
+            <span>Quay lại vòng lặp phát triển</span>
           </Link>
         </div>
       </header>
@@ -77,8 +77,8 @@ export default function CoachingLifecycleDetail() {
       <section className="border border-border bg-bg-warm p-5 sm:p-6" style={{ borderRadius: 'var(--radius-lg)', boxShadow: 'var(--shadow-rest)' }}>
         <div className="mb-4 flex items-center justify-between gap-3">
           <div>
-            <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-brand">Month selector</span>
-            <p className="mt-1 text-xs leading-relaxed text-fg-3">Chọn một tháng để xem vòng học, năng lực mục tiêu và evidence cần có.</p>
+            <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-brand">Chọn tháng</span>
+            <p className="mt-1 text-xs leading-relaxed text-fg-3">Chọn một tháng để xem vòng học, năng lực mục tiêu và bằng chứng cần có.</p>
           </div>
           <span className="rounded-full border border-brand/20 bg-brand/10 px-3 py-1 font-mono text-[10px] font-bold text-brand">
             3 tháng · 5 bước lặp
@@ -109,7 +109,7 @@ export default function CoachingLifecycleDetail() {
                     <h3 className="mt-1 text-sm font-bold text-fg-1">{month.title}</h3>
                   </div>
                   <span className="rounded-full border border-border-hover bg-bg-muted px-2 py-1 font-mono text-[10px] font-bold text-fg-2">
-                    Level {month.targetLevel}
+                    Mức {month.targetLevel}
                   </span>
                 </div>
                 <p className="mt-3 text-xs leading-relaxed text-fg-3">{month.autonomy}</p>
@@ -198,7 +198,7 @@ export default function CoachingLifecycleDetail() {
                       {competencyNames.get(target.competencyId)}
                     </h4>
                     <span className="rounded-full border border-brand/20 bg-brand/10 px-2 py-0.5 font-mono text-[10px] font-bold text-brand">
-                      Level {target.targetLevel}
+                      Mức {target.targetLevel}
                     </span>
                   </div>
                   <p className="mt-2 text-[11px] leading-relaxed text-fg-3">{target.focus}</p>
@@ -209,7 +209,7 @@ export default function CoachingLifecycleDetail() {
 
           <section className="border border-mint/20 bg-mint/5 p-6" style={{ borderRadius: 'var(--radius)' }}>
             <div className="font-mono text-[10px] font-bold uppercase tracking-widest text-mint-deep">
-              Evidence cần có trong tháng
+              Bằng chứng cần có trong tháng
             </div>
             <div className="mt-3 flex flex-wrap gap-2">
               {evidenceIds.map((evidenceId) => (
@@ -225,7 +225,7 @@ export default function CoachingLifecycleDetail() {
 
           <section className="yds-card-warm p-6 space-y-5">
             <div>
-              <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-fg-3">Coaching cadence</span>
+              <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-fg-3">Nhịp hỗ trợ</span>
               <ul className="mt-3 space-y-2.5">
                 {activeMonth.coachingCadence.map((item) => (
                   <li key={item} className="flex items-start text-xs leading-relaxed text-fg-2">
@@ -237,7 +237,7 @@ export default function CoachingLifecycleDetail() {
             </div>
 
             <div className="border-t border-border pt-5">
-              <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-fg-3">Monthly gate</span>
+              <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-fg-3">Điều kiện hoàn thành tháng</span>
               <ul className="mt-3 space-y-2.5">
                 {activeMonth.monthlyGate.map((item) => (
                   <li key={item} className="flex items-start text-xs leading-relaxed text-fg-2">
@@ -270,8 +270,8 @@ export default function CoachingLifecycleDetail() {
       <section className="insight mt-0!">
         <div className="insight-label">Kết luận</div>
         <div className="insight-body">
-          Sau mỗi vòng, mục tiêu không phải “mở khóa phase tiếp theo” mà là tạo ra một prototype tốt hơn,
-          một bộ bằng chứng rõ hơn và một Product Builder tự chủ hơn.
+          Sau mỗi vòng, mục tiêu không phải “mở khóa giai đoạn tiếp theo” mà là tạo ra một sản phẩm mẫu tốt hơn,
+          một bộ bằng chứng rõ hơn và một người xây dựng sản phẩm tự chủ hơn.
         </div>
       </section>
     </div>

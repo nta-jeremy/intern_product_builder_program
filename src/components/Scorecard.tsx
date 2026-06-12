@@ -108,20 +108,20 @@ export default function Scorecard() {
       <header className="border-b border-border pb-6 space-y-4">
         <div className="s-eyebrow">
           <Calculator className="mr-1 h-4 w-4" strokeWidth={1.75} />
-          INTERN PRODUCT BUILDER SCORECARDS
+          BẢNG ĐÁNH GIÁ THỰC TẬP SINH
         </div>
         <h2 className="text-fg-1" style={{ font: 'var(--type-h2)', letterSpacing: '-0.018em' }}>
           Chấm bằng chứng theo đúng thời điểm
         </h2>
         <p className="max-w-4xl text-sm leading-relaxed text-fg-2">
-          Scorecard đầu vào đánh giá tiềm năng trước chương trình; Scorecard cuối kỳ đánh giá một prototype
+          Bảng đầu vào đánh giá tiềm năng trước chương trình; bảng cuối kỳ đánh giá một sản phẩm mẫu
           và quá trình tạo ra kết quả. Cả hai đều là đầu vào cho Hội đồng, không tự động quyết định tuyển dụng.
         </p>
 
         <div
           className="grid max-w-2xl grid-cols-2 gap-2 border border-border bg-bg-muted p-1.5"
           role="tablist"
-          aria-label="Chọn loại scorecard"
+          aria-label="Chọn loại bảng đánh giá"
           style={{ borderRadius: 'var(--radius)' }}
         >
           {(['entry', 'final'] as ScorecardType[]).map((type) => (
@@ -309,7 +309,7 @@ export default function Scorecard() {
                 <h3 className="text-xs font-bold uppercase tracking-wider text-fg-1">Điều kiện bắt buộc</h3>
               </div>
               <p className="text-[11px] leading-relaxed text-fg-3">
-                Hội đồng hoặc stakeholder cần đối chiếu bằng chứng trước khi đánh dấu.
+                Hội đồng hoặc người liên quan cần đối chiếu bằng chứng trước khi đánh dấu.
               </p>
               <div className="space-y-3">
                 {FINAL_SCORECARD_GATES.map((gate) => (

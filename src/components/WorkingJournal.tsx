@@ -125,7 +125,7 @@ export function normalizeJournalData(saved: unknown, templates: JournalTemplate[
 
 const SAMPLE_DATA: JournalData = {
   'problem-brief': {
-    productName: 'Prototype tổng hợp phản hồi cửa hàng',
+    productName: 'Sản phẩm mẫu tổng hợp phản hồi cửa hàng',
     problem: 'Quản lý vùng mất nhiều thời gian gom phản hồi từ nhiều nhóm chat nên khó nhận ra vấn đề lặp lại.',
     evidence: 'Ba cuộc trao đổi ẩn danh với quản lý cửa hàng cho thấy việc tổng hợp thủ công mất khoảng hai giờ mỗi tuần.',
     outcome: 'Người dùng xem được các chủ đề phản hồi chính trong một màn hình và truy cập lại nguồn ghi chú.',
@@ -134,14 +134,14 @@ const SAMPLE_DATA: JournalData = {
   },
   'weekly-checkin': {
     period: 'Tuần 3, 15/06-19/06',
-    commitments: 'Hoàn thiện luồng nhập tệp mẫu, demo với mentor và ghi nhận ít nhất ba phản hồi.',
-    progress: 'Luồng nhập tệp đã chạy với hai bộ dữ liệu giả. Link demo: https://example.test/demo',
-    blockers: 'Định dạng tệp chưa thống nhất. Đã thử hai parser và cần mentor xác nhận định dạng ưu tiên.',
-    aiUsage: 'AI gợi ý parser và test case. Tôi đọc lại code, chạy test với tệp rỗng, sai cột và dữ liệu trùng.',
-    nextStep: 'Chốt định dạng vào thứ Ba, sửa parser và demo lại vào thứ Năm.',
+    commitments: 'Hoàn thiện luồng nhập tệp mẫu, trình bày với người hướng dẫn và ghi nhận ít nhất ba phản hồi.',
+    progress: 'Luồng nhập tệp đã chạy với hai bộ dữ liệu giả. Liên kết trình bày: https://example.test/demo',
+    blockers: 'Định dạng tệp chưa thống nhất. Đã thử hai bộ phân tích và cần người hướng dẫn xác nhận định dạng ưu tiên.',
+    aiUsage: 'AI gợi ý bộ phân tích và trường hợp kiểm thử. Tôi đọc lại mã, chạy kiểm thử với tệp rỗng, sai cột và dữ liệu trùng.',
+    nextStep: 'Chốt định dạng vào thứ Ba, sửa bộ phân tích và trình bày lại vào thứ Năm.',
   },
   'user-feedback': {
-    session: 'Demo 18/06 với một đại diện vận hành, thông tin đã được ẩn danh.',
+    session: 'Buổi trình bày ngày 18/06 với một đại diện vận hành, thông tin đã được ẩn danh.',
     context: 'Kiểm tra người dùng có hiểu ba nhóm phản hồi và tìm lại được nguồn hay không.',
     feedback: 'Người dùng hiểu tên nhóm nhưng muốn xem số lượng phản hồi và lọc theo tuần.',
     insight: 'Số lượng và thời gian quan trọng hơn phần mô tả dài của từng nhóm.',
@@ -154,13 +154,13 @@ const SAMPLE_DATA: JournalData = {
     result: 'Hai người hoàn thành trong 2 phút 10 giây và 2 phút 45 giây. Một người nhầm bộ lọc tuần.',
     learning: 'Luồng chính đạt nhưng nhãn bộ lọc chưa đủ rõ.',
     decision: 'Đổi nhãn bộ lọc, thêm trạng thái đang áp dụng và thử lại.',
-    aiCheck: 'AI đề xuất nội dung nhãn. Tôi kiểm tra bằng demo và giữ phương án người dùng hiểu nhanh hơn.',
+    aiCheck: 'AI đề xuất nội dung nhãn. Tôi kiểm tra trong buổi trình bày và giữ phương án người dùng hiểu nhanh hơn.',
   },
   'final-handover': {
     prototypeLink: 'https://example.test/prototype',
-    outcomes: 'Ba acceptance criteria đã đạt trong buổi demo ngày 28/08; link kết quả: https://example.test/results',
-    feedbackSummary: 'Hai vòng feedback dẫn tới việc thêm số lượng chủ đề, bộ lọc tuần và đổi nhãn bộ lọc.',
-    setup: 'Mở link prototype, chọn bộ dữ liệu mẫu và bấm Phân tích. Không cần tài khoản hoặc credential.',
+    outcomes: 'Ba tiêu chí nghiệm thu đã đạt trong buổi trình bày ngày 28/08; liên kết kết quả: https://example.test/results',
+    feedbackSummary: 'Hai vòng phản hồi dẫn tới việc thêm số lượng chủ đề, bộ lọc tuần và đổi nhãn bộ lọc.',
+    setup: 'Mở liên kết sản phẩm mẫu, chọn bộ dữ liệu mẫu và bấm Phân tích. Không cần tài khoản hoặc thông tin đăng nhập.',
     limitations: 'Chỉ dùng dữ liệu giả; chưa hỗ trợ tệp trên 5 MB; kết quả AI cần người dùng kiểm tra lại.',
     reflection: 'Tôi học được cách thu hẹp phạm vi và dùng phản hồi để ưu tiên thay vì thêm tính năng theo phỏng đoán.',
   },
@@ -308,15 +308,15 @@ export default function WorkingJournal() {
         <div className="space-y-2">
           <div className="s-eyebrow">
             <FileEdit className="mr-1 h-4 w-4" strokeWidth={1.75} />
-            INTERN WORKING JOURNAL
+            SỔ TAY THỰC TẬP
           </div>
-          <h2 className="text-fg-1" style={{ font: 'var(--type-h2)', letterSpacing: '-0.018em' }}>Journal bằng chứng</h2>
+          <h2 className="text-fg-1" style={{ font: 'var(--type-h2)', letterSpacing: '-0.018em' }}>Sổ tay thực tập</h2>
           <p className="max-w-2xl text-sm leading-relaxed text-fg-2">
-            Ghi lại dữ kiện, phản hồi và kết quả thật để mentor coaching và Hội đồng đối chiếu.
-            Nội dung AI tạo chỉ hỗ trợ diễn đạt, không thay thế link, kết quả kiểm tra hoặc xác nhận thực tế.
+            Ghi lại dữ kiện, phản hồi và kết quả thật để người hướng dẫn hỗ trợ và Hội đồng đối chiếu.
+            Nội dung AI tạo chỉ hỗ trợ diễn đạt, không thay thế liên kết, kết quả kiểm tra hoặc xác nhận thực tế.
           </p>
           <div className="flex items-center gap-3 text-xs">
-            <span className="font-semibold text-fg-1">Hoàn thành {completedCount}/{JOURNAL_TEMPLATES.length} template</span>
+            <span className="font-semibold text-fg-1">Hoàn thành {completedCount}/{JOURNAL_TEMPLATES.length} biểu mẫu</span>
             <span className="h-1.5 flex-1 max-w-48 overflow-hidden rounded-full bg-border">
               <span className="block h-full bg-brand transition-all" style={{ width: `${(completedCount / JOURNAL_TEMPLATES.length) * 100}%` }} />
             </span>
@@ -342,7 +342,7 @@ export default function WorkingJournal() {
       {autosaveFailed && (
         <div role="alert" className="flex items-start gap-3 border border-gap/30 bg-gap/10 p-4 text-xs text-gap" style={{ borderRadius: 'var(--radius)' }}>
           <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
-          <span>Không thể tự động lưu Journal trên trình duyệt này. Hãy sao chép hoặc tải Markdown để giữ nội dung.</span>
+          <span>Không thể tự động lưu sổ tay trên trình duyệt này. Hãy sao chép hoặc tải Markdown để giữ nội dung.</span>
         </div>
       )}
 
@@ -413,7 +413,7 @@ export default function WorkingJournal() {
               AI hỗ trợ diễn đạt
             </div>
             <p className="insight-body text-xs! leading-relaxed!">
-              Chỉ gửi nội dung đã ẩn danh. Không đưa mật khẩu, API key hoặc dữ liệu cá nhân nhạy cảm vào prompt.
+              Chỉ gửi nội dung đã ẩn danh. Không đưa mật khẩu, API key hoặc dữ liệu cá nhân nhạy cảm vào yêu cầu gửi AI.
               Bạn phải đọc lại, kiểm chứng và chịu trách nhiệm về nội dung cuối cùng.
             </p>
           </div>
