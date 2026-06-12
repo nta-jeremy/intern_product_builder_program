@@ -69,7 +69,7 @@ export default function Overview() {
 
           <p className="text-fg-2 leading-relaxed border-t border-border pt-4" style={{ font: 'var(--type-body-sm)', fontSize: '13px' }}>
             Phát triển trọn vẹn sản phẩm theo quy chuẩn kỹ thuật và tư duy kinh doanh từ ý tưởng ban đầu đến phát hành MVP trong vòng 3 tháng.
-            Mỗi dự án trải qua 4 giai đoạn huấn luyện (Discover → Build → Validate → Ship) được hướng dẫn chi tiết bởi Product Owner và Tech Lead.
+            Mỗi tháng đều đi trọn một vòng Discover → Build → Validate → Ship → Learn để tăng dần mức tự chủ và chất lượng bằng chứng.
             Chúng tôi chú trọng vào việc nâng tầm năng lực tự quyết định, tự học sâu và ứng dụng hiệu quả các nền tảng trí tuệ nhân tạo (Claude, Cursor, n8n) của bạn.
           </p>
 
@@ -141,7 +141,7 @@ export default function Overview() {
           {[
             { title: 'Tiêu Chí Cá Nhân', desc: 'Rèn năng lực hành vi cốt lõi Builder.', path: '/profile', icon: Star },
             { title: 'Chân dung 4 Sản phẩm', desc: 'Rà soát tính năng, KPI nghiệm thu.', path: '/products', icon: LayoutGrid },
-            { title: 'Coaching Lifecycle', desc: 'Bản đồ 4 giai đoạn tiến trình.', path: '/lifecycle', icon: Milestone },
+            { title: 'Coaching Lifecycle', desc: 'Progressive Spiral và bản tra cứu đầy đủ.', path: '/lifecycle', icon: Milestone },
             { title: 'Bảng Điểm ScoreCard', desc: 'Tính điểm mô phỏng convert Fulltime.', path: '/scorecard', icon: Trophy },
             { title: 'Sổ Tay Journal', desc: 'Dọn sẵn 5 biểu mẫu viết cùng AI.', path: '/journal', icon: FileText },
           ].map((card, idx) => {

@@ -1,5 +1,5 @@
 import {
-  CoachingPhase,
+  CoachingMonth,
   CompetencyLevelDefinition,
   FinalScorecardGate,
   JournalTemplate,
@@ -282,86 +282,333 @@ export const PRODUCTS_DATA: ProductDetail[] = [
   }
 ];
 
-export const COACHING_LIFECYCLE_DATA: CoachingPhase[] = [
+export const COACHING_LIFECYCLE_DATA: CoachingMonth[] = [
   {
-    phase: 'PHASE 1',
-    title: 'DISCOVER (Khám Phá)',
-    time: 'Tháng 1 • Tuần 1-4',
-    objectives: [
-      'Hiểu sâu sắc bài toán nghiệp vụ cốt lõi của từng sản phẩm - trực tiếp phỏng vấn stakeholder không phỏng đoán cảm tính',
-      'Phác thảo sơ đồ luồng người dùng (User Flow), viết tài liệu Problem Brief và bóc tách danh sách User Stories rõ ràng',
-      'Thiết kế cấu trúc cơ sở dữ liệu (DB Schema) và các điểm API trước khi viết dòng code phát triển nào',
-      'Đạt sự đồng thuận (align) cao độ với PO và Tech Lead về hướng giải quyết bài toán'
+    id: 'month-1',
+    month: 1,
+    title: 'Xây nền tảng',
+    autonomy: 'Làm có hướng dẫn rõ và học cách khép kín vòng đầu tiên bằng bằng chứng thật.',
+    targetLevel: 2,
+    summary: 'Tháng 1 ưu tiên hiểu đúng bài toán, làm prototype nhỏ đầu tiên và tạo thói quen ghi lại evidence có thể đối chiếu.',
+    steps: [
+      {
+        id: 'discover',
+        title: 'Discover',
+        question: 'Ai đang gặp vấn đề gì và dữ kiện nào xác nhận điều đó?',
+        actions: [
+          'Chốt một problem brief ngắn với người dùng, bối cảnh và kết quả mong đợi.',
+          'Phân biệt điều đã xác nhận với giả định còn cần kiểm chứng.',
+          'Thống nhất acceptance criteria đủ nhỏ cho vòng thử đầu tiên.',
+        ],
+        competencyIds: ['user-problem-understanding', 'product-experimentation'],
+        evidenceTemplateIds: ['problem-brief', 'user-feedback'],
+      },
+      {
+        id: 'build',
+        title: 'Build',
+        question: 'Phiên bản nhỏ nhất nào giúp kiểm chứng giả định nhanh nhất?',
+        actions: [
+          'Dựng prototype hoặc flow tối thiểu thay vì làm đầy đủ tính năng.',
+          'Chọn phần việc phù hợp để AI hỗ trợ nhưng vẫn tự đọc lại đầu ra.',
+          'Giữ scope đủ hẹp để có thể demo trong tuần.',
+        ],
+        competencyIds: ['product-experimentation', 'ai-assisted-execution'],
+        evidenceTemplateIds: ['problem-brief', 'weekly-checkin', 'experiment-log'],
+      },
+      {
+        id: 'validate',
+        title: 'Validate',
+        question: 'Kết quả nào đạt, chưa đạt và vì sao?',
+        actions: [
+          'Chạy thử với dữ liệu hoặc luồng sử dụng gần thực tế.',
+          'Ghi rõ lỗi, điểm chưa đạt và điều gì cần mentor hỗ trợ.',
+          'Đối chiếu trực tiếp với acceptance criteria đã chốt.',
+        ],
+        competencyIds: ['product-experimentation', 'learning-ownership'],
+        evidenceTemplateIds: ['experiment-log', 'weekly-checkin'],
+      },
+      {
+        id: 'ship',
+        title: 'Ship',
+        question: 'Ai có thể xem, dùng thử hoặc tiếp tục với đầu ra hiện tại?',
+        actions: [
+          'Chuẩn bị link demo hoặc bản trình bày đủ để người khác tự xem.',
+          'Ghi lại hướng dẫn truy cập và phạm vi hiện tại.',
+          'Nêu trung thực điều chưa làm, chưa ổn hoặc còn đang giả lập.',
+        ],
+        competencyIds: ['collaboration-trust', 'learning-ownership'],
+        evidenceTemplateIds: ['weekly-checkin', 'final-handover'],
+      },
+      {
+        id: 'learn',
+        title: 'Learn',
+        question: 'Sau vòng đầu tiên, cách hiểu và cách làm của bạn đã thay đổi gì?',
+        actions: [
+          'Viết ngắn điều đã học, điều cần bỏ và điều sẽ thử tiếp.',
+          'Biến feedback thành một quyết định rõ cho vòng tháng sau.',
+          'Xác định năng lực nào còn cần hỗ trợ nhiều nhất.',
+        ],
+        competencyIds: ['learning-ownership', 'collaboration-trust'],
+        evidenceTemplateIds: ['weekly-checkin', 'experiment-log', 'final-handover'],
+      },
     ],
-    coachingFocus: [
-      'Product Owner (PO) hỗ trợ: Tư duy bóc tách vấn đề (problem thinking), thấu cảm người dùng (user empathy) và cấu trúc giới hạn kiểm thử (scope definition)',
-      'Tech Lead hỗ trợ: Quyết định lựa chọn kiến trúc (architecture decision), phân tích lý do chọn lựa Stack công nghệ tối ưu'
+    competencyTargets: [
+      {
+        competencyId: 'user-problem-understanding',
+        targetLevel: 2,
+        focus: 'Mô tả được người dùng, vấn đề và bằng chứng nền tảng thay vì bắt đầu từ giải pháp.',
+      },
+      {
+        competencyId: 'product-experimentation',
+        targetLevel: 2,
+        focus: 'Thu hẹp phạm vi prototype và xác định acceptance criteria có thể kiểm tra.',
+      },
+      {
+        competencyId: 'ai-assisted-execution',
+        targetLevel: 2,
+        focus: 'Dùng AI để tăng tốc tác vụ nhỏ nhưng luôn đọc lại và tự kiểm chứng.',
+      },
+      {
+        competencyId: 'learning-ownership',
+        targetLevel: 2,
+        focus: 'Báo tiến độ, blocker và bước tiếp theo đúng lúc thay vì chờ được hỏi.',
+      },
+      {
+        competencyId: 'collaboration-trust',
+        targetLevel: 2,
+        focus: 'Giao tiếp rõ phạm vi, giới hạn và nguồn bằng chứng với mentor hoặc stakeholder.',
+      },
     ],
-    checkpoints: [
-      'Hoàn thiện tài liệu Problem Brief cho cả 4 sản phẩm chính thức',
-      'Vẽ thành công sơ đồ luồng nghiệp vụ (User Flow) rành mạch và Bản vẽ bộ khung giao diện nháp (Wireframe draft) cho hệ thống ATS',
-      'Báo cáo quyết định kiến trúc và công nghệ được Tech Lead ký duyệt'
-    ]
+    coachingCadence: [
+      'Check-in đầu tuần để chốt phạm vi prototype và điều cần xác nhận.',
+      'Demo ngắn giữa tuần để nhận phản hồi sớm khi scope vẫn còn nhỏ.',
+      'Retro cuối tuần tập trung vào điều học được và blocker cần hỗ trợ.',
+    ],
+    monthlyGate: [
+      'Có một problem brief và acceptance criteria đã thống nhất.',
+      'Demo được vòng đầu tiên với evidence tối thiểu trong Journal.',
+      'Nêu rõ điều đã học và bước tiếp theo cho tháng 2.',
+    ],
   },
   {
-    phase: 'PHASE 2',
-    title: 'BUILD (Xây Dựng)',
-    time: 'Tháng 2 • Tuần 5-8',
-    objectives: [
-      'Triết lý "Ship early, ship often" - Ưu tiên duy trì phần mềm chạy ổn định (working software) hơn là mã nguồn hoàn hảo',
-      'Xây dựng các tính năng theo đúng mức độ phân cấp ưu tiên (priority rating) đã vạch ra trong User Stories',
-      'Tổ chức demo chạy thử phần mềm nội bộ (internal demo) định kỳ mỗi 2 tuần để hứng chịu phản hồi sớm',
-      'Ứng dụng tối đa các công cụ AI trợ giúp (Claude, Cursor...), đồng thời ghi chép đầy đủ tỷ lệ AI assist ratio của từng tính năng'
+    id: 'month-2',
+    month: 2,
+    title: 'Làm chủ vòng lặp',
+    autonomy: 'Chủ động hơn trong phạm vi đã rõ, tự chạy nhiều vòng thử và dùng feedback để ưu tiên.',
+    targetLevel: 3,
+    summary: 'Tháng 2 không còn chỉ hoàn thành một vòng, mà cần lặp lại chu trình Discover → Learn nhiều lần với chất lượng bằng chứng tốt hơn.',
+    steps: [
+      {
+        id: 'discover',
+        title: 'Discover',
+        question: 'Sau vòng đầu tiên, đâu là giả định quan trọng nhất còn lại?',
+        actions: [
+          'Đọc lại feedback và chọn một giả định có giá trị học cao nhất.',
+          'Ưu tiên vấn đề theo tác động thay vì làm mọi yêu cầu cùng lúc.',
+          'Chốt câu hỏi kiểm chứng rõ cho vòng thử tiếp theo.',
+        ],
+        competencyIds: ['user-problem-understanding', 'product-experimentation'],
+        evidenceTemplateIds: ['user-feedback', 'experiment-log'],
+      },
+      {
+        id: 'build',
+        title: 'Build',
+        question: 'Bạn cần thay đổi điều gì để kiểm chứng giả định tiếp theo nhanh hơn?',
+        actions: [
+          'Cắt bỏ phần chưa cần thiết và chỉ giữ thay đổi phục vụ câu hỏi hiện tại.',
+          'Dùng AI như cộng sự để tăng tốc phân tích, viết thử và tạo test case.',
+          'Giữ luồng demo ổn định để người dùng phản hồi đúng phần trọng tâm.',
+        ],
+        competencyIds: ['product-experimentation', 'ai-assisted-execution'],
+        evidenceTemplateIds: ['weekly-checkin', 'experiment-log'],
+      },
+      {
+        id: 'validate',
+        title: 'Validate',
+        question: 'Feedback mới xác nhận điều gì và bác bỏ điều gì?',
+        actions: [
+          'Thu ít nhất một vòng phản hồi có nguồn rõ hoặc dữ liệu kiểm thử cụ thể.',
+          'So sánh kết quả mới với kết quả của vòng trước.',
+          'Nêu rõ vì sao giữ nguyên, sửa tiếp hoặc dừng một hướng làm.',
+        ],
+        competencyIds: ['user-problem-understanding', 'product-experimentation', 'collaboration-trust'],
+        evidenceTemplateIds: ['user-feedback', 'experiment-log'],
+      },
+      {
+        id: 'ship',
+        title: 'Ship',
+        question: 'Ai cần được cập nhật để tiếp tục tin tưởng và hỗ trợ vòng tiếp theo?',
+        actions: [
+          'Chia sẻ bản demo đang chạy và trạng thái đạt hoặc chưa đạt của từng tiêu chí.',
+          'Đồng bộ lại kỳ vọng với mentor hoặc stakeholder trước khi mở rộng scope.',
+          'Ghi chú cách truy cập, dữ liệu mẫu và giới hạn hiện tại.',
+        ],
+        competencyIds: ['collaboration-trust', 'learning-ownership'],
+        evidenceTemplateIds: ['weekly-checkin', 'final-handover'],
+      },
+      {
+        id: 'learn',
+        title: 'Learn',
+        question: 'Bạn đã thay đổi cách ra quyết định sản phẩm như thế nào sau nhiều vòng thử?',
+        actions: [
+          'Tóm tắt pattern feedback lặp lại và bài học quan trọng nhất.',
+          'Chỉ ra một cách làm hiệu quả hơn mà bạn sẽ lặp lại ở tháng 3.',
+          'Cập nhật năng lực nào đã tiến gần Level 3 và năng lực nào còn cần đẩy tiếp.',
+        ],
+        competencyIds: ['learning-ownership', 'product-experimentation'],
+        evidenceTemplateIds: ['weekly-checkin', 'experiment-log', 'final-handover'],
+      },
     ],
-    coachingFocus: [
-      'PO hỗ trợ: Sắp xếp thứ tự ưu tiên các tính năng bám sát thực tế, kiểm soát phạm phát phình tính năng (scope management), phân tích feedback',
-      'Tech Lead hỗ trợ: Đánh giá mã nguồn chất lượng cao (code review), kiểm soát cấu trúc và tư duy tinh gọn khi dùng AI gõ code, phương án gỡ lỗi'
+    competencyTargets: [
+      {
+        competencyId: 'user-problem-understanding',
+        targetLevel: 3,
+        focus: 'Chủ động xác nhận lại vấn đề sau mỗi vòng feedback và phân biệt được tín hiệu mạnh yếu.',
+      },
+      {
+        competencyId: 'product-experimentation',
+        targetLevel: 3,
+        focus: 'Thiết kế vòng thử có mục tiêu rõ, biết chọn tradeoff giữa tốc độ và giá trị học.',
+      },
+      {
+        competencyId: 'ai-assisted-execution',
+        targetLevel: 3,
+        focus: 'Biết giao đúng việc cho AI, kiểm tra đầu ra và giữ chất lượng prototype ổn định.',
+      },
+      {
+        competencyId: 'learning-ownership',
+        targetLevel: 3,
+        focus: 'Quản lý được cam kết cá nhân, blocker và nhịp cải tiến mà không chờ nhắc.',
+      },
+      {
+        competencyId: 'collaboration-trust',
+        targetLevel: 3,
+        focus: 'Cập nhật trung thực tiến độ, rủi ro và bằng chứng để tạo niềm tin khi phối hợp.',
+      },
     ],
-    checkpoints: [
-      'Tổ chức buổi Demo giữa kỳ cho PO, Tech Lead và đại diện phòng ban vận hành thực tế',
-      'Sản phẩm cốt lõi ATS đạt trên 70% tiến độ phát triển, 3 sản phẩm AI Agents còn lại đạt trạng thái kiểm thử tối thiểu là 50%',
-      'Tự soi chiếu và hoàn thành Journal tự đánh giá Sprint Retrospective'
-    ]
+    coachingCadence: [
+      'Weekly check-in tập trung vào giả định ưu tiên và cách đo kết quả.',
+      'Một buổi feedback có người dùng hoặc stakeholder cho mỗi vòng thử quan trọng.',
+      'Review cuối tuần so sánh thay đổi giữa các vòng và chốt hướng đi tiếp.',
+    ],
+    monthlyGate: [
+      'Có ít nhất một vòng feedback hoặc kiểm chứng mới dẫn tới thay đổi rõ trong prototype.',
+      'Competency target chính đã tiến gần Level 3 với bằng chứng cụ thể.',
+      'Mọi cập nhật phạm vi đều có lý do dựa trên dữ liệu hoặc phản hồi.',
+    ],
   },
   {
-    phase: 'PHASE 3',
-    title: 'VALIDATE (Kiểm Thử Thực Tế)',
-    time: 'Tháng 2.5 • Tuần 9-10',
-    objectives: [
-      'Thực hiện quy trình UAT trực tiếp với người sử dụng thực tế trong môi trường thật - Nói KHÔNG với việc chỉ demo trong phòng Lab đóng kín',
-      'Thu thập có hệ thống các phản hồi từ người dùng thực tế, phân loại định danh thứ tự lỗi (P0 - Chí mạng, P1 - Nghiêm trọng, P2 - Đề xuất)',
-      'Sửa lỗi quyết liệt theo thứ tự ưu tiên cao nhất, đóng băng (freeze) toàn bộ việc phát sinh thêm tính năng mới',
-      'Hoàn thành danh mục kiểm duyệt kỹ thuật (Deployment Checklist) và chuẩn bị kế hoạch go-live sản phẩm'
+    id: 'month-3',
+    month: 3,
+    title: 'Tạo impact và bàn giao',
+    autonomy: 'Chịu trách nhiệm rõ hơn với đầu ra, demo, handover và tác động của quyết định sản phẩm.',
+    targetLevel: 3,
+    summary: 'Tháng 3 hướng tới mức hoàn thành chuẩn Intern: prototype rõ giá trị, có bằng chứng kiểm chứng, có thể demo và bàn giao, đồng thời bắt đầu xuất hiện tín hiệu Level 4.',
+    steps: [
+      {
+        id: 'discover',
+        title: 'Discover',
+        question: 'Điều gì là quan trọng nhất để prototype tạo impact ở vòng cuối?',
+        actions: [
+          'Chốt vấn đề ưu tiên cuối cùng dựa trên evidence đã tích lũy.',
+          'Làm rõ ai sẽ dùng, đánh giá hoặc tiếp tục với đầu ra này.',
+          'Xác định tiêu chí nghiệm thu cuối và các giới hạn phải nói rõ.',
+        ],
+        competencyIds: ['user-problem-understanding', 'collaboration-trust'],
+        evidenceTemplateIds: ['problem-brief', 'user-feedback', 'final-handover'],
+      },
+      {
+        id: 'build',
+        title: 'Build',
+        question: 'Phiên bản nào đủ tốt để người khác dùng thử hoặc review nghiêm túc?',
+        actions: [
+          'Ổn định luồng chính và loại bớt phần gây nhiễu cho demo cuối.',
+          'Dùng AI để tăng tốc tài liệu hóa, test case hoặc cleanup có kiểm soát.',
+          'Giữ mọi quyết định scope bám sát giá trị và bằng chứng.',
+        ],
+        competencyIds: ['product-experimentation', 'ai-assisted-execution', 'learning-ownership'],
+        evidenceTemplateIds: ['experiment-log', 'weekly-checkin', 'final-handover'],
+      },
+      {
+        id: 'validate',
+        title: 'Validate',
+        question: 'Prototype đã thực sự đạt acceptance criteria và phản hồi cuối chưa?',
+        actions: [
+          'Đối chiếu lại từng acceptance criterion với bằng chứng hiện có.',
+          'Tổng hợp feedback cuối cùng cùng các giới hạn hoặc rủi ro còn lại.',
+          'Kiểm tra khả năng truy cập, tính rõ ràng và mức sẵn sàng bàn giao.',
+        ],
+        competencyIds: ['product-experimentation', 'collaboration-trust'],
+        evidenceTemplateIds: ['user-feedback', 'experiment-log', 'final-handover'],
+      },
+      {
+        id: 'ship',
+        title: 'Ship',
+        question: 'Người khác có thể xem, hiểu và tiếp tục với kết quả của bạn không?',
+        actions: [
+          'Chuẩn bị demo, hướng dẫn truy cập và note handover ngắn gọn.',
+          'Nêu rõ điều đã đạt, chưa đạt và phần cần tiếp tục sau chương trình.',
+          'Đảm bảo bằng chứng và thông tin bàn giao trung thực, dễ kiểm tra.',
+        ],
+        competencyIds: ['collaboration-trust', 'learning-ownership'],
+        evidenceTemplateIds: ['final-handover', 'weekly-checkin'],
+      },
+      {
+        id: 'learn',
+        title: 'Learn',
+        question: 'Bạn đã trở thành Product Builder tốt hơn ở điểm nào sau ba tháng?',
+        actions: [
+          'Kết nối bài học từ cả ba tháng thành một narrative phát triển rõ ràng.',
+          'Chỉ ra thói quen hoặc cách làm mới mà bạn muốn giữ lâu dài.',
+          'Nhận diện tín hiệu vượt kỳ vọng để tiếp tục phát triển sau chương trình.',
+        ],
+        competencyIds: ['learning-ownership', 'collaboration-trust', 'ai-assisted-execution'],
+        evidenceTemplateIds: ['final-handover', 'experiment-log'],
+      },
     ],
-    coachingFocus: [
-      'PO hỗ trợ: Tổng hợp thông tin phản hồi từ người sử dụng, thẩm định quyết định chính thức cho phép triển khai (go/no-go selection)',
-      'Tech Lead hỗ trợ: Sắp xếp phân hạng xử lý lỗi kỹ thuật (bug triage), rà soát hiệu năng xử lý của mã nguồn (performance tuning)'
+    competencyTargets: [
+      {
+        competencyId: 'user-problem-understanding',
+        targetLevel: 3,
+        focus: 'Ra quyết định dựa trên bằng chứng tích lũy và biết chỉ ra vấn đề nào tạo impact thực sự.',
+      },
+      {
+        competencyId: 'product-experimentation',
+        targetLevel: 3,
+        focus: 'Khóa được phạm vi cuối, chứng minh kết quả với acceptance criteria và phản hồi thật.',
+      },
+      {
+        competencyId: 'ai-assisted-execution',
+        targetLevel: 3,
+        focus: 'Dùng AI có phán đoán, giải thích được quyết định và tự kiểm tra chất lượng đầu ra.',
+      },
+      {
+        competencyId: 'learning-ownership',
+        targetLevel: 3,
+        focus: 'Chủ động quản lý timeline, handover và các bước tiếp theo sau chương trình.',
+      },
+      {
+        competencyId: 'collaboration-trust',
+        targetLevel: 3,
+        focus: 'Tạo niềm tin qua demo rõ ràng, bằng chứng kiểm tra được và giao tiếp trung thực.',
+      },
     ],
-    checkpoints: [
-      'Ký nhận thành công tài liệu bàn giao kiểm duyệt UAT (UAT Sign-off) từ phía các stakeholder người dùng cuối của từng sản phẩm',
-      'Danh mục lỗi đạt chuẩn xuất xưởng: Sạch bóng lỗi P0 (zero P0), số lỗi P1 nhỏ hơn 5 chỉ số'
-    ]
+    coachingCadence: [
+      'Review đầu tuần để khóa mục tiêu demo và phần evidence còn thiếu.',
+      'Dry run giữa tuần cho demo, handover và câu chuyện phát triển qua ba tháng.',
+      'Buổi tổng kết cuối tháng đối chiếu scorecard, evidence và bước phát triển tiếp theo.',
+    ],
+    monthlyGate: [
+      'Prototype demo được, có bằng chứng đối chiếu acceptance criteria.',
+      'Handover đủ rõ để người khác truy cập, hiểu giới hạn và tiếp tục được.',
+      'Xuất hiện tín hiệu Level 4 ở ít nhất một vài hành vi, nhưng gate chính vẫn là chuẩn Level 3 của Intern.',
+    ],
+    futureSignals: [
+      'Biết đề xuất tradeoff giữa tác động kinh doanh và chi phí thực thi.',
+      'Tự tổ chức nhịp làm việc, phản tư và điều chỉnh cách phối hợp với stakeholder.',
+      'Chia sẻ lại cách làm hiệu quả cho người khác thay vì chỉ hoàn thành phần việc của mình.',
+    ],
   },
-  {
-    phase: 'PHASE 4',
-    title: 'SHIP (Triển Khai & Bàn Giao)',
-    time: 'Tháng 3 • Tuần 11-12',
-    objectives: [
-      'Triển khai toàn diện sản phẩm lên môi trường hạ tầng thực tế (Live Production), theo dõi hiệu suất, xử lý dứt điểm các lỗi phát sinh ban đầu',
-      'Đào tạo và chuyển tải kiến thức cho người dùng thực thụ để họ có khả năng hoàn toàn tự vận hành trơn tru',
-      'Soạn thảo tài liệu bàn giao kỹ thuật (Handover Document) chi tiết, rành mạch để bất kỳ kỹ sư kế thừa nào cũng nắm bắt ngay lập tức',
-      'Tổng duyệt và chuẩn bị cho buổi phản biện chính thức trước Hội đồng thẩm định độc lập'
-    ],
-    coachingFocus: [
-      'PO hỗ trợ: Đánh giá độ hoàn mỹ của tài liệu bàn giao, tư duy giao tiếp thuyết phục với BoD và các HODs',
-      'Tech Lead hỗ trợ: Thẩm định độ an toàn bảo mật trên môi trường Production, chấm điểm chất lượng và độ mạch lạc của tài liệu kỹ thuật'
-    ],
-    checkpoints: [
-      'Sản phẩm hoạt động thực tế trên hạ tầng của YODY, người dùng cuối đang tương tác hàng ngày',
-      'Hoàn thiện cuốn cẩm nang bàn giao hệ thống (Handover Document) trọn vẹn',
-      'Nhận bảng điểm tổng sắp chính thức từ Hội đồng thẩm định độc lập thông qua công cụ ScoreCard đánh giá'
-    ]
-  }
 ];
 
 export const ENTRY_SCORECARD_DATA: ScorecardDefinition = {
@@ -374,7 +621,7 @@ export const ENTRY_SCORECARD_DATA: ScorecardDefinition = {
       id: 'entry-role-outcome', name: 'Hiểu vai trò và đầu ra chương trình', description: 'Ứng viên hiểu phạm vi Intern Product Builder và chuẩn một prototype.', points: 15,
       criteria: [
         {
-          id: 'entry-role-clarity', name: 'Hiểu vai trò và đầu ra', description: 'Diễn giải được mục tiêu chương trình, vai trò của feedback và acceptance criteria.', points: 15, competencyIds: ['learning-ownership'], evidenceTemplateIds: ['problem-brief'], levels: {
+          id: 'entry-role-clarity', name: 'Hiểu vai trò và đầu ra', description: 'Diễn giải được mục tiêu chương trình, vai trò của feedback và acceptance criteria.', points: 15, competencyIds: ['product-experimentation'], evidenceTemplateIds: ['problem-brief'], levels: {
             1: 'Chưa mô tả được đầu ra hoặc kỳ vọng của chương trình.',
             2: 'Hiểu cần làm prototype nhưng còn mơ hồ về người dùng và bằng chứng.',
             3: 'Nêu rõ một prototype, phản hồi người dùng, acceptance criteria và trách nhiệm của Intern.',

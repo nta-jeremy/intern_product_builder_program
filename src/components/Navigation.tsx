@@ -1,19 +1,19 @@
 import React, { useState, useRef } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { 
-  LayoutDashboard, 
-  Award, 
-  Boxes, 
-  Milestone, 
-  CheckSquare, 
-  FileEdit, 
-  Menu, 
-  X, 
-  ArrowUpRight, 
-  BookOpen, 
+import {
+  LayoutDashboard,
+  Award,
+  Boxes,
+  Milestone,
+  CheckSquare,
+  FileEdit,
+  Menu,
+  X,
+  ArrowUpRight,
+  BookOpen,
   ChevronDown,
   Moon,
-  Sun
+  Sun,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useTheme } from './ThemeProvider';
@@ -27,6 +27,22 @@ const navItems = [
   { path: '/journal', label: 'Sổ tay thực tập', icon: FileEdit },
 ];
 
+function isLifecycleRoute(pathname: string) {
+  return pathname === '/lifecycle' || pathname === '/lifecycle-detail' || pathname === '/lifecycle-concept-c';
+}
+
+function isNavItemActive(pathname: string, itemPath: string, end?: boolean) {
+  if (itemPath === '/lifecycle') {
+    return isLifecycleRoute(pathname);
+  }
+
+  if (end) {
+    return pathname === itemPath;
+  }
+
+  return pathname === itemPath || pathname.startsWith(`${itemPath}/`);
+}
+
 export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
@@ -34,7 +50,6 @@ export default function Navigation() {
   const location = useLocation();
   const { theme, setTheme } = useTheme();
 
-  // Hover Dropdown
   const handleMouseEnter = (menuId: string) => {
     if (dropdownTimeoutRef.current) clearTimeout(dropdownTimeoutRef.current);
     setActiveDropdown(menuId);
@@ -53,24 +68,22 @@ export default function Navigation() {
       items: [
         { path: '/profile', label: 'Tiêu chí cá nhân', desc: 'Định nghĩa chân dung, khung năng lực và mục tiêu.', icon: Award, color: 'text-gold bg-gold/10' },
         { path: '/journal', label: 'Sổ tay thực tập', desc: 'Nhật ký công việc, học tập và ghi nhận hàng ngày.', icon: FileEdit, color: 'text-brand-light bg-brand/10' },
-      ]
+      ],
     },
     {
       id: 'product-coaching',
       title: 'Sản phẩm & Đánh giá',
       items: [
         { path: '/products', label: 'Chân dung 4 sản phẩm', desc: 'Chi tiết về 4 dòng sản phẩm cốt lõi đang xây dựng.', icon: Boxes, color: 'text-mint bg-mint/10' },
-        { path: '/lifecycle', label: 'Coaching Lifecycle', desc: 'Lộ trình huấn luyện và đào tạo đồng hành phát triển.', icon: Milestone, color: 'text-iris bg-iris/10' },
+        { path: '/lifecycle', label: 'Coaching Lifecycle', desc: 'Progressive Spiral, bản chi tiết và lộ trình ba vòng phát triển.', icon: Milestone, color: 'text-iris bg-iris/10' },
         { path: '/scorecard', label: 'Scorecard đánh giá', desc: 'Bảng điểm hiệu suất và ghi nhận năng lực định kỳ.', icon: CheckSquare, color: 'text-rose bg-rose/10' },
-      ]
-    }
+      ],
+    },
   ];
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border backdrop-blur-md transition-all" style={{ backgroundColor: 'color-mix(in srgb, var(--bg) 80%, transparent)', transitionDuration: 'var(--dur-slow)' }}>
       <div className="mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8" style={{ maxWidth: 'var(--container-max)' }}>
-        
-        {/* Logo Section */}
         <NavLink to="/" className="flex items-center space-x-3 group">
           <img src="/yody-logo.webp" alt="YODY" className="h-8 w-auto transition-transform group-hover:scale-105" style={{ borderRadius: 'var(--radius-sm)', transitionDuration: 'var(--dur-slow)' }} />
           <div className="flex flex-col">
@@ -79,9 +92,7 @@ export default function Navigation() {
           </div>
         </NavLink>
 
-        {/* Desktop Smart Grouped Navigation */}
         <nav className="hidden lg:flex items-center space-x-2">
-          {/* Trang chủ: Tổng quan */}
           <NavLink
             to="/"
             end
@@ -98,9 +109,8 @@ export default function Navigation() {
             <span>Tổng quan</span>
           </NavLink>
 
-          {/* Grouped Menus with Dropdowns */}
           {groupedMenus.map((group) => {
-            const isGroupActive = group.items.some(item => location.pathname.startsWith(item.path));
+            const isGroupActive = group.items.some((item) => isNavItemActive(location.pathname, item.path));
             const isOpen = activeDropdown === group.id;
 
             return (
@@ -122,7 +132,6 @@ export default function Navigation() {
                   <ChevronDown strokeWidth={1.75} className={`h-3 w-3 text-fg-3 transition-transform ${isOpen ? 'rotate-180 text-fg-1' : ''}`} style={{ transitionDuration: 'var(--dur-slow)' }} />
                 </button>
 
-                {/* Mega Dropdown Menu */}
                 <AnimatePresence>
                   {isOpen && (
                     <motion.div
@@ -139,7 +148,7 @@ export default function Navigation() {
                       <div className="space-y-1">
                         {group.items.map((subItem) => {
                           const SubIcon = subItem.icon;
-                          const isSubActive = location.pathname === subItem.path;
+                          const isSubActive = isNavItemActive(location.pathname, subItem.path);
 
                           return (
                             <NavLink
@@ -176,7 +185,6 @@ export default function Navigation() {
           })}
         </nav>
 
-        {/* Quick Actions */}
         <div className="hidden lg:flex items-center space-x-3">
           <button
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
@@ -211,7 +219,6 @@ export default function Navigation() {
           </a>
         </div>
 
-        {/* Mobile menu button */}
         <div className="flex lg:hidden items-center space-x-2">
           <button
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
@@ -228,10 +235,8 @@ export default function Navigation() {
             {mobileMenuOpen ? <X className="h-5 w-5" strokeWidth={1.75} /> : <Menu className="h-5 w-5" strokeWidth={1.75} />}
           </button>
         </div>
-
       </div>
 
-      {/* Mobile Menu */}
       {mobileMenuOpen && (
         <div className="lg:hidden fixed inset-x-0 top-16 z-50 border-b border-border bg-bg px-4 py-4 space-y-1.5 max-h-[calc(100vh-4rem)] overflow-y-auto" style={{ boxShadow: 'var(--shadow-md)' }}>
           <div className="px-2 pb-2 text-[10px] font-bold uppercase tracking-wider text-brand">
@@ -239,19 +244,19 @@ export default function Navigation() {
           </div>
           {navItems.map((item) => {
             const Icon = item.icon;
+            const isActive = isNavItemActive(location.pathname, item.path, item.end);
+
             return (
               <NavLink
                 key={item.path}
                 to={item.path}
                 end={item.end}
                 onClick={() => setMobileMenuOpen(false)}
-                className={({ isActive }) =>
-                  `flex w-full items-center space-x-3 px-3.5 py-2.5 text-sm font-semibold transition-all ${
-                    isActive
-                      ? 'bg-brand/10 text-brand border border-brand/20'
-                      : 'text-fg-2 hover:bg-bg-muted hover:text-fg-1 border border-transparent'
-                  }`
-                }
+                className={`flex w-full items-center space-x-3 px-3.5 py-2.5 text-sm font-semibold transition-all ${
+                  isActive
+                    ? 'bg-brand/10 text-brand border border-brand/20'
+                    : 'text-fg-2 hover:bg-bg-muted hover:text-fg-1 border border-transparent'
+                }`}
                 style={{ borderRadius: 'var(--radius)' }}
               >
                 <Icon className="h-4.5 w-4.5" strokeWidth={1.75} />
@@ -259,7 +264,7 @@ export default function Navigation() {
               </NavLink>
             );
           })}
-          
+
           <div className="border-t border-border pt-3.5 mt-3.5 space-y-2">
             <a
               href="/intro"

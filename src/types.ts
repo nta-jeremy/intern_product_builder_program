@@ -42,13 +42,35 @@ export interface ProductDetail {
   deliverables: MetricDeliverable[];
 }
 
-export interface CoachingPhase {
-  phase: string;
+export type LifecycleStepId = 'discover' | 'build' | 'validate' | 'ship' | 'learn';
+
+export interface LifecycleStep {
+  id: LifecycleStepId;
   title: string;
-  time: string;
-  objectives: string[];
-  coachingFocus: string[];
-  checkpoints: string[];
+  question: string;
+  actions: string[];
+  competencyIds: CompetencyId[];
+  evidenceTemplateIds: string[];
+}
+
+export interface CoachingMonthCompetencyTarget {
+  competencyId: CompetencyId;
+  targetLevel: CompetencyLevel;
+  focus: string;
+}
+
+export interface CoachingMonth {
+  id: string;
+  month: number;
+  title: string;
+  autonomy: string;
+  targetLevel: CompetencyLevel;
+  summary: string;
+  steps: LifecycleStep[];
+  competencyTargets: CoachingMonthCompetencyTarget[];
+  coachingCadence: string[];
+  monthlyGate: string[];
+  futureSignals?: string[];
 }
 
 export interface ScorecardCriterion {

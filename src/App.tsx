@@ -5,7 +5,8 @@ import Navigation from './components/Navigation';
 import Overview from './components/Overview';
 import SuccessProfile from './components/SuccessProfile';
 import Products from './components/Products';
-import Roadmap from './components/Roadmap';
+import CoachingLifecycle from './components/CoachingLifecycle';
+import CoachingLifecycleDetail from './components/CoachingLifecycleDetail';
 import Scorecard from './components/Scorecard';
 import WorkingJournal from './components/WorkingJournal';
 
@@ -36,7 +37,9 @@ export default function App() {
             <Route path="/" element={<Overview />} />
             <Route path="/profile" element={<SuccessProfile />} />
             <Route path="/products" element={<Products />} />
-            <Route path="/lifecycle" element={<Roadmap />} />
+            <Route path="/lifecycle" element={<CoachingLifecycle />} />
+            <Route path="/lifecycle-detail" element={<CoachingLifecycleDetail />} />
+            <Route path="/lifecycle-concept-c" element={<Navigate to="/lifecycle" replace />} />
             <Route path="/scorecard" element={<Scorecard />} />
             <Route path="/journal" element={<WorkingJournal />} />
             <Route path="*" element={<Navigate to="/" replace />} />

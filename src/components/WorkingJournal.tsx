@@ -177,10 +177,16 @@ export default function WorkingJournal() {
     }
   });
   const [aiLoadingField, setAiLoadingField] = useState<string | null>(null);
+  const [autosaveFailed, setAutosaveFailed] = useState(false);
   const [notification, setNotification] = useState<{ message: string; type: 'success' | 'error' | 'info' } | null>(null);
 
   useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
+      setAutosaveFailed(false);
+    } catch {
+      setAutosaveFailed(true);
+    }
   }, [formData]);
 
   const activeTemplate = JOURNAL_TEMPLATES.find((template) => template.id === activeTemplateId) ?? JOURNAL_TEMPLATES[0];
@@ -332,6 +338,13 @@ export default function WorkingJournal() {
           </button>
         </div>
       </header>
+
+      {autosaveFailed && (
+        <div role="alert" className="flex items-start gap-3 border border-gap/30 bg-gap/10 p-4 text-xs text-gap" style={{ borderRadius: 'var(--radius)' }}>
+          <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
+          <span>Không thể tự động lưu Journal trên trình duyệt này. Hãy sao chép hoặc tải Markdown để giữ nội dung.</span>
+        </div>
+      )}
 
       {notification && (
         <div
