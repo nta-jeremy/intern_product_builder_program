@@ -18,10 +18,11 @@ vercel --prod --yes
 | `APP_URL` | Recommended | Self-referential URL for OAuth callbacks & API endpoints |
 
 ## Project Config (`vercel.json`)
-- **Build Command**: `npm run build:vite`
-- **Output Directory**: `dist/`
-- **Framework**: None (SPA + API routes)
-- **API Routes**: `/api/gemini/assist` (serverless function)
+- **Framework**: Next.js (auto-detected)
+- **Build Command**: `next build`
+- **Output Directory**: `.next`
+- **Node Version**: 24.x
+- **Static Routes**: `/`, `/_not-found`
 
 ## Custom Domain
 Currently using Vercel auto-assigned domain (`yody-itdx-intern-product-builder.vercel.app`). To add custom domain:
@@ -34,6 +35,6 @@ Currently using Vercel auto-assigned domain (`yody-itdx-intern-product-builder.v
 3. Click "•••" → "Promote to Production"
 
 ## Troubleshooting
-- **Build fails**: Check `vercel.json#outputDirectory` matches actual build output
-- **API 404**: Ensure `api/*.ts` files exist and `@vercel/node` is installed
-- **Missing env vars**: Configure in Vercel Dashboard → Project → Environment Variables
+- **`Output directory "src/dist" was not found`**: Ensure `vercel.json#outputDirectory` matches Next.js build output (`.next`). Common cause: project was previously Vite/other framework and `outputDirectory` not updated.
+- **Build fails on TypeScript**: Run `npm run build` locally first; fix type errors before deploying.
+- **Missing env vars**: Configure in Vercel Dashboard → Project → Environment Variables.
