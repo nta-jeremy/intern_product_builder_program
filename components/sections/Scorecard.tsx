@@ -208,7 +208,7 @@ export function Scorecard() {
           color: "var(--fg-1)",
         }}
       >
-        Chấm bằng chứng theo đúng thời điểm
+        Đánh giá theo từng giai đoạn
       </h1>
       <p
         style={{
@@ -218,9 +218,9 @@ export function Scorecard() {
           margin: "0 0 20px",
         }}
       >
-        Scorecard đầu vào đánh giá tiềm năng trước chương trình; Scorecard cuối kỳ
-        đánh giá một prototype và quá trình tạo ra kết quả. Cả hai đều là đầu vào
-        cho Hội đồng, không tự động quyết định tuyển dụng.
+        Scorecard đầu vào đánh giá tiềm năng trước chương trình, Scorecard cuối kỳ
+        đánh giá một prototype và quá trình tạo ra kết quả. Tất cả đều là thông tin đầu vào
+        cho Hội Đồng tham khảo và đánh giá.
       </p>
 
       <div

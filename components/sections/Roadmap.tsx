@@ -235,25 +235,78 @@ export function Roadmap({ onOpenQuiz, onLessonChange }: RoadmapProps) {
         animation: "dcFade .4s var(--ease-out)",
       }}
     >
-      <span className="s-eyebrow iris">Lộ trình &amp; Học tập</span>
-      <div
+      <header
         style={{
-          display: "inline-flex",
-          gap: "4px",
-          padding: "4px",
-          background: "var(--bg-2)",
-          border: "1px solid var(--border)",
-          borderRadius: "12px",
-          margin: "16px 0 26px",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "flex-start",
+          gap: "20px",
+          margin: "0 0 40px",
         }}
       >
-        <button onClick={() => setRmTab("timeline")} style={segTab(rmTab === "timeline")}>
-          Lộ trình đào tạo
-        </button>
-        <button onClick={() => setRmTab("learn")} style={segTab(rmTab === "learn")}>
-          Không gian học tập
-        </button>
-      </div>
+        <span className="s-eyebrow iris">Lộ trình &amp; Học tập</span>
+        <div
+          role="tablist"
+          aria-label="Lộ trình & Học tập"
+          style={{
+            display: "inline-flex",
+            gap: "6px",
+            padding: "6px",
+            background: "var(--bg)",
+            border: "1px solid var(--border)",
+            borderRadius: "14px",
+            boxShadow: "var(--shadow-sm)",
+          }}
+        >
+          <button
+            role="tab"
+            aria-selected={rmTab === "timeline"}
+            onClick={() => setRmTab("timeline")}
+            style={segTab(rmTab === "timeline")}
+          >
+            {rmTab === "timeline" && (
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2.4}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M4 6h16M4 12h10M4 18h7" />
+              </svg>
+            )}
+            Lộ trình đào tạo
+          </button>
+          <button
+            role="tab"
+            aria-selected={rmTab === "learn"}
+            onClick={() => setRmTab("learn")}
+            style={segTab(rmTab === "learn")}
+          >
+            {rmTab === "learn" && (
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2.4}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M3 9.5 12 4l9 5.5-9 5.5L3 9.5Z" />
+                <path d="M7 11.5V16c0 1.5 2.5 3 5 3s5-1.5 5-3v-4.5" />
+              </svg>
+            )}
+            Không gian học tập
+          </button>
+        </div>
+      </header>
 
       {rmTab === "timeline" && (
         <div style={{ animation: "dcFade .35s var(--ease-out)" }}>

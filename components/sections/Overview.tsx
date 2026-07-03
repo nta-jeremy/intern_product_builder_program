@@ -1,11 +1,8 @@
 "use client";
 
-import type { TabKey } from "@/lib/nav";
-
 interface OverviewProps {
   onStartLearning: () => void;
   onGoComp: () => void;
-  go: (t: TabKey) => void;
 }
 
 const stats = [
