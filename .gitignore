@@ -6,6 +6,7 @@ coverage/
 dist/
 src/dist/
 build/
+.next/
 
 # Dependencies
 node_modules/
