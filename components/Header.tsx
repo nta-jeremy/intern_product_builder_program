@@ -43,25 +43,22 @@ export function Header({ tab, onTab, isDark, onToggleTheme }: HeaderProps) {
           style={{
             width: "42px",
             height: "42px",
-            borderRadius: "12px",
-            background: "linear-gradient(150deg,var(--brand),var(--brand-light))",
+            borderRadius: "10px",
+            overflow: "hidden",
+            background: "#ffb524",
             display: "grid",
             placeItems: "center",
             boxShadow: "var(--shadow-brand)",
           }}
         >
-          <svg
-            width="23"
-            height="23"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="#fff"
-            strokeWidth={1.9}
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .962 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.962 0z" />
-          </svg>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/yody-logo.webp"
+            alt="YODY logo"
+            width={42}
+            height={42}
+            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+          />
         </div>
         <div>
           <div
@@ -90,6 +87,7 @@ export function Header({ tab, onTab, isDark, onToggleTheme }: HeaderProps) {
       <nav
         style={{
           display: "flex",
+          justifyContent: "center",
           gap: "5px",
           overflowX: "auto",
           flex: 1,

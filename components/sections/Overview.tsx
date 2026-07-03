@@ -10,10 +10,10 @@ interface OverviewProps {
 
 const stats = [
   {
-    big: "14",
+    big: "12 - 14",
     color: "var(--brand)",
-    title: "Buổi học",
-    sub: "Độc lập, tích hợp lý thuyết & thực hành",
+    title: "Buổi đào tạo",
+    sub: "Tích hợp lý thuyết & thực hành",
   },
   {
     big: "3",
@@ -30,7 +30,7 @@ const stats = [
   {
     big: "L2",
     color: "var(--gold-deep)",
-    title: "Cổng tốt nghiệp",
+    title: "Điều kiện tốt nghiệp",
     sub: "Chuẩn đầu ra chính thức của Product Builder",
   },
 ];
@@ -232,7 +232,8 @@ export function Overview({ onStartLearning, onGoComp }: OverviewProps) {
               color: "var(--fg-1)",
             }}
           >
-            Mô hình cân bằng Product &amp; Engineering
+            Mô hình cân bằng giữa <br />
+            Product &amp; Engineering
           </h2>
           <p
             style={{

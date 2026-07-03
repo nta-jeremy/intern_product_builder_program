@@ -89,9 +89,9 @@ export function Scorecard() {
           style: {
             textAlign: "left",
             background: on ? "var(--iris-tint)" : "var(--bg-2)",
-            border: on
-              ? "1.5px solid var(--iris)"
-              : "1px solid var(--border-light)",
+            borderWidth: on ? "1.5px" : "1px",
+            borderStyle: "solid",
+            borderColor: on ? "var(--iris)" : "var(--border-light)",
             borderRadius: "11px",
             padding: "11px 13px",
             cursor: "pointer",
@@ -181,9 +181,11 @@ export function Scorecard() {
     padding: "12px 14px",
     borderRadius: "12px",
     background: done ? "var(--mint-tint)" : "var(--bg-muted)",
-    border: done
-      ? "1px solid rgba(16,185,129,.3)"
-      : "1px solid var(--border-light)",
+    borderWidth: "1px",
+    borderStyle: "solid",
+    borderColor: done
+      ? "rgba(16,185,129,.3)"
+      : "var(--border-light)",
   } as React.CSSProperties;
   const scStatusFg = done ? "var(--mint-deep)" : "var(--fg-2)";
   const scStatusIconBg = done ? "var(--mint)" : "var(--fg-3)";
@@ -270,7 +272,9 @@ export function Scorecard() {
                     key={c.id}
                     style={{
                       background: "var(--card)",
-                      border: `1px solid ${c.borderCol}`,
+                      borderWidth: "1px",
+                      borderStyle: "solid",
+                      borderColor: c.borderCol,
                       borderRadius: "14px",
                       boxShadow: "var(--shadow-sm)",
                       overflow: "hidden",
@@ -423,7 +427,9 @@ export function Scorecard() {
                                     width: "15px",
                                     height: "15px",
                                     borderRadius: "50%",
-                                    border: `2px solid ${lv.dot}`,
+                                    borderWidth: "2px",
+                                    borderStyle: "solid",
+                                    borderColor: lv.dot,
                                     background: lv.dotBg,
                                     flex: "none",
                                   }}
@@ -632,7 +638,9 @@ export function Scorecard() {
                         width: "20px",
                         height: "20px",
                         borderRadius: "6px",
-                        border: `2px solid ${g.brd}`,
+                        borderWidth: "2px",
+                        borderStyle: "solid",
+                        borderColor: g.brd,
                         background: g.bg,
                         display: "grid",
                         placeItems: "center",

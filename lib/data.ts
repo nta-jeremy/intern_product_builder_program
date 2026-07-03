@@ -62,7 +62,7 @@ export const COMPS: Competency[] = [
   {
     code: "NL1",
     group: "mindset",
-    name: "Tư duy Hướng kết quả",
+    name: "Outcome Thinking",
     en: "Outcome Thinking",
     lock: true,
     points: [
@@ -286,50 +286,50 @@ export const PRODUCTS: Product[] = [
         output:
           "Bảng thống kê kết quả thẩm định, mã nguồn integration test, tài liệu",
         kpi:
-          "UAT thành công, chuyên viên kiểm soát nội bộ dùng thuần thục",
+          "Kiểm thử thực tế (UAT) thành công, chuyên viên kiểm soát nội bộ dùng thuần thục",
         sign: ["Compliance Director"],
       },
     ],
   },
   {
     roman: "IV",
-    name: "Agent Quản lý Công việc & Báo cáo",
-    en: "Personal Productivity and Reporting Agent",
-    prio: "TRUNG BÌNH",
-    stars: 2,
-    desc: "Agent AI đắc lực hỗ trợ từng cá nhân quản lý công việc, nhắc nhở deadline và tự động tổng hợp báo cáo công tác tuần/tháng qua API của nền tảng quản lý dự án YODY.",
-    stakeholders: ["Cá nhân Intern", "Quản lý trực tiếp (Manager)"],
+    name: "AIxPerf Goal Map Analytic",
+    en: "AIxPerf Goal Map Analytic",
+    prio: "CAO",
+    stars: 3,
+    desc: "Module phân tích tích hợp trong hệ thống AIxPerf, giúp Ban điều hành và quản lý cấp cao có bức tranh toàn diện (single source of truth) về goal map toàn công ty — từ mục tiêu chiến lược cấp công ty, cascade xuống mục tiêu phòng ban và cá nhân. Thay vì tổng hợp thủ công, module tự động phát hiện misalignment, goal-at-risk, và tạo insight hành động để đẩy bộ máy tổ chức phát triển.",
+    stakeholders: [
+      "Ban điều hành (CEO, C-level)",
+      "Quản lý cấp cao / HOD",
+    ],
     deliverables: [
       {
-        feature: "Study API & Define Metrics",
+        feature: "Nghiên cứu Dữ liệu Goal Map & Định nghĩa Insight Metrics",
         output:
-          "Tài liệu tích hợp APIs, định nghĩa chỉ số báo cáo, Wireframe báo cáo",
-        kpi:
-          "Product Owner phê duyệt bộ chỉ số và cấu trúc báo cáo",
-        sign: ["PO"],
+          "Data schema 3 tầng, metrics (alignment score, progress %, risk level), dashboard wireframe",
+        kpi: "Ban điều hành/PO approve metrics & wireframe",
+        sign: ["PO", "Ban điều hành"],
       },
       {
-        feature: "Build Agent Pull Data + Metrics",
+        feature: "Build Data Pipeline & Alignment Logic",
         output:
-          "Mã nguồn kết nối lấy dữ liệu, bộ xử lý tính số liệu, mẫu báo cáo text",
-        kpi: "Lấy đúng và đủ dữ liệu, thuật toán tính KPI chuẩn xác",
+          "Pipeline/agent kéo dữ liệu từ AIxPerf, logic tính alignment score & progress",
+        kpi: "Dữ liệu khớp 100% nguồn AIxPerf, tính đúng alignment score",
         sign: ["Tech Lead"],
       },
       {
-        feature: "HTML Report + Charts + Schedule",
+        feature: "Goal Map Dashboard (Visualization + Drill-down)",
         output:
-          "Giao diện báo cáo HTML, biểu đồ (Chart.js), cấu hình Scheduler",
-        kpi:
-          "Biểu đồ trực quan trên nền HTML, bộ lên lịch chạy ổn định",
-        sign: ["PO"],
+          "Dashboard cây phân cấp, drill-down 3 tầng, insight panel",
+        kpi: "Hiển thị đúng cấu trúc, drill-down mượt, load <3 giây",
+        sign: ["PO", "Ban điều hành"],
       },
       {
-        feature: "Email + Filter + Dashboard + UAT",
+        feature: "Insight Alert + Integration + UAT",
         output:
-          "Đấu nối Email service, bộ lọc báo cáo, Mini Dashboard, tập huấn",
-        kpi:
-          "Nhận báo cáo tổng kết tức thì qua email khi gửi yêu cầu on-demand",
-        sign: ["HOD", "PO"],
+          "Cảnh báo tự động goal-at-risk, tích hợp AIxPerf, training",
+        kpi: "UAT pass, Ban điều hành tự thao tác được",
+        sign: ["Ban điều hành", "CEO ủy quyền"],
       },
     ],
   },
@@ -340,7 +340,7 @@ export const SC_ENTRY: ScoreEntry[] = [
     id: 1,
     max: 15,
     name: "Hiểu vai trò và đầu ra chương trình",
-    kpi: "Nêu rõ prototype, phản hồi người dùng, acceptance criteria và trách nhiệm.",
+    kpi: "Nêu rõ prototype, phản hồi người dùng, tiêu chí nghiệm thu (Acceptance Criteria) và trách nhiệm.",
   },
   {
     id: 2,
@@ -386,7 +386,7 @@ export const SC_FINAL: ScoreFinal[] = [
     id: 2,
     seg: 0,
     max: 15,
-    name: "Đạt acceptance criteria",
+    name: "Đạt tiêu chí nghiệm thu (Acceptance Criteria)",
     kpi: "Prototype đáp ứng các tiêu chí nghiệm thu đã thống nhất.",
   },
   {
@@ -461,8 +461,8 @@ export const SC_FINAL: ScoreFinal[] = [
     id: 12,
     seg: 2,
     max: 6,
-    name: "Tiếp nhận feedback và tự phản tư",
-    kpi: "Đón nhận phản hồi và tự phản tư để cải thiện.",
+    name: "Tiếp nhận feedback và tự soi chiếu",
+    kpi: "Đón nhận phản hồi và chủ động soi chiếu để cải thiện.",
   },
 ];
 
@@ -474,7 +474,7 @@ export const FINAL_SEGS: string[] = [
 
 export const GATE_TEXT: string[] = [
   "Có một prototype truy cập hoặc demo được.",
-  "Acceptance criteria đã thống nhất và có bằng chứng đạt.",
+  "Tiêu chí nghiệm thu (Acceptance Criteria) đã thống nhất và có bằng chứng đạt.",
   "Có tối thiểu hai vòng feedback hoặc một stakeholder xác nhận.",
   "Bằng chứng trung thực và dữ liệu sử dụng an toàn (PII compliance).",
   "Đạt Level 2 trở lên ở các năng lực cốt lõi (NL1, NL3, NL5, NL7).",
@@ -484,11 +484,11 @@ export const ROADMAP: RoadmapItem[] = [
   {
     code: "GĐ1",
     meta: "Giai đoạn 1 · Tuần 1–4 · Mục tiêu L1",
-    title: "Nền tảng AI & Tư duy Outcome",
+    title: "Nền tảng AI & Outcome Thinking",
     sessions: ["I1.1", "I1.2", "I2.1", "I2.2"],
     gateLabel: "⛳ Gate 1 · Tuần 4 — Nhập môn & Nền tảng (L1 → L2 Foundation)",
     gate:
-      "Viết 1 trang: một feature có AI — outcome gì, đo bằng metric nào, giới hạn AI nào cần biết, dữ liệu nào không được dùng (tuân thủ PII).",
+      "Viết tài liệu mô tả 1 trang về tính năng ứng dụng AI: Xác định outcome, chỉ số đo lường hiệu quả (metric), các giới hạn công nghệ cần lưu ý, và các loại dữ liệu nhạy cảm không được phép sử dụng (tuân thủ quy định PII).",
     tone: "mint",
   },
   {
@@ -498,7 +498,7 @@ export const ROADMAP: RoadmapItem[] = [
     sessions: ["I2.3", "I3.1", "I3.2", "I3.3"],
     gateLabel: "⛳ Gate 2 · Tuần 8 — Prompt & Tư duy Phân tích (L2 Practice)",
     gate:
-      "Spec draft + bản phân tích nguyên nhân gốc rễ (5 Whys) và giả thuyết kiểm chứng được — Trainer duyệt.",
+      "Product Spec Draft + bản phân tích nguyên nhân gốc rễ (5 Whys) và giả thuyết kiểm chứng được — Trainer duyệt.",
     tone: "iris",
   },
   {
@@ -508,7 +508,7 @@ export const ROADMAP: RoadmapItem[] = [
     sessions: ["I4.1", "I4.2", "I4.3"],
     gateLabel: "⛳ Gate 3 · Tuần 11 — Workflow & Tự chủ (L2 Autonomy)",
     gate:
-      "Deliverable v2 + sơ đồ workflow chạy được + giải thích điểm HITL + code review pass. Stretch: case iterate ≥ 2 vòng với bằng chứng feedback thật + metric trước/sau (cổng tốt nghiệp sớm).",
+      "Sản phẩm bàn giao bản v2 + sơ đồ workflow chạy được + giải thích điểm HITL + code review pass. Stretch: case iterate ≥ 2 vòng với bằng chứng feedback thật + metric trước/sau (điều kiện tốt nghiệp sớm).",
     tone: "iris",
   },
   {
@@ -516,9 +516,9 @@ export const ROADMAP: RoadmapItem[] = [
     meta: "Giai đoạn 4 · Tuần 12–14 · Tốt nghiệp L2 & Stretch L3",
     title: "Capstone Project & Vận hành Thực tế",
     sessions: ["I5.1", "I5.2", "I5.3"],
-    gateLabel: "⛳ Cổng tốt nghiệp — Gate L2 Graduation",
+    gateLabel: "⛳ Điều kiện tốt nghiệp — Gate L2 Graduation",
     gate:
-      "Sản phẩm Capstone chạy được + tài liệu kiến trúc + slide bảo vệ (outcome, rủi ro, trade-off), bảo vệ trước Hội đồng Product Builder.",
+      "Sản phẩm Capstone chạy được + tài liệu kiến trúc giải pháp + slide thuyết trình bảo vệ (nêu rõ outcome, rủi ro và các lựa chọn đánh đổi), thực hiện bảo vệ trước Hội đồng Product Builder.",
     tone: "gold",
     grad: true,
   },
@@ -527,7 +527,7 @@ export const ROADMAP: RoadmapItem[] = [
 export const ANCHORS: AnchorMap = {
   NL1: [
     "Phân biệt output vs outcome trên lý thuyết; hiểu tính năng mình xây phục vụ mục tiêu nào khi được hướng dẫn; hoàn thành đầu việc trong backlog.",
-    "Tự xác định metric cho công việc được giao; ưu tiên đầu việc trong phạm vi feature theo impact khi có hướng dẫn; chủ động cam kết deadline, báo rủi ro sớm và chịu trách nhiệm đến cùng (ownership là trọng tâm xét tốt nghiệp).",
+    "Tự xác định chỉ số đo lường (metric) cho công việc được giao; biết sắp xếp ưu tiên các đầu việc trong tính năng theo mức độ ảnh hưởng (impact) dưới sự hướng dẫn; chủ động cam kết thời hạn (deadline), báo cáo rủi ro phát sinh sớm và chịu trách nhiệm đến cùng với kết quả (tinh thần làm chủ - ownership là trọng tâm hàng đầu để xét tốt nghiệp).",
     "Tự xây outcome metric end-to-end cho một tính năng; tinh giảm scope để đạt hiệu quả cao nhất với nguồn lực tối thiểu; đàm phán scope-timeline trade-off.",
     "Thiết kế hệ đo lường cho cả dòng sản phẩm; ưu tiên roadmap theo ROI giữa các tính năng; từ chối đầu ra không tạo giá trị.",
     "Thiết lập chuẩn outcome thinking toàn tổ chức; đào tạo đội ngũ phân biệt value metrics vs vanity metrics.",
@@ -541,7 +541,7 @@ export const ANCHORS: AnchorMap = {
   ],
   NL3: [
     "Phân biệt \"điều người dùng nói muốn\" và \"nhu cầu thực\"; lắng nghe và tiếp nhận feedback; truyền đạt rõ ràng trong nhóm nhỏ.",
-    "Tham gia phỏng vấn/quan sát người dùng dưới hướng dẫn; thực hiện một chu kỳ iterate theo feedback; chủ động đặt câu hỏi đúng lúc, phối hợp nghiệp vụ–kỹ thuật, không im lặng khi bế tắc (cộng tác tích cực là trọng tâm bắt buộc).",
+    "Tham gia phỏng vấn/quan sát người dùng dưới hướng dẫn; thực hiện một chu kỳ cải tiến (iterate) sản phẩm dựa trên phản hồi; chủ động đặt câu hỏi đúng lúc, phối hợp nhịp nhàng giữa nghiệp vụ và kỹ thuật, không im lặng khi gặp bế tắc (cộng tác tích cực là yêu cầu bắt buộc).",
     "Chủ động khai thác insight tìm pain point cốt lõi; xây feedback loop fail-fast; làm cầu nối nghiệp vụ–kỹ thuật để đạt đồng thuận.",
     "Định hình chiến lược nghiên cứu người dùng cho dòng sản phẩm; thiết lập research ops; điều phối đồng thuận giữa stakeholder xung đột.",
     "Xây năng lực user-centricity toàn tổ chức; đào tạo và dẫn dắt đội ngũ khai thác insight đắt giá.",
@@ -555,7 +555,7 @@ export const ANCHORS: AnchorMap = {
   ],
   NL5: [
     "Viết prompt cơ bản từ mẫu; chạy thử tool use/function calling đơn giản; xử lý input văn bản ở mức cơ bản.",
-    "Thiết kế system prompt có cấu trúc (vai trò, định dạng, ràng buộc) cho kết quả ổn định; kết hợp input đa phương thức cơ bản (text+image); cấu hình & tích hợp một tool/API/MCP theo hướng dẫn; thành thạo Git cơ bản, đọc hiểu & debug mã do AI sinh, phát hiện lỗi AI để tiếp quản sửa (bắt buộc để tốt nghiệp).",
+    "Thiết kế system prompt có cấu trúc (vai trò, định dạng, ràng buộc) cho kết quả ổn định; kết hợp input đa phương thức cơ bản (text+image); cấu hình & tích hợp một tool/API/MCP theo hướng dẫn; thành thạo các thao tác Git cơ bản, đọc hiểu và gỡ lỗi (debug) mã nguồn do AI tạo ra, chủ động phát hiện lỗi sai của AI để tiếp quản và sửa đổi trực tiếp (yêu cầu bắt buộc để xét tốt nghiệp).",
     "Thiết kế prompt + tool chain end-to-end cho một tính năng; tích hợp nhiều tool/DB/MCP & xử lý lỗi gọi tool; xây multimodal pipeline; viết unit test cơ bản.",
     "Chuẩn hóa prompt patterns & quy chuẩn tích hợp cho dòng sản phẩm; thiết kế tool/MCP tái sử dụng; tối ưu độ tin cậy tool calling ở quy mô lớn.",
     "Ban hành chuẩn sử dụng & định hình thư viện prompt/tool dùng chung toàn doanh nghiệp.",
@@ -593,7 +593,7 @@ export const BADGES: Badge[] = [
     en: "Operator · Prompt & Evaluate",
     tone: "iris",
     criteria:
-      "Cấp khi vượt Gate L1 → L2 (nộp Deliverable I1.2 + Trainer duyệt).",
+      "Cấp khi vượt Gate L1 → L2 (nộp sản phẩm bàn giao I1.2 + Trainer duyệt).",
   },
   {
     code: "L3",
@@ -602,7 +602,7 @@ export const BADGES: Badge[] = [
     en: "Builder · Workflow & Deliverable",
     tone: "irisDeep",
     criteria:
-      "Cấp khi vượt Gate L2 → L3 (nộp Deliverable I2.3 + Trainer/Lead duyệt).",
+      "Cấp khi vượt Gate L2 → L3 (nộp sản phẩm bàn giao I2.3 + Trainer/Lead duyệt).",
   },
   {
     code: "L4",

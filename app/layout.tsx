@@ -4,6 +4,10 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Intern Product Builder Portal",
   description: "YODY Intern Product Builder Program — khung năng lực, dự án thực chiến, scorecard, lộ trình, huy hiệu.",
+  icons: {
+    icon: [{ url: "/favicon.ico", type: "image/webp" }],
+    shortcut: ["/favicon.ico"],
+  },
 };
 
 const themeScript = `(function(){try{var t=localStorage.getItem('yds-ui-theme');if(t!=='dark'&&t!=='light')t='light';document.documentElement.dataset.theme=t;document.documentElement.dataset.surface='portal';}catch(e){document.documentElement.dataset.theme='light';document.documentElement.dataset.surface='portal';}})();`;
