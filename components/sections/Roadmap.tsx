@@ -173,6 +173,7 @@ interface RoadmapProps {
 export function Roadmap({ onOpenQuiz, onLessonChange }: RoadmapProps) {
   const [rmTab, setRmTab] = useState<RmTab>("timeline");
   const [lessonId, setLessonId] = useState("I1.1");
+  const [activeIdx, setActiveIdx] = useState(0);
 
   const selectLesson = (id: string) => {
     setLessonId(id);
@@ -276,7 +277,7 @@ export function Roadmap({ onOpenQuiz, onLessonChange }: RoadmapProps) {
           >
             Chương trình chia 4 giai đoạn theo 14 tuần. L1–L5 là thang năng lực
             tham chiếu; chuẩn tốt nghiệp là đạt Level 2. Mỗi giai đoạn chốt bằng
-            một Gate — vượt qua nhờ một deliverable thực tế được duyệt, không dựa
+            một Gate — vượt qua nhờ một sản phẩm bàn giao thực tế được duyệt, không dựa
             trên điểm số.
           </p>
           <div style={{ position: "relative", paddingLeft: "8px" }}>
@@ -405,7 +406,9 @@ export function Roadmap({ onOpenQuiz, onLessonChange }: RoadmapProps) {
                         gap: "11px",
                         padding: "13px 16px",
                         background: r.gateBg,
-                        border: `1px solid ${r.gateBrd}`,
+                        borderWidth: "1px",
+                        borderStyle: "solid",
+                        borderColor: r.gateBrd,
                         borderRadius: "12px",
                       }}
                     >
@@ -458,250 +461,322 @@ export function Roadmap({ onOpenQuiz, onLessonChange }: RoadmapProps) {
       {rmTab === "learn" && (
         <div
           style={{
-            display: "grid",
-            gridTemplateColumns: "minmax(220px,0.8fr) minmax(320px,2fr)",
-            gap: "22px",
-            alignItems: "start",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            width: "100%",
+            gap: "32px",
             animation: "dcFade .35s var(--ease-out)",
           }}
         >
+          {/* Card Giới thiệu lớn từ UI trước đó */}
           <div
             style={{
-              background: "var(--card)",
-              border: "1px solid var(--border)",
-              borderRadius: "16px",
-              boxShadow: "var(--shadow-sm)",
-              padding: "14px",
-              position: "sticky",
-              top: "88px",
-              maxHeight: "calc(100vh - 108px)",
-              overflowY: "auto",
-            }}
-          >
-            {lessonNav.map((lvl) => (
-              <div key={lvl.label} style={{ marginBottom: "12px" }}>
-                <div
-                  style={{
-                    font: "700 10.5px var(--font-mono)",
-                    letterSpacing: ".1em",
-                    textTransform: "uppercase",
-                    color: "var(--fg-3)",
-                    padding: "6px 10px",
-                  }}
-                >
-                  {lvl.label}
-                </div>
-                {lvl.items.map((ls) => {
-                  const on = ls.id === lessonId;
-                  return (
-                    <button
-                      key={ls.id}
-                      onClick={() => selectLesson(ls.id)}
-                      className="hov-bg-2"
-                      style={{
-                        display: "flex",
-                        gap: "9px",
-                        alignItems: "flex-start",
-                        width: "100%",
-                        textAlign: "left",
-                        padding: "9px 10px",
-                        borderRadius: "9px",
-                        border: "none",
-                        cursor: "pointer",
-                        transition: "background-color .2s",
-                        background: on ? "var(--brand-tint)" : "transparent",
-                        color: on ? "var(--brand)" : "var(--fg-2)",
-                        fontWeight: on ? 600 : 500,
-                      }}
-                    >
-                      <span
-                        style={{
-                          font: "700 10.5px var(--font-mono)",
-                          color: on ? "var(--brand)" : "var(--fg-3)",
-                          flex: "none",
-                        }}
-                      >
-                        {ls.id}
-                      </span>
-                      <span style={{ fontSize: "12.5px", lineHeight: 1.35 }}>
-                        {ls.title}
-                      </span>
-                    </button>
-                  );
-                })}
-              </div>
-            ))}
-          </div>
-
-          <div
-            style={{
-              background: "var(--card)",
+              width: "100%",
+              background: "linear-gradient(135deg, var(--card) 0%, var(--bg-2) 100%)",
               border: "1px solid var(--border)",
               borderRadius: "18px",
               boxShadow: "var(--shadow-sm)",
-              padding: "clamp(22px,3vw,36px)",
+              padding: "36px",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              position: "relative",
+              overflow: "hidden",
             }}
           >
             <div
               style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "8px",
-                font: "600 12px var(--font-mono)",
-                color: "var(--fg-3)",
-                flexWrap: "wrap",
+                position: "absolute",
+                top: "-50px",
+                right: "-50px",
+                width: "200px",
+                height: "200px",
+                borderRadius: "50%",
+                background: "var(--brand-tint)",
+                filter: "blur(60px)",
+                opacity: 0.5,
+                zIndex: 0,
               }}
-            >
-              <span>Học</span>
-              <span style={{ opacity: 0.5 }}>›</span>
-              <span>{ro.code} · {ro.title}</span>
-              <span style={{ opacity: 0.5 }}>›</span>
-              <span style={{ color: "var(--brand)" }}>{cl.id}</span>
-            </div>
-            <h1
-              style={{
-                font: "700 clamp(23px,3vw,30px)/1.2 var(--font-impact)",
-                letterSpacing: "-.02em",
-                margin: "12px 0 6px",
-                color: "var(--fg-1)",
-              }}
-            >
-              {cl.title}
-            </h1>
-            <p
-              style={{
-                color: "var(--fg-2)",
-                fontSize: "15px",
-                margin: "0 0 20px",
-              }}
-            >
-              {cl.sub}
-            </p>
-
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "14px",
-                padding: "16px 18px",
-                background: "var(--iris-tint)",
-                border: "1px solid var(--glass-brd)",
-                borderRadius: "14px",
-                flexWrap: "wrap",
-              }}
-            >
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="var(--iris-deep)"
-                strokeWidth={2}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                style={{ flex: "none" }}
-              >
-                <circle cx="12" cy="12" r="10" />
-                <path d="M12 16v-4M12 8h.01" />
-              </svg>
-              <div style={{ flex: 1, minWidth: "200px" }}>
-                <div
-                  style={{
-                    font: "700 13.5px var(--font-brand)",
-                    color: "var(--iris-deep)",
-                  }}
-                >
-                  Pre-read bắt buộc (1 phút) trước buổi live
-                </div>
-                <div
-                  style={{
-                    fontSize: "12.5px",
-                    color: "var(--fg-2)",
-                    marginTop: "2px",
-                  }}
-                >
-                  Mentor sẽ hỏi quiz ở đầu buổi.
-                </div>
-              </div>
-              <button
-                className="cta cta-primary"
-                style={{ height: "42px", padding: "0 22px", fontSize: "14px" }}
-                onClick={onOpenQuiz}
-              >
-                Làm test
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth={2.2}
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </button>
-            </div>
-
-            <div
-              style={{
-                display: "flex",
-                gap: "20px",
-                flexWrap: "wrap",
-                margin: "20px 0",
-                font: "500 12px var(--font-mono)",
-                color: "var(--fg-3)",
-              }}
-            >
-              <span>Buổi: {cl.id}</span>
-              <span>Giai đoạn: {ro.code} · {ro.title}</span>
-              <span>Đọc ~{cl.read}</span>
-            </div>
-
-            <div
-              style={{
-                background: "var(--bg-2)",
-                border: "1px solid var(--border-light)",
-                borderRadius: "12px",
-                padding: "16px 20px",
-                marginBottom: "24px",
-              }}
-            >
-              <div
+            />
+            <div style={{ position: "relative", zIndex: 1 }}>
+              <span className="s-eyebrow iris" style={{ marginBottom: "12px", display: "inline-block" }}>
+                Coming Soon
+              </span>
+              <h2
                 style={{
-                  font: "700 11px var(--font-mono)",
-                  letterSpacing: ".1em",
-                  textTransform: "uppercase",
-                  color: "var(--fg-3)",
-                  marginBottom: "8px",
+                  font: "700 clamp(24px, 3.5vw, 36px)/1.15 var(--font-impact)",
+                  letterSpacing: "-.02em",
+                  color: "var(--fg-1)",
+                  margin: "0 0 12px",
                 }}
               >
-                Mục lục
-              </div>
-              <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
-                {toc.map((t) => (
-                  <a
-                    key={t.anchor}
-                    href={`#${t.anchor}`}
-                    className="hov-underline"
+                Không gian học tập &amp; Thực hành
+              </h2>
+              <p
+                style={{
+                  color: "var(--fg-2)",
+                  fontSize: "15px",
+                  lineHeight: 1.6,
+                  maxWidth: "600px",
+                  margin: 0,
+                }}
+              >
+                Tích hợp bài giảng, nội dung lý thuyết và bài tập thực hành.
+              </p>
+            </div>
+          </div>
+
+          {/* Tiêu đề phần Lộ trình bài học */}
+          <div style={{ textAlign: "center", marginTop: "12px" }}>
+            <span
+              style={{
+                font: "700 10px var(--font-mono)",
+                color: "var(--brand)",
+                background: "var(--brand-tint)",
+                padding: "3px 10px",
+                borderRadius: "20px",
+                textTransform: "uppercase",
+                letterSpacing: ".08em",
+                display: "inline-block",
+                marginBottom: "8px",
+              }}
+            >
+              Xem trước lộ trình
+            </span>
+            <h3 style={{ font: "700 20px var(--font-brand)", color: "var(--fg-1)", margin: 0 }}>
+              Nội dung các buổi đào tạo sắp tới
+            </h3>
+          </div>
+
+          {/* Slider Container */}
+          <div
+            style={{
+              position: "relative",
+              width: "100%",
+              height: "310px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              overflow: "hidden",
+              perspective: "1000px",
+            }}
+          >
+            {/* Nút điều hướng Trái */}
+            <button
+              onClick={() => setActiveIdx((prev) => Math.max(0, prev - 1))}
+              disabled={activeIdx === 0}
+              className="hov-bg-2"
+              style={{
+                position: "absolute",
+                left: "clamp(10px, 4vw, 40px)",
+                zIndex: 20,
+                width: "48px",
+                height: "48px",
+                borderRadius: "50%",
+                border: "1px solid var(--border)",
+                background: "var(--card)",
+                color: "var(--fg-2)",
+                display: "grid",
+                placeItems: "center",
+                cursor: activeIdx === 0 ? "not-allowed" : "pointer",
+                opacity: activeIdx === 0 ? 0.3 : 0.8,
+                transition: "all 0.2s",
+                boxShadow: "var(--shadow-sm)",
+              }}
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <polyline points="15 18 9 12 15 6" />
+              </svg>
+            </button>
+
+            {/* List Cards */}
+            <div
+              style={{
+                position: "relative",
+                width: "100%",
+                height: "100%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                transformStyle: "preserve-3d",
+              }}
+            >
+              {LESSONS.map((ls, idx) => {
+                const diff = idx - activeIdx;
+                const absDiff = Math.abs(diff);
+
+                // Chỉ hiển thị các thẻ trong khoảng cách 2 để tối ưu hóa DOM
+                if (absDiff > 2) return null;
+
+                let transform = "";
+                let opacity = 0;
+                let zIndex = 1;
+                let pointerEvents: "auto" | "none" = "none";
+
+                if (diff === 0) {
+                  transform = "translate3d(0, 0, 0) scale(1) rotateY(0deg)";
+                  opacity = 1;
+                  zIndex = 10;
+                  pointerEvents = "auto";
+                } else if (diff === -1) {
+                  transform = "translate3d(-55%, 0, -100px) scale(0.83) rotateY(24deg)";
+                  opacity = 0.45;
+                  zIndex = 5;
+                } else if (diff === 1) {
+                  transform = "translate3d(55%, 0, -100px) scale(0.83) rotateY(-24deg)";
+                  opacity = 0.45;
+                  zIndex = 5;
+                } else if (diff === -2) {
+                  transform = "translate3d(-95%, 0, -200px) scale(0.68) rotateY(38deg)";
+                  opacity = 0.12;
+                  zIndex = 3;
+                } else if (diff === 2) {
+                  transform = "translate3d(95%, 0, -200px) scale(0.68) rotateY(-38deg)";
+                  opacity = 0.12;
+                  zIndex = 3;
+                }
+
+                // Tìm thông tin GĐ từ code (GĐ1, GĐ2...) để lấy màu sắc
+                const roadmapItem = ROADMAP.find((r) => r.code === ls.lv);
+                const tone = roadmapItem ? roadmapItem.tone : "iris";
+                const badgeColor = toneDeep(tone);
+                const bgTint = toneTint(tone);
+
+                return (
+                  <div
+                    key={ls.id}
                     style={{
-                      fontSize: "13.5px",
-                      color: "var(--iris-deep)",
-                      textDecoration: "none",
+                      position: "absolute",
+                      width: "min(400px, 85%)",
+                      height: "210px",
+                      background: "var(--card)",
+                      borderWidth: "1px",
+                      borderStyle: "solid",
+                      borderColor: diff === 0 ? "var(--brand)" : "var(--border)",
+                      borderRadius: "20px",
+                      boxShadow: diff === 0 ? "0 12px 36px var(--brand-tint)" : "var(--shadow-sm)",
+                      padding: "24px",
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "space-between",
+                      transform,
+                      opacity,
+                      zIndex,
+                      pointerEvents,
+                      transition: "transform 0.45s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.45s, border-color 0.3s, box-shadow 0.3s",
+                      backfaceVisibility: "hidden",
                     }}
                   >
-                    {t.text}
-                  </a>
-                ))}
-              </div>
+                    <div>
+                      {/* Giai đoạn & ID buổi đào tạo */}
+                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                        <span
+                          style={{
+                            font: "700 10.5px var(--font-mono)",
+                            color: badgeColor,
+                            background: bgTint,
+                            padding: "3px 10px",
+                            borderRadius: "20px",
+                            textTransform: "uppercase",
+                            letterSpacing: ".05em",
+                          }}
+                        >
+                          {roadmapItem?.title ? `${ls.lv} · ${roadmapItem.title.split(" & ")[0]}` : ls.lv}
+                        </span>
+                      </div>
+
+                      {/* Tiêu đề & Sub bài học */}
+                      <h3
+                        style={{
+                          font: "700 17px var(--font-brand)",
+                          color: "var(--fg-1)",
+                          margin: "14px 0 8px",
+                          lineHeight: 1.3,
+                        }}
+                      >
+                        {ls.title}
+                      </h3>
+                      <p
+                        style={{
+                          fontSize: "13px",
+                          lineHeight: 1.45,
+                          color: "var(--fg-2)",
+                          margin: 0,
+                          display: "-webkit-box",
+                          WebkitLineClamp: 3,
+                          WebkitBoxOrient: "vertical",
+                          overflow: "hidden",
+                        }}
+                      >
+                        {ls.sub}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
 
-            <article style={{ maxWidth: "none" }}>
-              {cl.blocks.map((b, i) => (
-                <BlockView key={i} b={b} />
-              ))}
-            </article>
+            {/* Nút điều hướng Phải */}
+            <button
+              onClick={() => setActiveIdx((prev) => Math.min(LESSONS.length - 1, prev + 1))}
+              disabled={activeIdx === LESSONS.length - 1}
+              className="hov-bg-2"
+              style={{
+                position: "absolute",
+                right: "clamp(10px, 4vw, 40px)",
+                zIndex: 20,
+                width: "48px",
+                height: "48px",
+                borderRadius: "50%",
+                border: "1px solid var(--border)",
+                background: "var(--card)",
+                color: "var(--fg-2)",
+                display: "grid",
+                placeItems: "center",
+                cursor: activeIdx === LESSONS.length - 1 ? "not-allowed" : "pointer",
+                opacity: activeIdx === LESSONS.length - 1 ? 0.3 : 0.8,
+                transition: "all 0.2s",
+                boxShadow: "var(--shadow-sm)",
+              }}
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <polyline points="9 18 15 12 9 6" />
+              </svg>
+            </button>
+          </div>
+
+          {/* Dots Pagination */}
+          <div
+            style={{
+              display: "flex",
+              gap: "8px",
+              flexWrap: "wrap",
+              justifyContent: "center",
+              maxWidth: "80%",
+              padding: "4px 0",
+            }}
+          >
+            {LESSONS.map((_, idx) => {
+              const on = idx === activeIdx;
+              return (
+                <button
+                  key={idx}
+                  onClick={() => setActiveIdx(idx)}
+                  style={{
+                    width: on ? "24px" : "8px",
+                    height: "8px",
+                    borderRadius: "4px",
+                    background: on ? "var(--brand)" : "var(--border)",
+                    border: "none",
+                    cursor: "pointer",
+                    transition: "all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)",
+                    padding: 0,
+                  }}
+                  title={`Buổi ${idx + 1}`}
+                />
+              );
+            })}
           </div>
         </div>
       )}

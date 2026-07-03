@@ -94,9 +94,9 @@ export function Products() {
               style={{
                 textAlign: "left",
                 background: "var(--card)",
-                border: selected
-                  ? "2px solid var(--brand)"
-                  : "1px solid var(--border)",
+                borderWidth: selected ? "2px" : "1px",
+                borderStyle: "solid",
+                borderColor: selected ? "var(--brand)" : "var(--border)",
                 borderRadius: "16px",
                 boxShadow: selected
                   ? "var(--shadow-md)"
@@ -105,8 +105,10 @@ export function Products() {
                 cursor: "pointer",
                 transition:
                   "transform .18s var(--ease-out),box-shadow .3s,border-color .3s,background-color .3s",
-                display: "block",
+                display: "flex",
+                flexDirection: "column",
                 width: "100%",
+                height: "100%",
               }}
             >
               <div
@@ -136,14 +138,24 @@ export function Products() {
                   font: "700 17px/1.28 var(--font-brand)",
                   margin: "6px 0 4px",
                   color: "var(--fg-1)",
+                  minHeight: "44px",
+                  display: "-webkit-box",
+                  WebkitLineClamp: 2,
+                  WebkitBoxOrient: "vertical",
+                  overflow: "hidden",
                 }}
               >
                 {p.name}
               </div>
               <div
                 style={{
-                  font: "500 12px var(--font-mono)",
+                  font: "500 12px/1.4 var(--font-mono)",
                   color: "var(--fg-3)",
+                  minHeight: "34px",
+                  display: "-webkit-box",
+                  WebkitLineClamp: 2,
+                  WebkitBoxOrient: "vertical",
+                  overflow: "hidden",
                 }}
               >
                 {p.en}
@@ -286,12 +298,12 @@ export function Products() {
               style={{
                 display: "grid",
                 gridTemplateColumns:
-                  "minmax(160px,1.3fr) minmax(160px,1.6fr) minmax(160px,1.6fr) minmax(110px,0.9fr)",
-                minWidth: "640px",
+                  "minmax(120px, 1fr) minmax(150px, 1.3fr) minmax(150px, 1.3fr) minmax(150px, 1.1fr)",
+                minWidth: "570px",
               }}
             >
               {(["Tính năng", "Output", "KPI / Acceptance", "Sign-off"] as const).map(
-                (h) => (
+                (h, idx) => (
                   <div
                     key={h}
                     role="columnheader"
@@ -302,7 +314,11 @@ export function Products() {
                       letterSpacing: ".06em",
                       textTransform: "uppercase",
                       color: "var(--fg-3)",
-                      padding: "11px 14px",
+                      padding: "11px 10px",
+                      borderTopLeftRadius: idx === 0 ? "8px" : undefined,
+                      borderBottomLeftRadius: idx === 0 ? "8px" : undefined,
+                      borderTopRightRadius: idx === 3 ? "8px" : undefined,
+                      borderBottomRightRadius: idx === 3 ? "8px" : undefined,
                     }}
                   >
                     {h}
@@ -315,22 +331,26 @@ export function Products() {
                     role="cell"
                     style={{
                       borderTop: "1px solid var(--border-light)",
-                      padding: "13px 14px",
+                      padding: "13px 10px",
+                      display: "flex",
+                      gap: "8px",
+                      alignItems: "flex-start",
                     }}
                   >
                     <span
                       style={{
                         font: "700 11px var(--font-mono)",
                         color: "var(--iris-deep)",
+                        marginTop: "2px",
+                        flexShrink: 0,
                       }}
                     >
-                      {i + 1}
+                      {String(i + 1).padStart(2, "0")}
                     </span>
                     <div
                       style={{
                         font: "600 13px/1.35 var(--font-brand)",
                         color: "var(--fg-1)",
-                        marginTop: "4px",
                       }}
                     >
                       {d.feature}
@@ -340,7 +360,7 @@ export function Products() {
                     role="cell"
                     style={{
                       borderTop: "1px solid var(--border-light)",
-                      padding: "13px 14px",
+                      padding: "13px 10px",
                       fontSize: "12.5px",
                       lineHeight: 1.5,
                       color: "var(--fg-2)",
@@ -352,7 +372,7 @@ export function Products() {
                     role="cell"
                     style={{
                       borderTop: "1px solid var(--border-light)",
-                      padding: "13px 14px",
+                      padding: "13px 10px",
                       fontSize: "12.5px",
                       lineHeight: 1.5,
                       color: "var(--fg-2)",
@@ -364,7 +384,7 @@ export function Products() {
                     role="cell"
                     style={{
                       borderTop: "1px solid var(--border-light)",
-                      padding: "13px 14px",
+                      padding: "13px 10px",
                     }}
                   >
                     <div
@@ -378,10 +398,10 @@ export function Products() {
                         <span
                           key={s}
                           style={{
-                            font: "600 10.5px var(--font-mono)",
+                            font: "600 10px var(--font-mono)",
                             color: "var(--iris-deep)",
                             background: "var(--iris-tint)",
-                            padding: "3px 8px",
+                            padding: "2px 6px",
                             borderRadius: "6px",
                             whiteSpace: "nowrap",
                           }}
