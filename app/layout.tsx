@@ -3,7 +3,10 @@ import "./globals.css";
 
 const rawBaseUrl =
   process.env.NEXT_PUBLIC_SITE_URL ||
-  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "https://yody-itdx-intern-product-builder.vercel.app");
+  process.env.VERCEL_PROJECT_PRODUCTION_URL ||
+  (process.env.VERCEL_ENV === "production" && process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : "https://yody-itdx-intern-product-builder.vercel.app");
 const baseUrl = rawBaseUrl.replace(/\/+$/, "");
 
 export const metadata: Metadata = {
