@@ -208,7 +208,7 @@ export function Scorecard() {
           color: "var(--fg-1)",
         }}
       >
-        Đánh giá theo từng giai đoạn
+        Đánh giá theo <em className="em-accent">từng giai đoạn</em>
       </h1>
       <p
         style={{

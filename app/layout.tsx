@@ -1,9 +1,53 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL
+  ? process.env.NEXT_PUBLIC_SITE_URL
+  : process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : "https://yody-itdx-intern-product-builder.vercel.app/";
+
 export const metadata: Metadata = {
-  title: "Intern Product Builder Portal",
+  metadataBase: new URL(baseUrl),
+  title: {
+    default: "Intern Product Builder Portal",
+    template: "%s | Intern Product Builder Portal",
+  },
   description: "YODY Intern Product Builder Program — khung năng lực, dự án thực chiến, scorecard, lộ trình, huy hiệu.",
+  keywords: ["YODY", "YODY Intern", "Product Builder", "khung năng lực", "scorecard", "lộ trình thực tập", "huy hiệu YODY"],
+  authors: [{ name: "YODY Technology" }],
+  creator: "YODY Tech",
+  publisher: "YODY",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
+  openGraph: {
+    type: "website",
+    locale: "vi_VN",
+    url: "/",
+    title: "Intern Product Builder Portal",
+    description: "YODY Intern Product Builder Program — khung năng lực, dự án thực chiến, scorecard, lộ trình, huy hiệu.",
+    siteName: "YODY Intern Product Builder Portal",
+    images: [
+      {
+        url: "/thumbnails/product_builder_01.png",
+        width: 1200,
+        height: 630,
+        alt: "YODY Intern Product Builder Program Banner",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Intern Product Builder Portal",
+    description: "YODY Intern Product Builder Program — khung năng lực, dự án thực chiến, scorecard, lộ trình, huy hiệu.",
+    images: ["/thumbnails/product_builder_01.png"],
+  },
   icons: {
     icon: [{ url: "/favicon.ico", type: "image/webp" }],
     shortcut: ["/favicon.ico"],

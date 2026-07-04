@@ -578,49 +578,49 @@ export const ANCHORS: AnchorMap = {
 
 export const BADGES: Badge[] = [
   {
-    code: "L1",
-    label: "L1",
-    title: "Huy hiệu L1 Aware",
-    en: "Aware · Nền tảng AI",
+    code: "YPB1",
+    label: "YPB1",
+    title: "Huy hiệu YPB1: Product Explorer (Định vị Vấn đề)",
+    en: "Product Explorer · Problem Alignment",
     tone: "mint",
     criteria:
-      "Cấp khi hoàn thành I1.1, I1.2 và nộp Diligence Statement.",
+      "Đạt được khi hoàn thành khảo sát thực tế, định vị rõ nét vấn đề cốt lõi (Problem Alignment) và nộp Bản cam kết Nỗ lực (Diligence Statement) để khởi động dự án.",
   },
   {
-    code: "L2",
-    label: "L2",
-    title: "Huy hiệu L2 Operator",
-    en: "Operator · Prompt & Evaluate",
+    code: "YPB2",
+    label: "YPB2",
+    title: "Huy hiệu YPB2: MVP Builder (Kiến tạo Nguyên mẫu)",
+    en: "MVP Builder · Rapid Prototyping & Validation",
     tone: "iris",
     criteria:
-      "Cấp khi vượt Gate L1 → L2 (nộp sản phẩm bàn giao I1.2 + Trainer duyệt).",
+      "Vượt qua Cột mốc (Gate) YPB1 → YPB2 bằng việc ứng dụng Prompt Engineering để xây dựng và kiểm chứng nhanh phiên bản thử nghiệm đầu tiên (MVP) giải quyết vấn đề thực tế.",
   },
   {
-    code: "L3",
-    label: "L3",
-    title: "Huy hiệu L3 Builder",
-    en: "Builder · Workflow & Deliverable",
+    code: "YPB3",
+    label: "YPB3 · TỐT NGHIỆP",
+    title: "Huy hiệu YPB3: Product Builder (Làm chủ Tính năng)",
+    en: "Product Builder · End-to-End Delivery",
     tone: "irisDeep",
     criteria:
-      "Cấp khi vượt Gate L2 → L3 (nộp sản phẩm bàn giao I2.3 + Trainer/Lead duyệt).",
+      "Vượt qua Cột mốc Tốt nghiệp YPB3 bằng cách tự chủ thiết kế luồng tự động hoá quy trình, đóng gói và bàn giao một tính năng hoàn chỉnh có khả năng chạy độc lập.",
   },
   {
-    code: "L4",
-    label: "L4",
-    title: "Huy hiệu L4 Integrator",
-    en: "Integrator · Tích hợp & Vận hành",
+    code: "YPB4",
+    label: "YPB4",
+    title: "Huy hiệu YPB4: Product Engineer (Tích hợp & Vận hành)",
+    en: "Product Engineer · Scale & Adoption",
     tone: "brand",
     criteria:
-      "Cấp khi vượt Gate L3 → L4 (trình bày workflow demo I3.3 + user evidence + Mentor duyệt).",
+      "Vượt qua Cột mốc (Gate) YPB3 → YPB4 thông qua việc tích hợp trực tiếp sản phẩm vào hệ thống vận hành thực tế, chứng minh được mức độ tiếp nhận và giá trị sử dụng từ người dùng cuối.",
   },
   {
-    code: "L5",
-    label: "L5 · TỐT NGHIỆP",
-    title: "Huy hiệu L5 Architect",
-    en: "Architect · Ship & Capstone",
+    code: "YPB5",
+    label: "YPB5",
+    title: "Huy hiệu YPB5: Product Architect (Kiến trúc sư Sản phẩm)",
+    en: "Product Architect · Lifecycle Launch & Graduation",
     tone: "gold",
     criteria:
-      "Cấp khi vượt Gate tốt nghiệp L5 (bảo vệ Capstone I5.3 trước Hội đồng).",
+      "Vượt qua Cột mốc YPB5 bằng việc đóng gói giải pháp toàn diện, triển khai vận hành ổn định trên môi trường Productive và bảo vệ thành công dự án Capstone trước Hội đồng Đánh giá.",
   },
 ];
 

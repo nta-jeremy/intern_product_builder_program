@@ -69,7 +69,7 @@ export function Badges({ onSelect }: BadgesProps) {
         animation: "dcFade .4s var(--ease-out)",
       }}
     >
-      <span className="s-eyebrow gold">Huy hiệu</span>
+      <span className="s-eyebrow gold">Quy chuẩn Năng lực</span>
       <h1
         style={{
           font: "700 clamp(26px,3.4vw,38px)/1.15 var(--font-impact)",
@@ -78,7 +78,7 @@ export function Badges({ onSelect }: BadgesProps) {
           color: "var(--fg-1)",
         }}
       >
-        5 huy hiệu — cấp khi đạt điều kiện để đi tiếp
+        <em className="em-accent">Hành trình Product Builder</em> — Hệ Thống Huy Hiệu
       </h1>
       <p
         style={{
@@ -88,15 +88,14 @@ export function Badges({ onSelect }: BadgesProps) {
           margin: "0 0 30px",
         }}
       >
-        Huy hiệu cấp khi đạt điều kiện vượt qua các Gate của chương trình, không
-        phải khi đậu điểm số trung bình. L1 mint · L2–L4 iris · L5 gold (kỷ niệm
-        tốt nghiệp).
+        Huy hiệu được trao dựa trên năng lực thiết kế, thử nghiệm và tích hợp sản phẩm giải quyết vấn đề thực tế (Outcome-driven), không đánh giá theo điểm số lý thuyết trung bình. YPB1 (Mint - Định vị & Khởi tạo) · YPB2-YPB3 (Iris - Xây dựng & Tốt nghiệp) · YPB4-YPB5 (Brand/Gold - Vận hành & Kiến trúc).
       </p>
       <div
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))",
           gap: "20px",
+          alignItems: "stretch",
         }}
       >
         {BADGES.map((b: Badge, i) => {
@@ -111,6 +110,9 @@ export function Badges({ onSelect }: BadgesProps) {
               className="hov-lift-lg-dyn"
               style={
                 {
+                  display: "flex",
+                  flexDirection: "column",
+                  height: "100%",
                   textAlign: "left",
                   background: "var(--card)",
                   border: "1px solid var(--border)",
@@ -126,8 +128,15 @@ export function Badges({ onSelect }: BadgesProps) {
                 } as React.CSSProperties
               }
             >
-              <div style={{ height: "8px", background: grad }} />
-              <div style={{ padding: "26px 24px" }}>
+              <div style={{ height: "8px", background: grad, width: "100%" }} />
+              <div
+                style={{
+                  padding: "26px 24px",
+                  flex: 1,
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+              >
                 <div
                   style={{
                     display: "flex",

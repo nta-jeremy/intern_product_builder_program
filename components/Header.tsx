@@ -72,8 +72,8 @@ const NAV: NavItem[] = [
   { href: "/", match: "/", label: "Tổng quan", icon: <HomeIcon /> },
   { href: "/competencies", match: "/competencies", label: "Khung năng lực", icon: <CompetenciesIcon /> },
   { href: "/projects", match: "/projects", label: "Dự án thực chiến", icon: <ProductsIcon /> },
+  { href: "/roadmap", match: "/roadmap", label: "Lộ trình & Kiến thức", icon: <RoadmapIcon /> },
   { href: "/scorecard", match: "/scorecard", label: "Scorecard", icon: <ScorecardIcon /> },
-  { href: "/roadmap", match: "/roadmap", label: "Lộ trình & Học", icon: <RoadmapIcon /> },
   { href: "/badges", match: "/badges", label: "Huy hiệu", icon: <BadgesIcon /> },
 ];
 
