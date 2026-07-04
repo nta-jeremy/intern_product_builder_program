@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL
-  ? process.env.NEXT_PUBLIC_SITE_URL
-  : process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
-    : "https://yody-itdx-intern-product-builder.vercel.app/";
+const rawBaseUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "https://yody-itdx-intern-product-builder.vercel.app");
+const baseUrl = rawBaseUrl.replace(/\/+$/, "");
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
@@ -35,10 +34,11 @@ export const metadata: Metadata = {
     siteName: "YODY Intern Product Builder Portal",
     images: [
       {
-        url: "/thumbnails/product_builder_01.png",
+        url: "/thumbnails/og-product-builder.jpg",
         width: 1200,
         height: 630,
         alt: "YODY Intern Product Builder Program Banner",
+        type: "image/jpeg",
       },
     ],
   },
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Intern Product Builder Portal",
     description: "YODY Intern Product Builder Program — khung năng lực, dự án thực chiến, scorecard, lộ trình, huy hiệu.",
-    images: ["/thumbnails/product_builder_01.png"],
+    images: ["/thumbnails/og-product-builder.jpg"],
   },
   icons: {
     icon: [{ url: "/favicon.ico", type: "image/webp" }],
