@@ -43,7 +43,7 @@ Tái tạo portal NextJS tuân thủ 100% design system & behavior của file HT
 | Body markup | offset 109 KB–163 KB | ~54 KB | Header sticky + 6 `<main>` sections + overlay. Cú pháp `{{ }}` / `sc-if` / `sc-for` / `style-hover`. |
 | `text/x-dc` script | offset 163 KB–end | ~54 KB | Data model + state class: `LEVEL_LABELS`, `LADDER`, `COMPS`, `PRODUCTS`, `roadmap`, `badges`, `quiz`, `scorecard` logic. **Không framework — vanilla `this.setState`.** |
 
-**6 tabs xác định:** Tổng quan · Khung năng lực · Dự án thực chiến · Scorecard · Lộ trình & Học · Huy hiệu.
+**6 tabs xác định:** Tổng quan · Khung năng lực · Dự án thực chiến · Scorecard · Lộ trình & Kiến thức · Huy hiệu.
 
 ---
 
@@ -116,7 +116,7 @@ components/
     Competencies.tsx  # tab "Khung năng lực" + drawer
     Products.tsx      # tab "Dự án thực chiến"
     Scorecard.tsx     # tab "Scorecard" + grading interaction
-    Roadmap.tsx       # tab "Lộ trình & Học" + quiz modal
+    Roadmap.tsx       # tab "Lộ trình & Kiến thức" + quiz modal
     Badges.tsx        # tab "Huy hiệu" + badge modal
   ui/                 # shadcn primitives (sheet/dialog/button)
 lib/

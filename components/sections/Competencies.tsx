@@ -52,7 +52,7 @@ export function Competencies({ onOpen }: CompetenciesProps) {
           color: "var(--fg-1)",
         }}
       >
-        Khung năng lực cốt lõi — Product Builder
+        Khung năng lực cốt lõi — <em className="em-accent">Product Builder</em>
       </h1>
       <p
         style={{

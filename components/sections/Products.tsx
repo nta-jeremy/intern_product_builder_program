@@ -63,7 +63,7 @@ export function Products() {
           color: "var(--fg-1)",
         }}
       >
-        Thực chiến 4 sản phẩm
+        Thực chiến <em className="em-accent">4 sản phẩm</em>
       </h1>
       <p
         style={{

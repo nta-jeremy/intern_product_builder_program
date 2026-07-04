@@ -1166,7 +1166,7 @@ p       { font: var(--type-body); color: var(--fg-2); }
 .art-italic    { font: var(--type-art-italic); letter-spacing: -0.005em; }
 
 /* Geometric italic accent — Montserrat italic — for H1/H2 inside headlines */
-em.accent, .em-accent { font: italic 800 1em/1 var(--font-impact); font-style: italic; color: var(--iris); letter-spacing: -0.015em; }
+em.accent, .em-accent { font: italic 800 1em/1 var(--font-serif); font-style: italic; color: var(--iris); letter-spacing: -0.015em; }
 em.accent.gold,  .em-accent.gold  { color: var(--gold-deep); }
 em.accent.mint,  .em-accent.mint  { color: var(--mint-deep); }
 em.accent.rose,  .em-accent.rose  { color: var(--rose-deep); }

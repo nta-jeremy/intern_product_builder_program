@@ -130,10 +130,8 @@ function BlockView({ b }: { b: Block }) {
             borderLeft: "3px solid var(--gold)",
             background: "var(--gold-tint)",
             borderRadius: "0 12px 12px 0",
-            fontSize: "15px",
-            lineHeight: 1.6,
+            font: "italic 800 17px/1.6 var(--font-serif)",
             color: "var(--fg-1)",
-            fontStyle: "italic",
           }}
         >
           {b.x}
@@ -247,7 +245,7 @@ export function Roadmap({ onOpenQuiz, onLessonChange }: RoadmapProps) {
         <span className="s-eyebrow iris">Lộ trình &amp; Học tập</span>
         <div
           role="tablist"
-          aria-label="Lộ trình & Học tập"
+          aria-label="Lộ trình & Kiến thức tập"
           style={{
             display: "inline-flex",
             gap: "6px",
@@ -318,7 +316,7 @@ export function Roadmap({ onOpenQuiz, onLessonChange }: RoadmapProps) {
               color: "var(--fg-1)",
             }}
           >
-            Bốn giai đoạn · 14 tuần — tốt nghiệp ở Level 2 (Product Builder)
+            Bốn giai đoạn · 14 tuần — tốt nghiệp ở Level 2 <em className="em-accent">(Product Builder)</em>
           </h1>
           <p
             style={{
