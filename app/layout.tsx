@@ -7,7 +7,10 @@ const rawBaseUrl =
   (process.env.VERCEL_ENV === "production" && process.env.VERCEL_URL
     ? `https://${process.env.VERCEL_URL}`
     : "https://yody-itdx-intern-product-builder.vercel.app");
-const baseUrl = rawBaseUrl.replace(/\/+$/, "");
+const withScheme = rawBaseUrl.startsWith("http")
+  ? rawBaseUrl
+  : `https://${rawBaseUrl}`;
+const baseUrl = withScheme.replace(/\/+$/, "");
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
