@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Link from "next/link";
 import { LESSONS, ROADMAP } from "@/lib/data";
 import type { Block, RoadmapItem, Tone } from "@/lib/types";
 import { segTab } from "@/lib/nav";
@@ -755,7 +756,7 @@ export function Roadmap({ onOpenQuiz, onLessonChange }: RoadmapProps) {
                           color: "var(--fg-2)",
                           margin: 0,
                           display: "-webkit-box",
-                          WebkitLineClamp: 3,
+                          WebkitLineClamp: 2,
                           WebkitBoxOrient: "vertical",
                           overflow: "hidden",
                         }}
@@ -763,6 +764,36 @@ export function Roadmap({ onOpenQuiz, onLessonChange }: RoadmapProps) {
                         {ls.sub}
                       </p>
                     </div>
+
+                    {/* Nút Vào học - chỉ hiển thị trên card active */}
+                    {diff === 0 && (
+                      <Link
+                        href={`/learn/${ls.id}`}
+                        className="hov-lift-sm"
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          gap: "8px",
+                          marginTop: "14px",
+                          padding: "11px 16px",
+                          borderRadius: "10px",
+                          background: "var(--brand)",
+                          color: "#fff",
+                          font: "700 13.5px var(--font-brand)",
+                          textDecoration: "none",
+                          border: "none",
+                          cursor: "pointer",
+                          boxShadow: "0 4px 14px var(--brand-tint)",
+                          transition: "transform .18s var(--ease-out), box-shadow .18s",
+                        }}
+                      >
+                        Vào học buổi này
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M5 12h14M13 5l7 7-7 7" />
+                        </svg>
+                      </Link>
+                    )}
                   </div>
                 );
               })}
