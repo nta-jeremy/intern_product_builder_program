@@ -24,3 +24,5 @@ design-system/
 # Environment
 .env*
 !.env.example
+
+knowledge/

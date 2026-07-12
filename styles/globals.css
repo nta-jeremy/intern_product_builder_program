@@ -1310,3 +1310,19 @@ em.accent.brand, .em-accent.brand { color: var(--brand); }
 .hov-lift-sm-x-dyn:hover { transform: translateX(3px); box-shadow: var(--shadow-md); border-color: var(--hov-border); }
 .hov-lift-md-dyn:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--hov-border); }
 .hov-lift-lg-dyn:hover { transform: translateY(-5px); box-shadow: var(--hov-shadow); border-color: var(--hov-border); }
+
+/* ── I1.1 sample port: custom classes (scoped to .i11-surface) ── */
+.i11-surface { background: var(--bg-warm); }
+.i11-surface ::selection { background: var(--iris); color: #fff; }
+.i11-surface a { color: var(--iris-deep); }
+.i11-surface a:hover { color: var(--iris); }
+.i11-surface .kh-part { transition: transform .14s, box-shadow .14s; }
+.i11-surface .kh-part:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.i11-surface .kh-toc:hover { background: #fff; }
+.i11-surface .kh-opt { transition: background .12s, border-color .12s; }
+.i11-surface .kh-nav:hover { opacity: .62; }
+@media (max-width: 900px) {
+  .i11-surface .i11-overview-grid { grid-template-columns: 1fr !important; }
+  .i11-surface .i11-read-layout { flex-direction: column !important; }
+  .i11-surface .i11-read-toc { width: 100% !important; position: static !important; max-height: none !important; border-right: none !important; border-bottom: 1px solid var(--border) !important; }
+}
