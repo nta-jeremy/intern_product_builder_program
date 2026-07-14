@@ -100,7 +100,7 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
       </head>
-      <body data-surface="portal">{children}</body>
+      <body data-surface="portal" suppressHydrationWarning>{children}</body>
     </html>
   );
 }
