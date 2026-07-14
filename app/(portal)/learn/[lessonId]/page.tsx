@@ -3,6 +3,7 @@
 import { useParams } from "next/navigation";
 import { LessonI11 } from "@/components/sections/LessonI11";
 import { LessonI12 } from "@/components/sections/LessonI12";
+import { LessonI21 } from "@/components/sections/LessonI21";
 
 export default function LearnPage() {
   const params = useParams<{ lessonId: string }>();
@@ -20,6 +21,14 @@ export default function LearnPage() {
     return (
       <div className="i12-surface">
         <LessonI12 />
+      </div>
+    );
+  }
+
+  if (lessonId === "I2.1") {
+    return (
+      <div className="i21-surface">
+        <LessonI21 />
       </div>
     );
   }

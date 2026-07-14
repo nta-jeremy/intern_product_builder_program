@@ -1326,3 +1326,19 @@ em.accent.brand, .em-accent.brand { color: var(--brand); }
   .i11-surface .i11-read-layout { flex-direction: column !important; }
   .i11-surface .i11-read-toc { width: 100% !important; position: static !important; max-height: none !important; border-right: none !important; border-bottom: 1px solid var(--border) !important; }
 }
+
+/* ── I2.1 sample port: custom classes (scoped to .i21-surface) ── */
+.i21-surface { background: var(--bg-warm); }
+.i21-surface ::selection { background: var(--iris); color: #fff; }
+.i21-surface a { color: var(--iris-deep); }
+.i21-surface a:hover { color: var(--iris); }
+.i21-surface .kh-part { transition: transform .14s, box-shadow .14s; }
+.i21-surface .kh-part:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.i21-surface .kh-toc:hover { background: #fff; }
+.i21-surface .kh-opt { transition: background .12s, border-color .12s; }
+.i21-surface .kh-nav:hover { opacity: .62; }
+@media (max-width: 900px) {
+  .i21-surface .i21-overview-grid { grid-template-columns: 1fr !important; }
+  .i21-surface .i21-read-layout { flex-direction: column !important; }
+  .i21-surface .i21-read-toc { width: 100% !important; position: static !important; max-height: none !important; border-right: none !important; border-bottom: 1px solid var(--border) !important; }
+}
