@@ -26,8 +26,8 @@ const OBJECTIVES = [
   "Phân biệt rõ output và outcome; giải thích một feature phục vụ outcome nào.",
   "Chọn được metric đo kết quả cho một công việc, phân biệt value metric với vanity metric.",
   "Vẽ được chuỗi Feature → Outcome → Metric cho một tình huống thật tại YODY.",
-  "Nêu đúng PII là gì, ranh giới cứng khi dùng AI, và biết ẩn danh hoá dữ liệu (theo Luật 91/2025/QH15).",
-  "Nhận diện hallucination & bias như ràng buộc độ tin cậy; hiểu diligence thuộc về builder.",
+  "Nêu đúng PII là gì, ranh giới cứng khi dùng AI, và biết ẩn danh hoá dữ liệu trước khi đưa vào công cụ AI công cộng (theo Luật 91/2025/QH15).",
+  "Nhận diện hiện tượng ảo giác (hallucination) & thiên kiến (bias) của AI như những giới hạn về độ tin cậy cần kiểm soát, đồng thời hiểu rõ sự cẩn trọng và trách nhiệm soát xét (diligence) thuộc về người xây dựng sản phẩm (builder).",
 ];
 
 const MUST_KNOW = ["Output vs Outcome", "Value / Vanity metric", "Feature→Outcome→Metric", "PII", "Ẩn danh hoá", "Luật 91/2025/QH15", "Grounding"];
@@ -121,7 +121,7 @@ interface ExamQ {
 
 const EXAM: ExamQ[] = [
   { part: "Phần A · Outcome & Metric", q: "\"Outcome\" khác \"output\" ở chỗ nào?", opts: ["Outcome là thay đổi thực tế tính năng tạo ra; output là thứ được làm ra", "Outcome là số dòng code, output là tính năng", "Chúng giống hệt nhau", "Output luôn quan trọng hơn outcome"], correct: 0, why: "Outcome = thay đổi thực tế; output = thứ được làm ra." },
-  { part: "Phần A · Outcome & Metric", q: "Đội build xong chatbot tư vấn size nhưng sau 1 tháng tỉ lệ đổi trả không đổi. Kết luận đúng?", opts: ["Tính năng thành công vì đã chạy được", "Có output nhưng outcome = 0 (chưa tạo ra thay đổi thực tế)", "Đây là một ví dụ về vanity metric", "Cần tăng temperature của chatbot"], correct: 1, why: "Chatbot đã chạy (có output) nhưng không thay đổi tỉ lệ đổi trả → outcome = 0." },
+  { part: "Phần A · Outcome & Metric", q: "Đội build xong chatbot tư vấn size, nhưng sau 1 tháng tỉ lệ đổi trả do sai size không đổi. Kết luận đúng?", opts: ["Tính năng thành công vì đã chạy được", "Có output nhưng outcome = 0 (chưa tạo ra thay đổi thực tế)", "Đây là một ví dụ về vanity metric", "Cần tăng temperature của chatbot"], correct: 1, why: "Chatbot đã chạy (có output) nhưng không thay đổi tỉ lệ đổi trả → outcome = 0." },
   { part: "Phần A · Outcome & Metric", q: "ROI ở góc nhìn product nên được hiểu là?", opts: ["Chỉ là số tiền lãi tuyệt đối", "Số lượng tính năng đã hoàn thành", "Giá trị thu lại so với công sức/chi phí bỏ ra", "Số người dùng đăng ký"], correct: 2, why: "ROI = giá trị thu lại so với chi phí/công sức bỏ ra (không chỉ là tiền)." },
   { part: "Phần A · Outcome & Metric", q: "Đâu là VALUE metric cho tính năng \"gợi ý sản phẩm phối cùng\"?", opts: ["Số gợi ý AI hiển thị mỗi ngày", "Số lần khách nhìn thấy widget gợi ý", "Số câu AI đã sinh", "Tỉ lệ đơn có ≥2 sản phẩm nhờ gợi ý (hoặc thay đổi AOV)"], correct: 3, why: "\"Tỉ lệ đơn ≥2 sản phẩm / AOV\" gắn giá trị thật; còn lại là vanity." },
   { part: "Phần A · Outcome & Metric", q: "Câu hỏi nào giúp lọc ra một vanity metric?", opts: ["\"Nếu chỉ số này tăng mà mọi thứ khác giữ nguyên, YODY có thật sự tốt lên không?\"", "\"Chỉ số này có dễ đo không?\"", "\"Chỉ số này nghe có ấn tượng khi báo cáo không?\"", "\"Đối thủ có dùng chỉ số này không?\""], correct: 0, why: "Câu hỏi \"tăng thì YODY có thật sự tốt lên không?\" lọc được vanity metric." },
@@ -416,10 +416,10 @@ function Part2View() {
         Lỗi phổ biến nhất: nghĩ rằng xóa tên là an toàn. Sai. Một <b>tổ hợp</b> các trường tưởng vô hại vẫn định danh được một người:
       </p>
       <div style={{ margin: "0 0 16px", padding: "16px 20px", background: "#fff", border: "1px solid var(--rose-deep)", borderRadius: "12px", font: "14px/1.7 var(--font-mono)", color: "var(--fg-1)" }}>
-        &quot;0912 345 xxx · Số 5 ngõ 10 Kim Mã · đơn YD2026-08841 · <span style={{ color: "var(--rose-deep)" }}>l***@gmail.com</span>&quot;
+        &quot;0912 345 xxx · Số 5 ngõ 10 Kim Mã · đơn YD2026-08841 · <span style={{ color: "var(--rose-deep)" }}>[email protected]</span>&quot;
       </div>
       <p style={{ font: "400 16px/1.7 var(--font-body)", color: "var(--fg-2)", margin: "0 0 26px" }}>
-        Không có tên, nhưng tổ hợp <b>SĐT + địa chỉ + mã đơn + email</b> chỉ khớp đúng một người khi đối chiếu hệ thống. Quy tắc bắt buộc: <b style={{ color: "var(--fg-1)" }}>phải ẩn toàn bộ tổ hợp trường có khả năng liên kết nhận diện</b>, tuyệt đối không chỉ ẩn mỗi họ tên.
+        Không có tên, nhưng tổ hợp <b>SĐT + địa chỉ + mã đơn + email</b> chỉ khớp đúng một người khi đối chiếu hệ thống. Đó gọi là hiện tượng <b>định danh gián tiếp (quasi-identifier)</b>. Quy tắc bắt buộc: <b style={{ color: "var(--fg-1)" }}>phải ẩn toàn bộ tổ hợp các trường thông tin có khả năng liên kết nhận diện</b>, tuyệt đối không chỉ ẩn mỗi họ tên.
       </p>
 
       <Callout tone="gold" label="Bí mật kinh doanh ≠ PII — nhưng cũng CẤM">
@@ -588,7 +588,7 @@ function Part3View({ go }: { go: (p: Page, part?: number) => void }) {
         </div>
         <div style={{ border: "1px solid var(--border)", borderRadius: "12px", background: "#fff", padding: "16px 20px" }}>
           <div style={{ font: "700 15px/1.3 var(--font-brand)", color: "var(--fg-1)", marginBottom: "4px" }}>&quot;Insight ma&quot;</div>
-          <div style={{ font: "14px/1.6 var(--font-body)", color: "var(--fg-2)" }}>Nhờ AI tóm tắt 30 review, nó viết <i>&quot;khách rất hài lòng với khóa kéo&quot;</i> — nhưng không review nào nhắc khóa kéo. Nếu bạn dựa vào đó để giữ nguyên thiết kế mùa sau, quyết định đứng trên một insight không tồn tại.</div>
+          <div style={{ font: "14px/1.6 var(--font-body)", color: "var(--fg-2)" }}>Nhờ AI tóm tắt 30 review, nó viết <i>&quot;khách rất hài lòng với khóa kéo&quot;</i> — nhưng không review nào nhắc khóa kéo. AI thêm vào vì &quot;nghe hợp lý&quot;. Nếu bạn dựa vào đó để giữ nguyên thiết kế mùa sau, quyết định đứng trên một insight không tồn tại.</div>
         </div>
       </div>
 
@@ -596,13 +596,13 @@ function Part3View({ go }: { go: (p: Page, part?: number) => void }) {
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "14px", margin: "0 0 26px" }}>
         <div style={{ border: "1px solid var(--rose-deep)", borderRadius: "12px", background: "var(--rose-tint)", padding: "16px 18px" }}>
           <div style={{ font: "700 12px/1 var(--font-brand)", color: "var(--rose-deep)", marginBottom: "10px" }}>Cách 1 — không cấp dữ liệu</div>
-          <div style={{ font: "13px/1.7 var(--font-mono)", color: "var(--fg-1)", background: "#fff", borderRadius: "8px", padding: "11px 13px", marginBottom: "8px" }}>&quot;T5/2026 Yody Cầu Giấy bán bao nhiêu áo polo, tăng giảm thế nào?&quot;</div>
+          <div style={{ font: "13px/1.7 var(--font-mono)", color: "var(--fg-1)", background: "#fff", borderRadius: "8px", padding: "11px 13px", marginBottom: "8px" }}>&quot;Tháng 5/2026 cửa hàng Yody Cầu Giấy bán bao nhiêu áo polo, tăng giảm thế nào?&quot;</div>
           <div style={{ font: "13px/1.6 var(--font-body)", color: "var(--rose-deep)" }}>→ &quot;…bán <b>1.247 áo, tăng 18%</b>…&quot; — con số <b>bịa hoàn toàn</b>.</div>
         </div>
         <div style={{ border: "1px solid var(--mint)", borderRadius: "12px", background: "var(--mint-tint)", padding: "16px 18px" }}>
           <div style={{ font: "700 12px/1 var(--font-brand)", color: "var(--mint-deep)", marginBottom: "10px" }}>Cách 2 — cấp dữ liệu + buộc bám nguồn</div>
-          <div style={{ font: "13px/1.7 var(--font-mono)", color: "var(--fg-1)", background: "#fff", borderRadius: "8px", padding: "11px 13px", marginBottom: "8px" }}>&quot;CHỈ trả lời dựa trên bảng sau. Không có thì trả lời &apos;Dữ liệu không có&apos;… Cầu Giấy: T4 280 · T5 312&quot;</div>
-          <div style={{ font: "13px/1.6 var(--font-body)", color: "var(--mint-deep)" }}>→ &quot;Cầu Giấy: T5 312, T4 280, <b>tăng ~11,4%</b>.&quot; Hỏi cửa hàng không có → &quot;Dữ liệu không có.&quot;</div>
+          <div style={{ font: "13px/1.7 var(--font-mono)", color: "var(--fg-1)", background: "#fff", borderRadius: "8px", padding: "11px 13px", marginBottom: "8px" }}>&quot;CHỈ trả lời dựa trên bảng sau. Nếu không có thông tin, trả lời &apos;Dữ liệu không có&apos;. Không suy đoán... Cầu Giấy: T4 280 · T5 312&quot;</div>
+          <div style={{ font: "13px/1.6 var(--font-body)", color: "var(--mint-deep)" }}>→ &quot;Cầu Giấy: T5 bán 312, T4 bán 280, <b>tăng ~11,4%</b>.&quot; Hỏi cửa hàng không có → &quot;Dữ liệu không có.&quot;</div>
         </div>
       </div>
       <p style={{ font: "italic 600 18px/1.6 var(--font-body)", color: "var(--fg-1)", margin: "0 0 8px", borderLeft: "3px solid var(--fg-1)", paddingLeft: "16px" }}>
