@@ -26,3 +26,5 @@ design-system/
 !.env.example
 
 knowledge/
+.claude/
+.agents/
