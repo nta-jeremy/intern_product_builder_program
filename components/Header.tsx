@@ -67,12 +67,21 @@ function BadgesIcon() {
     </svg>
   );
 }
+function LearnHubIcon() {
+  return (
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+      <path d="M3 9.5 12 4l9 5.5-9 5.5L3 9.5Z" />
+      <path d="M7 11.5V16c0 1.5 2.5 3 5 3s5-1.5 5-3v-4.5" />
+    </svg>
+  );
+}
 
 const NAV: NavItem[] = [
   { href: "/", match: "/", label: "Tổng quan", icon: <HomeIcon /> },
   { href: "/competencies", match: "/competencies", label: "Khung năng lực", icon: <CompetenciesIcon /> },
-  { href: "/projects", match: "/projects", label: "Dự án thực chiến", icon: <ProductsIcon /> },
-  { href: "/roadmap", match: "/roadmap", label: "Lộ trình & Kiến thức", icon: <RoadmapIcon /> },
+  { href: "/projects", match: "/projects", label: "Dự án", icon: <ProductsIcon /> },
+  { href: "/roadmap", match: "/roadmap", label: "Lộ trình", icon: <RoadmapIcon /> },
+  { href: "/learn-hub", match: "/learn-hub", label: "Học tập", icon: <LearnHubIcon /> },
   { href: "/scorecard", match: "/scorecard", label: "Scorecard", icon: <ScorecardIcon /> },
   { href: "/badges", match: "/badges", label: "Huy hiệu", icon: <BadgesIcon /> },
 ];
