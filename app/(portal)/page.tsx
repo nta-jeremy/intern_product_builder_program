@@ -7,7 +7,7 @@ export default function HomePage() {
   const router = useRouter();
   return (
     <Overview
-      onStartLearning={() => router.push("/roadmap")}
+      onStartLearning={() => router.push("/learn-hub")}
       onGoComp={() => router.push("/competencies")}
     />
   );
