@@ -4,35 +4,13 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { LESSONS, ROADMAP } from "@/lib/data";
-import type { Tone } from "@/lib/types";
-
-function toneDeep(t: Tone): string {
-  return (
-    {
-      mint: "var(--mint-deep)",
-      iris: "var(--iris-deep)",
-      irisDeep: "var(--iris-deep)",
-      rose: "var(--rose-deep)",
-      brand: "var(--brand)",
-      gold: "var(--gold-deep)",
-    }[t] || "var(--iris-deep)"
-  );
-}
-function toneTint(t: Tone): string {
-  return (
-    {
-      mint: "var(--mint-tint)",
-      iris: "var(--iris-tint)",
-      irisDeep: "var(--iris-tint)",
-      rose: "var(--rose-tint)",
-      brand: "var(--brand-tint)",
-      gold: "var(--gold-tint)",
-    }[t] || "var(--iris-tint)"
-  );
-}
+import { toneDeep, toneTint } from "@/lib/tone";
+import { LearnHubCalendar } from "./LearnHubCalendar";
 
 const LESSON_IDS = LESSONS.map((l) => l.id);
 const DEFAULT_LESSON_ID = LESSON_IDS[0];
+
+type LearnMode = "carousel" | "calendar";
 
 export function LearnHub() {
   const router = useRouter();
@@ -40,6 +18,7 @@ export function LearnHub() {
   const cardParam = searchParams.get("card");
   const initialIdx = Math.max(0, LESSON_IDS.indexOf(cardParam ?? ""));
   const [activeIdx, setActiveIdx] = useState(initialIdx);
+  const [mode, setMode] = useState<LearnMode>("carousel");
 
   useEffect(() => {
     const idx = LESSON_IDS.indexOf(cardParam ?? "");
@@ -61,6 +40,7 @@ export function LearnHub() {
     const onKey = (e: KeyboardEvent) => {
       const target = e.target as HTMLElement | null;
       if (target && (target.tagName === "INPUT" || target.tagName === "TEXTAREA" || target.isContentEditable)) return;
+      if (mode !== "carousel") return;
       if (e.key === "ArrowLeft") {
         e.preventDefault();
         setActiveIdx((prev) => Math.max(0, prev - 1));
@@ -71,7 +51,7 @@ export function LearnHub() {
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, []);
+  }, [mode]);
 
   return (
     <main
@@ -183,6 +163,74 @@ export function LearnHub() {
         </div>
 
         <div
+          role="tablist"
+          aria-label="Chọn cách xem lộ trình"
+          style={{
+            display: "inline-flex",
+            background: "var(--bg-2)",
+            border: "1px solid var(--border)",
+            borderRadius: "10px",
+            padding: "4px",
+            gap: "2px",
+          }}
+        >
+          {(["carousel", "calendar"] as const).map((m) => {
+            const active = mode === m;
+            return (
+              <button
+                key={m}
+                type="button"
+                role="tab"
+                aria-selected={active ? "true" : "false"}
+                onClick={() => setMode(m)}
+                style={{
+                  border: "none",
+                  cursor: "pointer",
+                  padding: "8px 16px",
+                  borderRadius: "8px",
+                  font: "700 12.5px var(--font-brand)",
+                  letterSpacing: ".01em",
+                  background: active ? "var(--card)" : "transparent",
+                  color: active ? "var(--fg-1)" : "var(--fg-2)",
+                  boxShadow: active ? "var(--shadow-sm)" : "none",
+                  transition: "background .18s var(--ease-out), color .18s, box-shadow .18s",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "6px",
+                }}
+              >
+                {m === "carousel" ? (
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                    <rect x="3" y="7" width="18" height="10" rx="2" />
+                    <path d="M7 7v10M17 7v10" opacity=".4" />
+                  </svg>
+                ) : (
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                    <rect x="3" y="4" width="18" height="17" rx="2" />
+                    <path d="M3 9h18M8 2v4M16 2v4" />
+                  </svg>
+                )}
+                {m === "carousel" ? "Carousel" : "Calendar"}
+              </button>
+            );
+          })}
+        </div>
+
+        {mode === "calendar" ? (
+          <LearnHubCalendar
+            lessons={LESSONS}
+            roadmap={ROADMAP}
+            activeId={LESSON_IDS[activeIdx]}
+            onSelect={(id) => {
+              const idx = LESSON_IDS.indexOf(id);
+              if (idx < 0) return;
+              setActiveIdx(idx);
+              router.push(`/learn/${id}`);
+            }}
+          />
+        ) : (
+          <>
+        <div
           style={{
             position: "relative",
             width: "100%",
@@ -279,7 +327,11 @@ export function LearnHub() {
                   key={ls.id}
                   className="lc-card"
                   data-active={diff === 0 ? "true" : "false"}
-                  onClick={() => diff !== 0 && setActiveIdx(idx)}
+                  onClick={(e) => {
+                    const target = e.target as HTMLElement;
+                    if (target.closest("a[href^='/learn/']")) return;
+                    if (diff !== 0) setActiveIdx(idx);
+                  }}
                   style={{
                     position: "absolute",
                     width: "min(400px, 85%)",
@@ -379,41 +431,6 @@ export function LearnHub() {
             })}
           </div>
 
-          <button
-            onClick={() => activeIdx > 0 && setActiveIdx(activeIdx - 1)}
-            disabled={activeIdx === 0}
-            aria-label="Buổi trước"
-            className="lc-hotzone"
-            style={{
-              position: "absolute",
-              left: 0,
-              top: 0,
-              width: "50%",
-              height: "100%",
-              background: "transparent",
-              border: "none",
-              cursor: activeIdx === 0 ? "default" : "pointer",
-              zIndex: 4,
-            }}
-          />
-
-          <button
-            onClick={() => activeIdx < LESSONS.length - 1 && setActiveIdx(activeIdx + 1)}
-            disabled={activeIdx === LESSONS.length - 1}
-            aria-label="Buổi tiếp theo"
-            className="lc-hotzone"
-            style={{
-              position: "absolute",
-              right: 0,
-              top: 0,
-              width: "50%",
-              height: "100%",
-              background: "transparent",
-              border: "none",
-              cursor: activeIdx === LESSONS.length - 1 ? "default" : "pointer",
-              zIndex: 4,
-            }}
-          />
 
           <button
             onClick={() => setActiveIdx((prev) => Math.min(LESSONS.length - 1, prev + 1))}
@@ -497,6 +514,8 @@ export function LearnHub() {
             ← / → để chuyển buổi
           </span>
         </div>
+          </>
+        )}
       </div>
     </main>
   );

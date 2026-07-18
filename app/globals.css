@@ -137,3 +137,9 @@
   border-color: var(--brand) !important;
   box-shadow: 0 8px 24px var(--brand-tint) !important;
 }
+
+.lc-cal-card[data-active="false"]:hover {
+  border-color: var(--brand) !important;
+  box-shadow: var(--shadow-sm) !important;
+  transform: translateY(-1px);
+}
