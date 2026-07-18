@@ -1358,3 +1358,19 @@ em.accent.brand, .em-accent.brand { color: var(--brand); }
   .i22-surface .i22-read-layout { flex-direction: column !important; }
   .i22-surface .i22-read-toc { width: 100% !important; position: static !important; max-height: none !important; border-right: none !important; border-bottom: 1px solid var(--border) !important; }
 }
+
+/* ── I3.1 sample port: custom classes (scoped to .i31-surface) ── */
+.i31-surface { background: var(--bg-warm); }
+.i31-surface ::selection { background: var(--iris); color: #fff; }
+.i31-surface a { color: var(--iris-deep); }
+.i31-surface a:hover { color: var(--iris); }
+.i31-surface .kh-part { transition: transform .14s, box-shadow .14s; }
+.i31-surface .kh-part:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.i31-surface .kh-toc:hover { background: #fff; }
+.i31-surface .kh-opt { transition: background .12s, border-color .12s; }
+.i31-surface .kh-nav:hover { opacity: .62; }
+@media (max-width: 900px) {
+  .i31-surface .i31-overview-grid { grid-template-columns: 1fr !important; }
+  .i31-surface .i31-read-layout { flex-direction: column !important; }
+  .i31-surface .i31-read-toc { width: 100% !important; position: static !important; max-height: none !important; border-right: none !important; border-bottom: 1px solid var(--border) !important; }
+}

@@ -5,6 +5,8 @@ import { LessonI11 } from "@/components/sections/LessonI11";
 import { LessonI12 } from "@/components/sections/LessonI12";
 import { LessonI21 } from "@/components/sections/LessonI21";
 import { LessonI22 } from "@/components/sections/LessonI22";
+import { LessonI31 } from "@/components/sections/LessonI31";
+import { LessonI23 } from "@/components/sections/LessonI23";
 
 export default function LearnPage() {
   const params = useParams<{ lessonId: string }>();
@@ -38,6 +40,22 @@ export default function LearnPage() {
     return (
       <div className="i22-surface">
         <LessonI22 />
+      </div>
+    );
+  }
+
+  if (lessonId === "I3.1") {
+    return (
+      <div className="i31-surface">
+        <LessonI31 />
+      </div>
+    );
+  }
+
+  if (lessonId === "I2.3") {
+    return (
+      <div className="i23-surface">
+        <LessonI23 />
       </div>
     );
   }
