@@ -6,6 +6,13 @@ import { LessonI12 } from "@/components/sections/LessonI12";
 import { LessonI21 } from "@/components/sections/LessonI21";
 import { LessonI22 } from "@/components/sections/LessonI22";
 import { LessonI31 } from "@/components/sections/LessonI31";
+import { LessonI32 } from "@/components/sections/LessonI32";
+import { LessonI33 } from "@/components/sections/LessonI33";
+import { LessonI41 } from "@/components/sections/LessonI41";
+import { LessonI43 } from "@/components/sections/LessonI43";
+import { LessonI51 } from "@/components/sections/LessonI51";
+import { LessonI52 } from "@/components/sections/LessonI52";
+import { LessonI53 } from "@/components/sections/LessonI53";
 import { LessonI23 } from "@/components/sections/LessonI23";
 
 export default function LearnPage() {
@@ -52,10 +59,66 @@ export default function LearnPage() {
     );
   }
 
+  if (lessonId === "I3.2") {
+    return (
+      <div className="i32-surface">
+        <LessonI32 />
+      </div>
+    );
+  }
+
   if (lessonId === "I2.3") {
     return (
       <div className="i23-surface">
         <LessonI23 />
+      </div>
+    );
+  }
+
+  if (lessonId === "I3.3") {
+    return (
+      <div className="i33-surface">
+        <LessonI33 />
+      </div>
+    );
+  }
+
+  if (lessonId === "I4.1") {
+    return (
+      <div className="i41-surface">
+        <LessonI41 />
+      </div>
+    );
+  }
+
+  if (lessonId === "I4.3") {
+    return (
+      <div className="i43-surface">
+        <LessonI43 />
+      </div>
+    );
+  }
+
+  if (lessonId === "I5.1") {
+    return (
+      <div className="i51-surface">
+        <LessonI51 />
+      </div>
+    );
+  }
+
+  if (lessonId === "I5.2") {
+    return (
+      <div className="i52-surface">
+        <LessonI52 />
+      </div>
+    );
+  }
+
+  if (lessonId === "I5.3") {
+    return (
+      <div className="i53-surface">
+        <LessonI53 />
       </div>
     );
   }

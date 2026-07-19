@@ -1374,3 +1374,63 @@ em.accent.brand, .em-accent.brand { color: var(--brand); }
   .i31-surface .i31-read-layout { flex-direction: column !important; }
   .i31-surface .i31-read-toc { width: 100% !important; position: static !important; max-height: none !important; border-right: none !important; border-bottom: 1px solid var(--border) !important; }
 }
+
+/* ── I3.2 sample port: custom classes (scoped to .i32-surface) ── */
+.i32-surface { background: var(--bg-warm); }
+.i32-surface ::selection { background: var(--iris); color: #fff; }
+.i32-surface a { color: var(--iris-deep); }
+.i32-surface a:hover { color: var(--iris); }
+.i32-surface .kh-part { transition: transform .14s, box-shadow .14s; }
+.i32-surface .kh-part:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.i32-surface .kh-toc:hover { background: #fff; }
+.i32-surface .kh-opt { transition: background .12s, border-color .12s; }
+.i32-surface .kh-nav:hover { opacity: .62; }
+@media (max-width: 900px) {
+  .i32-surface .i32-overview-grid { grid-template-columns: 1fr !important; }
+  .i32-surface .i32-read-layout { flex-direction: column !important; }
+  .i32-surface .i32-read-toc { width: 100% !important; position: static !important; max-height: none !important; border-right: none !important; border-bottom: 1px solid var(--border) !important; }
+}
+
+/* ── I4.1 sample port: custom classes (scoped to .i41-surface) ── */
+.i41-surface { background: var(--bg-warm); }
+.i41-surface ::selection { background: var(--iris); color: #fff; }
+.i41-surface a { color: var(--iris-deep); }
+.i41-surface a:hover { color: var(--iris); }
+.i41-surface .kh-part { transition: transform .14s, box-shadow .14s; }
+.i41-surface .kh-part:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.i41-surface .kh-toc:hover { background: #fff; }
+.i41-surface .kh-opt { transition: background .12s, border-color .12s; }
+.i41-surface .kh-nav:hover { opacity: .62; }
+
+/* ── I4.3 sample port: custom classes (scoped to .i43-surface) ── */
+.i43-surface { background: var(--bg-warm); }
+.i43-surface ::selection { background: var(--iris); color: #fff; }
+.i43-surface a { color: var(--iris-deep); }
+.i43-surface a:hover { color: var(--iris); }
+.i43-surface .kh-part { transition: transform .14s, box-shadow .14s; }
+.i43-surface .kh-part:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.i43-surface .kh-toc:hover { background: #fff; }
+.i43-surface .kh-opt { transition: background .12s, border-color .12s; }
+.i43-surface .kh-nav:hover { opacity: .62; }
+
+/* ── I5.1 sample port: custom classes (scoped to .i51-surface) ── */
+.i51-surface { background: var(--bg-warm); }
+.i51-surface ::selection { background: var(--iris); color: #fff; }
+.i51-surface a { color: var(--iris-deep); }
+.i51-surface a:hover { color: var(--iris); }
+.i51-surface .kh-part { transition: transform .14s, box-shadow .14s; }
+.i51-surface .kh-part:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.i51-surface .kh-toc:hover { background: #fff; }
+.i51-surface .kh-opt { transition: background .12s, border-color .12s; }
+.i51-surface .kh-nav:hover { opacity: .62; }
+
+/* ── I5.2 sample port: custom classes (scoped to .i52-surface) ── */
+.i52-surface { background: var(--bg-warm); }
+.i52-surface ::selection { background: var(--iris); color: #fff; }
+.i52-surface a { color: var(--iris-deep); }
+.i52-surface a:hover { color: var(--iris); }
+.i52-surface .kh-part { transition: transform .14s, box-shadow .14s; }
+.i52-surface .kh-part:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.i52-surface .kh-toc:hover { background: #fff; }
+.i52-surface .kh-opt { transition: background .12s, border-color .12s; }
+.i52-surface .kh-nav:hover { opacity: .62; }
