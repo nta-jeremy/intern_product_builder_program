@@ -150,102 +150,19 @@ npm start
 
 ---
 
-## 🏢 Deployment
+## 📚 Documentation
 
-### Platform: Vercel
+Tất cả tài liệu chi tiết được tổ chức trong `docs/`:
 
-This project is configured for automatic deployment on Vercel.
+- **[Project Overview & PDR](docs/project-overview-pdr.md)** — Vision, 7 năng lực NL1–NL7, 5 huy hiệu YPB1–YPB5, 14 buổi / 4 giai đoạn, KPIs, non-goals.
+- **[Codebase Summary](docs/codebase-summary.md)** — Tech stack, directory map, data flow, build pipeline.
+- **[System Architecture](docs/system-architecture.md)** — Layered architecture, PortalContext, theme subsystem, overlay system.
+- **[Code Standards](docs/code-standards.md)** — Naming, `"use client"` policy, theme rules (data-theme vs .dark), anti-patterns.
+- **[Project Roadmap](docs/project-roadmap.md)** — Milestones Q3 2026 → Q2 2027, technical debt, open questions.
+- **[Deployment Guide](docs/deployment.md)** — Local dev, Vercel setup, env vars, rollback, troubleshooting.
+- **[Design Guidelines](docs/design-guidelines.md)** — YODY Design System tokens, typography, animation, 9 enforcement principles.
 
-**Production URL**: https://yody-itdx-intern-product-builder.vercel.app
-
-**Manual deployment**:
-```bash
-vercel --prod --yes
-```
-
-### Environment Variables on Vercel
-
-Configure these in your Vercel project settings:
-
-| Variable | Required | Description |
-|----------|----------|-------------|
-| `GEMINI_API_KEY` | Yes | Gemini AI API key for AI assistant features |
-| `APP_URL` | Recommended | Self-referential URL for OAuth callbacks & API endpoints |
-
-### Rollback
-
-1. Go to [Vercel Dashboard → Deployments](https://vercel.com/tunganh252s-projects/intern_product_builder_program/deployments)
-2. Find the working deployment
-3. Click "•••" → "Promote to Production"
-
-For detailed deployment information, see [docs/deployment.md](docs/deployment.md).
-
----
-
-## 🎨 Design System
-
-This project follows the **YODY Design System** for tech landing pages.
-
-### Brand Identity
-
-- **Brand**: YODY — Vietnamese mass-market fashion brand (274 stores, IPO target 2030)
-- **Aesthetic**: light hightech · art accent reserve · craftsmanship · AI-native
-- **Primary Colors**:
-  - `--brand`: #2a2b86 (Primary navy)
-  - `--brand-gold`: #fcaf16 (Decorative gold)
-
-### Typography
-
-- **Montserrat**: Headlines, H1/H2, display text
-- **Be Vietnam Pro**: Brand chrome, card titles
-- **Inter**: Body, labels, captions
-- **Playfair Display Italic**: Hero only (1 moment per page)
-- **JetBrains Mono**: Tags, code, technical metadata
-
-### Component Guidelines
-
-- **White-dominant design** with generous whitespace
-- **Iris accent** (#7c6cf5) for AI/tech elements (90% of accent surface)
-- **Soft brand-tinted shadows**, never neutral black
-- **4px base unit** for spacing system
-
-For complete design specifications, see [docs/design-guidelines.md](docs/design-guidelines.md).
-
----
-
-## 📚 Course Content Structure
-
-The course consists of **14 sessions** organized into 4 phases:
-
-### Phase 1 (Weeks 1–4): AI Foundations & Outcome Thinking
-- I1.1: AI Fundamentals & LLM Mechanics
-- I1.2: Outcome Thinking & PII Compliance
-- I2.1: Prompt Engineering & Tool Use
-- I2.2: Design Thinking: Empathy & Ideation
-
-### Phase 2 (Weeks 5–8): Prompt & Analytical Thinking
-- I2.3: Critical Thinking: Root Cause & Hypothesis
-- I3.1: Agentic Workflows & RAG
-- I3.2: Build Deliverable & Quality Control
-- I3.3: Design Thinking: Collaboration & Iteration
-
-### Phase 3 (Weeks 9–11): Workflow & Independent Development
-- I4.1: Advanced Product Mindset & Ownership
-- I4.2: Dev Craft: Git, Read/Debug AI Code, Testing
-- I4.3: Integrate Initiative & Measure Outcomes
-
-### Phase 4 (Weeks 12–14): Capstone & Operations
-- I5.1: AI Solution Architecture
-- I5.2: Security, Eval & Operations
-- I5.3: Ship & Defend Capstone
-
-Each session includes:
-- **Learning objectives** & competency mapping
-- **Reading materials** (≤20 min per file)
-- **Self-assessment** quizzes
-- **Practical exercises** & deliverables
-
-For the complete course map, see [knowledge/course/00-Course-Map.md](knowledge/course/00-Course-Map.md).
+Course content: [knowledge/course/00-Course-Map.md](knowledge/course/00-Course-Map.md).
 
 ---
 
@@ -309,9 +226,7 @@ For issues, questions, or support, please use the internal communication channel
 
 - **Production**: [https://yody-itdx-intern-product-builder.vercel.app](https://yody-itdx-intern-product-builder.vercel.app)
 - **Vercel Dashboard**: [https://vercel.com/tunganh252s-projects/intern_product_builder_program](https://vercel.com/tunganh252s-projects/intern_product_builder_program)
-- **Design Guidelines**: [docs/design-guidelines.md](docs/design-guidelines.md)
-- **Deployment Guide**: [docs/deployment.md](docs/deployment.md)
-- **Course Map**: [knowledge/course/00-Course-Map.md](knowledge/course/00-Course-Map.md)
+- **Documentation index**: [docs/README →](docs/project-overview-pdr.md)
 
 ---
 
