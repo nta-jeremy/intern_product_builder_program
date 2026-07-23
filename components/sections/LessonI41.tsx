@@ -20,16 +20,16 @@ const PART_META = [
 ];
 
 const PARTS = [
-  { ...PART_META[0], desc: "Ownership (3 hành vi), báo rủi ro sớm kèm phương án, scope-timeline trade-off (làm gì / KHÔNG làm), ưu tiên theo ROI/impact, tư duy MVP.", tags: ["Ownership", "Báo rủi ro sớm", "Scope trade-off", "ROI · MVP"] },
-  { ...PART_META[1], desc: "Bắt đầu từ Problem không từ Solution, Product Canvas 8 mục, 6 lỗi phổ biến, AI-fit hai chiều, system thinking (hiệu ứng bậc hai · who pays the price).", tags: ["Product Canvas", "6 lỗi phổ biến", "AI-fit hai chiều", "System thinking"] },
+  { ...PART_META[0], desc: "Năng lực Ownership qua 3 hành vi cốt lõi, cơ chế báo rủi ro sớm kèm giải pháp, sự đánh đổi giữa phạm vi và thời gian (Scope-Timeline trade-off), cách thức ưu tiên công việc theo ROI/impact và tư duy làm MVP.", tags: ["Ownership", "Báo rủi ro sớm", "Scope trade-off", "ROI · MVP"] },
+  { ...PART_META[1], desc: "Nguyên tắc bắt đầu từ vấn đề (Problem) thay vì giải pháp (Solution), khung Product Canvas 8 mục và cách tránh 6 lỗi phổ biến, đánh giá AI-fit hai chiều, tư duy hệ thống (System Thinking) lường trước hiệu ứng bậc hai và câu hỏi \"ai gánh chịu chi phí\".", tags: ["Product Canvas", "6 lỗi phổ biến", "AI-fit hai chiều", "System thinking"] },
 ];
 
 const OBJECTIVES = [
-  "Thể hiện ownership: chủ động cam kết deadline, báo rủi ro sớm, chịu trách nhiệm đến cùng.",
-  "Áp dụng scope-timeline trade-off: quyết định làm gì / KHÔNG làm gì để đạt hiệu quả cao nhất với nguồn lực tối thiểu.",
-  "Ưu tiên theo ROI/impact (dưới hướng dẫn mentor) và dùng tư duy MVP để thử nghiệm giả thuyết chi phí thấp.",
-  "Lập một Product Canvas 8 mục hoàn chỉnh cho một feature thật; tránh 6 lỗi phổ biến.",
-  "Dùng system thinking: lường hiệu ứng bậc hai và xác định rõ ai/bộ phận nào gánh chịu chi phí/rủi ro.",
+  "Thể hiện tinh thần ownership: chủ động cam kết tiến độ (deadline), báo cáo rủi ro từ sớm và chịu trách nhiệm đến cùng.",
+  "Áp dụng nguyên tắc scope-timeline trade-off: quyết định rõ việc gì NÊN làm và việc gì KHÔNG làm để đạt hiệu quả cao nhất với nguồn lực tối thiểu.",
+  "Biết cách ưu tiên công việc theo ROI/impact (dưới sự hướng dẫn của mentor) và áp dụng tư duy MVP để thử nghiệm các giả thuyết với chi phí tối ưu nhất.",
+  "Lập một bản Product Canvas 8 mục hoàn chỉnh cho một tính năng (feature) thực tế và tránh 6 lỗi thiết kế phổ biến.",
+  "Ứng dụng tư duy hệ thống (system thinking): lường trước các hiệu ứng bậc hai và xác định rõ đối tượng hoặc bộ phận nào sẽ gánh chịu chi phí/rủi ro phát sinh.",
 ];
 
 const MUST_KNOW = ["Ownership", "Báo rủi ro sớm", "Scope-timeline trade-off", "Ưu tiên ROI/impact", "MVP", "Product Canvas 8 mục", "System Thinking", "AI-fit hai chiều"];
@@ -47,14 +47,14 @@ const META = [
 
 // Phần 1 — Ownership, Scope, ROI, MVP
 const OWNERSHIP = [
-  { n: "1", name: "Chủ động cam kết", what: "Cam kết kết quả & thời hạn — không chờ bị giao từng bước.", color: "var(--iris)", border: "var(--iris)", bg: "var(--iris-tint)" },
-  { n: "2", name: "Báo rủi ro sớm", what: "Thấy nguy cơ trễ/vướng → báo ngay kèm phương án, không giấu tới phút chót (nối I3.3).", color: "var(--gold-deep)", border: "var(--gold-deep)", bg: "var(--gold-tint)" },
-  { n: "3", name: "Chịu trách nhiệm đến cùng", what: "Không bỏ dở; output dưới tên mình thì mình lo tới khi xong (nối diligence I1.2).", color: "var(--mint-deep)", border: "var(--mint)", bg: "var(--mint-tint)" },
+  { n: "1", name: "Chủ động cam kết", what: "Chủ động chịu trách nhiệm về kết quả và thời hạn hoàn thành — không thụ động chờ được giao việc từng bước.", color: "var(--iris)", border: "var(--iris)", bg: "var(--iris-tint)" },
+  { n: "2", name: "Báo rủi ro sớm", what: "Ngay khi nhận thấy nguy cơ trễ tiến độ hoặc gặp vướng mắc → chủ động báo cáo ngay kèm phương án giải quyết đề xuất, tuyệt đối không giấu thông tin đến phút chót.", color: "var(--gold-deep)", border: "var(--gold-deep)", bg: "var(--gold-tint)" },
+  { n: "3", name: "Chịu trách nhiệm đến cùng", what: "Không bao giờ bỏ dở công việc giữa chừng; sản phẩm (output) gắn liền với tên mình thì phải tự chịu trách nhiệm chăm lo và hoàn thiện nó tới cùng.", color: "var(--mint-deep)", border: "var(--mint)", bg: "var(--mint-tint)" },
 ];
 const RISK_STEPS = [
-  { n: "1", name: "Phát hiện sớm", text: "ngay khi ước tính thấy khả năng trễ tiến độ hoặc gặp trở ngại, coi đó là rủi ro cần báo — tránh chờ đến sát hạn." },
-  { n: "2", name: "Báo kèm giải pháp", text: "thay vì chỉ \u201cem sợ trễ\u201d, đề xuất cụ thể: tinh giản scope phần Y, hoặc xin hỗ trợ nguồn lực Z." },
-  { n: "3", name: "Đúng người, đúng lúc", text: "người có thể ra quyết định, sớm khi còn kịp xoay." },
+  { n: "1", name: "Phát hiện sớm", text: "Ngay khi dự tính thấy khả năng trễ tiến độ hoặc gặp bất kỳ trở ngại nào, hãy lập tức xem đó là rủi ro cần báo cáo — tránh đợi đến sát ngày hoàn thành mới nói." },
+  { n: "2", name: "Báo kèm giải pháp", text: "Thay vì chỉ nói chung chung \"em sợ trễ tiến độ\", hãy đề xuất phương án giải quyết cụ thể: xin tinh giản bớt phần Y trong scope, hoặc nhờ hỗ trợ thêm nhân sự Z hỗ trợ code." },
+  { n: "3", name: "Đúng người, đúng lúc", text: "Báo cáo trực tiếp cho người có thẩm quyền ra quyết định, và phải báo sớm khi vẫn còn đủ thời gian để xoay xở phương án thay thế." },
 ];
 const SCOPE_DO = ["Gợi ý size từ chiều cao/cân nặng", "Hướng dẫn đo cơ bản", "Áp dụng cho 1 dòng áo khoác"];
 const SCOPE_DONT = ["AR thử đồ 3D", "Gợi ý cho toàn bộ danh mục", "Cá nhân hoá theo lịch sử mua"];
@@ -65,22 +65,22 @@ const CANVAS_CELLS = [
   { n: "2", name: "User", q: "Cụ thể là ai (người dùng cuối)?", link: "I2.2" },
   { n: "3", name: "Hypothesis", q: "\u201cNếu [X] cho [Y] thì [metric Z]…\u201d", link: "I2.3" },
   { n: "4", name: "Solution", q: "Giải pháp đề xuất là gì?", link: "—" },
-  { n: "5", name: "Build Scope", q: "Làm gì / KHÔNG làm gì?", link: "I4.1" },
-  { n: "6", name: "Success Metric", q: "Đo giá trị thật bằng gì (value, không vanity)?", link: "I1.2" },
-  { n: "7", name: "Edge Case", q: "Tình huống biên nào phá giải pháp?", link: "I3.2" },
-  { n: "8", name: "AI-fit", q: "Bước nào NÊN / KHÔNG NÊN dùng AI?", link: "I1.1" },
+  { n: "5", name: "Build Scope", q: "Phạm vi công việc: Việc NÊN làm / Việc KHÔNG làm trong lần này?", link: "I4.1" },
+  { n: "6", name: "Success Metric", q: "Chỉ số thành công: Đo lường giá trị thực tế bằng chỉ số nào (value metric, không dùng vanity metric)?", link: "I1.2" },
+  { n: "7", name: "Edge Case", q: "Trường hợp biên (Edge Case): Tình huống đặc biệt nào có thể làm hỏng hoặc vô hiệu hóa giải pháp?", link: "I3.2" },
+  { n: "8", name: "AI-fit", q: "Mức độ phù hợp AI (AI-fit): Bước nào trong quy trình NÊN dùng AI và bước nào KHÔNG NÊN dùng AI?", link: "I1.1" },
 ];
 const SIX_ERRORS = [
-  { n: "1", wrong: "Nhảy thẳng vào Solution, bỏ qua Problem", fix: "Bắt đầu từ problem + nguyên nhân gốc" },
-  { n: "2", wrong: "User quá rộng (\u201cmọi khách hàng\u201d)", fix: "Thu hẹp về nhóm cụ thể có pain point rõ" },
-  { n: "3", wrong: "Hypothesis không đo được", fix: "Dùng công thức \u201cNếu X cho Y thì metric Z…\u201d" },
-  { n: "4", wrong: "Chọn vanity metric (click, lượt dùng)", fix: "Chọn value metric phản ánh giá trị thật" },
-  { n: "5", wrong: "Quên edge case, chỉ nghĩ luồng thuận lợi", fix: "Liệt kê edge case trước khi bắt tay build" },
-  { n: "6", wrong: "AI-fit một chiều (chỉ liệt kê chỗ dùng AI)", fix: "Nêu cả chỗ KHÔNG nên dùng AI" },
+  { n: "1", wrong: "Nhảy ngay vào xây dựng giải pháp (Solution) mà bỏ qua việc thấu hiểu vấn đề (Problem)", fix: "Bắt đầu từ problem + nguyên nhân gốc" },
+  { n: "2", wrong: "Định nghĩa người dùng quá rộng và chung chung (ví dụ: 'tất cả khách hàng')", fix: "Thu hẹp về nhóm cụ thể có pain point rõ" },
+  { n: "3", wrong: "Giả thuyết (Hypothesis) viết mơ hồ, không thể định lượng hay đo lường được", fix: "Dùng công thức \u201cNếu X cho Y thì metric Z…\u201d" },
+  { n: "4", wrong: "Lựa chọn chỉ số ảo (vanity metric) như lượt bấm nút, lượt truy cập để đánh giá hiệu quả", fix: "Chọn value metric phản ánh giá trị thật" },
+  { n: "5", wrong: "Bỏ quên các trường hợp biên (edge case), chỉ thiết kế cho luồng hoạt động thuận lợi nhất (happy path)", fix: "Liệt kê edge case trước khi bắt tay build" },
+  { n: "6", wrong: "Đánh giá AI-fit một chiều (chỉ chăm chăm liệt kê những chỗ sẽ nhét AI vào)", fix: "Nêu cả chỗ KHÔNG nên dùng AI" },
 ];
 const SYSTEM_Q = [
-  { name: "Hiệu ứng bậc hai (second-order)", q: "Feature giải quyết vấn đề A, nhưng có vô tình tạo vấn đề B ở bộ phận khác không?", ex: "VD: gợi ý size giảm đổi trả, nhưng có làm tăng ticket CSKH hỏi lại về gợi ý không?", color: "var(--iris-deep)", border: "var(--iris)", bg: "var(--iris-tint)" },
-  { name: "Ai gánh chịu chi phí/rủi ro (Who pays the price?)", q: "Lợi ích thu được đánh đổi bằng gì, đối tượng nào phải gánh chi phí/rủi ro phát sinh?", ex: "Khách hàng, bộ phận CSKH, đội kỹ thuật hay chi phí vận hành hệ thống?", color: "var(--gold-deep)", border: "var(--gold-deep)", bg: "var(--gold-tint)" },
+  { name: "Hiệu ứng bậc hai (second-order)", q: "Feature giải quyết vấn đề A, nhưng có vô tình tạo vấn đề B ở bộ phận khác không?", ex: "Ví dụ: Tính năng gợi ý size giúp giảm tỷ lệ đổi trả, nhưng liệu có vô tình làm tăng lượng ticket yêu cầu nhân viên CSKH giải thích lại về gợi ý đó không?", color: "var(--iris-deep)", border: "var(--iris)", bg: "var(--iris-tint)" },
+  { name: "Ai gánh chịu chi phí/rủi ro (Who pays the price?)", q: "Lợi ích thu được đánh đổi bằng gì, đối tượng nào phải gánh chi phí/rủi ro phát sinh?", ex: "Khách hàng, bộ phận CSKH, đội ngũ kỹ thuật hay chi phí tài nguyên vận hành hệ thống sẽ phải chịu ảnh hưởng trực tiếp?", color: "var(--gold-deep)", border: "var(--gold-deep)", bg: "var(--gold-tint)" },
   { name: "Tương tác", q: "Feature này ảnh hưởng / được ảnh hưởng bởi feature nào khác?", ex: "Nối với các feature, quy trình vận hành và tổ chức xung quanh.", color: "var(--mint-deep)", border: "var(--mint)", bg: "var(--mint-tint)" },
 ];
 
@@ -88,12 +88,12 @@ const SYSTEM_Q = [
 const CANVAS_SAMPLE = [
   { n: "1", name: "Problem", val: "Khách mua online hay chọn sai size → tỉ lệ đổi/trả cao." },
   { n: "2", name: "User", val: "Khách mua áo khoác online lần đầu, chưa biết cách quy đổi size của YODY." },
-  { n: "3", name: "Hypothesis", val: "Nếu gợi ý size từ chiều cao/cân nặng cho khách mua áo khoác thì tỉ lệ đổi/trả do sai size sẽ giảm." },
+  { n: "3", name: "Hypothesis", val: "Nếu chúng ta gợi ý size dựa trên chiều cao và cân nặng cho khách mua áo khoác online thì tỷ lệ đổi/trả hàng do chọn sai size sẽ giảm." },
   { n: "4", name: "Solution", val: "Widget gợi ý size từ số đo + hướng dẫn đo, cho 1 dòng áo khoác." },
-  { n: "5", name: "Build Scope", val: "LÀM: gợi ý size + hướng dẫn đo (1 dòng). KHÔNG (lần này): AR 3D, toàn danh mục, cá nhân hoá theo lịch sử mua." },
+  { n: "5", name: "Build Scope", val: "LÀM: Gợi ý size tự động và cung cấp hướng dẫn đo cơ bản (áp dụng cho 1 dòng áo khoác cụ thể). KHÔNG LÀM (lần này): Tính năng thử đồ 3D (AR), áp dụng cho toàn bộ danh mục sản phẩm, cá nhân hóa sâu theo lịch sử mua hàng." },
   { n: "6", name: "Success Metric", val: "Tỉ lệ đổi/trả do sai size trong 2 tuần (value) — không phải lượt bấm widget (vanity)." },
-  { n: "7", name: "Edge Case", val: "Số đo bất thường / ngoài bảng size; khách bỏ trống số đo; bảng size 3 mã khác chuẩn nhau." },
-  { n: "8", name: "AI-fit", val: "NÊN: ước lượng size từ số đo còn mơ hồ. KHÔNG NÊN: quy đổi cố định đã có bảng rule rõ ràng." },
+  { n: "7", name: "Edge Case", val: "Khách nhập số đo bất thường hoặc nằm ngoài bảng quy chuẩn; khách để trống thông tin số đo; bảng size của 3 mã sản phẩm khác nhau không cùng một hệ quy chiếu." },
+  { n: "8", name: "AI-fit", val: "NÊN DÙNG AI: Để ước lượng và đề xuất size khi số đo của khách nằm ở khoảng mơ hồ giữa 2 size. KHÔNG NÊN DÙNG AI: Ở bước quy đổi size cố định dựa trên bảng quy tắc có sẵn (vì dùng rule-based sẽ nhanh, rẻ và chính xác tuyệt đối hơn)." },
 ];
 const QC_CHECKLIST = [
   "Đã bắt đầu từ Problem (ai đau ở đâu) chứ chưa nhảy vào Solution?",
@@ -111,11 +111,10 @@ const EXAM: ExamQ[] = [
   { part: A, q: "\u201cBáo rủi ro sớm\u201d nên được thực hiện thế nào?", opts: ["Báo ngay khi thấy khả năng trễ/kẹt, kèm phương án, đúng người ra quyết định", "Đợi tới hạn chót rồi báo \u201cchưa xong\u201d", "Giấu để tự mình xoay", "Chỉ báo nếu được hỏi tới"], correct: 0, why: "Báo rủi ro sớm: ngay khi thấy khả năng trễ, kèm phương án, đúng người ra quyết định. (File 1)" },
   { part: A, q: "Báo rủi ro sớm là dấu hiệu của điều gì?", opts: ["Yếu kém", "Chuyên nghiệp và đáng tin", "Thiếu tự tin", "Đùn đẩy trách nhiệm"], correct: 1, why: "Báo rủi ro sớm là dấu hiệu chuyên nghiệp & đáng tin; giấu rủi ro mới đáng sợ. (File 1)" },
   { part: A, q: "\u201cScope-timeline trade-off\u201d nghĩa là gì?", opts: ["Làm càng nhiều tính năng càng tốt", "Kéo dài deadline vô hạn", "Tinh giản phạm vi: chọn phần giá trị nhất, cắt/hoãn phần ít giá trị để giao đúng hạn", "Không bao giờ cắt scope"], correct: 2, why: "Scope-timeline trade-off = tinh giản phạm vi, chọn phần giá trị nhất, cắt/hoãn phần ít giá trị. (File 1)" },
-  { part: A, q: "Cắt scope (\u201ckhông làm phần Y lần này\u201d) có phải là làm ẩu không?", opts: ["Đúng, luôn là làm ẩu", "Đúng, vì bỏ mất tính năng", "Không rõ ràng", "Không — đó là giao đúng phần chứng minh được giả thuyết trong thời gian có"], correct: 3, why: "Cắt scope không phải làm ẩu; đó là giao đúng phần chứng minh giả thuyết trong thời gian có. (File 1)" },
+  { part: A, q: "Tinh giản scope (\u201ckhông làm phần Y lần này\u201d) có phải là làm ẩu không?", opts: ["Đúng, luôn là làm ẩu", "Đúng, vì bỏ mất tính năng", "Không rõ ràng", "Không — đó là giao đúng phần chứng minh được giả thuyết trong thời gian có hạn"], correct: 3, why: "Cắt scope không phải làm ẩu; đó là giao đúng phần cốt lõi để chứng minh giả thuyết sản phẩm trong thời gian cho phép." },
   { part: A, q: "Ưu tiên theo ROI/impact nghĩa là ưu tiên phần nào trước?", opts: ["Tác động cao, công sức thấp", "Công sức cao nhất", "Tính năng mới lạ nhất", "Phần đối thủ đang làm"], correct: 0, why: "Ưu tiên tác động cao / công sức thấp trước. (File 1)" },
   { part: A, q: "\u201cTác động (impact)\u201d nên đo bằng loại metric nào?", opts: ["Vanity metric (lượt click)", "Value metric phản ánh giá trị thật", "Số dòng code", "Số lượng tính năng"], correct: 1, why: "Impact đo bằng value metric, không phải vanity. (File 1, nối I1.2)" },
   { part: A, q: "MVP (Minimum Viable Product) là gì?", opts: ["Sản phẩm hoàn chỉnh nhất", "Bản demo cho đẹp", "Bản nhỏ nhất đủ để kiểm chứng giả thuyết", "Bản có nhiều tính năng nhất"], correct: 2, why: "MVP = bản nhỏ nhất đủ để kiểm chứng giả thuyết. (File 1)" },
-  { part: A, q: "Vì sao nên dùng tư duy MVP?", opts: ["Để trông chuyên nghiệp", "Để dùng nhiều token hơn", "Để làm hài lòng mentor", "Để tiêu ít nguồn lực nhất, học nhanh nhất, không đổ công vào thứ chưa chắc đúng"], correct: 3, why: "MVP giúp tiêu ít nguồn lực, học nhanh, không đổ công vào thứ chưa chắc đúng. (File 1)" },
   { part: A, q: "Đâu là biểu hiện THIẾU ownership?", opts: ["Nhận việc rồi im lặng, tới hạn mới báo \u201cchưa xong\u201d, đẩy \u201ctại AI\u201d", "Chủ động báo rủi ro kèm phương án", "Cam kết deadline rõ ràng", "Chịu trách nhiệm tới khi xong"], correct: 0, why: "Thiếu ownership: im lặng, báo trễ, đẩy \u201ctại AI\u201d. (File 1)" },
   { part: B, q: "Product Builder nên bắt đầu một feature từ đâu?", opts: ["Từ giải pháp/công nghệ mới nhất", "Từ problem: \u201cai đang đau ở đâu, tới mức nào?\u201d", "Từ việc đối thủ đang làm gì", "Từ tính năng dễ build nhất"], correct: 1, why: "Bắt đầu từ problem (\u201cai đau ở đâu, tới mức nào\u201d). (File 2)" },
   { part: B, q: "\u201cGắn AI vào cho có\u201d là lỗi gì?", opts: ["Chọn problem trước solution", "Đo bằng value metric", "Chọn giải pháp (AI) trước khi hiểu vấn đề", "Cắt scope hợp lý"], correct: 2, why: "\u201cGắn AI cho có\u201d = chọn giải pháp AI trước khi hiểu vấn đề. (File 2)" },
@@ -438,7 +437,7 @@ function Part1View() {
   return (
     <div>
       <p style={{ font: "400 19px/1.85 var(--font-body)", color: "var(--fg-1)", margin: "0 0 20px" }}>
-        <span style={{ float: "left", font: "italic 900 74px/.72 var(--font-serif)", color: "var(--iris)", padding: "6px 12px 0 0" }}>O</span>wnership là yếu tố mentor xét kỹ nhất khi tốt nghiệp, và là thứ thực tập sinh <b>thiếu nhất</b>. Ownership <b>không phải</b> &quot;làm thật nhiều giờ&quot; — nó là <b>làm chủ kết quả</b>: chủ động cam kết, báo rủi ro sớm, và chịu trách nhiệm đến cùng.
+        <span style={{ float: "left", font: "italic 900 74px/.72 var(--font-serif)", color: "var(--iris)", padding: "6px 12px 0 0" }}>O</span>wnership là yếu tố mentor xét kỹ nhất khi tốt nghiệp, và là thứ thực tập sinh <b>thiếu nhất</b>. Ownership <b>không phải</b> là &quot;làm việc thật nhiều giờ&quot; — mà bản chất của nó là <b>làm chủ kết quả cuối cùng</b>: chủ động cam kết tiến độ, chủ động báo cáo rủi ro từ sớm và chịu trách nhiệm với sản phẩm của mình đến cùng.
       </p>
 
       <h2 style={{ font: "700 27px/1.2 var(--font-impact)", letterSpacing: "-.012em", color: "var(--fg-1)", margin: "44px 0 16px" }}>1 · Ownership = ba hành vi, không phải nhiều giờ</h2>
@@ -455,11 +454,11 @@ function Part1View() {
         <figcaption style={{ font: "italic 400 14px/1.5 var(--font-body)", color: "var(--fg-3)", marginTop: "10px", textAlign: "center" }}>Hình 1 — Ownership = làm chủ kết quả, không chỉ làm nhiều.</figcaption>
       </figure>
       <div style={{ margin: "0 0 26px", padding: "16px 20px", background: "var(--rose-tint)", borderLeft: "3px solid var(--rose-deep)", borderRadius: "0 10px 10px 0", font: "15px/1.7 var(--font-body)", color: "var(--fg-1)" }}>
-        <b style={{ color: "var(--rose-deep)" }}>Đối lập:</b> người thiếu ownership nhận việc rồi im lặng, tới hạn mới báo &quot;chưa xong&quot;, hoặc đẩy trách nhiệm (&quot;tại AI&quot;, &quot;tại chưa ai bảo&quot;). Người có ownership coi kết quả là <i>của mình</i>.
+        <b style={{ color: "var(--rose-deep)" }}>Đối lập hoàn toàn:</b> Một người thiếu ownership khi nhận việc thường sẽ im lặng loay hoay, đến sát hạn chót mới báo chưa xong hoặc tìm cách đùn đẩy trách nhiệm (&quot;tại AI&quot;, &quot;tại chưa có ai hướng dẫn&quot;). Trong khi đó, người có tinh thần ownership luôn coi kết quả cuối cùng là danh dự và trách nhiệm của chính mình.
       </div>
 
       <h2 style={{ font: "700 27px/1.2 var(--font-impact)", letterSpacing: "-.012em", color: "var(--fg-1)", margin: "44px 0 16px" }}>2 · Báo rủi ro sớm — cơ chế cụ thể</h2>
-      <p style={{ font: "400 18px/1.8 var(--font-body)", color: "var(--fg-2)", margin: "0 0 18px" }}>Báo rủi ro sớm là hành vi ownership <b>đo được</b>. Ba bước:</p>
+      <p style={{ font: "400 18px/1.8 var(--font-body)", color: "var(--fg-2)", margin: "0 0 18px" }}>Báo cáo rủi ro từ sớm là một hành vi thể hiện tinh thần ownership rất rõ ràng và <b>có thể đo lường được</b> qua 3 bước:</p>
       <div style={{ display: "flex", flexDirection: "column", gap: "10px", margin: "0 0 20px" }}>
         {RISK_STEPS.map((c, i) => (
           <div key={i} style={{ display: "flex", gap: "13px", alignItems: "flex-start", border: "1px solid var(--border)", borderRadius: "11px", background: "#fff", padding: "14px 16px" }}>
@@ -477,7 +476,7 @@ function Part1View() {
           </div>
           <div style={{ border: "1px solid var(--mint)", borderRadius: "12px", background: "var(--mint-tint)", padding: "18px 20px" }}>
             <div style={{ font: "700 12px/1 var(--font-mono)", letterSpacing: ".1em", color: "var(--mint-deep)", marginBottom: "12px" }}>✓ KÈM PHƯƠNG ÁN — MẠNH</div>
-            <div style={{ font: "14.5px/1.6 var(--font-body)", color: "var(--fg-1)" }}>&quot;Rủi ro X có thể làm trễ 2 ngày; em đề xuất cắt phần Y hoặc xin thêm nguồn lực Z — anh/chị chọn phương án nào?&quot;</div>
+            <div style={{ font: "14.5px/1.6 var(--font-body)", color: "var(--fg-1)" }}>&quot;Có rủi ro phát sinh ở phần X có khả năng làm trễ tiến độ khoảng 2 ngày. Em đề xuất 2 hướng giải quyết: một là tạm thời cắt bớt phần Y ra khỏi scope lần này, hai là nhờ hỗ trợ thêm nhân sự Z hỗ trợ code. Anh/chị thấy nên đi theo hướng nào ạ?&quot;</div>
             <div style={{ font: "13px/1.55 var(--font-body)", color: "var(--fg-2)", marginTop: "12px", borderTop: "1px dashed var(--mint)", paddingTop: "10px" }}>Báo sớm, kèm phương án, đúng người ra quyết định.</div>
           </div>
         </div>
@@ -485,7 +484,7 @@ function Part1View() {
       </figure>
 
       <h2 style={{ font: "700 27px/1.2 var(--font-impact)", letterSpacing: "-.012em", color: "var(--fg-1)", margin: "44px 0 16px" }}>3 · Scope-Timeline trade-off — làm gì và KHÔNG làm gì</h2>
-      <p style={{ font: "400 18px/1.8 var(--font-body)", color: "var(--fg-2)", margin: "0 0 20px" }}>Nguồn lực luôn hữu hạn. Ownership đi kèm khả năng <b>tinh giản phạm vi (scope)</b>: tập trung vào phần giá trị lớn nhất, chủ động cắt/hoãn phần ít giá trị. Cách làm: liệt kê rõ <b>&quot;Việc cần làm&quot; vs &quot;Việc KHÔNG làm (lần này)&quot;</b>.</p>
+      <p style={{ font: "400 18px/1.8 var(--font-body)", color: "var(--fg-2)", margin: "0 0 20px" }}>Nguồn lực của chúng ta luôn là một hằng số hữu hạn. Do đó, tinh thần ownership phải đi đôi với kỹ năng <b>tinh giản phạm vi (scope-timeline trade-off)</b>: tập trung tối đa nguồn lực vào phần mang lại giá trị lớn nhất, chủ động cắt giảm hoặc tạm hoãn các phần ít quan trọng. Cách làm thực tế là luôn liệt kê rõ ràng: <b>&quot;Những việc SẼ LÀM&quot; vs &quot;Những việc KHÔNG LÀM (trong phiên bản này)&quot;</b>.</p>
       <figure style={{ margin: "0 0 22px" }}>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "14px" }}>
           <div style={{ border: "1px solid var(--mint)", borderRadius: "12px", background: "var(--mint-tint)", padding: "18px 20px" }}>
@@ -507,10 +506,10 @@ function Part1View() {
         </div>
         <figcaption style={{ font: "italic 400 14px/1.5 var(--font-body)", color: "var(--fg-3)", marginTop: "10px", textAlign: "center" }}>Hình 3 — Feature gợi ý size, deadline 2 tuần (YODY · giả lập).</figcaption>
       </figure>
-      <div style={{ margin: "0 0 26px", padding: "16px 20px", background: "var(--gold-tint)", borderLeft: "3px solid var(--gold)", borderRadius: "0 10px 10px 0", font: "15px/1.7 var(--font-body)", color: "var(--fg-1)" }}>Tinh giản scope <b>không phải làm cẩu thả</b> — mà là bàn giao đúng phần cốt lõi để <b>kiểm chứng giả thuyết</b> trong khung thời gian cho phép.</div>
+      <div style={{ margin: "0 0 26px", padding: "16px 20px", background: "var(--gold-tint)", borderLeft: "3px solid var(--gold)", borderRadius: "0 10px 10px 0", font: "15px/1.7 var(--font-body)", color: "var(--fg-1)" }}>Hãy nhớ rằng, tinh giản scope <b>không đồng nghĩa với việc làm cẩu thả</b> — mà đó là sự lựa chọn thông minh để bàn giao đúng phần cốt lõi nhất, nhằm <b>kiểm chứng giả thuyết sản phẩm</b> trong khung thời gian cho phép.</div>
 
       <h2 style={{ font: "700 27px/1.2 var(--font-impact)", letterSpacing: "-.012em", color: "var(--fg-1)", margin: "44px 0 16px" }}>4 · Ưu tiên theo ROI/impact</h2>
-      <p style={{ font: "400 18px/1.8 var(--font-body)", color: "var(--fg-2)", margin: "0 0 20px" }}>Khi có nhiều đầu việc, ưu tiên phần <b>tác động cao, công sức thấp</b> trước. Ở L2, bạn làm việc này <i>dưới sự hướng dẫn của mentor</i>. Nhớ nối với Outcome Thinking (I1.2): tác động đo bằng <b>value metric</b>, không phải <b>vanity metric</b>.</p>
+      <p style={{ font: "400 18px/1.8 var(--font-body)", color: "var(--fg-2)", margin: "0 0 20px" }}>Khi đối mặt với một danh sách dài các đầu việc cần làm, hãy luôn ưu tiên những việc có <b>tác động (impact) cao nhưng tốn ít công sức (effort)</b> trước tiên. Ở cấp độ L2, bạn sẽ thực hiện việc đánh giá này <i>dưới sự định hướng của mentor</i>. Đồng thời, hãy luôn khắc sâu tư duy hướng Outcome (Outcome Thinking - I1.2): Tác động phải được đo lường bằng <b>value metric (chỉ số giá trị thực tế)</b>, chứ không phải các <b>vanity metric (chỉ số ảo)</b>.</p>
       <figure style={{ margin: "0 0 22px" }}>
         <div style={{ border: "1px solid var(--border)", borderRadius: "14px", background: "#fff", padding: "20px 22px" }}>
           <div style={{ font: "600 11px/1 var(--font-mono)", color: "var(--fg-3)", textAlign: "center", marginBottom: "10px", letterSpacing: ".1em", textTransform: "uppercase" }}>▲ Tác động (impact)</div>
@@ -526,7 +525,7 @@ function Part1View() {
       </figure>
 
       <h2 style={{ font: "700 27px/1.2 var(--font-impact)", letterSpacing: "-.012em", color: "var(--fg-1)", margin: "44px 0 16px" }}>5 · MVP — bản nhỏ nhất chứng minh giả thuyết</h2>
-      <p style={{ font: "400 18px/1.8 var(--font-body)", color: "var(--fg-2)", margin: "0 0 18px" }}><b>MVP (Minimum Viable Product)</b> là phiên bản <i>tối giản nhất đủ để kiểm chứng giả thuyết</i> (nối I2.3). Thay vì xây toàn bộ rồi mới biết đúng/sai, triển khai phần cốt lõi trước, đo kết quả, rồi mới mở rộng. Đó là ownership thông minh: <b>không lãng phí công sức vào những thứ chưa chắc chắn</b>.</p>
+      <p style={{ font: "400 18px/1.8 var(--font-body)", color: "var(--fg-2)", margin: "0 0 18px" }}><b>MVP (Minimum Viable Product - Sản phẩm Khả dụng Tối thiểu)</b> là phiên bản <i>tối giản nhất nhưng vừa đủ để chúng ta kiểm chứng được giả thuyết đặt ra</i> (kế thừa từ buổi I2.3). Thay vì tốn hàng tháng trời xây dựng một hệ thống đồ sộ rồi mới phát hiện ra nó đi sai hướng, bạn hãy triển khai phần cốt lõi trước, đo lường phản hồi thực tế rồi mới tiếp tục mở rộng. Đó là tư duy ownership thông minh: <b>không bao giờ lãng phí công sức của đội ngũ vào những giả định chưa được kiểm chứng</b>.</p>
       <div style={{ margin: "0 0 26px", padding: "18px 22px", background: "var(--iris-tint)", borderLeft: "3px solid var(--iris)", borderRadius: "0 10px 10px 0" }}>
         <div style={{ font: "700 11px/1 var(--font-mono)", letterSpacing: ".14em", textTransform: "uppercase", color: "var(--iris-deep)", marginBottom: "8px" }}>Ví dụ YODY · giả lập</div>
         <p style={{ font: "16px/1.7 var(--font-body)", color: "var(--fg-1)", margin: 0 }}>Thay vì build hệ gợi ý size cho toàn danh mục, MVP = gợi ý cho <b>một dòng áo khoác</b>, đo tỉ lệ đổi/trả trong 2 tuần. Đúng hướng thì mở rộng; sai thì đã tiết kiệm được rất nhiều công sức.</p>
@@ -552,7 +551,7 @@ function Part2View({ go }: { go: (p: Page, part?: number) => void }) {
   return (
     <div>
       <p style={{ font: "400 19px/1.85 var(--font-body)", color: "var(--fg-1)", margin: "0 0 20px" }}>
-        <span style={{ float: "left", font: "italic 900 74px/.72 var(--font-serif)", color: "var(--gold-deep)", padding: "6px 12px 0 0" }}>C</span>ạm bẫy kinh điển: <i>&quot;Tích hợp AI cho hợp xu hướng&quot;</i> — chọn giải pháp trước khi hiểu vấn đề. Product Builder bắt đầu bằng câu hỏi <b>&quot;ai đang đau ở đâu, đau tới mức nào?&quot;</b> (nối I2.2/I2.3). Feature chỉ là <b>giả thuyết</b> về cách giải quyết nỗi đau, không phải đích đến.
+        <span style={{ float: "left", font: "italic 900 74px/.72 var(--font-serif)", color: "var(--gold-deep)", padding: "6px 12px 0 0" }}>C</span>họn giải pháp trước khi hiểu vấn đề: Một cạm bẫy kinh điển mà nhiều Builder mới vào nghề hay mắc phải là: <i>&quot;Cố nhét công nghệ AI vào sản phẩm cho hợp xu hướng&quot;</i> — tức là lựa chọn giải pháp (Solution) trước khi thực sự thấu hiểu vấn đề (Problem). Là một Product Builder, bạn phải luôn bắt đầu bằng câu hỏi: <b>&quot;Ai đang gặp khó khăn, ở đâu, và nỗi đau đó nghiêm trọng đến mức nào?&quot;</b> (kế thừa từ I2.2/I2.3). Hãy luôn nhớ rằng: Tính năng (feature) chỉ là một <b>giả thuyết</b> để giải quyết nỗi đau của khách hàng, chứ bản thân tính năng đó không phải là đích đến cuối cùng.
       </p>
 
       <h2 style={{ font: "700 27px/1.2 var(--font-impact)", letterSpacing: "-.012em", color: "var(--fg-1)", margin: "44px 0 16px" }}>1 · Bắt đầu từ Problem, không từ Solution</h2>
@@ -568,7 +567,7 @@ function Part2View({ go }: { go: (p: Page, part?: number) => void }) {
       </figure>
 
       <h2 style={{ font: "700 27px/1.2 var(--font-impact)", letterSpacing: "-.012em", color: "var(--fg-1)", margin: "44px 0 16px" }}>2 · Product Canvas 8 mục — khung tích hợp</h2>
-      <p style={{ font: "400 18px/1.8 var(--font-body)", color: "var(--fg-2)", margin: "0 0 20px" }}>Khung <b>gộp mọi thứ đã học từ I1 đến I3</b> thành một trang, để suy nghĩ đầy đủ trước khi build:</p>
+      <p style={{ font: "400 18px/1.8 var(--font-body)", color: "var(--fg-2)", margin: "0 0 20px" }}>Đây là bộ khung giúp bạn <b>hệ thống hóa toàn bộ kiến thức đã học từ buổi I1 đến I3</b> trên một trang giấy duy nhất, giúp rèn luyện tư duy thấu đáo trước khi bắt tay vào build sản phẩm:</p>
       <figure style={{ margin: "0 0 22px" }}>
         <div style={{ border: "1px solid var(--border)", borderRadius: "14px", overflow: "hidden" }}>
           <div style={{ display: "grid", gridTemplateColumns: "0.5fr 1.3fr 1.6fr 0.7fr" }}>
@@ -590,7 +589,7 @@ function Part2View({ go }: { go: (p: Page, part?: number) => void }) {
       </figure>
       <div style={{ margin: "0 0 26px", padding: "18px 22px", background: "var(--iris-tint)", borderLeft: "3px solid var(--iris)", borderRadius: "0 10px 10px 0" }}>
         <div style={{ font: "700 11px/1 var(--font-mono)", letterSpacing: ".14em", textTransform: "uppercase", color: "var(--iris-deep)", marginBottom: "8px" }}>AI-fit là quyết định hai chiều</div>
-        <p style={{ font: "16px/1.7 var(--font-body)", color: "var(--fg-1)", margin: 0 }}>Không chỉ &quot;nơi nào NÊN dùng AI&quot; mà cả &quot;nơi nào KHÔNG NÊN&quot;. AI đáng dùng khi: bài toán mơ hồ, xử lý ngôn ngữ tự nhiên, cá nhân hóa quy mô lớn. AI <b>không</b> đáng khi: logic đã rõ ràng, rule-based đã đủ, hoặc chi phí latency/cost lớn hơn giá trị AI mang lại (nối cây quyết định I1.1).</p>
+        <p style={{ font: "16px/1.7 var(--font-body)", color: "var(--fg-1)", margin: 0 }}>Đánh giá mức độ phù hợp AI không chỉ là chỉ ra &quot;nơi nào NÊN dùng AI&quot; mà quan trọng không kém là xác định rõ &quot;nơi nào KHÔNG NÊN dùng&quot;. AI chỉ thực sự đáng dùng khi bài toán có độ mơ hồ cao, cần xử lý ngôn ngữ tự nhiên hoặc cần cá nhân hóa ở quy mô lớn. Ngược lại, AI sẽ <b>không</b> mang lại hiệu quả tối ưu nếu logic nghiệp vụ đã rõ ràng (dùng rule-based là đủ), hoặc khi chi phí vận hành và độ trễ (latency/cost) vượt quá giá trị thực tế mà AI mang lại (kế thừa từ cây quyết định ở buổi I1.1).</p>
       </div>
 
       <h2 style={{ font: "700 27px/1.2 var(--font-impact)", letterSpacing: "-.012em", color: "var(--fg-1)", margin: "44px 0 16px" }}>3 · Sáu lỗi phổ biến khi làm canvas</h2>
@@ -614,7 +613,7 @@ function Part2View({ go }: { go: (p: Page, part?: number) => void }) {
       </figure>
 
       <h2 style={{ font: "700 27px/1.2 var(--font-impact)", letterSpacing: "-.012em", color: "var(--fg-1)", margin: "44px 0 16px" }}>4 · System Thinking — nhìn feature trong hệ thống lớn hơn</h2>
-      <p style={{ font: "400 18px/1.8 var(--font-body)", color: "var(--fg-2)", margin: "0 0 20px" }}>Một feature không hoạt động đơn lẻ; nó nằm trong một <b>hệ thống</b> gồm người dùng, quy trình vận hành, các feature khác, và tổ chức. Tư duy hệ thống là thói quen đặt ba câu hỏi:</p>
+      <p style={{ font: "400 18px/1.8 var(--font-body)", color: "var(--fg-2)", margin: "0 0 20px" }}>Một tính năng không bao giờ tồn tại hoặc hoạt động một cách cô lập; nó luôn là một mắt xích nằm trong một <b>hệ thống tổng thể</b> bao gồm người dùng, quy trình vận hành, các tính năng khác xung quanh và cả cấu trúc tổ chức. Tư duy hệ thống (System Thinking) chính là thói quen luôn tự đặt ra 3 câu hỏi lớn:</p>
       <div style={{ display: "flex", flexDirection: "column", gap: "12px", margin: "0 0 20px" }}>
         {SYSTEM_Q.map((s, i) => (
           <div key={i} style={{ border: `1px solid ${s.border}`, borderRadius: "12px", background: s.bg, padding: "16px 18px" }}>
@@ -624,7 +623,7 @@ function Part2View({ go }: { go: (p: Page, part?: number) => void }) {
           </div>
         ))}
       </div>
-      <div style={{ margin: "0 0 26px", padding: "16px 20px", background: "var(--gold-tint)", borderLeft: "3px solid var(--gold)", borderRadius: "0 10px 10px 0", font: "15px/1.7 var(--font-body)", color: "var(--fg-1)" }}>Ở L2 chưa cần thiết kế hệ thống lớn (đó là L4–L5), nhưng <b>phải tập thói quen</b> nhìn xa hơn feature trước mắt — chỉ ra được hiệu ứng bậc hai &amp; đối tượng gánh chịu chi phí/rủi ro là dấu hiệu tư duy hệ thống đang hình thành.</div>
+      <div style={{ margin: "0 0 26px", padding: "16px 20px", background: "var(--gold-tint)", borderLeft: "3px solid var(--gold)", borderRadius: "0 10px 10px 0", font: "15px/1.7 var(--font-body)", color: "var(--fg-1)" }}>Ở cấp độ L2, bạn chưa cần phải thiết kế các hệ thống lớn hay phức tạp (đó là việc của L4–L5). Tuy nhiên, bạn <b>bắt buộc phải tập thói quen</b> nhìn rộng hơn tính năng trước mắt. Việc chỉ ra được hiệu ứng bậc hai và biết rõ ai/bộ phận nào đang phải gánh chịu chi phí/rủi ro đánh đổi chính là minh chứng cho thấy tư duy hệ thống của bạn đang được hình thành.</div>
 
       <TldrDark items={[
         "<b>Bắt đầu từ Problem, không từ Solution</b>; feature chỉ là giả thuyết về cách giải quyết nỗi đau.",
@@ -658,7 +657,7 @@ function CanvasScreen({ go }: { go: (p: Page, part?: number) => void }) {
       </a>
       <span style={{ display: "inline-block", font: "700 12px/1 var(--font-mono)", letterSpacing: ".22em", textTransform: "uppercase", color: "var(--iris-deep)", background: "var(--iris-tint)", padding: "8px 13px", borderRadius: "999px" }}>Sản phẩm của buổi · Product Canvas</span>
       <h1 style={{ font: "800 clamp(36px,4.6vw,56px)/1.03 var(--font-impact)", letterSpacing: "-.026em", margin: "20px 0 12px", color: "var(--fg-1)" }}>Product Canvas <span style={{ font: "italic 800 1em/1 var(--font-serif)", color: "var(--iris)" }}>8 mục</span></h1>
-      <p style={{ font: "400 18px/1.6 var(--font-body)", color: "var(--fg-2)", margin: "0 0 28px", maxWidth: "640px" }}>Lập một Product Canvas đầy đủ cho <b style={{ color: "var(--fg-1)" }}>một feature thật của YODY</b> — khung tư duy tích hợp mọi thứ đã học từ I1 đến I3, và là nguyên liệu cho các buổi build tiếp theo.</p>
+      <p style={{ font: "400 18px/1.6 var(--font-body)", color: "var(--fg-2)", margin: "0 0 28px", maxWidth: "640px" }}>Bạn hãy lập một bản Product Canvas đầy đủ cho <b style={{ color: "var(--fg-1)" }}>một tính năng (feature) thực tế của YODY</b>. Đây là khung tư duy giúp bạn tích hợp mọi kiến thức đã học từ buổi I1 đến I3, đồng thời làm nguyên liệu đầu vào cho các buổi build tiếp theo.</p>
 
       <h2 style={{ font: "700 26px/1.2 var(--font-impact)", letterSpacing: "-.012em", color: "var(--fg-1)", margin: "0 0 14px" }}>Khung điền — 8 ô</h2>
       <p style={{ font: "400 15px/1.6 var(--font-body)", color: "var(--fg-3)", margin: "0 0 16px" }}>Điền tuần tự; luôn bắt đầu từ Problem, không từ Solution.</p>
@@ -692,7 +691,7 @@ function CanvasScreen({ go }: { go: (p: Page, part?: number) => void }) {
         </div>
       </div>
       <div style={{ padding: "16px 20px", background: "var(--mint-tint)", borderLeft: "3px solid var(--mint)", borderRadius: "0 10px 10px 0", font: "14px/1.7 var(--font-body)", color: "var(--fg-1)", margin: "0 0 40px" }}>
-        <b style={{ color: "var(--mint-deep)" }}>Vì sao đạt:</b> bắt đầu từ Problem thật · User cụ thể · Hypothesis đo được · Scope có &quot;KHÔNG làm&quot; · Metric là value (không vanity) · có Edge Case · AI-fit hai chiều (nêu cả chỗ KHÔNG dùng AI).
+        <b style={{ color: "var(--mint-deep)" }}>Vì sao bài mẫu đạt yêu cầu:</b> Vì nó bắt đầu từ một Problem thực tế rõ ràng · Xác định nhóm User cụ thể · Đưa ra Hypothesis có thể đo lường được · Định nghĩa rõ Scope có phần &quot;KHÔNG làm&quot; để tối ưu tiến độ · Lựa chọn Metric là value metric (chứ không phải vanity metric) · Có rà soát Edge Case cụ thể · Và phân tích AI-fit hai chiều (nêu rõ cả bước NÊN và KHÔNG NÊN dùng AI).
       </div>
 
       <h2 style={{ font: "700 26px/1.2 var(--font-impact)", letterSpacing: "-.012em", color: "var(--fg-1)", margin: "0 0 8px" }}>Checklist QC — chặn 6 lỗi trước khi review</h2>
@@ -728,8 +727,8 @@ function ExamScreen({
   const answered = Object.keys(state.answers).length;
   const passed = score >= PASS_SCORE;
   const result = passed
-    ? { title: "Đạt ngưỡng Final Exam 🎉", msg: `Bạn đạt ${score}/20. Kết hợp với Product Canvas hoàn chỉnh → sẵn sàng sang I4.2 — Dev Craft (Git, đọc/debug code AI, test).`, color: "var(--mint-deep)", border: "var(--mint)", bg: "var(--mint-tint)" }
-    : { title: "Chưa đạt ngưỡng", msg: `Cần ≥${PASS_SCORE}/20. Sai nhiều câu 1–10 → đọc lại Phần 1 (Ownership · Scope · ROI); 11–20 → Phần 2 (Product Canvas & System Thinking).`, color: "var(--rose-deep)", border: "var(--rose-deep)", bg: "var(--rose-tint)" };
+    ? { title: "Đạt ngưỡng Final Exam 🎉", msg: `Bạn đạt ${score}/20 điểm. Khi kết hợp với Product Canvas hoàn chỉnh → sẵn sàng sang I4.2 — Dev Craft (Git, đọc/debug code AI, test).`, color: "var(--mint-deep)", border: "var(--mint)", bg: "var(--mint-tint)" }
+    : { title: "Chưa đạt ngưỡng", msg: `Bạn cần đạt tối thiểu từ ${PASS_SCORE}/20 câu trở lên. Nếu sai nhiều ở các câu 1–10, hãy đọc kỹ lại Phần 1 (Ownership · Scope · ROI); nếu sai ở các câu 11–20, hãy ôn lại Phần 2 (Product Canvas & System Thinking).`, color: "var(--rose-deep)", border: "var(--rose-deep)", bg: "var(--rose-tint)" };
   const cursor = state.submitted ? "default" : "pointer";
 
   return (

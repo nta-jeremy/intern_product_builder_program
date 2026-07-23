@@ -21,16 +21,16 @@ const PART_META = [
 ];
 
 const PARTS = [
-  { ...PART_META[0], desc: "Triệu chứng vs nguyên nhân gốc rễ, phương pháp 5 Whys & ba cạm bẫy, First Principles vs loại suy, định nghĩa đúng vấn đề, dùng AI phân tích nguyên nhân có kỷ luật.", tags: ["Triệu chứng vs gốc rễ", "5 Whys", "First Principles"] },
-  { ...PART_META[1], desc: "Giả thuyết kiểm chứng đúng công thức, giả thuyết vs mong muốn, ra quyết định dựa trên dữ liệu & ngưỡng bằng chứng, bản đặc tả nháp (draft spec) và phản biện ≥3 rủi ro.", tags: ["Giả thuyết", "Data-driven", "Draft spec"] },
+  { ...PART_META[0], desc: "Cách phân biệt triệu chứng bề nổi với nguyên nhân gốc rễ; phương pháp 5 Whys và cách phòng tránh 3 cạm bẫy kinh điển; tư duy nguyên bản (First Principles) so với tư duy loại suy; cách định nghĩa đúng bài toán và sử dụng AI phân tích nguyên nhân một cách khách quan, có kỷ luật.", tags: ["Triệu chứng vs gốc rễ", "5 Whys", "First Principles"] },
+  { ...PART_META[1], desc: "Cách phát biểu giả thuyết kiểm chứng được theo công thức chuẩn X/Y/Z; phân biệt rõ giả thuyết khoa học với mong muốn cảm tính; ra quyết định dựa trên dữ liệu và xác định độ mạnh của bằng chứng; lập bản đặc tả sản phẩm nháp (draft spec) và phản biện tối thiểu 3 rủi ro có dẫn chứng cụ thể.", tags: ["Giả thuyết", "Data-driven", "Draft spec"] },
 ];
 
 const OBJECTIVES = [
-  "Phân biệt triệu chứng với nguyên nhân gốc rễ, và giải thích vì sao chỉ giải quyết triệu chứng lại gây lãng phí.",
-  "Sử dụng thành thạo 5 Whys; nhận diện & phòng tránh cạm bẫy: dừng quá sớm, đổ lỗi con người, rẽ nhánh lan man.",
-  "Áp dụng First Principles để phân tích vấn đề về sự thật cốt lõi, tránh lối mòn hay sao chép đối thủ máy móc.",
-  "Phát biểu giả thuyết kiểm chứng được đúng công thức; phân biệt rõ giả thuyết khoa học với mong muốn chủ quan.",
-  "Phản biện một insight/spec: tìm giả định ngầm, hỏi \"bằng chứng đã đủ chưa\", chỉ ra rủi ro có dẫn chứng cụ thể.",
+  "Phân biệt rõ triệu chứng bề nổi với nguyên nhân gốc rễ; giải thích được vì sao chỉ tập trung xử lý triệu chứng lại gây lãng phí nguồn lực.",
+  "Áp dụng thành thạo phương pháp 5 Whys và nhận diện để phòng tránh 3 cạm bẫy kinh điển: dừng lại quá sớm, đổ lỗi cho cá nhân/con người, và rẽ nhánh lan man.",
+  "Vận dụng tư duy nguyên bản (First Principles) để bóc tách vấn đề phức tạp thành những sự thật nền tảng, tránh tư duy loại suy hoặc sao chép đối thủ một cách máy móc.",
+  "Phát biểu giả thuyết kiểm chứng được theo công thức chuẩn; phân biệt rõ giữa giả thuyết khoa học với mong muốn chủ quan.",
+  "Biết cách đặt câu hỏi phản biện một insight hoặc đặc tả sản phẩm (spec): làm rõ giả định ngầm, chất vấn độ mạnh của bằng chứng, và chỉ ra rủi ro cụ thể có kèm dẫn chứng.",
 ];
 
 const MUST_KNOW = ["Triệu chứng vs gốc rễ", "5 Whys", "First Principles", "Problem solving", "Giả thuyết kiểm chứng", "Data-driven", "Evidence bar", "Draft spec"];
@@ -48,23 +48,23 @@ const META = [
 
 const whys = [
   { tag: "VẤN ĐỀ", text: "Tỷ lệ đổi trả áo khoác tăng cao.", badge: "var(--rose-deep)", border: "var(--rose-deep)", bg: "var(--rose-tint)", weight: "700", indent: "0", arrow: true },
-  { tag: "TẠI SAO 1", text: "Nhiều khách nhận áo không vừa (sai size).", badge: "var(--gold-deep)", border: "var(--gold-deep)", bg: "var(--gold-tint)", weight: "400", indent: "22px", arrow: true },
-  { tag: "TẠI SAO 2", text: "Khách chọn sai size khi mua online.", badge: "var(--gold-deep)", border: "var(--gold-deep)", bg: "var(--gold-tint)", weight: "400", indent: "44px", arrow: true },
-  { tag: "TẠI SAO 3", text: "Bảng size khó hiểu, không khớp vóc dáng người Việt.", badge: "var(--gold-deep)", border: "var(--gold-deep)", bg: "var(--gold-tint)", weight: "400", indent: "66px", arrow: true },
-  { tag: "TẠI SAO 4", text: "Bảng size dùng chuẩn quốc tế, thiếu hướng dẫn tự đo.", badge: "var(--gold-deep)", border: "var(--gold-deep)", bg: "var(--gold-tint)", weight: "400", indent: "88px", arrow: true },
-  { tag: "GỐC RỄ", text: "Chưa có quy trình chuẩn hóa bảng size theo dữ liệu đổi trả thực tế.", badge: "var(--iris-deep)", border: "var(--iris-deep)", bg: "var(--iris-tint)", weight: "700", indent: "110px", arrow: false },
+  { tag: "TẠI SAO 1", text: "Khách hàng nhận áo bị chật hoặc rộng (không vừa size).", badge: "var(--gold-deep)", border: "var(--gold-deep)", bg: "var(--gold-tint)", weight: "400", indent: "22px", arrow: true },
+  { tag: "TẠI SAO 2", text: "Khách hàng tự chọn sai kích cỡ khi mua sắm online.", badge: "var(--gold-deep)", border: "var(--gold-deep)", bg: "var(--gold-tint)", weight: "400", indent: "44px", arrow: true },
+  { tag: "TẠI SAO 3", text: "Bảng size của sản phẩm khó hiểu, không khớp với vóc dáng người Việt.", badge: "var(--gold-deep)", border: "var(--gold-deep)", bg: "var(--gold-tint)", weight: "400", indent: "66px", arrow: true },
+  { tag: "TẠI SAO 4", text: "Bảng quy đổi kích cỡ lấy nguyên chuẩn quốc tế, lại thiếu hướng dẫn tự đo tại nhà.", badge: "var(--gold-deep)", border: "var(--gold-deep)", bg: "var(--gold-tint)", weight: "400", indent: "88px", arrow: true },
+  { tag: "GỐC RỄ", text: "Chưa có quy trình nghiên cứu và chuẩn hóa bảng size dựa trên số liệu đổi trả thực tế của khách hàng.", badge: "var(--iris-deep)", border: "var(--iris-deep)", bg: "var(--iris-tint)", weight: "700", indent: "110px", arrow: false },
 ];
 
 const pitfalls = [
-  { n: "1", title: "Dừng lại quá sớm", desc: "Vội dừng ở nguyên nhân trung gian (\"bảng size khó hiểu\") rồi đưa giải pháp tạm mà chưa đào tận cùng.", color: "var(--rose-deep)", border: "var(--rose-deep)", bg: "var(--rose-tint)", badge: "var(--rose-deep)" },
-  { n: "2", title: "Đổ lỗi cho cá nhân/con người", desc: "Kết luận \"tại nhân viên cẩu thả\" — gốc rễ thực thường ở quy trình/hệ thống. Hãy hỏi: \"tại sao quy trình lại cho phép lỗi đó xảy ra?\".", color: "var(--gold-deep)", border: "var(--gold-deep)", bg: "var(--gold-tint)", badge: "var(--gold-deep)" },
-  { n: "3", title: "Rẽ nhánh lan man", desc: "Một triệu chứng có nhiều nguyên nhân. Được phân tích đa nhánh, nhưng bám sát nhánh có bằng chứng thực tế mạnh nhất.", color: "var(--iris-deep)", border: "var(--iris)", bg: "var(--iris-tint)", badge: "var(--iris)" },
+  { n: "1", title: "Dừng lại quá sớm", desc: "Vội vã dừng lại ở các nguyên nhân trung gian (ví dụ: \"bảng size khó hiểu\") rồi vội vàng đưa giải pháp tạm thời khi chưa thực sự đào sâu tới gốc rễ.", color: "var(--rose-deep)", border: "var(--rose-deep)", bg: "var(--rose-tint)", badge: "var(--rose-deep)" },
+  { n: "2", title: "Đổ lỗi cho cá nhân/con người", desc: "Kết luận cảm tính \"do nhân viên cẩu thả\" — trong khi nguyên nhân gốc rễ thực chất thường nằm ở lỗ hổng quy trình/hệ thống. Hãy luôn hỏi: \"Vì sao quy trình lại cho phép lỗi cá nhân này xảy ra?\".", color: "var(--gold-deep)", border: "var(--gold-deep)", bg: "var(--gold-tint)", badge: "var(--gold-deep)" },
+  { n: "3", title: "Rẽ nhánh lan man", desc: "Một triệu chứng có thể do nhiều nguyên nhân gây ra. Bạn được phép phân tích đa nhánh, nhưng phải bám sát nhánh có dữ liệu hoặc bằng chứng thực tế mạnh nhất để tránh lan man.", color: "var(--iris-deep)", border: "var(--iris)", bg: "var(--iris-tint)", badge: "var(--iris)" },
 ];
 
 const fpSteps = [
-  { n: "1", text: "Liệt kê rõ ràng những gì bạn chắc chắn đúng về vấn đề." },
-  { n: "2", text: "Loại bỏ mọi giả định thừa kế hoặc định kiến có sẵn." },
-  { n: "3", text: "Xây dựng giải pháp hoàn toàn mới dựa trên các sự thật nền tảng đó." },
+  { n: "1", text: "Xác định rõ ràng những sự thật hiển nhiên hoặc dữ liệu thực tế đã được chứng minh là đúng về vấn đề." },
+  { n: "2", text: "Bóc tách và loại bỏ hoàn toàn các giả định ngầm (những điều tự suy đoán) hoặc lối mòn có sẵn." },
+  { n: "3", text: "Tự lập luận và xây dựng giải pháp đi lên từ những sự thật nền tảng đó." },
 ];
 
 const flow = [
@@ -75,35 +75,35 @@ const flow = [
 ];
 
 const aiRules = [
-  { tag: "Trung tính · I1.2", c: "var(--iris-deep)", tint: "var(--iris-tint)", text: "Đừng hỏi định hướng trước (\"bảng size là nguyên nhân chính đúng không?\" → AI xu nịnh). Hỏi khách quan: \"liệt kê các nguyên nhân khả dĩ + loại bằng chứng cần để xác nhận\"." },
-  { tag: "Grounding · I1.2", c: "var(--gold-deep)", tint: "var(--gold-tint)", text: "Mọi nguyên nhân AI đưa ra phải gắn với dữ liệu thực tế có thể kiểm chứng, không suy diễn mơ hồ." },
-  { tag: "Xác nhận · dữ liệu", c: "var(--mint-deep)", tint: "var(--mint-tint)", text: "AI chỉ gợi ý giả thuyết về nguyên nhân; xác nhận gốc rễ phải dựa số liệu đổi trả và quan sát hành vi khách hàng." },
+  { tag: "Trung tính · I1.2", c: "var(--iris-deep)", tint: "var(--iris-tint)", text: "Tránh đặt câu hỏi mang tính định hướng trước (ví dụ: \"Có phải bảng size là nguyên nhân chính gây đổi trả đúng không?\" → dễ khiến AI phụ họa/xu nịnh). Hãy đặt câu hỏi khách quan: \"Hãy liệt kê các nguyên nhân khả dĩ và loại bằng chứng cần có để kiểm chứng từng nguyên nhân\"." },
+  { tag: "Grounding · I1.2", c: "var(--gold-deep)", tint: "var(--gold-tint)", text: "Yêu cầu AI đưa ra bằng chứng thực tế để đối chiếu (grounding), tránh các suy luận mơ hồ thiếu căn cứ." },
+  { tag: "Xác nhận · dữ liệu", c: "var(--mint-deep)", tint: "var(--mint-tint)", text: "AI chỉ hỗ trợ gợi ý các giả thuyết; việc xác định nguyên nhân gốc rễ cuối cùng bắt buộc phải dựa vào dữ liệu thực tế và quan sát hành vi người dùng." },
 ];
 
 const compare = [
-  { k: "Cấu trúc", good: "Xác định rõ X, Y, Z; đo lường được và có khả năng bị chứng minh sai.", bad: "Phát biểu mơ hồ, chung chung; không nêu cách đo; không thể chứng minh sai." },
-  { k: "Ví dụ", good: "\"Nếu tích hợp gợi ý size thì tỷ lệ đổi trả do sai size giảm 15%.\"", bad: "\"Tính năng gợi ý size này chắc chắn sẽ rất hữu ích.\"" },
-  { k: "Căn cứ", good: "Gắn trực tiếp với nguyên nhân gốc rễ và có bằng chứng hỗ trợ.", bad: "Dựa cảm tính cá nhân hoặc sao chép vì \"đối thủ cũng làm\"." },
+  { k: "Cấu trúc", good: "Nêu rõ hành động X, đối tượng Y, chỉ số Z; đo lường được và chấp nhận khả năng bị thực tế chứng minh là sai.", bad: "Phát biểu chung chung, cảm tính; không có chỉ số đo lường cụ thể hoặc không thể chứng minh là đúng/sai." },
+  { k: "Ví dụ", good: "\"Nếu bổ sung gợi ý size (X) cho khách mua online (Y) thì tỷ lệ đơn đổi trả do sai size (Z) sẽ giảm 15%.\"", bad: "\"Chúng ta nên xây dựng tính năng gợi ý size vì tính năng này chắc chắn sẽ rất hữu ích cho khách hàng.\"" },
+  { k: "Căn cứ", good: "Xuất phát từ nguyên nhân gốc rễ được tìm thấy và có số liệu thực tế hỗ trợ.", bad: "Dựa trên cảm tính cá nhân hoặc sao chép máy móc theo tư duy loại suy (\"đối thủ đang làm thì mình làm\")." },
 ];
 
 const evidenceQ = [
-  { icon: "🕳️", title: "Giả định ngầm ở đây là gì?", desc: "Điều gì đang mặc định là đúng nhưng chưa kiểm chứng? (vd giả định \"khách sẵn sàng tự đo cơ thể\" là giả định rất lớn).", color: "var(--iris-deep)", border: "var(--iris)", bg: "var(--iris-tint)" },
-  { icon: "📊", title: "Bằng chứng đã đủ thuyết phục chưa?", desc: "Dựa trên tập mẫu bao nhiêu khách? Có đại diện cho nhóm mục tiêu, hay chỉ ý kiến vài cá nhân nhỏ lẻ? (grounding · I1.2).", color: "var(--gold-deep)", border: "var(--gold-deep)", bg: "var(--gold-tint)" },
-  { icon: "⚠️", title: "Edge case nào bị bỏ sót?", desc: "Tình huống nào có thể phá vỡ giả thuyết? (vd khách nhập số đo sai → gợi ý sai → đổi trả không giảm mà còn tăng).", color: "var(--rose-deep)", border: "var(--rose-deep)", bg: "var(--rose-tint)" },
+  { icon: "🕳️", title: "Giả định ngầm ở đây là gì?", desc: "Điều gì đang được mặc định là đúng nhưng thực tế chưa hề được kiểm chứng? (Ví dụ: Giả định ngầm \"khách hàng sẵn sàng tự lấy thước dây đo cơ thể tại nhà\" là một giả định rất lớn cần kiểm chứng).", color: "var(--iris-deep)", border: "var(--iris)", bg: "var(--iris-tint)" },
+  { icon: "📊", title: "Bằng chứng đã đủ thuyết phục chưa?", desc: "Dữ liệu được thu thập trên tập mẫu lớn hay nhỏ? Số liệu đó có tính đại diện cho toàn bộ nhóm khách hàng mục tiêu không, hay chỉ là phản hồi đơn lẻ? (grounding · I1.2).", color: "var(--gold-deep)", border: "var(--gold-deep)", bg: "var(--gold-tint)" },
+  { icon: "⚠️", title: "Edge case nào bị bỏ sót?", desc: "Tình huống biên (edge case) nào có thể phá vỡ hoàn toàn giả thuyết? (Ví dụ: Khách nhập sai số đo cơ thể → hệ thống gợi ý sai kích cỡ → tỷ lệ đổi trả thậm chí còn tăng lên).", color: "var(--rose-deep)", border: "var(--rose-deep)", bg: "var(--rose-tint)" },
 ];
 
 const specParts = [
-  { n: "1", title: "Vấn đề & nguyên nhân gốc rễ", desc: "Kết quả phân tích từ Phần 1 (5 Whys / First Principles).", c: "var(--rose-deep)" },
-  { n: "2", title: "Giả thuyết có thể kiểm chứng", desc: "Đúng công thức: hành động X / đối tượng Y / chỉ số Z / kỳ vọng.", c: "var(--gold-deep)" },
-  { n: "3", title: "Chỉ số đo lường giá trị thực tế (metric)", desc: "Value metric, không dùng vanity metric (nối Outcome Thinking · I1.2).", c: "var(--iris-deep)" },
-  { n: "4", title: "Phạm vi dự án (scope)", desc: "Nêu rõ sẽ làm gì và không làm gì để tránh phình phạm vi (scope creep).", c: "var(--mint-deep)" },
-  { n: "5", title: "≥3 rủi ro, mỗi rủi ro có dẫn chứng", desc: "Phần phản biện then chốt bắt buộc phải có để vượt Gate 2.", c: "var(--fg-1)" },
+  { n: "1", title: "Vấn đề & nguyên nhân gốc rễ", desc: "Kết quả phân tích logic từ Phần 1 (5 Whys / First Principles).", c: "var(--rose-deep)" },
+  { n: "2", title: "Giả thuyết có thể kiểm chứng", desc: "Phát biểu đúng công thức chuẩn: hành động X cho đối tượng Y giúp chỉ số Z thay đổi theo kỳ vọng.", c: "var(--gold-deep)" },
+  { n: "3", title: "Chỉ số đo lường giá trị thực tế (metric)", desc: "Chỉ số mang lại giá trị thực tế (value metric), tuyệt đối không dùng chỉ số ảo (vanity metric) để làm đẹp báo cáo.", c: "var(--iris-deep)" },
+  { n: "4", title: "Phạm vi dự án (scope)", desc: "Nêu rõ những việc dự án sẽ làm và những việc KHÔNG làm để tránh tình trạng phình phạm vi (scope creep).", c: "var(--mint-deep)" },
+  { n: "5", title: "Tối thiểu 3 rủi ro có dẫn chứng", desc: "Nêu rõ ít nhất 3 rủi ro kèm theo dẫn chứng hoặc lý lẽ kỹ thuật cụ thể (đây là phần phản biện then chốt để vượt qua Gate 2).", c: "var(--fg-1)" },
 ];
 
 const risks = [
-  { risk: "Khách tự đo và nhập số đo sai → hệ thống gợi ý sai.", evidence: "Biểu mẫu nhập số đo dài & phức tạp; tỷ lệ bỏ ngang ở các form tương tự hiện rất cao (40%)." },
-  { risk: "Dữ liệu size không đồng nhất giữa các mã hàng → gợi ý không chính xác.", evidence: "Kiểm tra ngẫu nhiên: cùng size M nhưng số đo vai & ngực dòng áo gió khác đáng kể dòng áo phao." },
-  { risk: "Rủi ro rò rỉ dữ liệu cá nhân (PII).", evidence: "Số đo cơ thể + thông tin cá nhân là dữ liệu nhạy cảm; truyền qua API AI công cộng chưa ẩn danh sẽ vi phạm ranh giới bảo mật (I1.2)." },
+  { risk: "Khách hàng tự lấy số đo cơ thể sai hoặc nhập sai thông tin → hệ thống đưa ra gợi ý size không chuẩn xác.", evidence: "Biểu mẫu nhập số đo quá dài và phức tạp; thống kê tỷ lệ bỏ ngang (drop-off rate) ở các form nhập liệu tương tự hiện rất cao (40%)." },
+  { risk: "Bảng size không đồng nhất giữa các mã hàng khác nhau → dẫn đến gợi ý size bị lệch.", evidence: "Kiểm tra ngẫu nhiên trên hệ thống: Cùng là size M nhưng số đo phần vai & ngực của dòng áo gió lệch đáng kể (2–3cm) so với dòng áo phao." },
+  { risk: "Nguy cơ rò rỉ thông tin cá nhân của khách hàng (PII).", evidence: "Số đo cơ thể kết hợp với thông tin định danh là dữ liệu nhạy cảm (PII); việc gửi trực tiếp qua API của bên thứ ba mà chưa qua lớp ẩn danh (anonymization) sẽ vi phạm nguyên tắc bảo mật dữ liệu (I1.2)." },
 ];
 
 const gateTasks = [
@@ -113,26 +113,26 @@ const gateTasks = [
 ];
 
 const rubric = [
-  { title: "5 Whys chạm tới nguyên nhân gốc rễ", desc: "Phân tích logic, không dừng ở nguyên nhân trung gian; gốc rễ thuộc về quy luật quy trình/hệ thống, không đổ lỗi cá nhân đơn thuần." },
-  { title: "Giả thuyết đúng công thức & kiểm chứng được", desc: "Rõ X (làm gì), Y (cho ai), Z (value metric đo được) và kỳ vọng cụ thể. Không phát biểu dạng mong muốn/niềm tin." },
-  { title: "Draft spec đầy đủ cấu trúc", desc: "Gồm: vấn đề & gốc rễ · giả thuyết · metric · phạm vi (làm gì / không làm gì)." },
-  { title: "Ít nhất 3 rủi ro có dẫn chứng", desc: "Mỗi rủi ro kèm nguyên nhân/dẫn chứng cụ thể; bắt buộc có ≥1 rủi ro về edge case hoặc bảo mật dữ liệu (PII)/an toàn hệ thống." },
+  { title: "5 Whys chạm tới nguyên nhân gốc rễ", desc: "Phân tích logic, không dừng ở nguyên nhân trung gian; gốc rễ thuộc về quy trình/hệ thống, không đổ lỗi cho cá nhân đơn thuần." },
+  { title: "Giả thuyết đúng công thức & kiểm chứng được", desc: "Rõ X (làm gì), Y (cho ai), Z (value metric đo được) và kỳ vọng cụ thể. Không phát biểu dạng mong muốn/niềm tin cảm tính." },
+  { title: "Draft spec đầy đủ cấu trúc", desc: "Gồm đầy đủ: vấn đề & gốc rễ · giả thuyết · metric · phạm vi (làm gì / không làm gì)." },
+  { title: "Ít nhất 3 rủi ro có dẫn chứng", desc: "Mỗi rủi ro cần đi kèm nguyên nhân/dẫn chứng cụ thể; bắt buộc có ít nhất 1 rủi ro về trường hợp biên (edge case) hoặc bảo mật dữ liệu (PII)/an toàn hệ thống." },
 ];
 
 const sampleWhys = [
-  { tag: "VẤN ĐỀ ·", text: "Tỷ lệ đổi trả tăng.", badge: "var(--rose-deep)", weight: "700" },
-  { tag: "→ TẠI SAO ·", text: "Nhiều khách nhận sản phẩm sai size.", badge: "var(--fg-3)", weight: "400" },
-  { tag: "→ TẠI SAO ·", text: "Khách chọn sai size khi đặt online.", badge: "var(--fg-3)", weight: "400" },
-  { tag: "→ TẠI SAO ·", text: "Bảng size trên web khó hiểu, không khớp vóc dáng người Việt.", badge: "var(--fg-3)", weight: "400" },
-  { tag: "→ TẠI SAO ·", text: "Dùng chuẩn quốc tế, thiếu hướng dẫn tự đo tại nhà.", badge: "var(--fg-3)", weight: "400" },
-  { tag: "GỐC RỄ ·", text: "Chưa có quy trình chuẩn hóa bảng size theo dữ liệu đổi trả thực tế (thuộc quy trình vận hành hệ thống).", badge: "var(--iris-deep)", weight: "700" },
+  { tag: "VẤN ĐỀ ·", text: "Tỷ lệ đổi trả sản phẩm tăng.", badge: "var(--rose-deep)", weight: "700" },
+  { tag: "→ TẠI SAO ·", text: "Nhiều khách hàng nhận sản phẩm không vừa kích cỡ.", badge: "var(--fg-3)", weight: "400" },
+  { tag: "→ TẠI SAO ·", text: "Khách chọn sai size khi đặt hàng online.", badge: "var(--fg-3)", weight: "400" },
+  { tag: "→ TẠI SAO ·", text: "Bảng size trên website khó hiểu, không khớp với vóc dáng thực tế của người Việt.", badge: "var(--fg-3)", weight: "400" },
+  { tag: "→ TẠI SAO ·", text: "Bảng quy đổi kích cỡ dùng chuẩn quốc tế, thiếu hình ảnh hướng dẫn tự đo tại nhà.", badge: "var(--fg-3)", weight: "400" },
+  { tag: "GỐC RỄ ·", text: "Chưa có quy trình nghiên cứu và chuẩn hóa bảng size dựa trên dữ liệu đổi trả thực tế (thuộc quy trình vận hành hệ thống).", badge: "var(--iris-deep)", weight: "700" },
 ];
 
 const sampleSpec = [
   { k: "Vấn đề & gốc rễ", v: "Như phân tích 5 Whys ở trên." },
   { k: "Chỉ số metric", v: "Tỷ lệ đơn đổi trả do \"sai size\" / tổng đơn giao thành công; so sánh trước–sau khi triển khai 8 tuần (value metric)." },
   { k: "Phạm vi (scope)", v: "Làm: gợi ý size tự động + bảng hướng dẫn tự đo tại trang chi tiết sản phẩm. Không làm: công nghệ thử đồ AR 3D trong giai đoạn thử nghiệm." },
-  { k: "Rủi ro có dẫn chứng", v: "(1) Khách nhập số đo sai → gợi ý sai (form phức tạp, bỏ ngang 40%). (2) Size lệch giữa mã hàng (M áo phao vs áo gió lệch 2–3cm). (3) PII: số đo + thông tin cá nhân nhạy cảm → phải ẩn danh trước khi gửi API bên thứ ba." },
+  { k: "Rủi ro có dẫn chứng", v: "(1) Khách nhập số đo sai → gợi ý sai (form phức tạp, tỷ lệ bỏ ngang 40%). (2) Size lệch giữa các mã hàng (size M áo phao so với áo gió lệch 2–3cm). (3) PII: số đo + thông tin cá nhân nhạy cảm → phải ẩn danh trước khi gửi API bên thứ ba." },
 ];
 
 interface ExamQ { part: string; q: string; opts: string[]; correct: number; why: string; }
@@ -143,7 +143,7 @@ const EXAM: ExamQ[] = [
   { part: A, q: "Kỹ thuật \"5 Whys\" được định nghĩa chính xác nhất là gì?", opts: ["Đặt đúng 5 câu hỏi khảo sát trực tiếp cho khách", "Viết 5 phiên bản prompt khác nhau để thử AI", "Đặt câu hỏi \"Tại sao?\" liên tiếp cho tới khi tìm ra nguyên nhân gốc rễ xử lý được bằng hành động", "Chia bài toán thành đúng 5 bước tuần tự"], correct: 2, why: "5 Whys = hỏi \"tại sao?\" liên tiếp tới nguyên nhân gốc có thể hành động. (Phần 1)" },
   { part: A, q: "Khi nào nên dừng chuỗi câu hỏi trong phương pháp 5 Whys?", opts: ["Dừng ngay khi đã hỏi đủ 5 lần \"Tại sao?\"", "Dừng khi chạm nguyên nhân cốt lõi mà nếu sửa nó, triệu chứng ban đầu biến mất hoàn toàn", "Dừng khi AI không gợi ý thêm câu \"Tại sao\" nào", "Dừng khi tìm được một cá nhân để quy trách nhiệm"], correct: 1, why: "Con số 5 chỉ gợi ý; dừng khi sửa gốc rễ thì triệu chứng biến mất hoàn toàn. (Phần 1)" },
   { part: A, q: "Tại sao \"do nhân viên tư vấn cẩu thả\" thường chưa đúng khi truy tìm nguyên nhân gốc rễ?", opts: ["Vì nguyên nhân gốc rễ thường nằm ở quy trình/hệ thống, không phải lỗi cá nhân riêng lẻ", "Vì nhân viên luôn làm đúng quy trình", "Vì quy định đào tạo cấm nhắc lỗi cá nhân", "Vì AI cấm nhận xét đổ lỗi cho con người"], correct: 0, why: "Con người là một phần của hệ thống; gốc rễ nằm ở quy trình để có giải pháp bền vững. (Phần 1)" },
-  { part: A, q: "Một triệu chứng có thể do nhiều nguyên nhân. Bạn nên xử lý thế nào?", opts: ["Chọn ngay nguyên nhân đầu tiên nghĩ ra để giải quyết", "Bỏ qua nguyên nhân, chỉ tập trung triệu chứng bề nổi cho nhanh", "Nhờ khách chọn giúp đâu là nguyên nhân chính", "Được phân tích đa nhánh, nhưng bám sát nhánh có bằng chứng thực tế mạnh nhất để tránh lan man"], correct: 3, why: "Đa nhánh được phép, nhưng bám nhánh có bằng chứng mạnh nhất. (Phần 1)" },
+  { part: A, q: "Một triệu chứng có thể xuất phát từ nhiều nguyên nhân. Bạn nên xử lý thế nào?", opts: ["Chọn ngay nguyên nhân đầu tiên nghĩ ra để giải quyết", "Bỏ qua nguyên nhân, chỉ tập trung triệu chứng bề nổi cho nhanh", "Nhờ khách chọn giúp đâu là nguyên nhân chính", "Cho phép phân tích đa nhánh, nhưng bám sát nhánh có bằng chứng thực tế mạnh nhất để tránh lan man"], correct: 3, why: "Đa nhánh được phép, nhưng bám nhánh có bằng chứng mạnh nhất. (Phần 1)" },
   { part: A, q: "Tư duy nguyên bản (First Principles) được định nghĩa là gì?", opts: ["Nghiên cứu và làm theo chính xác đối thủ mạnh nhất trên thị trường", "Giải quyết theo lối mòn vì \"từ trước đến nay vẫn làm vậy\"", "Phân tích vấn đề phức tạp về các sự thật nền tảng cốt lõi rồi xây lại lập luận từ đó", "Chọn giải pháp công nghệ phổ biến nhất đang dùng rộng rãi"], correct: 2, why: "First Principles = chẻ về sự thật nền tảng rồi xây lập luận mới. (Phần 1)" },
   { part: A, q: "\"Đối thủ ra mắt chatbot AI, ta cũng cần xây chatbot AI\" đại diện cho kiểu tư duy nào?", opts: ["Tư duy nguyên bản (First Principles)", "Tư duy loại suy (Analogy)", "Tư duy dựa trên dữ liệu (Data-driven)", "Tư duy đối chiếu thực tế (Grounding)"], correct: 1, why: "\"Đối thủ làm X nên ta làm X\" là tư duy loại suy (analogy). (Phần 1)" },
   { part: A, q: "Vì sao \"định nghĩa đúng bài toán\" rất quan trọng trước khi tìm giải pháp?", opts: ["Một bài toán định nghĩa rõ ràng đã là một nửa lời giải; giúp tránh giải sai vấn đề", "Giúp tiết kiệm token của AI khi lập trình giải pháp", "Để đáp ứng đúng tiêu chí đánh giá của mentor", "Vì AI không thể xử lý bài toán chưa định nghĩa trước"], correct: 0, why: "Định nghĩa đúng vấn đề = một nửa lời giải, tránh giải sai bài toán. (Phần 1)" },
@@ -347,7 +347,7 @@ function OverviewScreen({ go }: { go: (p: Page, part?: number) => void }) {
             Critical Thinking — <span style={{ font: "italic 800 1em/1 var(--font-serif)", color: "var(--iris)" }}>Root Cause &amp; Hypothesis</span>
           </h1>
           <p style={{ font: "400 21px/1.6 var(--font-body)", color: "var(--fg-2)", maxWidth: "640px", margin: "24px 0 0", textWrap: "pretty" }}>
-            I2.2 giúp bạn <b style={{ color: "var(--fg-1)" }}>tìm đúng vấn đề</b> của khách hàng. I2.3 dạy bạn <b style={{ color: "var(--fg-1)" }}>đào tới nguyên nhân gốc rễ</b>, rồi đưa ra <b style={{ color: "var(--fg-1)" }}>giả thuyết kiểm chứng được</b> thay vì build theo cảm tính. Tấm khiên tránh hai lãng phí lớn nhất: <em style={{ fontStyle: "italic" }}>chữa triệu chứng</em> và <em style={{ fontStyle: "italic" }}>build theo niềm tin</em>.
+            Buổi I2.2 đã giúp bạn <b style={{ color: "var(--fg-1)" }}>xác định đúng vấn đề</b> của khách hàng. Buổi I2.3 này sẽ hướng dẫn bạn cách <b style={{ color: "var(--fg-1)" }}>đào sâu tìm kiếm nguyên nhân gốc rễ</b>, từ đó đưa ra <b style={{ color: "var(--fg-1)" }}>giả thuyết kiểm chứng được</b> thay vì phát triển sản phẩm theo cảm tính cá nhân. Đây chính là tấm khiên bảo vệ dự án khỏi hai nguồn lãng phí lớn nhất: <em style={{ fontStyle: "italic" }}>chữa triệu chứng bề nổi</em> và <em style={{ fontStyle: "italic" }}>xây dựng sản phẩm dựa trên niềm tin cảm tính</em>.
           </p>
 
           <div style={{ display: "flex", gap: "26px", marginTop: "30px", flexWrap: "wrap", font: "500 13px/1 var(--font-body)", color: "var(--fg-3)" }}>
@@ -361,7 +361,7 @@ function OverviewScreen({ go }: { go: (p: Page, part?: number) => void }) {
           <section style={{ marginTop: "52px", borderTop: "2px solid var(--fg-1)", paddingTop: "30px" }}>
             <h2 style={{ font: "700 26px/1.2 var(--font-impact)", letterSpacing: "-.012em", color: "var(--fg-1)", margin: "0 0 14px" }}>Vì sao buổi này quan trọng</h2>
             <p style={{ font: "400 18px/1.75 var(--font-body)", color: "var(--fg-2)", margin: 0, maxWidth: "660px", textWrap: "pretty" }}>
-              Hai sai lầm gây lãng phí nhất của người mới: <b style={{ color: "var(--fg-1)" }}>chỉ giải quyết triệu chứng bề nổi thay vì nguyên nhân gốc rễ</b>, và <b style={{ color: "var(--fg-1)" }}>build dựa trên niềm tin cảm tính thay vì bằng chứng</b>. Ở cấp độ L2, bạn chưa cần phân tích đa chiều như L3, nhưng bắt buộc dùng thành thạo 5 Whys và biết ra quyết định quy mô nhỏ dựa trên dữ liệu thực tế. Đây là <b style={{ color: "var(--fg-1)" }}>buổi đánh giá Gate 2</b> — khép lại giai đoạn Prompt &amp; Tư duy Phân tích.
+              Hai sai lầm gây lãng phí nguồn lực nhất của các Builder mới vào nghề là: <b style={{ color: "var(--fg-1)" }}>chỉ giải quyết triệu chứng bề nổi thay vì đi sâu vào nguyên nhân gốc rễ</b>, và <b style={{ color: "var(--fg-1)" }}>xây dựng sản phẩm dựa trên niềm tin cảm tính thay vì bằng chứng dữ liệu</b>. Ở cấp độ L2, bạn chưa cần phân tích đa chiều phức tạp (đó là việc của L3), nhưng bắt buộc phải thành thạo kỹ năng 5 Whys và biết cách ra quyết định ở quy mô nhỏ dựa trên dữ liệu thực tế. Đây là <b style={{ color: "var(--fg-1)" }}>buổi đánh giá Gate 2</b> — khép lại giai đoạn Prompt &amp; Tư duy Phân tích.
             </p>
           </section>
 
@@ -561,7 +561,7 @@ function Part1() {
     <div>
       <p style={{ font: "400 19px/1.85 var(--font-body)", color: "var(--fg-1)", margin: "0 0 20px" }}>
         <span style={{ float: "left", font: "italic 900 74px/.72 var(--font-serif)", color: "var(--iris)", padding: "6px 12px 0 0" }}>S</span>
-        ai lầm gây lãng phí nhất của người mới bắt đầu: <b>chỉ tập trung giải quyết triệu chứng thay vì nguyên nhân gốc rễ</b>. Chữa triệu chứng bề nổi chỉ tạo cảm giác giả tạo rằng bạn đang làm việc hiệu quả — vấn đề sẽ sớm lặp lại vì gốc rễ chưa được xử lý.
+        ai lầm gây lãng phí nguồn lực lớn nhất của người mới bắt đầu là: <b>chỉ tập trung giải quyết triệu chứng bề nổi thay vì đi tìm nguyên nhân gốc rễ</b>. Việc chỉ chữa triệu chứng bề nổi chỉ tạo ra cảm giác giả tạo rằng bạn đang giải quyết được vấn đề — thực tế, vấn đề đó sẽ sớm muộn lặp lại vì nguyên nhân gốc rễ sâu xa vẫn chưa được xử lý triệt để.
       </p>
 
       <h2 style={{ font: "700 27px/1.2 var(--font-impact)", letterSpacing: "-.012em", color: "var(--fg-1)", margin: "44px 0 16px" }}>1 · Triệu chứng vs nguyên nhân gốc rễ</h2>
@@ -607,7 +607,7 @@ function Part1() {
 
       <h2 style={{ font: "700 27px/1.2 var(--font-impact)", letterSpacing: "-.012em", color: "var(--fg-1)", margin: "44px 0 16px" }}>2 · 5 Whys — bộ khung truy tìm nguyên nhân gốc rễ</h2>
       <p style={{ font: "400 18px/1.8 var(--font-body)", color: "var(--fg-2)", margin: "0 0 20px" }}>
-        <b>5 Whys</b> là kỹ thuật đơn giản nhưng mạnh mẽ: đặt câu hỏi <b style={{ color: "var(--fg-1)" }}>&quot;Tại sao?&quot;</b> liên tiếp (thường ~5 lần) cho tới khi chạm nguyên nhân gốc rễ <b style={{ color: "var(--fg-1)" }}>có thể xử lý được bằng hành động</b>. Con số 5 chỉ gợi ý — dừng khi khắc phục nó thì triệu chứng ban đầu biến mất hoàn toàn.
+        <b>5 Whys</b> là một kỹ thuật đơn giản nhưng vô cùng mạnh mẽ: liên tục đặt câu hỏi <b style={{ color: "var(--fg-1)" }}>&quot;Tại sao?&quot;</b> (thường khoảng 5 lần) cho đến khi tìm ra nguyên nhân gốc rễ <b style={{ color: "var(--fg-1)" }}>có thể tác động và giải quyết được bằng hành động cụ thể</b>. Con số 5 chỉ mang tính chất gợi ý — bạn hãy dừng lại khi nhận thấy việc khắc phục nguyên nhân đó sẽ làm triệu chứng ban đầu biến mất hoàn toàn.
       </p>
       <figure style={{ margin: "0 0 22px" }}>
         <div style={{ border: "1px solid var(--border)", borderRadius: "14px", background: "#fff", padding: "22px 24px" }}>
@@ -639,7 +639,7 @@ function Part1() {
 
       <h2 style={{ font: "700 27px/1.2 var(--font-impact)", letterSpacing: "-.012em", color: "var(--fg-1)", margin: "44px 0 16px" }}>3 · First Principles — phân tích về sự thật nền tảng</h2>
       <p style={{ font: "400 18px/1.8 var(--font-body)", color: "var(--fg-2)", margin: "0 0 18px" }}>
-        <b>Tư duy nguyên bản (First Principles)</b> là chẻ nhỏ vấn đề phức tạp về những <b style={{ color: "var(--fg-1)" }}>sự thật cơ bản nhất, không thể chối cãi</b>, rồi xây lập luận từ đó — thay vì <b>suy luận loại suy (analogy)</b> (sao chép: &quot;đối thủ làm X nên ta cũng làm X&quot;) hay đi theo lối mòn.
+        <b>Tư duy nguyên bản (First Principles)</b> là phương pháp bóc tách một vấn đề phức tạp thành những <b style={{ color: "var(--fg-1)" }}>sự thật nền tảng cốt lõi nhất, không thể bàn cãi</b>, rồi từ đó tự xây dựng lập luận và giải pháp mới — hoàn toàn đối lập với <b style={{ color: "var(--fg-1)" }}>tư duy loại suy (analogy)</b> (tư duy sao chép lối mòn: *&quot;đối thủ làm chatbot AI thì mình cũng phải làm chatbot AI&quot;*).
       </p>
       <figure style={{ margin: "0 0 20px" }}>
         <div style={{ border: "1px solid var(--border)", borderRadius: "14px", background: "#fff", padding: "22px 24px", display: "grid", gridTemplateColumns: "1fr auto 1fr", gap: "14px", alignItems: "center" }}>
@@ -665,7 +665,7 @@ function Part1() {
       </div>
 
       <h2 style={{ font: "700 27px/1.2 var(--font-impact)", letterSpacing: "-.012em", color: "var(--fg-1)", margin: "44px 0 16px" }}>4 · Định nghĩa đúng vấn đề trước khi tìm giải pháp</h2>
-      <p style={{ font: "400 18px/1.8 var(--font-body)", color: "var(--fg-2)", margin: "0 0 18px" }}>Critical Thinking gắn chặt với Design Thinking (I2.2): trước khi giải, hãy chắc bạn <b style={{ color: "var(--fg-1)" }}>đang giải đúng bài toán</b>. Một vấn đề định nghĩa rõ ràng đã là một nửa lời giải.</p>
+      <p style={{ font: "400 18px/1.8 var(--font-body)", color: "var(--fg-2)", margin: "0 0 18px" }}>Tư duy phản biện (Critical Thinking) gắn kết chặt chẽ với tư duy thiết kế Design Thinking (I2.2): Trước khi đi tìm giải pháp, hãy chắc chắn rằng bạn <b style={{ color: "var(--fg-1)" }}>đang giải quyết đúng bài toán</b>. Một vấn đề được định nghĩa rõ ràng, chính xác đã là một nửa lời giải.</p>
       <figure style={{ margin: "0 0 26px" }}>
         <div style={{ border: "1px solid var(--border)", borderRadius: "14px", background: "#fff", padding: "22px 24px", display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap", justifyContent: "center" }}>
           {flow.map((f, i) => (
@@ -716,13 +716,12 @@ function Part2({ go }: { go: (p: Page, part?: number) => void }) {
   return (
     <div>
       <p style={{ font: "400 19px/1.85 var(--font-body)", color: "var(--fg-1)", margin: "0 0 20px" }}>
-        <span style={{ float: "left", font: "italic 900 74px/.72 var(--font-serif)", color: "var(--gold-deep)", padding: "6px 12px 0 0" }}>K</span>
-        hi đã tìm ra nguyên nhân gốc rễ, bước tiếp theo <b>không phải là &quot;build ngay&quot;</b> — mà là xây một <b>giả thuyết có thể kiểm chứng</b> và <b>phản biện nó bằng dữ liệu</b>.
+        Khi đã xác định được nguyên nhân gốc rễ, bước đi tiếp theo <b>tuyệt đối không phải là bắt tay vào xây dựng ngay</b> — mà bạn cần xây dựng một <b>giả thuyết có thể kiểm chứng</b> và nghiêm túc <b>phản biện giả thuyết đó bằng dữ liệu</b>.
       </p>
 
       <h2 style={{ font: "700 27px/1.2 var(--font-impact)", letterSpacing: "-.012em", color: "var(--fg-1)", margin: "40px 0 16px" }}>1 · Giả thuyết có thể kiểm chứng</h2>
       <p style={{ font: "400 18px/1.8 var(--font-body)", color: "var(--fg-2)", margin: "0 0 18px" }}>
-        <b>Giả thuyết (hypothesis)</b> là phát biểu <b style={{ color: "var(--fg-1)" }}>có thể đúng hoặc sai, và bắt buộc kiểm chứng được bằng dữ liệu</b>. Không phải mong muốn chủ quan (&quot;muốn khách hài lòng hơn&quot;), cũng không phải kế hoạch hành động đơn thuần (&quot;sẽ xây tính năng X&quot;) — nó là một <i>dự đoán khoa học có cấu trúc</i>.
+        <b>Giả thuyết (Hypothesis)</b> là một phát biểu mang tính dự đoán có cấu trúc, <b style={{ color: "var(--fg-1)" }}>có thể đúng hoặc sai, và bắt buộc phải kiểm chứng được bằng dữ liệu</b>. Giả thuyết hoàn toàn khác với một mong muốn cảm tính chủ quan (*&quot;làm để khách hài lòng hơn&quot;*), cũng không phải là một kế hoạch hành động đơn thuần (*&quot;chúng ta sẽ xây tính năng X&quot;*).
       </p>
       <figure style={{ margin: "0 0 22px" }}>
         <div style={{ border: "1.5px solid var(--iris-deep)", borderRadius: "14px", background: "var(--iris-tint)", padding: "24px 26px", textAlign: "center" }}>
@@ -757,7 +756,7 @@ function Part2({ go }: { go: (p: Page, part?: number) => void }) {
 
       <h2 style={{ font: "700 27px/1.2 var(--font-impact)", letterSpacing: "-.012em", color: "var(--fg-1)", margin: "44px 0 16px" }}>3 · Ra quyết định dựa trên dữ liệu — ngưỡng bằng chứng</h2>
       <p style={{ font: "400 18px/1.8 var(--font-body)", color: "var(--fg-2)", margin: "0 0 18px" }}>
-        &quot;Data-driven&quot; <b>không</b> có nghĩa ngồi chờ dữ liệu hoàn hảo (không bao giờ có). Nó nghĩa là bạn <b style={{ color: "var(--fg-1)" }}>hiểu rõ mình đang tin vào bằng chứng nào, và bằng chứng đó mạnh tới đâu</b>. Ba câu hỏi phản biện cốt lõi:
+        <b>Tư duy dựa trên dữ liệu (Data-driven)</b> không có nghĩa là bạn ngồi thụ động chờ đợi một tập dữ liệu hoàn hảo không sai số (điều đó không bao giờ có trong thực tế). Bản chất của nó là việc bạn <b style={{ color: "var(--fg-1)" }}>thấu hiểu rõ mình đang tin vào bằng chứng nào, và bằng chứng đó có độ tin cậy mạnh tới đâu</b> để ra quyết định. Ba câu hỏi phản biện cốt lõi:
       </p>
       <div style={{ display: "flex", flexDirection: "column", gap: "12px", margin: "0 0 20px" }}>
         {evidenceQ.map((q, i) => (
@@ -775,7 +774,7 @@ function Part2({ go }: { go: (p: Page, part?: number) => void }) {
       </div>
 
       <h2 style={{ font: "700 27px/1.2 var(--font-impact)", letterSpacing: "-.012em", color: "var(--fg-1)", margin: "44px 0 16px" }}>4 · Bản đặc tả nháp (Draft Spec) &amp; phản biện rủi ro</h2>
-      <p style={{ font: "400 18px/1.8 var(--font-body)", color: "var(--fg-2)", margin: "0 0 18px" }}><b>Spec</b> là tài liệu ngắn mô tả <i>làm gì &amp; tại sao</i>, giúp các bên dễ đánh giá và phản biện. Draft spec tinh gọn ở L2 cần 5 mục:</p>
+      <p style={{ font: "400 18px/1.8 var(--font-body)", color: "var(--fg-2)", margin: "0 0 18px" }}><b>Tài liệu đặc tả sản phẩm (Spec)</b> là một tài liệu ngắn mô tả rõ <i>chúng ta làm gì và vì sao lại làm</i>, giúp các bên dễ dàng đánh giá và tham gia phản biện. Một bản đặc tả sản phẩm nháp (Draft Spec) tinh gọn ở cấp độ L2 bắt buộc phải gồm 5 mục:</p>
       <div style={{ display: "flex", flexDirection: "column", gap: "12px", margin: "0 0 22px" }}>
         {specParts.map((s, i) => (
           <div key={i} style={{ display: "flex", gap: "14px", alignItems: "flex-start", border: "1px solid var(--border)", borderRadius: "12px", background: "#fff", padding: "16px 18px" }}>
