@@ -21,17 +21,17 @@ const PART_META = [
 ];
 
 const PARTS = [
-  { ...PART_META[0], desc: "Agent vs hỏi–đáp một lượt, single-agent flow (L2), khung workflow 4 ô bắt buộc, Cowork task loop, và đặt HITL đúng hai \"vị trí vàng\".", tags: ["Agent / Agentic", "Workflow 4 ô", "HITL"] },
-  { ...PART_META[1], desc: "Vấn đề RAG giải quyết, pipeline 4 bước, embedding & vector search, nguyên nhân retrieval trúng/trật, và vị trí RAG trong cây quyết định giải pháp.", tags: ["RAG", "Embedding", "Vector search"] },
-  { ...PART_META[2], desc: "Từ Tool Use đến MCP (ổ cắm chuẩn), phân biệt Skill vs Plugin, và ba kỷ luật an toàn khi kết nối AI với nguồn dữ liệu thật.", tags: ["MCP", "Skill vs Plugin", "An toàn"] },
+  { ...PART_META[0], desc: "Phân biệt tác nhân AI (Agent) với hỏi–đáp một lượt; thiết kế quy trình đơn tác nhân (single-agent flow) ở cấp độ L2 dựa trên khung workflow 4 ô bắt buộc; cơ chế Cowork task loop và cách đặt chốt kiểm soát HITL tại hai \"vị trí vàng\".", tags: ["Agent / Agentic", "Workflow 4 ô", "HITL"] },
+  { ...PART_META[1], desc: "Bản chất của RAG và những vấn đề thực tế mà nó giải quyết; quy trình RAG pipeline 4 bước; vai trò cốt lõi của embedding & vector search; chẩn đoán lỗi truy xuất thông tin (retrieval) trúng hay trật; vị trí của RAG trên cây quyết định giải pháp.", tags: ["RAG", "Embedding", "Vector search"] },
+  { ...PART_META[2], desc: "Cách AI kết nối với thế giới bên ngoài từ Tool Use đến MCP (ổ cắm chuẩn); phân biệt rõ Kỹ năng (Skill) với Trình cắm (Plugin); ba nguyên tắc an toàn tối quan trọng khi kết nối AI với nguồn dữ liệu thực tế của doanh nghiệp.", tags: ["MCP", "Skill vs Plugin", "An toàn"] },
 ];
 
 const OBJECTIVES = [
-  "Giải thích khác biệt giữa agent/agentic AI và hỏi–đáp một lượt; mô tả cấu trúc một single-agent flow từ mẫu có sẵn.",
-  "Thiết kế một workflow AI theo mô hình 4 bước: Input → AI làm gì → Output đi đâu → Human review ở đâu.",
-  "Đặt điểm kiểm soát con người (HITL) vào đúng các \"vị trí vàng\".",
-  "Giải thích nguyên lý RAG; vai trò của embedding & vector search; nguyên nhân retrieval trúng/trật.",
-  "Giải thích khái niệm MCP và khi nào cần dùng để kết nối AI với công cụ hoặc nguồn dữ liệu doanh nghiệp.",
+  "Phân biệt rõ tác nhân thông minh (Agent / Agentic AI) với hỏi–đáp một lượt; mô tả được cấu trúc của một quy trình đơn tác nhân (single-agent flow) dựa trên mẫu thiết kế có sẵn.",
+  "Thiết kế được quy trình AI (workflow) hoàn chỉnh theo khung 4 ô bắt buộc: Đầu vào (Input) → AI thực hiện hành động cụ thể gì → Đầu ra (Output) trả về đâu → Chốt kiểm duyệt của con người (Human review) đặt ở đâu.",
+  "Thiết lập điểm kiểm duyệt của con người (Human-in-the-loop - HITL) vào đúng hai vị trí rủi ro then chốt trong quy trình.",
+  "Hiểu và giải thích được nguyên lý hoạt động của RAG, vai trò của embedding và vector search, cũng như chẩn đoán được nguyên nhân khiến kết quả truy xuất (retrieval) trúng hay trật.",
+  "Giải thích được khái niệm giao thức MCP và thời điểm cần sử dụng để kết nối AI với các hệ thống công cụ và nguồn dữ liệu thực tế của doanh nghiệp.",
 ];
 
 const MUST_KNOW = ["RAG", "Agent / Agentic AI", "Tool Use (I2.1)", "Human-in-the-loop"];
@@ -50,9 +50,9 @@ const META = [
 // Phần 1 — workflow 4 ô + task loop
 const WF4 = [
   { n: "1 · INPUT", title: "Đầu vào", q: "Dữ liệu gì, từ nguồn nào?", ex: "200 phản hồi đổi/trả trong tuần (đã ẩn PII)", badge: "var(--rose-deep)", border: "var(--rose-deep)", bg: "var(--rose-tint)", exColor: "var(--rose-deep)", arrow: true },
-  { n: "2 · AI LÀM GÌ", title: "Hành động cụ thể", q: "Động từ kiểm được?", ex: "Gán nhãn lý do đổi/trả theo 6 nhóm định sẵn", badge: "var(--gold-deep)", border: "var(--gold-deep)", bg: "var(--gold-tint)", exColor: "var(--gold-deep)", arrow: true },
-  { n: "3 · OUTPUT", title: "Đầu ra đi đâu", q: "Ai dùng, để làm gì?", ex: "Bảng tần suất lỗi gửi đội sản phẩm để ưu tiên xử lý", badge: "var(--iris-deep)", border: "var(--iris)", bg: "var(--iris-tint)", exColor: "var(--iris-deep)", arrow: true },
-  { n: "4 · HUMAN", title: "Con người duyệt", q: "Kiểm ở bước nào?", ex: "Mentor phê duyệt bảng phân loại trước khi làm báo cáo", badge: "var(--mint-deep)", border: "var(--mint)", bg: "var(--mint-tint)", exColor: "var(--mint-deep)", arrow: false },
+  { n: "2 · AI LÀM GÌ", title: "Hành động cụ thể", q: "Động từ hành động cụ thể, kiểm chứng được?", ex: "Ví dụ: Gán nhãn lý do đổi trả theo 6 nhóm định sẵn", badge: "var(--gold-deep)", border: "var(--gold-deep)", bg: "var(--gold-tint)", exColor: "var(--gold-deep)", arrow: true },
+  { n: "3 · OUTPUT", title: "Đầu ra đi đâu", q: "Đầu ra được gửi đi đâu và ai sử dụng?", ex: "Ví dụ: Bảng tần suất lỗi gửi cho đội Sản phẩm để ưu tiên cải tiến", badge: "var(--iris-deep)", border: "var(--iris)", bg: "var(--iris-tint)", exColor: "var(--iris-deep)", arrow: true },
+  { n: "4 · HUMAN", title: "Con người duyệt", q: "Đặt chốt kiểm duyệt ở bước nào?", ex: "Ví dụ: Người hướng dẫn phê duyệt bảng phân loại trước khi xuất báo cáo", badge: "var(--mint-deep)", border: "var(--mint)", bg: "var(--mint-tint)", exColor: "var(--mint-deep)", arrow: false },
 ];
 const LOOP = [
   { text: "Bạn giao việc + yêu cầu & giới hạn", color: "var(--iris-deep)", bg: "var(--iris-tint)", border: "var(--iris)", arrow: true },
@@ -69,10 +69,10 @@ const RAG_STEPS = [
   { n: "4", title: "Tạo câu trả lời", desc: "AI trả lời grounded trên các đoạn tìm được.", badge: "var(--mint-deep)", border: "var(--mint)", bg: "var(--mint-tint)", arrow: false },
 ];
 const RETRIEVAL = [
-  { k: "Chunk chưa hợp lý", sign: "Quá dài → loãng nghĩa; quá ngắn → mất ngữ cảnh xung quanh.", fix: "Chia nhỏ theo từng ý / đoạn văn trọn vẹn." },
-  { k: "Câu hỏi thiếu rõ ràng", sign: "Câu hỏi quá ngắn/thiếu ngữ cảnh → vector không phản ánh đúng ý đồ.", fix: "Làm rõ câu hỏi hoặc tự bổ sung ngữ cảnh trước khi tìm." },
-  { k: "Nguồn thiếu / lỗi thời", sign: "Kho không có thông tin cần tìm hoặc tài liệu chưa cập nhật.", fix: "Rà soát, bổ sung, cập nhật kho tài liệu nội bộ thường xuyên." },
-  { k: "Số đoạn chưa tối ưu", sign: "Lấy quá ít → thiếu thông tin; quá nhiều → nhiễu AI, tốn token.", fix: "Điều chỉnh tham số top-k ở mức vừa đủ." },
+  { k: "Chunk chưa hợp lý", sign: "Biểu hiện: Đoạn cắt quá dài làm loãng ý nghĩa, hoặc quá ngắn làm mất ngữ cảnh xung quanh.", fix: "Khắc phục: Thiết lập lại kích thước chunk theo từng đoạn văn hoặc ý nghĩa trọn vẹn." },
+  { k: "Câu hỏi thiếu rõ ràng", sign: "Biểu hiện: Người dùng hỏi chung chung hoặc thiếu thông tin khiến vector không phản ánh đúng ý đồ.", fix: "Khắc phục: Tự động làm rõ câu hỏi hoặc bổ sung thêm từ khóa, ngữ cảnh trước khi thực hiện tìm kiếm." },
+  { k: "Nguồn thiếu / lỗi thời", sign: "Biểu hiện: Kho dữ liệu không chứa thông tin cần tìm hoặc tài liệu chưa được cập nhật số liệu mới nhất.", fix: "Khắc phục: Chủ động rà soát, bổ sung và cập nhật định kỳ kho tri thức nội bộ." },
+  { k: "Số đoạn chưa tối ưu", sign: "Biểu hiện: Lấy quá ít đoạn dẫn đến thiếu thông tin; lấy quá nhiều gây nhiễu context và lãng phí token.", fix: "Khắc phục: Điều chỉnh tham số top-k về mức tối ưu và vừa đủ cho từng bài toán cụ thể." },
 ];
 const APPROACH = [
   { order: "ƯU TIÊN 1", title: "Tối ưu prompt", desc: "Giải quyết trước bằng prompt tốt (I2.1).", color: "var(--mint-deep)", border: "var(--mint)", bg: "var(--mint-tint)", arrow: true },
@@ -83,18 +83,18 @@ const APPROACH = [
 // Phần 3 — MCP / Skill vs Plugin / safety
 const MCP_SOURCES = ["Kho sản phẩm", "Hệ thống đơn hàng", "Tài liệu nội bộ", "Công cụ tra cứu"];
 const SKILL_PLUGIN = [
-  { k: "Bản chất", skill: "Quy trình xử lý công việc được cấu trúc hóa để tái sử dụng.", plugin: "Cổng kết nối kỹ thuật đến công cụ hoặc hệ thống bên ngoài." },
-  { k: "Mục đích", skill: "Chuẩn hóa quy trình thực hiện một nhiệm vụ cụ thể của AI.", plugin: "Cho AI truy xuất dữ liệu thực tế hoặc thực hiện hành động trên hệ thống khác." },
-  { k: "Ví dụ YODY (giả lập)", skill: "Kỹ năng \"Phân loại đánh giá khách hàng theo 6 nhãn chuẩn\".", plugin: "Trình cắm kết nối hệ thống ERP để tra cứu tồn kho sản phẩm." },
+  { k: "Bản chất", skill: "Kỹ năng: Quy trình xử lý một nghiệp vụ cụ thể được cấu trúc hóa để AI tái sử dụng đồng nhất nhiều lần.", plugin: "Trình cắm: Cổng kết nối kỹ thuật giúp AI giao tiếp trực tiếp với các hệ thống hoặc công cụ bên ngoài." },
+  { k: "Mục đích", skill: "Kỹ năng: Chuẩn hóa và đồng nhất cách thực hiện một nhiệm vụ của AI trong mọi lần chạy.", plugin: "Trình cắm: Cho phép AI truy xuất dữ liệu thời gian thực hoặc thực hiện hành động trên các nền tảng khác." },
+  { k: "Ví dụ YODY (giả lập)", skill: "Kỹ năng: Quy trình \"Phân loại phản hồi của khách hàng vào 6 nhóm lý do đổi trả chuẩn\".", plugin: "Trình cắm: Kết nối với API hệ thống ERP để tra cứu nhanh số lượng tồn kho của mã sản phẩm." },
 ];
 const SAFETY_RULES = [
-  { n: "1", title: "Chọn công cụ sát bài toán — tránh kích hoạt tất cả", desc: "Cung cấp thừa công cụ làm AI phân tâm (nhiễu), tăng rủi ro bảo mật và tốn token không đáng có.", color: "var(--rose-deep)", border: "var(--rose-deep)", bg: "var(--rose-tint)", badge: "var(--rose-deep)" },
-  { n: "2", title: "Chỉ liên kết với nguồn & công cụ đã duyệt an toàn", desc: "Đặc biệt khi tiếp xúc dữ liệu thật (PII khách hàng, bí mật kinh doanh) — ranh giới đỏ không được vi phạm (I1.2).", color: "var(--gold-deep)", border: "var(--gold-deep)", bg: "var(--gold-tint)", badge: "var(--gold-deep)" },
+  { n: "1", title: "Chỉ cấp công cụ thực sự cần thiết — tránh bật tất cả", desc: "Cung cấp thừa công cụ khiến AI dễ phân tâm (nhiễu context), tăng rủi ro bảo mật hệ thống và lãng phí tài nguyên token.", color: "var(--rose-deep)", border: "var(--rose-deep)", bg: "var(--rose-tint)", badge: "var(--rose-deep)" },
+  { n: "2", title: "Chỉ kết nối với các nguồn dữ liệu & công cụ đã được duyệt an toàn", desc: "Đặc biệt lưu ý khi quy trình tiếp xúc trực tiếp với dữ liệu khách hàng thật (PII) hoặc số liệu kinh doanh bảo mật — đây là ranh giới đỏ tuyệt đối.", color: "var(--gold-deep)", border: "var(--gold-deep)", bg: "var(--gold-tint)", badge: "var(--gold-deep)" },
 ];
 const SAFETY_3 = [
-  { icon: "🛑", title: "Kiểm soát bởi con người (HITL · Phần 1)", desc: "Bắt buộc có chốt kiểm duyệt trước khi AI thực thi bất kỳ hành động không thể hoàn tác nào qua công cụ.", color: "var(--rose-deep)", border: "var(--rose-deep)", bg: "var(--rose-tint)" },
-  { icon: "🔒", title: "Bảo vệ dữ liệu nhạy cảm (PII & bí mật · I1.2)", desc: "Phân quyền rõ, mã hóa/ẩn PII; tuyệt đối không nối AI công cộng với nguồn dữ liệu cá nhân chưa xử lý.", color: "var(--gold-deep)", border: "var(--gold-deep)", bg: "var(--gold-tint)" },
-  { icon: "✅", title: "Đảm bảo tính xác thực (Grounding · I1.2)", desc: "Dùng kết quả công cụ trả về làm căn cứ thực tế duy nhất; vẫn kiểm duyệt output kỹ trước khi gửi người dùng cuối.", color: "var(--mint-deep)", border: "var(--mint)", bg: "var(--mint-tint)" },
+  { icon: "🛑", title: "Thiết lập chốt kiểm duyệt con người (HITL)", desc: "Bắt buộc phải có sự phê duyệt của con người trước khi AI thực hiện bất kỳ hành động nào không thể đảo ngược (như gửi email, ghi database).", color: "var(--rose-deep)", border: "var(--rose-deep)", bg: "var(--rose-tint)" },
+  { icon: "🔒", title: "Bảo vệ thông tin nhạy cảm (PII & Bí mật kinh doanh)", desc: "Áp dụng phân quyền truy cập nghiêm ngặt và ẩn danh hóa dữ liệu cá nhân; tuyệt đối không gửi thông tin nhạy cảm chưa xử lý lên các công cụ AI công cộng.", color: "var(--gold-deep)", border: "var(--gold-deep)", bg: "var(--gold-tint)" },
+  { icon: "✅", title: "Đảm bảo tính xác thực dựa trên nguồn (Grounding)", desc: "Chỉ cho phép AI sử dụng kết quả do công cụ trả về làm căn cứ thực tế duy nhất; con người vẫn có trách nhiệm kiểm tra kết quả đầu ra cuối cùng.", color: "var(--mint-deep)", border: "var(--mint)", bg: "var(--mint-tint)" },
 ];
 
 interface ExamQ { part: string; q: string; opts: string[]; correct: number; why: string; }
@@ -260,7 +260,7 @@ function OverviewScreen({ go }: { go: (p: Page, part?: number) => void }) {
             Agentic Workflows &amp; <span style={{ font: "italic 800 1em/1 var(--font-serif)", color: "var(--iris)" }}>RAG</span>
           </h1>
           <p style={{ font: "400 21px/1.6 var(--font-body)", color: "var(--fg-2)", maxWidth: "640px", margin: "24px 0 0", textWrap: "pretty" }}>
-            Một prompt đơn lẻ chỉ giải quyết được <b style={{ color: "var(--fg-1)" }}>một bước</b>. Sản phẩm thực tế cần <b style={{ color: "var(--fg-1)" }}>quy trình nhiều bước</b> (agentic workflow) và AI phải <b style={{ color: "var(--fg-1)" }}>tiếp cận được dữ liệu nội bộ</b> của YODY. Hai mảnh ghép cốt lõi: <em style={{ fontStyle: "italic" }}>Agentic Workflow</em> và <em style={{ fontStyle: "italic" }}>RAG</em> — cùng cách đặt <em style={{ fontStyle: "italic" }}>điểm kiểm soát con người (HITL)</em> đúng chỗ.
+            Một prompt đơn lẻ chỉ giải quyết được <b style={{ color: "var(--fg-1)" }}>một bước công việc</b>. Sản phẩm trong thực tế luôn đòi hỏi một <b style={{ color: "var(--fg-1)" }}>quy trình phối hợp nhiều bước</b> (agentic workflow) và AI phải có khả năng <b style={{ color: "var(--fg-1)" }}>truy xuất dữ liệu nội bộ</b> của YODY. Hai mảnh ghép cốt lõi giúp bạn làm điều này: <em style={{ fontStyle: "italic" }}>Agentic Workflow</em> và <em style={{ fontStyle: "italic" }}>RAG</em> — kết hợp với cách thiết lập <em style={{ fontStyle: "italic" }}>chốt kiểm soát con người (HITL)</em> vào đúng vị trí vàng.
           </p>
 
           <div style={{ display: "flex", gap: "26px", marginTop: "30px", flexWrap: "wrap", font: "500 13px/1 var(--font-body)", color: "var(--fg-3)" }}>
@@ -274,7 +274,7 @@ function OverviewScreen({ go }: { go: (p: Page, part?: number) => void }) {
           <section style={{ marginTop: "52px", borderTop: "2px solid var(--fg-1)", paddingTop: "30px" }}>
             <h2 style={{ font: "700 26px/1.2 var(--font-impact)", letterSpacing: "-.012em", color: "var(--fg-1)", margin: "0 0 14px" }}>Vì sao buổi này quan trọng</h2>
             <p style={{ font: "400 18px/1.75 var(--font-body)", color: "var(--fg-2)", margin: 0, maxWidth: "660px", textWrap: "pretty" }}>
-              Bạn đã biết viết prompt hiệu quả (I2.1). Nhưng một prompt đơn lẻ chỉ giải quyết một bước — sản phẩm thực tế cần <b style={{ color: "var(--fg-1)" }}>quy trình nhiều bước liên tiếp</b> và cần AI truy cập <b style={{ color: "var(--fg-1)" }}>dữ liệu nội bộ hoặc thông tin mới của YODY</b> (thứ mô hình không có sẵn — nhớ <em>knowledge cutoff</em> ở I1.1). Đây là nơi bạn học <b style={{ color: "var(--fg-1)" }}>Agentic Workflow + RAG</b> và cách đặt <b style={{ color: "var(--fg-1)" }}>điểm kiểm soát con người (HITL)</b> để tự động hóa không tự ý gây thiệt hại. NL6 chỉ cần đạt <b style={{ color: "var(--fg-1)" }}>mức L2 tối thiểu</b> để tốt nghiệp — mục tiêu là nắm chắc khái niệm và vận hành được quy trình mẫu.
+              Bạn đã nắm vững cách viết prompt hiệu quả (I2.1). Tuy nhiên, một prompt đơn lẻ chỉ giải quyết được một bước đơn lẻ — sản phẩm thực tế luôn đòi hỏi <b style={{ color: "var(--fg-1)" }}>quy trình nhiều bước liên tiếp</b> và cần AI truy xuất được <b style={{ color: "var(--fg-1)" }}>kiến thức nội bộ hoặc thông tin mới cập nhật của YODY</b> (những thông tin nằm ngoài vùng dữ liệu huấn luyện của mô hình — hãy nhớ khái niệm <em>knowledge cutoff</em> ở I1.1). Đây chính là lý do bạn cần học <b style={{ color: "var(--fg-1)" }}>Agentic Workflow + RAG</b> và cách thiết lập <b style={{ color: "var(--fg-1)" }}>chốt kiểm soát con người (HITL)</b> để hệ thống tự động vận hành an toàn, không tự ý gây thiệt hại. NL6 chỉ yêu cầu đạt <b style={{ color: "var(--fg-1)" }}>mức độ L2 tối thiểu</b> để tốt nghiệp — mục tiêu chính là hiểu rõ khái niệm và vận hành trơn tru quy trình mẫu.
             </p>
           </section>
 
@@ -471,7 +471,7 @@ function Part1View() {
   return (
     <div>
       <p style={{ font: "400 19px/1.85 var(--font-body)", color: "var(--fg-1)", margin: "0 0 20px" }}>
-        <span style={{ float: "left", font: "italic 900 74px/.72 var(--font-serif)", color: "var(--iris)", padding: "6px 12px 0 0" }}>M</span>ột prompt tốt (học ở I2.1) chỉ giải quyết được <b>một bước đơn lẻ</b>. Thực tế công việc gồm nhiều bước liên tiếp: đọc dữ liệu → phân tích → tạo kết quả → gửi báo cáo. Chat thủ công từng bước, bạn chỉ là "người vận hành AI bằng tay". <b>Builder thực thụ thiết kế cả quy trình tự động (workflow)</b> để hệ thống chạy nhất quán, dễ kiểm soát, tái sử dụng.
+        <span style={{ float: "left", font: "italic 900 74px/.72 var(--font-serif)", color: "var(--iris)", padding: "6px 12px 0 0" }}>M</span>ột prompt tốt (đã học ở I2.1) chỉ giải quyết được <b>một bước đơn lẻ</b>. Thực tế công việc thường gồm chuỗi nhiều bước liên tiếp: đọc dữ liệu → phân tích → tạo kết quả → gửi báo cáo. Nếu chat thủ công từng bước, bạn chỉ là "người vận hành AI bằng tay". <b>Builder thực thụ sẽ thiết kế quy trình tự động hóa (workflow)</b> để hệ thống vận hành nhất quán, dễ kiểm soát và tái sử dụng.
       </p>
 
       <h2 style={{ font: "700 27px/1.2 var(--font-impact)", letterSpacing: "-.012em", color: "var(--fg-1)", margin: "44px 0 16px" }}>1 · Agent / Agentic AI là gì</h2>
@@ -490,7 +490,7 @@ function Part1View() {
       </div>
       <div style={{ margin: "0 0 26px", padding: "18px 22px", background: "var(--iris-tint)", borderLeft: "3px solid var(--iris)", borderRadius: "0 10px 10px 0" }}>
         <div style={{ font: "700 11px/1 var(--font-mono)", letterSpacing: ".14em", textTransform: "uppercase", color: "var(--iris-deep)", marginBottom: "8px" }}>Nguyên tắc</div>
-        <p style={{ font: "16px/1.7 var(--font-body)", color: "var(--fg-1)", margin: 0, fontStyle: "italic" }}>Không dùng agent phức tạp cho việc mà một prompt tốt hoặc quy trình đơn giản đã giải quyết hiệu quả. Tránh phức tạp hóa vấn đề không cần thiết.</p>
+        <p style={{ font: "16px/1.7 var(--font-body)", color: "var(--fg-1)", margin: 0, fontStyle: "italic" }}>Tuyệt đối không dùng mô hình agent phức tạp cho những công việc mà một prompt tốt hoặc quy trình logic đơn giản đã có thể giải quyết hiệu quả. Tránh rơi vào bẫy phức tạp hóa vấn đề.</p>
       </div>
 
       <h2 style={{ font: "700 27px/1.2 var(--font-impact)", letterSpacing: "-.012em", color: "var(--fg-1)", margin: "44px 0 16px" }}>2 · Khung xương mọi workflow: 4 ô bắt buộc</h2>
@@ -598,11 +598,12 @@ function Part2View() {
   return (
     <div>
       <p style={{ font: "400 19px/1.85 var(--font-body)", color: "var(--fg-1)", margin: "0 0 20px" }}>
-        <span style={{ float: "left", font: "italic 900 74px/.72 var(--font-serif)", color: "var(--gold-deep)", padding: "6px 12px 0 0" }}>L</span>LM chỉ biết thông tin tới thời điểm <b>knowledge cutoff</b> (I1.1) và không tự tra cứu bên ngoài. Vậy làm sao AI trả lời chính xác về <b>chính sách đổi trả</b>, <b>tồn kho thực tế</b> hay <b>tài liệu mới</b> của YODY? Hai cách sai phổ biến: (a) để AI tự suy luận → <b>bịa (hallucination)</b>; (b) nhồi cả tài liệu vào prompt → quá tải context, tốn token, <em>lost-in-the-middle</em>. Lời giải đúng là <b>RAG</b>.
+        <span style={{ float: "left", font: "italic 900 74px/.72 var(--font-serif)", color: "var(--gold-deep)", padding: "6px 12px 0 0" }}>L</span>
+        LM chỉ có tri thức đến thời điểm khóa dữ liệu huấn luyện (*knowledge cutoff* — I1.1) và không thể tự truy cập thông tin bên ngoài. Vậy làm sao AI có thể trả lời chính xác về *chính sách đổi trả mới nhất, số lượng tồn kho thực tế,* hay *các tài liệu quy trình nội bộ* của YODY? Hai cách làm sai phổ biến thường thấy là: (a) Để AI tự suy diễn tự do → dẫn đến <b>bịa đặt thông tin (hallucination)</b>; (b) Nhét toàn bộ tài liệu dày cộp vào prompt → gây quá tải ngữ cảnh (context), tốn kém chi phí token và gặp lỗi trôi thông tin (*lost-in-the-middle*). Lời giải chuẩn xác ở đây là áp dụng <b>RAG</b>.
       </p>
 
       <h2 style={{ font: "700 27px/1.2 var(--font-impact)", letterSpacing: "-.012em", color: "var(--fg-1)", margin: "44px 0 16px" }}>1 · RAG là gì — pipeline 4 bước</h2>
-      <p style={{ font: "400 18px/1.8 var(--font-body)", color: "var(--fg-2)", margin: "0 0 20px" }}><b>RAG (Retrieval-Augmented Generation)</b>: trước khi trả lời, hệ thống tự <b style={{ color: "var(--fg-1)" }}>tìm &amp; trích đúng phân đoạn tài liệu liên quan</b>, đưa vào context để AI biên soạn câu trả lời <b>dựa trên tài liệu đó</b>.</p>
+      <p style={{ font: "400 18px/1.8 var(--font-body)", color: "var(--fg-2)", margin: "0 0 20px" }}><b>RAG (Retrieval-Augmented Generation - Tạo lập tăng cường truy xuất)</b> hoạt động theo nguyên lý: Trước khi trả lời câu hỏi, hệ thống sẽ tự động <b style={{ color: "var(--fg-1)" }}>truy xuất (tìm và trích) đúng những phân đoạn tài liệu liên quan nhất</b>, sau đó đưa vào ngữ cảnh (context) để AI biên soạn câu trả lời <b>dựa trên chính căn cứ tài liệu thực tế đó</b>.</p>
       <figure style={{ margin: "0 0 22px" }}>
         <div style={{ border: "1px solid var(--border)", borderRadius: "14px", background: "#fff", padding: "22px 24px", display: "flex", alignItems: "stretch", gap: "8px", flexWrap: "wrap", justifyContent: "center" }}>
           {RAG_STEPS.map((s, i) => (
@@ -624,7 +625,7 @@ function Part2View() {
       </div>
 
       <h2 style={{ font: "700 27px/1.2 var(--font-impact)", letterSpacing: "-.012em", color: "var(--fg-1)", margin: "44px 0 16px" }}>2 · Embedding &amp; Vector Search — trái tim của "truy hồi"</h2>
-      <p style={{ font: "400 18px/1.8 var(--font-body)", color: "var(--fg-2)", margin: "0 0 18px" }}><b>Embedding</b> (I1.1) mã hóa văn bản thành vector số sao cho <i>nội dung tương đồng nghĩa nằm gần nhau</i>. <b>Vector search</b> số hóa câu hỏi thành vector rồi tìm các đoạn có vector gần nhất — tức tìm theo <b style={{ color: "var(--fg-1)" }}>sự tương đồng ý nghĩa</b>, không phụ thuộc khớp từ khóa chính xác.</p>
+      <p style={{ font: "400 18px/1.8 var(--font-body)", color: "var(--fg-2)", margin: "0 0 18px" }}><b>Embedding</b> (đã học ở I1.1) là kỹ thuật mã hóa văn bản thành các vector số sao cho *những nội dung có ý nghĩa tương đồng sẽ nằm gần nhau*. **Vector search** sẽ số hóa câu hỏi của người dùng thành vector, rồi tìm kiếm các phân đoạn tài liệu có vector nằm gần nhất — tức là tìm kiếm theo <b style={{ color: "var(--fg-1)" }}>sự tương đồng về mặt ý nghĩa (ngữ nghĩa)</b>, hoàn toàn không phụ thuộc vào việc khớp từ khóa chính xác từng chữ.</p>
       <figure style={{ margin: "0 0 22px" }}>
         <div style={{ border: "1.5px solid var(--gold-deep)", borderRadius: "14px", background: "var(--gold-tint)", padding: "22px 26px" }}>
           <div style={{ display: "flex", gap: "12px", alignItems: "center", flexWrap: "wrap", justifyContent: "center" }}>
@@ -655,7 +656,7 @@ function Part2View() {
       </div>
       <div style={{ margin: "0 0 26px", padding: "18px 22px", background: "var(--iris-tint)", borderLeft: "3px solid var(--iris)", borderRadius: "0 10px 10px 0" }}>
         <div style={{ font: "700 11px/1 var(--font-mono)", letterSpacing: ".14em", textTransform: "uppercase", color: "var(--iris-deep)", marginBottom: "8px" }}>Tư duy chẩn đoán của Builder</div>
-        <p style={{ font: "16px/1.7 var(--font-body)", color: "var(--fg-1)", margin: 0 }}>Khi RAG trả lời sai/thiếu, câu hỏi đầu tiên: <b>"Hệ thống có truy xuất đúng phân đoạn chứa câu trả lời không?"</b> Nếu phân đoạn đúng còn không được đưa vào context → lỗi ở khâu <b>truy xuất</b> (chunk, câu hỏi, kho tài liệu), không phải năng lực ngôn ngữ của AI.</p>
+        <p style={{ font: "16px/1.7 var(--font-body)", color: "var(--fg-1)", margin: 0 }}>Mỗi khi hệ thống RAG trả lời sai hoặc thiếu thông tin, câu hỏi đầu tiên bạn phải tự đặt ra là: <b>&quot;Hệ thống đã truy xuất đúng phân đoạn tài liệu chứa câu trả lời hay chưa?&quot;</b> Nếu phân đoạn chứa câu trả lời chính xác còn không được đưa vào ngữ cảnh gửi cho AI, thì lỗi hoàn toàn nằm ở khâu <b>truy xuất (retrieval)</b> (do chia nhỏ chunk sai, câu hỏi chưa rõ nghĩa, hoặc kho tài liệu thiếu thông tin), chứ không phải do năng lực ngôn ngữ của mô hình AI.</p>
       </div>
 
       <h2 style={{ font: "700 27px/1.2 var(--font-impact)", letterSpacing: "-.012em", color: "var(--fg-1)", margin: "44px 0 16px" }}>4 · RAG trong bức tranh chọn cách tiếp cận</h2>
@@ -675,7 +676,7 @@ function Part2View() {
         </div>
         <figcaption style={{ font: "italic 400 14px/1.5 var(--font-body)", color: "var(--fg-3)", marginTop: "10px", textAlign: "center" }}>Hình 3 — Ưu tiên prompt → RAG khi cần thêm kiến thức → fine-tuning là giải pháp cuối.</figcaption>
       </figure>
-      <p style={{ font: "400 16px/1.7 var(--font-body)", color: "var(--fg-2)", margin: "0 0 20px" }}>RAG giải quyết vấn đề <b style={{ color: "var(--fg-1)" }}>kiến thức</b> (AI thiếu thông tin), không giải quyết vấn đề <b>kỹ năng</b> (AI diễn đạt kém). Đây cũng là phương thuốc tốt nhất hạn chế <b>hallucination</b>: bắt AI trả lời dựa trên căn cứ tài liệu thật (grounding · I1.2).</p>
+      <p style={{ font: "400 16px/1.7 var(--font-body)", color: "var(--fg-2)", margin: "0 0 20px" }}>Hãy nhớ rằng: RAG giải quyết triệt để điểm yếu về <b style={{ color: "var(--fg-1)" }}>kiến thức</b> (khi AI thiếu thông tin), chứ không giải quyết điểm yếu về <b>kỹ năng</b> (khi AI diễn đạt kém hoặc viết sai định dạng). Đây cũng là phương án hiệu quả nhất để ngăn chặn lỗi <b>hallucination (bịa đặt thông tin)</b>: bắt buộc AI phải trả lời dựa trên căn cứ dữ liệu thực tế được cung cấp (đáp ứng nguyên tắc grounding - I1.2).</p>
       <div style={{ margin: "0 0 26px", padding: "16px 20px", background: "var(--rose-tint)", borderLeft: "3px solid var(--rose-deep)", borderRadius: "0 10px 10px 0", font: "15px/1.7 var(--font-body)", color: "var(--fg-1)" }}><b style={{ color: "var(--rose-deep)" }}>An toàn bảo mật:</b> kho tài liệu RAG có thể chứa dữ liệu kinh doanh nhạy cảm hoặc PII → phân quyền chặt, ẩn PII ngay từ nguồn. Guardrails chi tiết học ở <b>I5.2</b>.</div>
 
       <TldrDark items={[
@@ -698,7 +699,7 @@ function Part3View({ go }: { go: (p: Page, part?: number) => void }) {
   return (
     <div>
       <p style={{ font: "400 19px/1.85 var(--font-body)", color: "var(--fg-1)", margin: "0 0 20px" }}>
-        <span style={{ float: "left", font: "italic 900 74px/.72 var(--font-serif)", color: "var(--mint-deep)", padding: "6px 12px 0 0" }}>Đ</span>ể quy trình tự động (Phần 1) hoạt động hiệu quả, AI cần <b>kết nối với thế giới bên ngoài</b> nhằm thu thập dữ liệu hoặc thực thi hành động. Phần này giới thiệu các phương thức kết nối cốt lõi: <b>MCP</b>, công cụ (tools), kỹ năng (skills) và trình cắm (plugins).
+        Để quy trình tự động hóa (Phần 1) thực sự phát huy hiệu quả, AI cần có khả năng <b>kết nối trực tiếp với thế giới bên ngoài</b> để thu thập dữ liệu thời gian thực hoặc thực thi các hành động cụ thể. Phần này sẽ giúp bạn hiểu rõ các phương thức kết nối cốt lõi: <b>MCP</b>, công cụ (tools), kỹ năng (skills) và trình cắm (plugins).
       </p>
 
       <h2 style={{ font: "700 27px/1.2 var(--font-impact)", letterSpacing: "-.012em", color: "var(--fg-1)", margin: "44px 0 16px" }}>1 · Từ Tool Use đến MCP</h2>
@@ -718,17 +719,17 @@ function Part3View({ go }: { go: (p: Page, part?: number) => void }) {
         </div>
         <figcaption style={{ font: "italic 400 14px/1.5 var(--font-body)", color: "var(--fg-3)", marginTop: "10px", textAlign: "center" }}>Hình 1 — MCP = ổ cắm chuẩn để AI kết nối công cụ &amp; nguồn dữ liệu doanh nghiệp.</figcaption>
       </figure>
-      <div style={{ margin: "0 0 26px", padding: "16px 20px", background: "var(--mint-tint)", borderLeft: "3px solid var(--mint)", borderRadius: "0 10px 10px 0", font: "15px/1.7 var(--font-body)", color: "var(--fg-1)" }}><b style={{ color: "var(--mint-deep)" }}>Vì sao Builder cần quan tâm:</b> MCP cho AI truy cập <b>hệ thống dữ liệu cốt lõi của YODY</b> (kho sản phẩm, đơn hàng, tài liệu nội bộ) theo cách chuẩn hóa &amp; tái sử dụng cao — nền tảng để dựng agentic workflow trong thực tế.</div>
+      <div style={{ margin: "0 0 26px", padding: "16px 20px", background: "var(--mint-tint)", borderLeft: "3px solid var(--mint)", borderRadius: "0 10px 10px 0", font: "15px/1.7 var(--font-body)", color: "var(--fg-1)" }}><b style={{ color: "var(--mint-deep)" }}>Vì sao Builder cần đặc biệt quan tâm:</b> MCP mở ra cánh cửa cho phép AI truy cập vào <b>các hệ thống dữ liệu cốt lõi của YODY</b> (như kho sản phẩm, hệ thống đơn hàng, tài liệu quy trình nội bộ) theo một cách chuẩn hóa và có tính tái sử dụng cực kỳ cao — làm nền tảng vững chắc để xây dựng các agentic workflow trong thực tế.</div>
 
       <h2 style={{ font: "700 27px/1.2 var(--font-impact)", letterSpacing: "-.012em", color: "var(--fg-1)", margin: "44px 0 16px" }}>2 · Skills &amp; Plugins — mở rộng năng lực đúng cách</h2>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "14px", margin: "0 0 22px" }}>
         <div style={{ padding: "20px 22px", border: "1px solid var(--gold-deep)", borderRadius: "12px", background: "var(--gold-tint)" }}>
           <div style={{ font: "700 13px/1 var(--font-brand)", color: "var(--gold-deep)", marginBottom: "8px" }}>🎁 KỸ NĂNG (SKILL)</div>
-          <div style={{ font: "15px/1.65 var(--font-body)", color: "var(--fg-1)" }}>Quy trình xử lý công việc <b>đóng gói để tái sử dụng</b> (vd "phân loại review khách thành 6 nhóm chuẩn") → AI gọi lại &amp; làm nhất quán nhiều lần.</div>
+          <div style={{ font: "15px/1.65 var(--font-body)", color: "var(--fg-1)" }}>Kỹ năng (Skill): Quy trình xử lý một nghiệp vụ cụ thể được đóng gói và chuẩn hóa (ví dụ: &quot;phân loại đánh giá của khách hàng thành 6 nhóm lý do đổi trả chuẩn&quot;) → giúp AI thực hiện nhất quán và chính xác ở mọi lần chạy tiếp theo.</div>
         </div>
         <div style={{ padding: "20px 22px", border: "1px solid var(--iris)", borderRadius: "12px", background: "var(--iris-tint)" }}>
           <div style={{ font: "700 13px/1 var(--font-brand)", color: "var(--iris-deep)", marginBottom: "8px" }}>🔌 TRÌNH CẮM (PLUGIN)</div>
-          <div style={{ font: "15px/1.65 var(--font-body)", color: "var(--fg-1)" }}>Cổng <b>kết nối kỹ thuật đến công cụ/nguồn ngoài</b> (database, dịch vụ bên thứ ba). Thường vận hành trên chuẩn như MCP.</div>
+          <div style={{ font: "15px/1.65 var(--font-body)", color: "var(--fg-1)" }}>Trình cắm (Plugin): Cổng kết nối kỹ thuật trực tiếp tới các công cụ hoặc nguồn dữ liệu bên ngoài (như database, API của bên thứ ba), thường được vận hành trên giao thức chuẩn hóa như MCP.</div>
         </div>
       </div>
       <div style={{ border: "1px solid var(--border)", borderRadius: "14px", overflow: "hidden", margin: "0 0 22px" }}>
@@ -759,7 +760,7 @@ function Part3View({ go }: { go: (p: Page, part?: number) => void }) {
       </div>
 
       <h2 style={{ font: "700 27px/1.2 var(--font-impact)", letterSpacing: "-.012em", color: "var(--fg-1)", margin: "44px 0 16px" }}>3 · An toàn khi kết nối nguồn thật</h2>
-      <p style={{ font: "400 18px/1.8 var(--font-body)", color: "var(--fg-2)", margin: "0 0 18px" }}>Nối AI với hệ thống thật qua MCP/Plugin làm rủi ro bảo mật tăng: AI có thể vô tình đọc thông tin nhạy cảm hoặc tự thực hiện hành động gây lỗi. Áp dụng nghiêm ngặt ba kỷ luật:</p>
+      <p style={{ font: "400 18px/1.8 var(--font-body)", color: "var(--fg-2)", margin: "0 0 18px" }}>Việc kết nối AI trực tiếp với hệ thống thật thông qua MCP/Plugin sẽ làm tăng các rủi ro về an toàn thông tin: AI có thể vô tình truy cập dữ liệu nhạy cảm hoặc tự động thực hiện các hành động gây lỗi hệ thống. Để phòng tránh, bạn bắt buộc phải tuân thức nghiêm ngặt ba kỷ luật an toàn sau:</p>
       <div style={{ display: "flex", flexDirection: "column", gap: "12px", margin: "0 0 22px" }}>
         {SAFETY_3.map((s, i) => (
           <div key={i} style={{ display: "flex", gap: "14px", alignItems: "flex-start", border: `1px solid ${s.border}`, borderRadius: "12px", background: s.bg, padding: "16px 18px" }}>

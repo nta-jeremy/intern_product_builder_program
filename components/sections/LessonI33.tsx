@@ -101,7 +101,7 @@ const A = "Phần A · Bằng chứng · Feedback", B = "Phần B · Iterate · 
 const EXAM: ExamQ[] = [
   { part: A, q: "Cách bảo vệ deliverable mạnh nhất là gì?", opts: ["Kể câu chuyện bằng chứng (bài toán, người dùng, giá trị đo được)", "Kể em đã bỏ bao nhiêu giờ và thử bao nhiêu prompt", "Trình bày thật dài và chi tiết", "Nói mình đã cố gắng hết sức"], correct: 0, why: "Bảo vệ mạnh = kể câu chuyện bằng chứng (người dùng, giá trị đo được), không kể công sức. (File 1)" },
   { part: A, q: "Cấu trúc trình bày 4 nhịp gồm?", opts: ["Token → Cost → Latency → Accuracy", "Bài toán → Workflow → Ai đã dùng → Giá trị đo được", "Input → AI → Output → Review", "Nói → Nghĩ → Làm → Cảm"], correct: 1, why: "4 nhịp: Bài toán → Workflow → Ai đã dùng → Giá trị đo được. (File 1)" },
-  { part: A, q: "\"Em đã thử 30 prompt, mất 2 ngày\" là kiểu trình bày gì?", opts: ["Trình bày bằng chứng, rất mạnh", "Trình bày giá trị đo được", "Trình bày công sức — yếu, vì mentor không chỉ đánh giá dựa trên nỗ lực đơn thuần", "Trình bày workflow"], correct: 2, why: "\"Thử 30 prompt, mất 2 ngày\" là trình bày công sức — yếu, vì mentor không chỉ đánh giá dựa trên nỗ lực đơn thuần. (File 1)" },
+  { part: A, q: "\"Em đã thử 30 prompt, mất 2 ngày\" là kiểu trình bày gì?", opts: ["Trình bày bằng chứng, rất mạnh", "Trình bày giá trị đo được", "Trình bày công sức — yếu, vì mentor đánh giá dựa trên hiệu quả thực tế, không chỉ nỗ lực đơn thuần", "Trình bày workflow"], correct: 2, why: "\"Thử 30 prompt, mất 2 ngày\" là trình bày công sức — yếu, vì mentor đánh giá dựa trên hiệu quả thực tế, không chỉ nỗ lực đơn thuần." },
   { part: A, q: "Nên coi feedback từ mentor là gì?", opts: ["Sự công kích cá nhân", "Điều nên tranh luận lại ngay", "Thứ nên bỏ qua nếu mình tự tin", "Dữ liệu miễn phí về sản phẩm để cải thiện"], correct: 3, why: "Feedback là dữ liệu miễn phí về sản phẩm, không phải công kích. (File 1)" },
   { part: A, q: "Vì sao phòng thủ khi nhận feedback lại có hại?", opts: ["Nó khiến bạn bỏ lỡ các phản hồi giá trị để cải tiến", "Nó tốn token", "Nó làm mentor vui", "Nó không có hại gì"], correct: 0, why: "Phòng thủ khiến bạn bỏ lỡ các phản hồi giá trị để cải tiến. (File 1)" },
   { part: A, q: "Ba nhóm feedback để phân loại là gì?", opts: ["Tốt · Xấu · Trung bình", "Lỗi sự thật · Thiếu sót · Khác quan điểm", "Nguồn · Số liệu · Edge case", "A · B · C"], correct: 1, why: "3 nhóm: Lỗi sự thật · Thiếu sót · Khác quan điểm. (File 1)" },
@@ -110,7 +110,7 @@ const EXAM: ExamQ[] = [
   { part: A, q: "Nhịp \"Ai đã dùng\" trong bảo vệ nhằm chứng minh điều gì?", opts: ["Có người thật đã dùng/review deliverable (tín hiệu thực tế)", "Số giờ đã bỏ ra", "Số prompt đã thử", "Deliverable trình bày đẹp"], correct: 0, why: "Nhịp \"Ai đã dùng\" chứng minh có người thật đã dùng/review (tín hiệu thực tế). (File 1)" },
   { part: A, q: "Mentor xét deliverable dựa trên điều gì là chính?", opts: ["Nỗ lực và số giờ làm", "Tín hiệu thực tế: bài toán thật, người dùng, giá trị đo được", "Độ dài của tài liệu", "Số lượng tính năng"], correct: 1, why: "Mentor xét tín hiệu thực tế: bài toán thật, người dùng, giá trị đo được. (File 1)" },
   { part: B, q: "\"Iterate có trọng tâm\" nghĩa là gì?", opts: ["Sửa tất cả feedback cùng lúc", "Không sửa gì cả", "Chọn 1–2 điểm tác động lớn nhất, sửa đúng chỗ, chứng minh tốt hơn", "Viết lại toàn bộ từ đầu"], correct: 2, why: "Iterate có trọng tâm = chọn 1–2 điểm tác động lớn, sửa đúng chỗ, chứng minh tốt hơn. (File 2)" },
-  { part: B, q: "Vì sao không nên \"sửa tất cả cùng lúc\"?", opts: ["Vì tốn token", "Vì mentor cấm", "Vì AI không cho phép", "Vì tốn công dàn trải và nếu tốt hơn cũng không biết nhờ đâu"], correct: 3, why: "Sửa tất cả cùng lúc: tốn công dàn trải và không biết cải thiện nhờ đâu. (File 2)" },
+  { part: B, q: "Vì sao không nên \"sửa tất cả cùng lúc\"?", opts: ["Vì tốn token", "Vì mentor cấm", "Vì AI không cho phép", "Vì dễ tốn công sức dàn trải, và nếu kết quả tốt hơn cũng không rõ cải thiện nhờ đâu"], correct: 3, why: "Sửa tất cả cùng lúc sẽ gây tốn công sức dàn trải, và nếu kết quả có tốt hơn bạn cũng không rõ cải thiện nhờ đâu." },
   { part: B, q: "Bảng before-after dùng để làm gì?", opts: ["Chứng minh delta cải thiện (cái gì tốt hơn, bao nhiêu) giữa v1 và v2", "Liệt kê mọi tính năng", "Tính chi phí token", "Ghi lại toàn bộ prompt đã dùng"], correct: 0, why: "Before-after chứng minh delta cải thiện giữa v1 và v2. (File 2)" },
   { part: B, q: "Một vòng iterate đúng gồm các bước nào?", opts: ["Sửa mò → hy vọng tốt hơn", "Feedback → chọn điểm sửa → sửa → đo lại", "Đứng bánh chờ chỉ dẫn", "Xóa hết rồi làm lại"], correct: 1, why: "Một vòng iterate: feedback → chọn điểm sửa → sửa → đo lại. (File 2)" },
   { part: B, q: "Khi nghiệp vụ và kỹ thuật bất đồng, nên tạo đồng thuận dựa trên?", opts: ["Ai to tiếng hơn", "Ý kiến của người cấp cao nhất", "Bằng chứng người dùng / câu hỏi \"điều này phục vụ khách & outcome thế nào?\"", "Bỏ phiếu ngẫu nhiên"], correct: 2, why: "Tạo đồng thuận dựa trên bằng chứng người dùng / câu hỏi phục vụ khách & outcome. (File 2)" },
@@ -242,7 +242,7 @@ function OverviewScreen({ go }: { go: (p: Page, part?: number) => void }) {
           <section style={{ marginTop: "52px", borderTop: "2px solid var(--fg-1)", paddingTop: "30px" }}>
             <h2 style={{ font: "700 26px/1.2 var(--font-impact)", letterSpacing: "-.012em", color: "var(--fg-1)", margin: "0 0 14px" }}>Vì sao buổi này quan trọng</h2>
             <p style={{ font: "400 18px/1.75 var(--font-body)", color: "var(--fg-2)", margin: 0, maxWidth: "660px", textWrap: "pretty" }}>
-              Đây là <b style={{ color: "var(--fg-1)" }}>buổi Gate 3</b>, khép lại giai đoạn Workflow &amp; Deliverable. Bạn mang deliverable đã QC ở <b style={{ color: "var(--fg-1)" }}>I3.2</b> đi bảo vệ trực tiếp trước mentor. Buổi này rèn ba hành vi quyết định thành bại ở giai đoạn mới vào nghề: <b style={{ color: "var(--fg-1)" }}>trình bày bằng chứng</b> (không kể công sức), <b style={{ color: "var(--fg-1)" }}>đón feedback như dữ liệu</b> (không phòng thủ), và <b style={{ color: "var(--fg-1)" }}>iterate có trọng tâm</b> để chứng minh phiên bản sau tốt hơn. Đây cũng là hành vi cộng tác mà mentor xét kỹ nhất — <b style={{ color: "var(--fg-1)" }}>tiêu chí bắt buộc để tốt nghiệp</b>.
+              Đây là <b style={{ color: "var(--fg-1)" }}>buổi Gate 3</b>, khép lại giai đoạn Workflow &amp; Deliverable. Bạn mang deliverable đã QC ở <b style={{ color: "var(--fg-1)" }}>I3.2</b> đi bảo vệ trực tiếp trước mentor. Buổi này rèn ba hành vi quyết định thành bại ở giai đoạn mới vào nghề: <b style={{ color: "var(--fg-1)" }}>trình bày bằng chứng</b> (không kể công sức), <b style={{ color: "var(--fg-1)" }}>đón nhận feedback như dữ liệu</b> (không phòng thủ), và <b style={{ color: "var(--fg-1)" }}>iterate có trọng tâm</b> để chứng minh phiên bản sau tốt hơn. Đây cũng là hành vi cộng tác mà mentor xét kỹ nhất — <b style={{ color: "var(--fg-1)" }}>tiêu chí bắt buộc để tốt nghiệp</b>.
             </p>
           </section>
 
@@ -427,7 +427,7 @@ function Part1View() {
   return (
     <div>
       <p style={{ font: "400 19px/1.85 var(--font-body)", color: "var(--fg-1)", margin: "0 0 20px" }}>
-        <span style={{ float: "left", font: "italic 900 74px/.72 var(--font-serif)", color: "var(--iris)", padding: "6px 12px 0 0" }}>S</span>ai lầm phổ biến khi bảo vệ deliverable: kể <i>&quot;em đã làm rất nhiều&quot;</i> — số giờ bỏ ra, số prompt đã thử, số đêm thức. Mentor <b>không chỉ đánh giá dựa trên nỗ lực đơn thuần</b>; mentor cần thấy <b>tín hiệu thực tế</b>: bài toán có thật, giải pháp có người dùng, giá trị đo được.
+        <span style={{ float: "left", font: "italic 900 74px/.72 var(--font-serif)", color: "var(--iris)", padding: "6px 12px 0 0" }}>S</span>ai lầm phổ biến khi bảo vệ deliverable: bào chữa rằng <i>&quot;em đã làm rất nhiều&quot;</i> — kể lể số giờ bỏ ra, số prompt đã thử hay số đêm thức trắng. Mentor <b>không chỉ đánh giá nỗ lực đơn thuần</b>, mà cần thấy <b>tín hiệu thực tế</b>: bài toán có thật, giải pháp có người dùng và giá trị đo lường được.
       </p>
 
       <h2 style={{ font: "700 27px/1.2 var(--font-impact)", letterSpacing: "-.012em", color: "var(--fg-1)", margin: "44px 0 16px" }}>1 · Bảo vệ = kể câu chuyện bằng chứng, không kể công sức</h2>
@@ -436,7 +436,7 @@ function Part1View() {
           <div style={{ border: "1px solid var(--rose-deep)", borderRadius: "12px", background: "var(--rose-tint)", padding: "20px 22px" }}>
             <div style={{ font: "700 12px/1 var(--font-mono)", letterSpacing: ".1em", color: "var(--rose-deep)", marginBottom: "12px" }}>✕ KỂ CÔNG SỨC — YẾU</div>
             <div style={{ font: "15px/1.65 var(--font-body)", color: "var(--fg-1)" }}>&quot;Em thử 30 prompt, mất 2 ngày, thức mấy đêm.&quot;</div>
-            <div style={{ font: "13.5px/1.55 var(--font-body)", color: "var(--fg-2)", marginTop: "12px", borderTop: "1px dashed var(--rose-deep)", paddingTop: "10px" }}>Không nói được sản phẩm có ai dùng, tạo giá trị gì.</div>
+            <div style={{ font: "13.5px/1.55 var(--font-body)", color: "var(--fg-2)", marginTop: "12px", borderTop: "1px dashed var(--rose-deep)", paddingTop: "10px" }}>Không chứng minh được sản phẩm có ai dùng hay tạo ra giá trị gì.</div>
           </div>
           <div style={{ border: "1px solid var(--mint)", borderRadius: "12px", background: "var(--mint-tint)", padding: "20px 22px" }}>
             <div style={{ font: "700 12px/1 var(--font-mono)", letterSpacing: ".1em", color: "var(--mint-deep)", marginBottom: "12px" }}>✓ KỂ BẰNG CHỨNG — MẠNH</div>
@@ -448,7 +448,7 @@ function Part1View() {
       </figure>
 
       <h2 style={{ font: "700 27px/1.2 var(--font-impact)", letterSpacing: "-.012em", color: "var(--fg-1)", margin: "44px 0 16px" }}>2 · Cấu trúc trình bày 4 nhịp</h2>
-      <p style={{ font: "400 18px/1.8 var(--font-body)", color: "var(--fg-2)", margin: "0 0 20px" }}>Bảo vệ ngắn gọn theo đúng 4 nhịp — mỗi nhịp trả lời một câu hỏi:</p>
+      <p style={{ font: "400 18px/1.8 var(--font-body)", color: "var(--fg-2)", margin: "0 0 20px" }}>Trình bày bảo vệ ngắn gọn theo đúng 4 nhịp — mỗi nhịp trả lời một câu hỏi cốt lõi:</p>
       <figure style={{ margin: "0 0 22px" }}>
         <div style={{ border: "1px solid var(--border)", borderRadius: "14px", overflow: "hidden" }}>
           <div style={{ display: "grid", gridTemplateColumns: "1.1fr 1.1fr 1.3fr" }}>
@@ -471,14 +471,14 @@ function Part1View() {
       </figure>
       <div style={{ margin: "0 0 26px", padding: "18px 22px", background: "var(--iris-tint)", borderLeft: "3px solid var(--iris)", borderRadius: "0 10px 10px 0" }}>
         <div style={{ font: "700 11px/1 var(--font-mono)", letterSpacing: ".14em", textTransform: "uppercase", color: "var(--iris-deep)", marginBottom: "8px" }}>Ví dụ YODY · giả lập</div>
-        <p style={{ font: "16px/1.7 var(--font-body)", color: "var(--fg-1)", margin: 0 }}>&quot;(1) Khách hay chọn sai size khi mua online → đổi trả tăng. (2) Workflow: AI gợi ý size từ số đo, có checkpoint nhân viên duyệt (HITL). (3) 3 nhân viên CSKH đã dùng thử 1 tuần. (4) Tỉ lệ đổi trả do sai size trong nhóm thử giảm từ 12% xuống 9%.&quot; — bốn nhịp, toàn bằng chứng.</p>
+        <p style={{ font: "16px/1.7 var(--font-body)", color: "var(--fg-1)", margin: 0 }}>&quot;(1) Bài toán: Khách hay chọn sai size khi mua online khiến tỷ lệ đổi trả tăng. (2) Workflow: AI tự động gợi ý size từ số đo, có nhân viên duyệt lại ở các ca khó (HITL). (3) Ai đã dùng: 3 nhân viên CSKH đã dùng thử nghiệm trong 1 tuần. (4) Giá trị đo được: Tỷ lệ đổi trả do sai size trong nhóm thử nghiệm giảm từ 12% xuống 9%.&quot; — Ngắn gọn, súc tích và đầy đủ bằng chứng.</p>
       </div>
 
       <h2 style={{ font: "700 27px/1.2 var(--font-impact)", letterSpacing: "-.012em", color: "var(--fg-1)", margin: "44px 0 16px" }}>3 · Feedback là dữ liệu, không phải công kích</h2>
-      <p style={{ font: "400 18px/1.8 var(--font-body)", color: "var(--fg-2)", margin: "0 0 18px" }}>Khi mentor/đồng nghiệp chỉ ra điểm yếu, phản xạ tự nhiên là <b>phòng thủ</b> (giải thích, bào chữa, khó chịu). Đây là sai lầm lớn nhất: thái độ phòng thủ khiến bạn <b>bỏ lỡ những phản hồi giá trị để cải tiến sản phẩm</b>. Hãy coi feedback là <b>dữ liệu miễn phí về sản phẩm</b> — không phải phán xét về con người bạn.</p>
+      <p style={{ font: "400 18px/1.8 var(--font-body)", color: "var(--fg-2)", margin: "0 0 18px" }}>Khi mentor hoặc đồng nghiệp chỉ ra điểm yếu của sản phẩm, phản xạ tự nhiên của bạn thường là <b>phòng thủ</b> (giải thích, bào chữa hoặc cảm thấy khó chịu). Đây là sai lầm phổ biến nhất: sự phòng thủ sẽ khiến bạn <b>bỏ lỡ những phản hồi đắt giá để cải tiến sản phẩm</b>. Hãy coi feedback là <b>dữ liệu miễn phí để nâng cấp sản phẩm</b> — đó không phải là sự phán xét năng lực cá nhân bạn.</p>
       <div style={{ margin: "0 0 26px", padding: "18px 22px", background: "var(--gold-tint)", borderLeft: "3px solid var(--gold)", borderRadius: "0 10px 10px 0" }}>
         <div style={{ font: "700 11px/1 var(--font-mono)", letterSpacing: ".14em", textTransform: "uppercase", color: "var(--gold-deep)", marginBottom: "8px" }}>Đổi tư duy</div>
-        <p style={{ font: "16px/1.7 var(--font-body)", color: "var(--fg-1)", margin: 0 }}>Thay vì nghe <i>&quot;cái này chưa ổn&quot;</i> và thấy bị chê, hãy nghe nó như <i>&quot;đây là một điểm dữ liệu giúp mình biết chỗ nào cải thiện được&quot;</i>.</p>
+        <p style={{ font: "16px/1.7 var(--font-body)", color: "var(--fg-1)", margin: 0 }}>Thay vì nghe câu <i>&quot;cái này chưa ổn&quot;</i> và cảm thấy bị chỉ trích, hãy đón nhận nó như: <i>&quot;đây là một điểm dữ liệu thực tế giúp mình biết chính xác chỗ cần cải thiện&quot;</i>.</p>
       </div>
 
       <h2 style={{ font: "700 27px/1.2 var(--font-impact)", letterSpacing: "-.012em", color: "var(--fg-1)", margin: "44px 0 16px" }}>4 · Phân loại 3 nhóm feedback để xử lý đúng</h2>
@@ -498,7 +498,7 @@ function Part1View() {
         <figcaption style={{ font: "italic 400 14px/1.5 var(--font-body)", color: "var(--fg-3)", marginTop: "10px", textAlign: "center" }}>Hình 3 — Ba nhóm feedback: phân loại trước, rồi mới hành động.</figcaption>
       </figure>
       <div style={{ margin: "0 0 26px", padding: "16px 20px", background: "var(--rose-tint)", borderLeft: "3px solid var(--rose-deep)", borderRadius: "0 10px 10px 0", font: "15px/1.7 var(--font-body)", color: "var(--fg-1)" }}>
-        <b style={{ color: "var(--rose-deep)" }}>Phân biệt nhóm 1 với nhóm 3:</b> <b>lỗi sự thật</b> thì sửa không bàn cãi; <b>khác quan điểm</b> thì bạn được quyền giữ lựa chọn <i>nếu</i> có bằng chứng — nhưng phải trình bày lý do, không phòng thủ cảm tính.
+        <b style={{ color: "var(--rose-deep)" }}>Phân biệt nhóm 1 và nhóm 3:</b> Với <b>lỗi sự thật</b>, bạn cần sửa ngay lập tức mà không cần tranh cãi. Với nhóm <b>khác quan điểm</b>, bạn hoàn toàn có quyền bảo vệ lựa chọn của mình <i>nếu</i> có bằng chứng thuyết phục — nhưng hãy giải thích một cách khách quan, tránh phòng thủ cảm tính.
       </div>
 
       <TldrDark items={[
@@ -521,11 +521,11 @@ function Part2View({ go }: { go: (p: Page, part?: number) => void }) {
   return (
     <div>
       <p style={{ font: "400 19px/1.85 var(--font-body)", color: "var(--fg-1)", margin: "0 0 20px" }}>
-        <span style={{ float: "left", font: "italic 900 74px/.72 var(--font-serif)", color: "var(--gold-deep)", padding: "6px 12px 0 0" }}>S</span>au khi nhận feedback, cám dỗ là <b>sửa tất cả cùng lúc</b>. Đó là cách iterate kém: bạn tiêu tốn công sức dàn trải, và nếu kết quả tốt hơn cũng <b>không biết nhờ đâu</b>. Iterate kiểu builder: <b>chọn 1–2 điểm tác động lớn nhất</b>, sửa đúng chỗ đó, rồi <i>chứng minh</i> phiên bản sau tốt hơn.
+        <span style={{ float: "left", font: "italic 900 74px/.72 var(--font-serif)", color: "var(--gold-deep)", padding: "6px 12px 0 0" }}>S</span>au khi nhận feedback, sai lầm dễ mắc phải nhất là <b>cố gắng sửa tất cả mọi thứ cùng lúc</b>. Đây là cách iterate (cải tiến) thiếu hiệu quả: bạn sẽ bị phân tán công sức, và khi kết quả tốt hơn cũng <b>không rõ cải thiện nhờ đâu</b>. Hãy cải tiến như một Product Builder thực thụ: <b>lọc ra 1–2 điểm có tác động lớn nhất</b>, tập trung sửa triệt để, rồi dùng số liệu <i>chứng minh</i> phiên bản mới vượt trội hơn.
       </p>
 
       <h2 style={{ font: "700 27px/1.2 var(--font-impact)", letterSpacing: "-.012em", color: "var(--fg-1)", margin: "44px 0 16px" }}>1 · Iterate có trọng tâm, không sửa lan man</h2>
-      <p style={{ font: "400 18px/1.8 var(--font-body)", color: "var(--fg-2)", margin: "0 0 18px" }}>Cách chọn điểm sửa: ưu tiên <b>lỗi sự thật</b> (nhóm 1 — phải sửa) và <b>thiếu sót tác động lớn</b> (nhóm 2 — ảnh hưởng nhiều tới giá trị/độ tin cậy). Đừng để &quot;khác quan điểm&quot; (nhóm 3) kéo bạn đi sửa những thứ không cần.</p>
+      <p style={{ font: "400 18px/1.8 var(--font-body)", color: "var(--fg-2)", margin: "0 0 18px" }}>Cách chọn điểm cải tiến: Ưu tiên xử lý <b>lỗi sự thật</b> (nhóm 1 — bắt buộc sửa) và <b>thiếu sót có tác động lớn</b> (nhóm 2 — ảnh hưởng trực tiếp đến giá trị hoặc độ tin cậy của sản phẩm). Đừng để những phản hồi thuộc nhóm <b>khác quan điểm</b> (nhóm 3) cuốn bạn vào việc sửa đổi những thứ không thực sự cần thiết.</p>
       <figure style={{ margin: "0 0 22px" }}>
         <div style={{ border: "1px solid var(--border)", borderRadius: "14px", background: "#fff", padding: "22px 24px", display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap", justifyContent: "center" }}>
           <span style={{ font: "600 13px/1.4 var(--font-body)", color: "var(--fg-2)", background: "var(--bg-warm)", border: "1px solid var(--border)", padding: "12px 15px", borderRadius: "9px", textAlign: "center", maxWidth: "170px" }}>Nhiều feedback nhận về</span>
@@ -560,11 +560,11 @@ function Part2View({ go }: { go: (p: Page, part?: number) => void }) {
       </figure>
       <div style={{ margin: "0 0 26px", padding: "18px 22px", background: "var(--iris-tint)", borderLeft: "3px solid var(--iris)", borderRadius: "0 10px 10px 0" }}>
         <div style={{ font: "700 11px/1 var(--font-mono)", letterSpacing: ".14em", textTransform: "uppercase", color: "var(--iris-deep)", marginBottom: "8px" }}>Nguyên tắc</div>
-        <p style={{ font: "16px/1.7 var(--font-body)", color: "var(--fg-1)", margin: 0 }}>Mỗi vòng cải tiến (iterate) = <b>feedback → chọn điểm sửa → sửa → đo lại</b>. Không dậm chân tại chỗ khi kết quả chưa như kỳ vọng, cũng không sửa theo cảm tính. Đây là hành vi khởi đầu cho L4 (build → feedback → iterate).</p>
+        <p style={{ font: "16px/1.7 var(--font-body)", color: "var(--fg-1)", margin: 0 }}>Mỗi chu kỳ cải tiến (iterate) chuẩn xác luôn là: <b>feedback → chọn điểm sửa → thực hiện sửa → đo lường lại</b>. Đừng đứng bánh (nản lòng dừng lại) khi kết quả chưa đạt kỳ vọng, cũng đừng sửa đổi lung tung theo cảm tính. Đây là hành vi cốt lõi để thăng tiến lên cấp độ cao hơn.</p>
       </div>
 
       <h2 style={{ font: "700 27px/1.2 var(--font-impact)", letterSpacing: "-.012em", color: "var(--fg-1)", margin: "44px 0 16px" }}>3 · Cộng tác &amp; tạo đồng thuận giữa nghiệp vụ và kỹ thuật</h2>
-      <p style={{ font: "400 18px/1.8 var(--font-body)", color: "var(--fg-2)", margin: "0 0 18px" }}>Một Product Builder đóng vai trò <b>cầu nối</b> giữa người hiểu nghiệp vụ (khách cần gì) và người làm kỹ thuật (build thế nào). Ở L2, hành vi cộng tác được kỳ vọng:</p>
+      <p style={{ font: "400 18px/1.8 var(--font-body)", color: "var(--fg-2)", margin: "0 0 18px" }}>Một Product Builder luôn đóng vai trò <b>cầu nối vững chắc</b> giữa phòng nghiệp vụ (hiểu khách hàng cần gì) và đội kỹ thuật (hiểu cách build thế nào). Ở cấp độ L2, bạn cần thể hiện các hành vi cộng tác sau:</p>
       <div style={{ display: "flex", flexDirection: "column", gap: "10px", margin: "0 0 20px" }}>
         {COLLAB.map((c, i) => (
           <div key={i} style={{ display: "flex", gap: "13px", alignItems: "flex-start", border: "1px solid var(--border)", borderRadius: "11px", background: "#fff", padding: "14px 16px" }}>
@@ -573,30 +573,30 @@ function Part2View({ go }: { go: (p: Page, part?: number) => void }) {
           </div>
         ))}
       </div>
-      <div style={{ margin: "0 0 26px", padding: "16px 20px", background: "var(--gold-tint)", borderLeft: "3px solid var(--gold)", borderRadius: "0 10px 10px 0", font: "15px/1.7 var(--font-body)", color: "var(--fg-1)" }}>Khi hai bên bất đồng, kéo về câu hỏi <b>&quot;điều này phục vụ khách/outcome thế nào?&quot;</b> — tạo đồng thuận dựa trên bằng chứng người dùng, không dựa trên &quot;ai to tiếng hơn&quot;.</div>
+      <div style={{ margin: "0 0 26px", padding: "16px 20px", background: "var(--gold-tint)", borderLeft: "3px solid var(--gold)", borderRadius: "0 10px 10px 0", font: "15px/1.7 var(--font-body)", color: "var(--fg-1)" }}>Khi xảy ra bất đồng ý kiến giữa các bên, hãy hướng cuộc thảo luận quay về câu hỏi cốt lõi: <b>"Điều này phục vụ khách hàng và mang lại outcome (kết quả thực tế) thế nào?"</b> — tạo đồng thuận dựa trên bằng chứng và dữ liệu người dùng, chứ không dựa trên việc "ai to tiếng hơn".</div>
 
       <h2 style={{ font: "700 27px/1.2 var(--font-impact)", letterSpacing: "-.012em", color: "var(--fg-1)", margin: "44px 0 16px" }}>4 · Chủ động đặt câu hỏi — không im lặng khi bế tắc</h2>
-      <p style={{ font: "400 18px/1.8 var(--font-body)", color: "var(--fg-2)", margin: "0 0 18px" }}>Đây là hành vi <b>trọng tâm bắt buộc để tốt nghiệp (NL3 🔒)</b>. Yếu tố quyết định thành bại của người mới không phải &quot;biết hết&quot;, mà là <b>biết hỏi đúng lúc</b>:</p>
+      <p style={{ font: "400 18px/1.8 var(--font-body)", color: "var(--fg-2)", margin: "0 0 18px" }}>Đây là hành vi <b>trọng tâm bắt buộc để vượt Gate (NL3 🔒)</b>. Yếu tố quyết định sự phát triển của một Builder mới vào nghề không phải là việc &quot;biết tuốt&quot;, mà là <b>biết đặt câu hỏi đúng thời điểm</b>:</p>
       <figure style={{ margin: "0 0 22px" }}>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "14px" }}>
           <div style={{ border: "1px solid var(--rose-deep)", borderRadius: "12px", background: "var(--rose-tint)", padding: "18px 20px" }}>
             <div style={{ font: "700 12px/1 var(--font-mono)", letterSpacing: ".1em", color: "var(--rose-deep)", marginBottom: "12px" }}>✕ SAI — IM LẶNG CHỊU ĐỰNG</div>
-            <div style={{ font: "14px/1.6 var(--font-body)", color: "var(--fg-1)" }}>Ngồi im vài ngày, tự vá tạm, tới hạn mới báo là chưa xong. Tạo rủi ro tiến độ &amp; thiếu ownership.</div>
+            <div style={{ font: "14px/1.6 var(--font-body)", color: "var(--fg-1)" }}>Im lặng chịu đựng, tự loay hoay vá víu tạm bợ, đến sát hạn chót mới báo trễ tiến độ. Điều này gây rủiao lớn cho dự án và thể hiện sự thiếu tinh thần trách nhiệm (ownership).</div>
           </div>
           <div style={{ border: "1px solid var(--mint)", borderRadius: "12px", background: "var(--mint-tint)", padding: "18px 20px" }}>
             <div style={{ font: "700 12px/1 var(--font-mono)", letterSpacing: ".1em", color: "var(--mint-deep)", marginBottom: "12px" }}>✓ ĐÚNG — HỎI CÓ CHUẨN BỊ</div>
-            <div style={{ font: "14px/1.6 var(--font-body)", color: "var(--fg-1)" }}>Hỏi sớm, nêu rõ: đã thử gì, kẹt ở đâu, cần gì — không hỏi kiểu &quot;em không làm được&quot;.</div>
+            <div style={{ font: "14px/1.6 var(--font-body)", color: "var(--fg-1)" }}>Chủ động hỏi sớm và có sự chuẩn bị kỹ lưỡng: nêu rõ mình đã thử phương án nào, đang bị kẹt cụ thể ở đâu và cần hỗ trợ gì — tuyệt đối không hỏi kiểu phó mặc: &quot;em không làm được&quot;.</div>
           </div>
         </div>
         <figcaption style={{ font: "italic 400 14px/1.5 var(--font-body)", color: "var(--fg-3)", marginTop: "10px", textAlign: "center" }}>Hình 3 — Không im lặng khi bế tắc: hỏi sớm, hỏi có chuẩn bị.</figcaption>
       </figure>
       <div style={{ margin: "0 0 26px", padding: "18px 22px", background: "var(--iris-tint)", borderLeft: "3px solid var(--iris)", borderRadius: "0 10px 10px 0" }}>
         <div style={{ font: "700 11px/1 var(--font-mono)", letterSpacing: ".14em", textTransform: "uppercase", color: "var(--iris-deep)", marginBottom: "8px" }}>Ví dụ YODY · giả lập</div>
-        <p style={{ font: "16px/1.7 var(--font-body)", color: "var(--fg-1)", margin: 0 }}>Kẹt vì bảng size các mã hàng không đồng nhất. <b>Đúng:</b> nhắn mentor <i>&quot;Em đang làm gợi ý size, kẹt ở chỗ bảng size 3 mã khác chuẩn nhau — em định gộp theo cách A/B, anh thấy hướng nào ổn?&quot;</i>. <b>Sai:</b> im lặng, tự vá tạm, tới hạn mới báo chưa xong.</p>
+        <p style={{ font: "16px/1.7 var(--font-body)", color: "var(--fg-1)", margin: 0 }}>Ví dụ khi bạn bị kẹt do bảng size của các mã hàng không đồng nhất:<br />* <b>Cách hỏi đúng:</b> Nhắn cho mentor hoặc đồng nghiệp: <i>&quot;Em đang làm tính năng gợi ý size và gặp vướng mắc ở chỗ bảng size của 3 mã sản phẩm này không cùng chuẩn. Em đã nghĩ ra 2 phương án giải quyết A và B (nêu chi tiết A, B). Theo anh/chị thì hướng nào tối ưu hơn?&quot;</i><br />* <b>Cách hỏi sai:</b> Im lặng tự vá víu theo ý mình, dẫn đến kết quả sai lệch và sát hạn mới báo chưa xong.</p>
       </div>
 
       <h2 style={{ font: "700 27px/1.2 var(--font-impact)", letterSpacing: "-.012em", color: "var(--fg-1)", margin: "44px 0 16px" }}>5 · Vượt Gate = chứng minh hành vi thực tế, không chạy theo điểm số</h2>
-      <p style={{ font: "400 18px/1.8 var(--font-body)", color: "var(--fg-2)", margin: "0 0 18px" }}>Bạn vượt Gate 3 khi <b>chứng minh đủ hành vi</b> (workflow chạy được + có người dùng + giá trị đo được + iterate có bằng chứng + cộng tác chủ động), không phải khi &quot;đạt một con số&quot;. Nếu chưa đạt, đó không phải thất bại — bạn được <b>kèm thêm và bảo vệ lại</b>. Gate đo <b>năng lực thực tế</b>, không đo khả năng học tủ/đối phó thi cử.</p>
+      <p style={{ font: "400 18px/1.8 var(--font-body)", color: "var(--fg-2)", margin: "0 0 18px" }}>Bạn vượt Gate 3 khi <b>chứng minh được các hành vi thực tế</b> (workflow chạy mượt mà, có người dùng thật, đo lường được giá trị, iterate dựa trên bằng chứng và chủ động cộng tác), chứ không phải chỉ cố chạy theo điểm số lý thuyết. Nếu lần đầu chưa đạt, đó hoàn toàn không phải thất bại — bạn sẽ được <b>mentor kèm cặp thêm để bảo vệ lại</b>. Gate là thước đo <b>năng lực thực tế</b>, không phải kỳ thi để học vẹt đối phó.</p>
 
       <TldrDark items={[
         "<b>Iterate có trọng tâm</b>: chọn 1–2 điểm tác động lớn, dùng <b>bảng before-after</b> chứng minh delta; không sửa lan man, không đứng bánh.",
@@ -630,7 +630,7 @@ function GateScreen({ go }: { go: (p: Page, part?: number) => void }) {
       </a>
       <span style={{ display: "inline-block", font: "700 12px/1 var(--font-mono)", letterSpacing: ".22em", textTransform: "uppercase", color: "var(--gold-deep)", background: "var(--gold-tint)", padding: "8px 13px", borderRadius: "999px" }}>⛳ Gate 3 · Bài nộp bắt buộc</span>
       <h1 style={{ font: "800 clamp(36px,4.6vw,56px)/1.03 var(--font-impact)", letterSpacing: "-.026em", margin: "20px 0 12px", color: "var(--fg-1)" }}>Gate 3 — <span style={{ font: "italic 800 1em/1 var(--font-serif)", color: "var(--gold-deep)" }}>Bảo vệ &amp; Iterate</span></h1>
-      <p style={{ font: "400 18px/1.6 var(--font-body)", color: "var(--fg-2)", margin: "0 0 24px", maxWidth: "640px" }}>Buổi bảo vệ trực tiếp trước mentor, khép lại giai đoạn Workflow &amp; Deliverable. Đánh giá NL3 (Collaboration &amp; Iteration) + nối NL1/NL5/NL6. <b style={{ color: "var(--fg-1)" }}>Mang theo deliverable đã QC từ I3.2.</b></p>
+      <p style={{ font: "400 18px/1.6 var(--font-body)", color: "var(--fg-2)", margin: "0 0 24px", maxWidth: "640px" }}>Đây là buổi bảo vệ trực tiếp trước mentor để khép lại giai đoạn &quot;Workflow &amp; Deliverable&quot;. Buổi này sẽ đánh giá trực tiếp năng lực NL3 (Collaboration &amp; Iteration) kết hợp với NL1/NL5/NL6. <b style={{ color: "var(--fg-1)" }}>Bạn hãy mang theo deliverable đã qua QC ở buổi I3.2.</b></p>
 
       <div style={{ border: "1px solid var(--gold-deep)", borderRadius: "14px", background: "var(--gold-tint)", padding: "20px 24px", margin: "0 0 34px" }}>
         <div style={{ font: "700 11px/1 var(--font-mono)", letterSpacing: ".16em", textTransform: "uppercase", color: "var(--gold-deep)", marginBottom: "10px" }}>Hai điều kiện vượt Gate 3</div>
@@ -641,7 +641,7 @@ function GateScreen({ go }: { go: (p: Page, part?: number) => void }) {
       </div>
 
       <h2 style={{ font: "700 27px/1.2 var(--font-impact)", letterSpacing: "-.012em", color: "var(--fg-1)", margin: "0 0 14px" }}>Đề bài</h2>
-      <p style={{ font: "400 17px/1.75 var(--font-body)", color: "var(--fg-2)", margin: "0 0 18px" }}>Lấy <b style={{ color: "var(--fg-1)" }}>deliverable bạn đã dựng &amp; QC ở I3.2</b> (spec / prototype / insight report). Trong buổi thực hiện 3 việc:</p>
+      <p style={{ font: "400 17px/1.75 var(--font-body)", color: "var(--fg-2)", margin: "0 0 18px" }}>Lấy <b style={{ color: "var(--fg-1)" }}>deliverable bạn đã hoàn thiện &amp; tự QC ở buổi I3.2</b> (tài liệu mô tả spec, bản prototype hoặc báo cáo insight). Trong buổi học, bạn cần thực hiện 3 nhiệm vụ sau:</p>
       <div style={{ display: "flex", flexDirection: "column", gap: "14px", margin: "0 0 22px" }}>
         {GATE_TASKS.map((t, i) => (
           <div key={i} style={{ display: "flex", gap: "18px", background: "#fff", border: "1px solid var(--fg-1)", borderRadius: "12px", padding: "20px 22px", alignItems: "flex-start" }}>
@@ -652,7 +652,7 @@ function GateScreen({ go }: { go: (p: Page, part?: number) => void }) {
       </div>
       <div style={{ margin: "0 0 40px", padding: "16px 20px", background: "var(--iris-tint)", borderLeft: "3px solid var(--iris)", borderRadius: "0 10px 10px 0" }}>
         <div style={{ font: "700 11px/1 var(--font-mono)", letterSpacing: ".14em", textTransform: "uppercase", color: "var(--iris-deep)", marginBottom: "8px" }}>Hồ sơ nộp</div>
-        <p style={{ font: "15px/1.7 var(--font-body)", color: "var(--fg-1)", margin: 0 }}>Deliverable <b>v2</b> + bảng before-after + sơ đồ workflow có đánh dấu điểm <b>HITL</b> + ghi chú &quot;feedback nào đã xử lý, thuộc nhóm nào&quot;.</p>
+        <p style={{ font: "15px/1.7 var(--font-body)", color: "var(--fg-1)", margin: 0 }}>Sản phẩm bàn giao (deliverable) phiên bản <b>v2</b> kèm bảng before-after, sơ đồ workflow có đánh dấu rõ điểm <b>HITL</b> (Human-in-the-loop) và phần ghi chú phân loại các feedback đã xử lý.</p>
       </div>
 
       <h2 style={{ font: "700 27px/1.2 var(--font-impact)", letterSpacing: "-.012em", color: "var(--fg-1)", margin: "0 0 8px" }}>Tiêu chí đánh giá ĐẠT (Rubric — 4 trục)</h2>
@@ -667,14 +667,14 @@ function GateScreen({ go }: { go: (p: Page, part?: number) => void }) {
       </div>
       <div style={{ margin: "0 0 40px", padding: "18px 22px", background: "var(--gold-tint)", border: "1px dashed var(--gold-deep)", borderRadius: "12px" }}>
         <div style={{ font: "700 11px/1 var(--font-mono)", letterSpacing: ".16em", textTransform: "uppercase", color: "var(--gold-deep)", marginBottom: "8px" }}>⭐ Mức tốt (Stretch)</div>
-        <p style={{ font: "15px/1.7 var(--font-body)", color: "var(--fg-1)", margin: 0 }}>Delta cải thiện đo bằng <b>con số rõ ràng</b>; nêu được <b>vòng iterate tiếp theo</b> sẽ ưu tiên gì.</p>
+        <p style={{ font: "15px/1.7 var(--font-body)", color: "var(--fg-1)", margin: 0 }}>Mức chênh lệch cải tiến (delta) được đo lường bằng <b>số liệu thực tế rõ ràng</b>; đồng thời chỉ ra được <b>vòng iterate tiếp theo</b> sẽ tập trung ưu tiên cải thiện điểm gì.</p>
       </div>
 
       <h2 style={{ font: "700 27px/1.2 var(--font-impact)", letterSpacing: "-.012em", color: "var(--fg-1)", margin: "0 0 16px" }}>Bài làm mẫu tham khảo <span style={{ font: "600 14px/1 var(--font-mono)", color: "var(--mint-deep)", background: "var(--mint-tint)", border: "1px solid var(--mint)", padding: "6px 10px", borderRadius: "6px", verticalAlign: "middle" }}>Mức ĐẠT · giả lập</span></h2>
       <div style={{ border: "1px solid var(--border)", borderRadius: "14px", background: "#fff", overflow: "hidden", margin: "0 0 22px" }}>
         <div style={{ background: "var(--bg-ink)", padding: "16px 22px" }}>
           <div style={{ font: "700 11px/1 var(--font-mono)", letterSpacing: ".14em", textTransform: "uppercase", color: "var(--gold)", marginBottom: "5px" }}>Deliverable</div>
-          <div style={{ font: "15px/1.6 var(--font-body)", color: "#e6e7f2" }}>Insight report về đổi/trả áo khoác (từ I3.2).</div>
+          <div style={{ font: "15px/1.6 var(--font-body)", color: "#e6e7f2" }}>Báo cáo insight (insight report) về tình trạng đổi trả áo khoác (kế thừa từ buổi I3.2).</div>
         </div>
         <div style={{ padding: "22px 24px" }}>
           <div style={{ font: "700 13px/1 var(--font-brand)", color: "var(--iris-deep)", marginBottom: "12px" }}>1 · Bảo vệ 4 nhịp</div>
@@ -713,11 +713,11 @@ function GateScreen({ go }: { go: (p: Page, part?: number) => void }) {
             </div>
           </div>
           <div style={{ font: "700 13px/1 var(--font-brand)", color: "var(--rose-deep)", marginBottom: "8px" }}>4 · Cộng tác</div>
-          <div style={{ font: "14px/1.6 var(--font-body)", color: "var(--fg-1)" }}>Đã chủ động nhắn mentor khi kẹt bảng size 3 mã (kèm phương án A/B), không ngồi im.</div>
+          <div style={{ font: "14px/1.6 var(--font-body)", color: "var(--fg-1)" }}>Chủ động nhắn tin trao đổi với mentor khi bị kẹt ở phần bảng size của 3 mã hàng (có đề xuất sẵn phương án giải quyết A/B), không im lặng chịu đựng.</div>
         </div>
       </div>
       <div style={{ padding: "16px 20px", background: "var(--mint-tint)", borderLeft: "3px solid var(--mint)", borderRadius: "0 10px 10px 0", font: "14px/1.7 var(--font-body)", color: "var(--fg-1)" }}>
-        <b style={{ color: "var(--mint-deep)" }}>Nhận xét:</b> đủ 4 trục (bằng chứng + đón feedback + iterate có delta + cộng tác chủ động) → <b>ĐẠT</b>. Nếu chỉ trình bày &quot;em đã làm nhiều&quot; mà không có người dùng/delta → <b style={{ color: "var(--rose-deep)" }}>CHƯA ĐẠT</b>.
+        <b style={{ color: "var(--mint-deep)" }}>Nhận xét của mentor:</b> Trình bày đủ cả 4 trục năng lực (dựa trên bằng chứng + đón nhận feedback khách quan + iterate có delta thực tế + chủ động cộng tác) → <b>ĐẠT</b>. Ngược lại, nếu chỉ kể lể &quot;em đã làm rất nhiều&quot; mà không chứng minh được người dùng thật hay chỉ số cải thiện (delta) → <b style={{ color: "var(--rose-deep)" }}>CHƯA ĐẠT</b>.
       </div>
 
       <div style={{ display: "flex", gap: "14px", marginTop: "34px", flexWrap: "wrap" }}>
@@ -742,8 +742,8 @@ function ExamScreen({
   const answered = Object.keys(state.answers).length;
   const passed = score >= PASS_SCORE;
   const result = passed
-    ? { title: "Đạt ngưỡng Final Exam 🎉", msg: `Bạn đạt ${score}/20. Kết hợp với phần bảo vệ + deliverable v2 đạt rubric → vượt Gate 3, sang I4.1 — Advanced Product Mindset & Ownership.`, color: "var(--mint-deep)", border: "var(--mint)", bg: "var(--mint-tint)" }
-    : { title: "Chưa đạt ngưỡng", msg: `Cần ≥${PASS_SCORE}/20. Sai nhiều câu 1–10 → đọc lại Phần 1 (Bằng chứng & Feedback); 11–20 → Phần 2 (Iterate, Cộng tác & Đồng thuận).`, color: "var(--rose-deep)", border: "var(--rose-deep)", bg: "var(--rose-tint)" };
+    ? { title: "Đạt ngưỡng Final Exam 🎉", msg: `Bạn đạt ${score}/20 điểm. Khi kết hợp với phần bảo vệ trực tiếp và sản phẩm deliverable v2 đạt chuẩn rubric, bạn sẽ chính thức vượt qua Gate 3 để bước sang buổi I4.1 — Advanced Product Mindset & Ownership.`, color: "var(--mint-deep)", border: "var(--mint)", bg: "var(--mint-tint)" }
+    : { title: "Chưa đạt ngưỡng", msg: `Bạn cần đạt tối thiểu từ ${PASS_SCORE}/20 câu trở lên. Nếu sai nhiều ở các câu 1–10, hãy đọc kỹ lại Phần 1 (Bằng chứng & Feedback); nếu sai ở các câu 11–20, hãy ôn lại Phần 2 (Iterate, Cộng tác & Đồng thuận).`, color: "var(--rose-deep)", border: "var(--rose-deep)", bg: "var(--rose-tint)" };
   const cursor = state.submitted ? "default" : "pointer";
 
   return (

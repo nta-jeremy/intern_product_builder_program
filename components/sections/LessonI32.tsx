@@ -20,7 +20,7 @@ const PART_META = [
 ];
 
 const PARTS = [
-  { ...PART_META[0], desc: "\"Dùng được\" vs \"trông có vẻ ổn\" & phép thử, 3 loại deliverable (Spec/Prototype/Insight Report), grounding — xương sống của sản phẩm đáng tin, và quy trình AI dựng nhanh + người QC.", tags: ["Dùng được", "3 loại deliverable", "Grounding"] },
+  { ...PART_META[0], desc: "Phân biệt sản phẩm \"dùng được\" với \"trông có vẻ ổn\" & phép thử thực tế, 3 loại deliverable (Product Spec / Clickable Prototype / Insight Report), grounding — xương sống của sản phẩm đáng tin, và quy trình AI dựng nhanh bản thảo + con người QC kỹ lưỡng.", tags: ["Dùng được", "3 loại deliverable", "Grounding"] },
   { ...PART_META[1], desc: "Bảng QC 5 tiêu chí (Nguồn gốc · Số liệu · Edge case · Sạch PII · Giá trị), ba nhóm tình huống biên, nhận diện bias, và QC Clinic (tự QC + đánh giá chéo).", tags: ["QC 5 tiêu chí", "Edge case", "QC Clinic"] },
 ];
 
@@ -46,40 +46,41 @@ const META = [
 ];
 
 // Phần 1 — usable vs looks-ok, deliverable types, grounding
+// Phần 1 — usable vs looks-ok, deliverable types, grounding
 const LOOKS_OK = [
-  "Không rõ nguồn gốc số liệu lấy từ đâu.",
-  "Chưa tính đến các tình huống biên (edge case).",
-  "Có nguy cơ chứa thông tin ảo/bịa (hallucination) từ AI.",
+  "Không chỉ rõ số liệu được trích xuất từ nguồn hoặc báo cáo nào.",
+  "Hoàn toàn bỏ qua các tình huống biên (edge case) có thể phát sinh.",
+  "Tiềm ẩn thông tin bịa đặt/ảo tưởng (hallucination) do AI tự suy diễn.",
 ];
 const USABLE = [
-  "Mọi nhận định đều có nguồn dẫn chứng rõ ràng.",
-  "Số liệu kiểm chứng được, tự tính lại chính xác.",
-  "Định dạng chuẩn để áp dụng ngay; đã xử lý edge case.",
-  "Đã loại bỏ thông tin cá nhân (sạch PII).",
+  "Mọi nhận xét, đánh giá đều đi kèm trích dẫn dẫn chứng thực tế rõ ràng.",
+  "Số liệu có thể dễ dàng đối chiếu, tính toán lại và đảm bảo chính xác 100%.",
+  "Định dạng chuẩn hóa để người tiếp nhận dùng được ngay; đã có phương án xử lý edge case.",
+  "Đã ẩn danh hóa hoàn toàn các thông tin cá nhân của khách hàng (sạch PII).",
 ];
 const DELIVER_TYPES = [
-  { icon: "📄", name: "Product Spec", what: "Bản đặc tả rút gọn: vấn đề → giả thuyết → metric → scope → rủi ro.", when: "Cần thống nhất sẽ làm gì & vì sao trước khi build.", ex: "Spec cho tính năng gợi ý size.", color: "var(--iris-deep)", border: "var(--iris)", bg: "var(--iris-tint)" },
-  { icon: "📱", name: "Clickable Prototype", what: "Bản thiết kế tương tác (mockup bấm được) mô phỏng luồng thao tác.", when: "Cần thấy & thử trải nghiệm trước khi code.", ex: "Prototype luồng chọn size trên app.", color: "var(--gold-deep)", border: "var(--gold-deep)", bg: "var(--gold-tint)" },
-  { icon: "📊", name: "Insight Report", what: "Báo cáo insight từ dữ liệu thực tế (có AI trợ giúp).", when: "Cần hiểu vấn đề của khách hàng để ra quyết định.", ex: "Báo cáo phân tích 200 review đổi/trả.", color: "var(--mint-deep)", border: "var(--mint)", bg: "var(--mint-tint)" },
+  { icon: "📄", name: "Product Spec", what: "Tài liệu đặc tả tinh gọn: làm rõ vấn đề cốt lõi, giả thuyết kiểm chứng, chỉ số đo lường, phạm vi và rủi ro phản biện.", when: "Khi cần thống nhất định hướng \"làm gì và tại sao làm\" trước khi bắt tay vào phát triển.", ex: "Spec cho tính năng gợi ý size.", color: "var(--iris-deep)", border: "var(--iris)", bg: "var(--iris-tint)" },
+  { icon: "📱", name: "Clickable Prototype", what: "Bản thiết kế giao diện mô phỏng có khả năng tương tác (bấm được) để trải nghiệm thử luồng thao tác người dùng.", when: "Khi cần hình dung trực quan và kiểm tra trải nghiệm thực tế trước khi viết mã nguồn (code).", ex: "Prototype luồng chọn size trên app.", color: "var(--gold-deep)", border: "var(--gold-deep)", bg: "var(--gold-tint)" },
+  { icon: "📊", name: "Insight Report", what: "Báo cáo phân tích tổng hợp các phát hiện (insights) rút ra từ dữ liệu thực tế (có sự hỗ trợ xử lý của AI).", when: "Khi cần thấu hiểu sâu sắc hành vi, phản hồi của khách hàng để làm căn cứ đưa ra các quyết định tiếp theo.", ex: "Báo cáo phân tích 200 review đổi/trả.", color: "var(--mint-deep)", border: "var(--mint)", bg: "var(--mint-tint)" },
 ];
 const GROUND_RULES = [
-  { n: "1", text: "Mỗi insight (nhận định) phải đi kèm bằng chứng cụ thể — trích dẫn phản hồi gốc, số liệu thực tế." },
-  { n: "2", text: "Mỗi con số phải ghi rõ nguồn gốc xuất xứ — lấy từ báo cáo nào, cơ sở dữ liệu nào." },
-  { n: "3", text: "Nhận định nào không đối chiếu được nguồn rõ ràng → lược bỏ, hoặc ghi chú rõ là giả định/suy đoán." },
+  { n: "1", text: "Mọi nhận định, kết luận rút ra bắt buộc phải đi kèm dẫn chứng thực tế (ví dụ: trích dẫn phản hồi gốc của khách hàng, số liệu thống kê)." },
+  { n: "2", text: "Mọi con số, tỷ lệ đưa vào tài liệu phải được ghi chú rõ nguồn gốc xuất xứ (lấy từ cơ sở dữ liệu hay báo cáo cụ thể nào)." },
+  { n: "3", text: "Bất kỳ nhận định nào không thể tìm được nguồn đối chiếu thực tế → bắt buộc lược bỏ, hoặc ghi rõ đó chỉ là giả định/phán đoán." },
 ];
 
 // Phần 2 — QC 5, edge groups, bias, clinic
 const QC5 = [
-  { n: "1", name: "Nguồn gốc", check: "Mọi nhận định/kết luận có gắn dẫn chứng hoặc nguồn cụ thể không?", pass: "Mọi insight gắn liền với dẫn chứng gốc.", color: "var(--iris-deep)", tint: "var(--iris-tint)" },
-  { n: "2", name: "Số liệu", check: "Số liệu có thể đối chiếu & tự tính lại để xác minh không?", pass: "Số liệu có nguồn thực; tự cộng/đối chiếu lại chính xác.", color: "var(--gold-deep)", tint: "var(--gold-tint)" },
-  { n: "3", name: "Edge case", check: "Đã tính đến & có phương án xử lý các tình huống biên chưa?", pass: "Nêu rõ & có phương án xử lý các trường hợp biên chính.", color: "var(--rose-deep)", tint: "var(--rose-tint)" },
+  { n: "1", name: "Nguồn gốc", check: "Mọi nhận định phân tích hay kết luận rút ra có đính kèm dẫn chứng hoặc chỉ rõ nguồn dữ liệu cụ thể không?", pass: "Không có nhận định cảm tính; 100% các phát hiện (insights) đều có bằng chứng gốc đi kèm.", color: "var(--iris-deep)", tint: "var(--iris-tint)" },
+  { n: "2", name: "Số liệu", check: "Các số liệu thống kê, phép tính toán trong tài liệu có thể tự kiểm tra, tính toán lại để xác thực không?", pass: "Số liệu trích xuất chuẩn xác; các phép tính tổng, tỷ lệ tự tính lại khớp hoàn toàn.", color: "var(--gold-deep)", tint: "var(--gold-tint)" },
+  { n: "3", name: "Edge case", check: "Quy trình hoặc giải pháp đã dự phòng và nêu rõ phương án xử lý cho các tình huống phát sinh ngoài luồng chưa?", pass: "Liệt kê đầy đủ các kịch bản lỗi/biên thường gặp và có giải pháp xử lý tương ứng cho từng trường hợp.", color: "var(--rose-deep)", tint: "var(--rose-tint)" },
   { n: "4", name: "Sạch PII", check: "Đã loại bỏ hoàn toàn PII & thông tin kinh doanh nhạy cảm chưa?", pass: "Không còn PII thật; số liệu mật không đưa ra ngoài.", color: "var(--iris-deep)", tint: "var(--iris-tint)" },
-  { n: "5", name: "Giá trị", check: "Đối tượng dùng & mục đích đã rõ chưa? Giá trị thực tế gì?", pass: "Rõ đối tượng tiếp nhận & giá trị thực tế mang lại.", color: "var(--mint-deep)", tint: "var(--mint-tint)" },
+  { n: "5", name: "Giá trị", check: "Đã xác định rõ đối tượng tiếp nhận tài liệu và mục đích sử dụng chưa? Tài liệu mang lại giá trị hành động gì?", pass: "Chỉ rõ ai là người sử dụng tài liệu này và họ có thể đưa ra quyết định hành động gì dựa vào nó.", color: "var(--mint-deep)", tint: "var(--mint-tint)" },
 ];
 const EDGE_GROUPS = [
-  { icon: "📥", title: "Dữ liệu đầu vào thiếu / bất thường", desc: "Đánh giá trống, nội dung trộn nhiều ngôn ngữ, dữ liệu bị khuyết trường.", color: "var(--rose-deep)", border: "var(--rose-deep)", bg: "var(--rose-tint)" },
-  { icon: "👆", title: "Người dùng thao tác sai thiết kế", desc: "Nhập sai định dạng, bỏ dở giữa chừng, hoặc dùng sai mục đích.", color: "var(--gold-deep)", border: "var(--gold-deep)", bg: "var(--gold-tint)" },
-  { icon: "⚠️", title: "Hệ thống phát sinh lỗi", desc: "Phản hồi AI rỗng/sai định dạng, mất kết nối hoặc phản hồi chậm (timeout).", color: "var(--iris-deep)", border: "var(--iris)", bg: "var(--iris-tint)" },
+  { icon: "📥", title: "Dữ liệu đầu vào thiếu / bất thường", desc: "Dữ liệu trống, phản hồi chỉ chứa emoji, nội dung pha trộn nhiều ngôn ngữ, hoặc tệp dữ liệu bị khuyết các trường thông tin quan trọng.", color: "var(--rose-deep)", border: "var(--rose-deep)", bg: "var(--rose-tint)" },
+  { icon: "👆", title: "Người dùng thao tác sai thiết kế", desc: "Người dùng nhập sai định dạng dữ liệu yêu cầu, bỏ dở quy trình giữa chừng, hoặc cố tình thực hiện hành động sai mục đích thiết kế.", color: "var(--gold-deep)", border: "var(--gold-deep)", bg: "var(--gold-tint)" },
+  { icon: "⚠️", title: "Hệ thống phát sinh lỗi", desc: "Mô hình AI trả về kết quả rỗng/sai định dạng schema, mất kết nối API, hoặc thời gian phản hồi quá lâu gây nghẽn (timeout).", color: "var(--iris-deep)", border: "var(--iris)", bg: "var(--iris-tint)" },
 ];
 const BIAS_CHECKS = [
   "Dữ liệu đầu vào đã đủ tính đại diện chưa, hay chỉ tập trung vào một nhóm đối tượng? (VD: chỉ thu thập đánh giá 1 sao → kết quả lệch tiêu cực — thiên kiến dữ liệu.)",
@@ -457,7 +458,7 @@ function Part1View() {
   return (
     <div>
       <p style={{ font: "400 19px/1.85 var(--font-body)", color: "var(--fg-1)", margin: "0 0 20px" }}>
-        <span style={{ float: "left", font: "italic 900 74px/.72 var(--font-serif)", color: "var(--iris)", padding: "6px 12px 0 0" }}>M</span>ột sản phẩm bàn giao được AI hỗ trợ rất dễ <b>tạo cảm giác &quot;ổn&quot;</b>: trình bày đẹp, câu chữ trôi chảy, số liệu đầy đủ. Nhưng &quot;trông ổn&quot; và &quot;dùng được&quot; là hai chuyện hoàn toàn khác. Đây là chuẩn của một Product Builder: sản phẩm dưới tên bạn phải <b>đáng tin cậy để người khác dùng &amp; đánh giá</b>.
+        <span style={{ float: "left", font: "italic 900 74px/.72 var(--font-serif)", color: "var(--iris)", padding: "6px 12px 0 0" }}>M</span>ột sản phẩm bàn giao được AI hỗ trợ rất dễ <b>tạo cảm giác &quot;ổn&quot;</b>: trình bày đẹp mắt, câu chữ trôi chảy, số liệu đầy đủ. Nhưng &quot;trông có vẻ ổn&quot; và &quot;dùng được&quot; là hai khái niệm hoàn toàn khác biệt. Đây là chuẩn mực của một Product Builder: sản phẩm đứng tên bạn bắt buộc phải <b>đáng tin cậy để người khác yên tâm sử dụng &amp; đánh giá</b>.
       </p>
 
       <h2 style={{ font: "700 27px/1.2 var(--font-impact)", letterSpacing: "-.012em", color: "var(--fg-1)", margin: "44px 0 16px" }}>1 · &quot;Dùng được&quot; khác &quot;trông có vẻ ổn&quot;</h2>
@@ -571,7 +572,7 @@ function Part2View({ go }: { go: (p: Page, part?: number) => void }) {
   return (
     <div>
       <p style={{ font: "400 19px/1.85 var(--font-body)", color: "var(--fg-1)", margin: "0 0 20px" }}>
-        <span style={{ float: "left", font: "italic 900 74px/.72 var(--font-serif)", color: "var(--gold-deep)", padding: "6px 12px 0 0" }}>N</span>hiều người mới &quot;kiểm tra chất lượng&quot; bằng cách đọc lướt một lượt thấy trôi chảy là xong. Đó không phải QC thực sự. <b>QC ở cấp độ sản phẩm (Product QC)</b> đòi hỏi đối chiếu nghiêm ngặt theo một <b>bảng tiêu chí cố định</b> và xác minh từng mục có dẫn chứng — chỉ cần thiếu một tiêu chí là <b>chưa đạt</b>, bắt buộc vá lỗi và kiểm lại.
+        <span style={{ float: "left", font: "italic 900 74px/.72 var(--font-serif)", color: "var(--gold-deep)", padding: "6px 12px 0 0" }}>N</span>hiều người mới thường &quot;kiểm tra chất lượng&quot; bằng cách đọc lướt qua một lượt thấy trôi chảy là xong. Đó không phải là QC thực sự. <b>Kiểm soát chất lượng cấp sản phẩm (Product QC)</b> đòi hỏi sự đối chiếu nghiêm ngặt theo một <b>bảng tiêu chí cố định</b> và xác minh từng mục kèm dẫn chứng cụ thể — chỉ cần thiếu bất kỳ tiêu chí nào đều tính là <b>chưa đạt</b>, bắt buộc phải khắc phục lỗi và kiểm định lại.
       </p>
 
       <h2 style={{ font: "700 27px/1.2 var(--font-impact)", letterSpacing: "-.012em", color: "var(--fg-1)", margin: "44px 0 16px" }}>1 · Bảng QC 5 tiêu chí</h2>
